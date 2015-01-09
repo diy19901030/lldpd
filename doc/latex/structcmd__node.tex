@@ -1,0 +1,12 @@
+\section{cmd\-\_\-node \-Struct \-Reference}
+\label{structcmd__node}\index{cmd\-\_\-node@{cmd\-\_\-node}}
+
+
+\subsection{\-Detailed \-Description}
+\-Structure representing a command node.
+
+\-Such a node contains a token accepted to enter the node (or {\ttfamily \-N\-U\-L\-L} if there is no token needed), a documentation string to present the user, a function to validate the user input (or {\ttfamily \-N\-U\-L\-L} if no function is needed) and a function to execute when entering the node. \-Because we can enter a node just by completing, the execution part should have no other effect than modifying the environment, with the exception of execution on {\ttfamily \-N\-E\-W\-L\-I\-N\-E} (which cannot happen when completing). 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/src/client/commands.\-c\end{DoxyCompactItemize}

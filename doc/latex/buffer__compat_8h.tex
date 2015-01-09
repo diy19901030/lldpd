@@ -1,0 +1,142 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/include/event2/buffer\-\_\-compat.h \-File \-Reference}
+\label{buffer__compat_8h}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/buffer\-\_\-compat.\-h@{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/buffer\-\_\-compat.\-h}}
+\-This graph shows which files directly or indirectly include this file\-:
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf \-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-L\-E\-N\-G\-T\-H}(x)~{\bf evbuffer\-\_\-get\-\_\-length}(x)
+\item 
+\#define {\bf \-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-D\-A\-T\-A}(x)~{\bf evbuffer\-\_\-pullup}((x), -\/1)
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ {\bf evbuffer\-\_\-cb} )(struct {\bf evbuffer} $\ast$buffer, size\-\_\-t old\-\_\-len, size\-\_\-t new\-\_\-len, void $\ast$arg)
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ {\bf evbuffer\-\_\-readline} (struct {\bf evbuffer} $\ast$buffer)
+\item 
+void {\bf evbuffer\-\_\-setcb} (struct {\bf evbuffer} $\ast$buffer, {\bf evbuffer\-\_\-cb} cb, void $\ast$cbarg)
+\item 
+unsigned char $\ast$ {\bf evbuffer\-\_\-find} (struct {\bf evbuffer} $\ast$buffer, const unsigned char $\ast$what, size\-\_\-t len)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Obsolete and deprecated versions of the functions in \doxyref{buffer.\-h}{p.}{buffer_8h}\-: provided only for backward compatibility. 
+
+\subsection{\-Define \-Documentation}
+\index{buffer\-\_\-compat.\-h@{buffer\-\_\-compat.\-h}!\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-D\-A\-T\-A@{\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-D\-A\-T\-A}}
+\index{\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-D\-A\-T\-A@{\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-D\-A\-T\-A}!buffer_compat.h@{buffer\-\_\-compat.\-h}}
+\subsubsection[{\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-D\-A\-T\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-D\-A\-T\-A}(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~{\bf evbuffer\-\_\-pullup}((x), -\/1)}\label{buffer__compat_8h_a1c57a451c56dc1483a1c8aaeb9b92cc6}
+deprecated in favor of calling the functions directly \index{buffer\-\_\-compat.\-h@{buffer\-\_\-compat.\-h}!\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-L\-E\-N\-G\-T\-H@{\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-L\-E\-N\-G\-T\-H}}
+\index{\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-L\-E\-N\-G\-T\-H@{\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-L\-E\-N\-G\-T\-H}!buffer_compat.h@{buffer\-\_\-compat.\-h}}
+\subsubsection[{\-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-L\-E\-N\-G\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-L\-E\-N\-G\-T\-H}(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~{\bf evbuffer\-\_\-get\-\_\-length}(x)}\label{buffer__compat_8h_ab8d9564980e380cf1887f2be70f687ad}
+deprecated in favor of calling the functions directly 
+
+\subsection{\-Typedef \-Documentation}
+\index{buffer\-\_\-compat.\-h@{buffer\-\_\-compat.\-h}!evbuffer\-\_\-cb@{evbuffer\-\_\-cb}}
+\index{evbuffer\-\_\-cb@{evbuffer\-\_\-cb}!buffer_compat.h@{buffer\-\_\-compat.\-h}}
+\subsubsection[{evbuffer\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf evbuffer\-\_\-cb})(struct {\bf evbuffer} $\ast$buffer, size\-\_\-t old\-\_\-len, size\-\_\-t new\-\_\-len, void $\ast$arg)}\label{buffer__compat_8h_a613068ef7e1be05deead9c9b6f021158}
+\-Type definition for a callback that is invoked whenever data is added or removed from an evbuffer.
+
+\-An evbuffer may have one or more callbacks set at a time. \-The order in which they are executed is undefined.
+
+\-A callback function may add more callbacks, or remove itself from the list of callbacks, or add or remove data from the buffer. \-It may not remove another callback from the list.
+
+\-If a callback adds or removes data from the buffer or from another buffer, this can cause a recursive invocation of your callback or other callbacks. \-If you ask for an infinite loop, you might just get one\-: watch out!
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & the buffer whose size has changed \\
+\hline
+{\em old\-\_\-len} & the previous length of the buffer \\
+\hline
+{\em new\-\_\-len} & the current length of the buffer \\
+\hline
+{\em arg} & a pointer to user data \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Function \-Documentation}
+\index{buffer\-\_\-compat.\-h@{buffer\-\_\-compat.\-h}!evbuffer\-\_\-find@{evbuffer\-\_\-find}}
+\index{evbuffer\-\_\-find@{evbuffer\-\_\-find}!buffer_compat.h@{buffer\-\_\-compat.\-h}}
+\subsubsection[{evbuffer\-\_\-find}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char$\ast$ {\bf evbuffer\-\_\-find} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evbuffer} $\ast$}]{buffer, }
+\item[{const unsigned char $\ast$}]{what, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}\label{buffer__compat_8h_adb7851f684bf8400ce7b26e06e30c2d3}
+\-Find a string within an evbuffer.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & the evbuffer to be searched \\
+\hline
+{\em what} & the string to be searched for \\
+\hline
+{\em len} & the length of the search string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to the beginning of the search string, or \-N\-U\-L\-L if the search failed. 
+\end{DoxyReturn}
+\index{buffer\-\_\-compat.\-h@{buffer\-\_\-compat.\-h}!evbuffer\-\_\-readline@{evbuffer\-\_\-readline}}
+\index{evbuffer\-\_\-readline@{evbuffer\-\_\-readline}!buffer_compat.h@{buffer\-\_\-compat.\-h}}
+\subsubsection[{evbuffer\-\_\-readline}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf evbuffer\-\_\-readline} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evbuffer} $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}\label{buffer__compat_8h_a65177a5ae259100c90f3f4c2812db070}
+\-Obsolete alias for evbuffer\-\_\-readln(buffer, N\-U\-L\-L, E\-O\-L\-\_\-\-S\-T\-Y\-L\-E\-\_\-\-A\-N\-Y).
+
+\begin{DoxyRefDesc}{\-Deprecated}
+\item[{\bf \-Deprecated}]\-This function is deprecated because its behavior is not correct for almost any protocol, and also because it's wholly subsumed by \doxyref{evbuffer\-\_\-readln()}{p.}{buffer_8h_ae2460b5060948d3233342c4c81888650}.\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & the evbuffer to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+pointer to a single line, or \-N\-U\-L\-L if an error occurred 
+\end{DoxyReturn}
+\index{buffer\-\_\-compat.\-h@{buffer\-\_\-compat.\-h}!evbuffer\-\_\-setcb@{evbuffer\-\_\-setcb}}
+\index{evbuffer\-\_\-setcb@{evbuffer\-\_\-setcb}!buffer_compat.h@{buffer\-\_\-compat.\-h}}
+\subsubsection[{evbuffer\-\_\-setcb}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evbuffer\-\_\-setcb} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evbuffer} $\ast$}]{buffer, }
+\item[{{\bf evbuffer\-\_\-cb}}]{cb, }
+\item[{void $\ast$}]{cbarg}
+\end{DoxyParamCaption}
+)}\label{buffer__compat_8h_a410c80ef25950aed88a08141278f23ab}
+\-Replace all callbacks on an evbuffer with a single new callback, or remove them.
+
+\-Subsequent calls to \doxyref{evbuffer\-\_\-setcb()}{p.}{buffer__compat_8h_a410c80ef25950aed88a08141278f23ab} replace callbacks set by previous calls. \-Setting the callback to \-N\-U\-L\-L removes any previously set callback.
+
+\begin{DoxyRefDesc}{\-Deprecated}
+\item[{\bf \-Deprecated}]\-This function is deprecated because it clears all previous callbacks set on the evbuffer, which can cause confusing behavior if multiple parts of the code all want to add their own callbacks on a buffer. \-Instead, use \doxyref{evbuffer\-\_\-add()}{p.}{buffer_8h_a69c3b8893a49bdd919642c6920c1fcb4}, evbuffer\-\_\-del(), and evbuffer\-\_\-setflags() to manage your own evbuffer callbacks without interfering with callbacks set by others.\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & the evbuffer to be monitored \\
+\hline
+{\em cb} & the callback function to invoke when the evbuffer is modified, or \-N\-U\-L\-L to remove all callbacks. \\
+\hline
+{\em cbarg} & an argument to be provided to the callback function \\
+\hline
+\end{DoxyParams}

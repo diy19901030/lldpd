@@ -1,0 +1,923 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/include/event2/dns.h \-File \-Reference}
+\label{dns_8h}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/dns.\-h@{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/dns.\-h}}
+{\ttfamily \#include $<$event2/util.\-h$>$}\*
+\-Include dependency graph for dns.\-h\-:
+\-This graph shows which files directly or indirectly include this file\-:
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-N\-E}~0
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-F\-O\-R\-M\-A\-T}~1
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-V\-E\-R\-F\-A\-I\-L\-E\-D}~2
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-E\-X\-I\-S\-T}~3
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-I\-M\-P\-L}~4
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-R\-E\-F\-U\-S\-E\-D}~5
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-R\-U\-N\-C\-A\-T\-E\-D}~65
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-U\-N\-K\-N\-O\-W\-N}~66
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-I\-M\-E\-O\-U\-T}~67
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-H\-U\-T\-D\-O\-W\-N}~68
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-C\-E\-L}~69
+\item 
+\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-D\-A\-T\-A}~70
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-I\-Pv4\-\_\-\-A}~1\label{dns_8h_a17bdba92fba6851649178796a61e6e48}
+
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-P\-T\-R}~2\label{dns_8h_af69594a709159a6607376597d6fcfc86}
+
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-I\-Pv6\-\_\-\-A\-A\-A\-A}~3\label{dns_8h_acb8f109c67c35edaf2fa5628a39e8591}
+
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-Q\-U\-E\-R\-Y\-\_\-\-N\-O\-\_\-\-S\-E\-A\-R\-C\-H}~1\label{dns_8h_af82856a398b08ac3a1bb2d540fa9c742}
+
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-\_\-\-S\-E\-A\-R\-C\-H}~1\label{dns_8h_a49145d945a502797f174804ff60fc075}
+
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-\_\-\-N\-A\-M\-E\-S\-E\-R\-V\-E\-R\-S}~2\label{dns_8h_a4837b11510c062456bbc86f12ccbd932}
+
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-\_\-\-M\-I\-S\-C}~4\label{dns_8h_ae96b65439eb5d0f839e20eb52ce59612}
+
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-\_\-\-H\-O\-S\-T\-S\-F\-I\-L\-E}~8\label{dns_8h_ad1354f68d965a9b454f4f1e710b5decc}
+
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-S\-\_\-\-A\-L\-L}~15\label{dns_8h_a417f74bbbbd887a84d911ed9dc7ce3ae}
+
+\item 
+\#define {\bfseries \-D\-N\-S\-\_\-\-N\-O\-\_\-\-S\-E\-A\-R\-C\-H}~\-D\-N\-S\-\_\-\-Q\-U\-E\-R\-Y\-\_\-\-N\-O\-\_\-\-S\-E\-A\-R\-C\-H\label{dns_8h_a347dc763a4e66bed0e1b340f53aa1b6d}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-A\-N\-S\-W\-E\-R\-\_\-\-S\-E\-C\-T\-I\-O\-N}~0\label{dns_8h_abfe36ef3f24e398558b7e6b2f5c82df0}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-Y\-\_\-\-S\-E\-C\-T\-I\-O\-N}~1\label{dns_8h_a5931aa57d8552e0c94f4a8638e6db2ce}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-A\-D\-D\-I\-T\-I\-O\-N\-A\-L\-\_\-\-S\-E\-C\-T\-I\-O\-N}~2\label{dns_8h_afaa98a0d41eb8da13399fb9716d2a5b3}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-T\-Y\-P\-E\-\_\-\-A}~1\label{dns_8h_a4e8d8b1d5dade064329458e64f66fea0}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-T\-Y\-P\-E\-\_\-\-N\-S}~2\label{dns_8h_aa5f887413ecc76162da14b6680f9fb46}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-T\-Y\-P\-E\-\_\-\-C\-N\-A\-M\-E}~5\label{dns_8h_abb31989f56eae67bc02c23be47b1383b}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-T\-Y\-P\-E\-\_\-\-S\-O\-A}~6\label{dns_8h_a8a20816cd4a40625a73217371592497f}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-T\-Y\-P\-E\-\_\-\-P\-T\-R}~12\label{dns_8h_a6343c162297e966a7b4f93f3ef64e433}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-T\-Y\-P\-E\-\_\-\-M\-X}~15\label{dns_8h_aea8abe47a00707401291a9a6c37a5e6b}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-T\-Y\-P\-E\-\_\-\-T\-X\-T}~16\label{dns_8h_abb4fb68c7c44ff643cdd83d95f366f27}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-T\-Y\-P\-E\-\_\-\-A\-A\-A\-A}~28\label{dns_8h_a9c31c8794d88ca0415d3a082655098d0}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-Q\-T\-Y\-P\-E\-\_\-\-A\-X\-F\-R}~252\label{dns_8h_accca6e7eb2768c8b190c66c9db70d54d}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-Q\-T\-Y\-P\-E\-\_\-\-A\-L\-L}~255\label{dns_8h_a4910befc342a418494f91c1e68a263b0}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-C\-L\-A\-S\-S\-\_\-\-I\-N\-E\-T}~1\label{dns_8h_aa3cbeaca3ff13f05c94a4308489bbcf6}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-F\-L\-A\-G\-S\-\_\-\-A\-A}~0x400\label{dns_8h_a4955faa41f42dd3d5392de0f510b2d5b}
+
+\item 
+\#define {\bfseries \-E\-V\-D\-N\-S\-\_\-\-F\-L\-A\-G\-S\-\_\-\-R\-D}~0x080\label{dns_8h_aa6512e054966c28adc1d160509a03f54}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ {\bf evdns\-\_\-callback\-\_\-type} )(int result, char type, int count, int ttl, void $\ast$addresses, void $\ast$arg)
+\item 
+typedef void($\ast$ {\bf evdns\-\_\-debug\-\_\-log\-\_\-fn\-\_\-type} )(int is\-\_\-warning, const char $\ast${\bf msg})
+\item 
+typedef void($\ast$ {\bf evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type} )(struct {\bf evdns\-\_\-server\-\_\-request} $\ast$, void $\ast$)
+\item 
+typedef void($\ast$ {\bf evdns\-\_\-getaddrinfo\-\_\-cb} )(int result, struct {\bf evutil\-\_\-addrinfo} $\ast$res, void $\ast$arg)
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evdns\-\_\-base} $\ast$ {\bf evdns\-\_\-base\-\_\-new} (struct {\bf event\-\_\-base} $\ast${\bf event\-\_\-base}, int initialize\-\_\-nameservers)
+\item 
+void {\bf evdns\-\_\-base\-\_\-free} (struct {\bf evdns\-\_\-base} $\ast$base, int fail\-\_\-requests)
+\item 
+const char $\ast$ {\bf evdns\-\_\-err\-\_\-to\-\_\-string} (int err)
+\item 
+int {\bf evdns\-\_\-base\-\_\-nameserver\-\_\-add} (struct {\bf evdns\-\_\-base} $\ast$base, unsigned long int address)
+\item 
+int {\bf evdns\-\_\-base\-\_\-count\-\_\-nameservers} (struct {\bf evdns\-\_\-base} $\ast$base)
+\item 
+int {\bf evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend} (struct {\bf evdns\-\_\-base} $\ast$base)
+\item 
+int {\bf evdns\-\_\-base\-\_\-resume} (struct {\bf evdns\-\_\-base} $\ast$base)
+\item 
+int {\bf evdns\-\_\-base\-\_\-nameserver\-\_\-ip\-\_\-add} (struct {\bf evdns\-\_\-base} $\ast$base, const char $\ast$ip\-\_\-as\-\_\-string)
+\item 
+int {\bf evdns\-\_\-base\-\_\-nameserver\-\_\-sockaddr\-\_\-add} (struct {\bf evdns\-\_\-base} $\ast$base, const struct sockaddr $\ast$sa, ev\-\_\-socklen\-\_\-t len, unsigned flags)
+\item 
+struct {\bf evdns\-\_\-request} $\ast$ {\bf evdns\-\_\-base\-\_\-resolve\-\_\-ipv4} (struct {\bf evdns\-\_\-base} $\ast$base, const char $\ast$name, int flags, {\bf evdns\-\_\-callback\-\_\-type} callback, void $\ast$ptr)
+\item 
+struct {\bf evdns\-\_\-request} $\ast$ {\bf evdns\-\_\-base\-\_\-resolve\-\_\-ipv6} (struct {\bf evdns\-\_\-base} $\ast$base, const char $\ast$name, int flags, {\bf evdns\-\_\-callback\-\_\-type} callback, void $\ast$ptr)
+\item 
+struct {\bf evdns\-\_\-request} $\ast$ {\bf evdns\-\_\-base\-\_\-resolve\-\_\-reverse} (struct {\bf evdns\-\_\-base} $\ast$base, const struct in\-\_\-addr $\ast$in, int flags, {\bf evdns\-\_\-callback\-\_\-type} callback, void $\ast$ptr)
+\item 
+struct {\bf evdns\-\_\-request} $\ast$ {\bf evdns\-\_\-base\-\_\-resolve\-\_\-reverse\-\_\-ipv6} (struct {\bf evdns\-\_\-base} $\ast$base, const struct {\bf in6\-\_\-addr} $\ast$in, int flags, {\bf evdns\-\_\-callback\-\_\-type} callback, void $\ast$ptr)
+\item 
+void {\bf evdns\-\_\-cancel\-\_\-request} (struct {\bf evdns\-\_\-base} $\ast$base, struct {\bf evdns\-\_\-request} $\ast$req)
+\item 
+int {\bf evdns\-\_\-base\-\_\-set\-\_\-option} (struct {\bf evdns\-\_\-base} $\ast$base, const char $\ast$option, const char $\ast$val)
+\item 
+int {\bf evdns\-\_\-base\-\_\-resolv\-\_\-conf\-\_\-parse} (struct {\bf evdns\-\_\-base} $\ast$base, int flags, const char $\ast$const filename)
+\item 
+int {\bf evdns\-\_\-base\-\_\-load\-\_\-hosts} (struct {\bf evdns\-\_\-base} $\ast$base, const char $\ast$hosts\-\_\-fname)
+\item 
+void {\bf evdns\-\_\-base\-\_\-search\-\_\-clear} (struct {\bf evdns\-\_\-base} $\ast$base)
+\item 
+void {\bf evdns\-\_\-base\-\_\-search\-\_\-add} (struct {\bf evdns\-\_\-base} $\ast$base, const char $\ast$domain)
+\item 
+void {\bf evdns\-\_\-base\-\_\-search\-\_\-ndots\-\_\-set} (struct {\bf evdns\-\_\-base} $\ast$base, const int ndots)
+\item 
+void {\bf evdns\-\_\-set\-\_\-log\-\_\-fn} ({\bf evdns\-\_\-debug\-\_\-log\-\_\-fn\-\_\-type} fn)
+\item 
+void {\bf evdns\-\_\-set\-\_\-transaction\-\_\-id\-\_\-fn} (ev\-\_\-uint16\-\_\-t($\ast$fn)(void))
+\item 
+void {\bf evdns\-\_\-set\-\_\-random\-\_\-bytes\-\_\-fn} (void($\ast$fn)(char $\ast$, size\-\_\-t))
+\item 
+struct {\bf evdns\-\_\-server\-\_\-port} $\ast$ {\bf evdns\-\_\-add\-\_\-server\-\_\-port\-\_\-with\-\_\-base} (struct {\bf event\-\_\-base} $\ast$base, {\bf evutil\-\_\-socket\-\_\-t} socket, int flags, {\bf evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type} callback, void $\ast$user\-\_\-data)
+\item 
+void {\bf evdns\-\_\-close\-\_\-server\-\_\-port} (struct {\bf evdns\-\_\-server\-\_\-port} $\ast$port)
+\item 
+void {\bf evdns\-\_\-server\-\_\-request\-\_\-set\-\_\-flags} (struct {\bf evdns\-\_\-server\-\_\-request} $\ast$req, int flags)
+\item 
+int {\bfseries evdns\-\_\-server\-\_\-request\-\_\-add\-\_\-reply} (struct {\bf evdns\-\_\-server\-\_\-request} $\ast$req, int section, const char $\ast$name, int type, int dns\-\_\-class, int ttl, int datalen, int is\-\_\-name, const char $\ast$data)\label{dns_8h_a66eb8b600b345185c32fe5a42bc665be}
+
+\item 
+int {\bfseries evdns\-\_\-server\-\_\-request\-\_\-add\-\_\-a\-\_\-reply} (struct {\bf evdns\-\_\-server\-\_\-request} $\ast$req, const char $\ast$name, int n, const void $\ast$addrs, int ttl)\label{dns_8h_af94da69f616452919e1d6646dd28e39f}
+
+\item 
+int {\bfseries evdns\-\_\-server\-\_\-request\-\_\-add\-\_\-aaaa\-\_\-reply} (struct {\bf evdns\-\_\-server\-\_\-request} $\ast$req, const char $\ast$name, int n, const void $\ast$addrs, int ttl)\label{dns_8h_ab1679e859a54c5a7780b6a56d169189c}
+
+\item 
+int {\bfseries evdns\-\_\-server\-\_\-request\-\_\-add\-\_\-ptr\-\_\-reply} (struct {\bf evdns\-\_\-server\-\_\-request} $\ast$req, struct in\-\_\-addr $\ast$in, const char $\ast$inaddr\-\_\-name, const char $\ast$hostname, int ttl)\label{dns_8h_abc72a5b1e03a5d17e352b42510d6516a}
+
+\item 
+int {\bfseries evdns\-\_\-server\-\_\-request\-\_\-add\-\_\-cname\-\_\-reply} (struct {\bf evdns\-\_\-server\-\_\-request} $\ast$req, const char $\ast$name, const char $\ast$cname, int ttl)\label{dns_8h_a81986dd5a05daa72b394bb9d3b15ebc8}
+
+\item 
+int {\bf evdns\-\_\-server\-\_\-request\-\_\-respond} (struct {\bf evdns\-\_\-server\-\_\-request} $\ast$req, int err)
+\item 
+int {\bf evdns\-\_\-server\-\_\-request\-\_\-drop} (struct {\bf evdns\-\_\-server\-\_\-request} $\ast$req)
+\item 
+int {\bf evdns\-\_\-server\-\_\-request\-\_\-get\-\_\-requesting\-\_\-addr} (struct {\bf evdns\-\_\-server\-\_\-request} $\ast$\-\_\-req, struct sockaddr $\ast$sa, int addr\-\_\-len)
+\item 
+struct {\bf evdns\-\_\-getaddrinfo\-\_\-request} $\ast$ {\bf evdns\-\_\-getaddrinfo} (struct {\bf evdns\-\_\-base} $\ast$dns\-\_\-base, const char $\ast$nodename, const char $\ast$servname, const struct {\bf evutil\-\_\-addrinfo} $\ast$hints\-\_\-in, {\bf evdns\-\_\-getaddrinfo\-\_\-cb} cb, void $\ast$arg)
+\item 
+void {\bfseries evdns\-\_\-getaddrinfo\-\_\-cancel} (struct {\bf evdns\-\_\-getaddrinfo\-\_\-request} $\ast$req)\label{dns_8h_af4f169af3b5acc36758e60539df43876}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Welcome, gentle reader
+
+\-Async \-D\-N\-S lookups are really a whole lot harder than they should be, mostly stemming from the fact that the libc resolver has never been very good at them. \-Before you use this library you should see if libc can do the job for you with the modern async call getaddrinfo\-\_\-a (see {\tt http\-://www.\-imperialviolet.\-org/page25.\-html\#e498}). \-Otherwise, please continue.
+
+\-The library keeps track of the state of nameservers and will avoid them when they go down. \-Otherwise it will round robin between them.
+
+\-Quick start guide\-: \#include \char`\"{}evdns.\-h\char`\"{} void callback(int result, char type, int count, int ttl, void $\ast$addresses, void $\ast$arg); evdns\-\_\-resolv\-\_\-conf\-\_\-parse(\-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-S\-\_\-\-A\-L\-L, \char`\"{}/etc/resolv.\-conf\char`\"{}); evdns\-\_\-resolve(\char`\"{}www.\-hostname.\-com\char`\"{}, 0, callback, \-N\-U\-L\-L);
+
+\-When the lookup is complete the callback function is called. \-The first argument will be one of the \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-$\ast$ defines in \doxyref{evdns.\-h}{p.}{evdns_8h}. \-Hopefully it will be \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-N\-E, in which case type will be \-D\-N\-S\-\_\-\-I\-Pv4\-\_\-\-A, count will be the number of \-I\-P addresses, ttl is the time which the data can be cached for (in seconds), addresses will point to an array of uint32\-\_\-t's and arg will be whatever you passed to evdns\-\_\-resolve.
+
+\-Searching\-:
+
+\-In order for this library to be a good replacement for glibc's resolver it supports searching. \-This involves setting a list of default domains, in which names will be queried for. \-The number of dots in the query name determines the order in which this list is used.
+
+\-Searching appears to be a single lookup from the point of view of the \-A\-P\-I, although many \-D\-N\-S queries may be generated from a single call to evdns\-\_\-resolve. \-Searching can also drastically slow down the resolution of names.
+
+\-To disable searching\-: 1. \-Never set it up. \-If you never call evdns\-\_\-resolv\-\_\-conf\-\_\-parse or evdns\-\_\-search\-\_\-add then no searching will occur.
+
+2. \-If you do call evdns\-\_\-resolv\-\_\-conf\-\_\-parse then don't pass \-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-\_\-\-S\-E\-A\-R\-C\-H (or \-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-S\-\_\-\-A\-L\-L, which implies it).
+
+3. \-When calling evdns\-\_\-resolve, pass the \-D\-N\-S\-\_\-\-Q\-U\-E\-R\-Y\-\_\-\-N\-O\-\_\-\-S\-E\-A\-R\-C\-H flag.
+
+\-The order of searches depends on the number of dots in the name. \-If the number is greater than the ndots setting then the names is first tried globally. \-Otherwise each search domain is appended in turn.
+
+\-The ndots setting can either be set from a resolv.\-conf, or by calling evdns\-\_\-search\-\_\-ndots\-\_\-set.
+
+\-For example, with ndots set to 1 (the default) and a search domain list of [\char`\"{}myhome.\-net\char`\"{}]\-: \-Query\-: www \-Order\-: www.\-myhome.\-net, www.
+
+\-Query\-: www.\-abc \-Order\-: www.\-abc., www.\-abc.\-myhome.\-net
+
+\-Internals\-:
+
+\-Requests are kept in two queues. \-The first is the inflight queue. \-In this queue requests have an allocated transaction id and nameserver. \-They will soon be transmitted if they haven't already been.
+
+\-The second is the waiting queue. \-The size of the inflight ring is limited and all other requests wait in waiting queue for space. \-This bounds the number of concurrent requests so that we don't flood the nameserver. \-Several algorithms require a full walk of the inflight queue and so bounding its size keeps thing going nicely under huge (many thousands of requests) loads.
+
+\-If a nameserver loses too many requests it is considered down and we try not to use it. \-After a while we send a probe to that nameserver (a lookup for google.\-com) and, if it replies, we consider it working again. \-If the nameserver fails a probe we wait longer to try again with the next probe. 
+
+\subsection{\-Define \-Documentation}
+\index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-C\-E\-L@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-C\-E\-L}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-C\-E\-L@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-C\-E\-L}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-C\-E\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-C\-E\-L}~69}\label{dns_8h_aa213c5179d5439b1ceb6b356cfa6670a}
+\-The request was canceled via a call to evdns\-\_\-cancel\-\_\-request \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-F\-O\-R\-M\-A\-T@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-F\-O\-R\-M\-A\-T}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-F\-O\-R\-M\-A\-T@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-F\-O\-R\-M\-A\-T}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-F\-O\-R\-M\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-F\-O\-R\-M\-A\-T}~1}\label{dns_8h_af83b8dba06d732f95c5134a26189bf07}
+\-The name server was unable to interpret the query \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-D\-A\-T\-A@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-D\-A\-T\-A}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-D\-A\-T\-A@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-D\-A\-T\-A}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-D\-A\-T\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-D\-A\-T\-A}~70}\label{dns_8h_a339623396788ff9271b5cc345b83a2e8}
+\-There were no answers and no error condition in the \-D\-N\-S packet. \-This can happen when you ask for an address that exists, but a record type that doesn't. \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-N\-E@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-N\-E}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-N\-E@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-N\-E}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-N\-E}~0}\label{dns_8h_a9ab3095d5fc6b9b476753f1dc43ca062}
+\-Error codes 0-\/5 are as described in \-R\-F\-C 1035. \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-E\-X\-I\-S\-T@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-E\-X\-I\-S\-T}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-E\-X\-I\-S\-T@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-E\-X\-I\-S\-T}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-E\-X\-I\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-E\-X\-I\-S\-T}~3}\label{dns_8h_a69a1417da1abb3ec925bac4bdc9dda00}
+\-The domain name does not exist \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-I\-M\-P\-L@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-I\-M\-P\-L}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-I\-M\-P\-L@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-I\-M\-P\-L}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-I\-M\-P\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-I\-M\-P\-L}~4}\label{dns_8h_ad4c885f89aab5bba9636bcab0b2bb46f}
+\-The name server does not support the requested kind of query \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-R\-E\-F\-U\-S\-E\-D@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-R\-E\-F\-U\-S\-E\-D}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-R\-E\-F\-U\-S\-E\-D@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-R\-E\-F\-U\-S\-E\-D}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-R\-E\-F\-U\-S\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-R\-E\-F\-U\-S\-E\-D}~5}\label{dns_8h_ac2612a0b4f473b2e0d8353968cf958c8}
+\-The name server refuses to reform the specified operation for policy reasons \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-V\-E\-R\-F\-A\-I\-L\-E\-D@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-V\-E\-R\-F\-A\-I\-L\-E\-D}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-V\-E\-R\-F\-A\-I\-L\-E\-D@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-V\-E\-R\-F\-A\-I\-L\-E\-D}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-V\-E\-R\-F\-A\-I\-L\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-V\-E\-R\-F\-A\-I\-L\-E\-D}~2}\label{dns_8h_a288664d29454d839d3337c9f1a16287b}
+\-The name server was unable to process this query due to a problem with the name server \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-H\-U\-T\-D\-O\-W\-N@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-H\-U\-T\-D\-O\-W\-N}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-H\-U\-T\-D\-O\-W\-N@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-H\-U\-T\-D\-O\-W\-N}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-H\-U\-T\-D\-O\-W\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-H\-U\-T\-D\-O\-W\-N}~68}\label{dns_8h_ad64cc74ddb454b815d42e23b4d24bf16}
+\-The request was canceled because the \-D\-N\-S subsystem was shut down. \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-I\-M\-E\-O\-U\-T@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-I\-M\-E\-O\-U\-T@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-I\-M\-E\-O\-U\-T}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-I\-M\-E\-O\-U\-T}~67}\label{dns_8h_acb501430c13d4432314859d36b21c59c}
+\-Communication with the server timed out \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-R\-U\-N\-C\-A\-T\-E\-D@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-R\-U\-N\-C\-A\-T\-E\-D}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-R\-U\-N\-C\-A\-T\-E\-D@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-R\-U\-N\-C\-A\-T\-E\-D}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-R\-U\-N\-C\-A\-T\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-T\-R\-U\-N\-C\-A\-T\-E\-D}~65}\label{dns_8h_ab133c94928a9ebe3d37ad5a5d3722fb8}
+\-The reply was truncated or ill-\/formatted \index{dns.\-h@{dns.\-h}!\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-U\-N\-K\-N\-O\-W\-N@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-U\-N\-K\-N\-O\-W\-N}}
+\index{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-U\-N\-K\-N\-O\-W\-N@{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-U\-N\-K\-N\-O\-W\-N}!dns.h@{dns.\-h}}
+\subsubsection[{\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-U\-N\-K\-N\-O\-W\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-U\-N\-K\-N\-O\-W\-N}~66}\label{dns_8h_a09a9900444d399cb6d516e40a1629f79}
+\-An unknown error occurred 
+
+\subsection{\-Typedef \-Documentation}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-callback\-\_\-type@{evdns\-\_\-callback\-\_\-type}}
+\index{evdns\-\_\-callback\-\_\-type@{evdns\-\_\-callback\-\_\-type}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-callback\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf evdns\-\_\-callback\-\_\-type})(int result, char type, int count, int ttl, void $\ast$addresses, void $\ast$arg)}\label{dns_8h_a18a12eac065ff44a30f69c94a6e28c9a}
+\-The callback that contains the results from a lookup.
+\begin{DoxyItemize}
+\item result is one of the \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-$\ast$ values (\-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-N\-O\-N\-E for success)
+\item type is either \-D\-N\-S\-\_\-\-I\-Pv4\-\_\-\-A or \-D\-N\-S\-\_\-\-P\-T\-R or \-D\-N\-S\-\_\-\-I\-Pv6\-\_\-\-A\-A\-A\-A
+\item count contains the number of addresses of form type
+\item ttl is the number of seconds the resolution may be cached for.
+\item addresses needs to be cast according to type. \-It will be an array of 4-\/byte sequences for ipv4, or an array of 16-\/byte sequences for ipv6, or a nul-\/terminated string for \-P\-T\-R. 
+\end{DoxyItemize}\index{dns.\-h@{dns.\-h}!evdns\-\_\-debug\-\_\-log\-\_\-fn\-\_\-type@{evdns\-\_\-debug\-\_\-log\-\_\-fn\-\_\-type}}
+\index{evdns\-\_\-debug\-\_\-log\-\_\-fn\-\_\-type@{evdns\-\_\-debug\-\_\-log\-\_\-fn\-\_\-type}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-debug\-\_\-log\-\_\-fn\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf evdns\-\_\-debug\-\_\-log\-\_\-fn\-\_\-type})(int is\-\_\-warning, const char $\ast${\bf msg})}\label{dns_8h_a406de2984d33682a5c393f05b05429f5}
+\-A callback that is invoked when a log message is generated
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em is\-\_\-warning} & indicates if the log message is a 'warning' \\
+\hline
+{\em msg} & the content of the log message \\
+\hline
+\end{DoxyParams}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-getaddrinfo\-\_\-cb@{evdns\-\_\-getaddrinfo\-\_\-cb}}
+\index{evdns\-\_\-getaddrinfo\-\_\-cb@{evdns\-\_\-getaddrinfo\-\_\-cb}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-getaddrinfo\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf evdns\-\_\-getaddrinfo\-\_\-cb})(int result, struct {\bf evutil\-\_\-addrinfo} $\ast$res, void $\ast$arg)}\label{dns_8h_a3ba85dbacf540797c0834c7de3116450}
+\-Callback for evdns\-\_\-getaddrinfo. \index{dns.\-h@{dns.\-h}!evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type@{evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type}}
+\index{evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type@{evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type})(struct {\bf evdns\-\_\-server\-\_\-request} $\ast$, void $\ast$)}\label{dns_8h_a4e2f9666b02a06c9b8807d5d6e722787}
+\-A callback to implement a \-D\-N\-S server. \-The callback function receives a \-D\-N\-S request. \-It should then optionally add a number of answers to the reply using the evdns\-\_\-server\-\_\-request\-\_\-add\-\_\-$\ast$\-\_\-reply functions, before calling either evdns\-\_\-server\-\_\-request\-\_\-respond to send the reply back, or evdns\-\_\-server\-\_\-request\-\_\-drop to decline to answer the request.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em req} & \-A newly received request \\
+\hline
+{\em user\-\_\-data} & \-A pointer that was passed to \doxyref{evdns\-\_\-add\-\_\-server\-\_\-port\-\_\-with\-\_\-base()}{p.}{dns_8h_ae85fd5477f58f798c15a5d31fe4405ec}. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Function \-Documentation}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-add\-\_\-server\-\_\-port\-\_\-with\-\_\-base@{evdns\-\_\-add\-\_\-server\-\_\-port\-\_\-with\-\_\-base}}
+\index{evdns\-\_\-add\-\_\-server\-\_\-port\-\_\-with\-\_\-base@{evdns\-\_\-add\-\_\-server\-\_\-port\-\_\-with\-\_\-base}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-add\-\_\-server\-\_\-port\-\_\-with\-\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evdns\-\_\-server\-\_\-port}$\ast$ {\bf evdns\-\_\-add\-\_\-server\-\_\-port\-\_\-with\-\_\-base} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base, }
+\item[{{\bf evutil\-\_\-socket\-\_\-t}}]{socket, }
+\item[{int}]{flags, }
+\item[{{\bf evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type}}]{callback, }
+\item[{void $\ast$}]{user\-\_\-data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{dns_8h_ae85fd5477f58f798c15a5d31fe4405ec}
+\-Create a new \-D\-N\-S server port.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & \-The event base to handle events for the server port. \\
+\hline
+{\em socket} & \-A \-U\-D\-P socket to accept \-D\-N\-S requests. \\
+\hline
+{\em flags} & \-Always 0 for now. \\
+\hline
+{\em callback} & \-A function to invoke whenever we get a \-D\-N\-S request on the socket. \\
+\hline
+{\em user\-\_\-data} & \-Data to pass to the callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an \doxyref{evdns\-\_\-server\-\_\-port}{p.}{structevdns__server__port} structure for this server port. 
+\end{DoxyReturn}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend@{evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend}}
+\index{evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend@{evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a6905231913b16b4be9b49739597be64e}
+\-Remove all configured nameservers, and suspend all pending resolves.
+
+\-Resolves will not necessarily be re-\/attempted until \doxyref{evdns\-\_\-base\-\_\-resume()}{p.}{dns_8h_a2a70398d61d38e13f559cf135abb8406} is called.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-base\-\_\-resume()}{p.}{dns_8h_a2a70398d61d38e13f559cf135abb8406} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-count\-\_\-nameservers@{evdns\-\_\-base\-\_\-count\-\_\-nameservers}}
+\index{evdns\-\_\-base\-\_\-count\-\_\-nameservers@{evdns\-\_\-base\-\_\-count\-\_\-nameservers}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-count\-\_\-nameservers}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-base\-\_\-count\-\_\-nameservers} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base}
+\end{DoxyParamCaption}
+)}\label{dns_8h_abf5ce2fb1c199f87d256d8dc929586d4}
+\-Get the number of configured nameservers.
+
+\-This returns the number of configured nameservers (not necessarily the number of running nameservers). \-This is useful for double-\/checking whether our calls to the various nameserver configuration functions have been successful.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the number of configured nameservers 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-base\-\_\-nameserver\-\_\-add()}{p.}{dns_8h_a187db99dc5996a2b7aa672321d50d5d8} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-free@{evdns\-\_\-base\-\_\-free}}
+\index{evdns\-\_\-base\-\_\-free@{evdns\-\_\-base\-\_\-free}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-base\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{int}]{fail\-\_\-requests}
+\end{DoxyParamCaption}
+)}\label{dns_8h_aff36a76fa50d96f9b60fdc6e3846ce03}
+\-Shut down the asynchronous \-D\-N\-S resolver and terminate all active requests.
+
+\-If the 'fail\-\_\-requests' option is enabled, all active requests will return an empty result with the error flag set to \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-H\-U\-T\-D\-O\-W\-N. \-Otherwise, the requests will be silently discarded.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em \doxyref{evdns\-\_\-base}{p.}{structevdns__base}} & the evdns base to free \\
+\hline
+{\em fail\-\_\-requests} & if zero, active requests will be aborted; if non-\/zero, active requests will return \-D\-N\-S\-\_\-\-E\-R\-R\-\_\-\-S\-H\-U\-T\-D\-O\-W\-N. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-base\-\_\-new()}{p.}{dns_8h_a01e7ab67e97b46dc4962bbc29d0d0604} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-load\-\_\-hosts@{evdns\-\_\-base\-\_\-load\-\_\-hosts}}
+\index{evdns\-\_\-base\-\_\-load\-\_\-hosts@{evdns\-\_\-base\-\_\-load\-\_\-hosts}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-load\-\_\-hosts}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-base\-\_\-load\-\_\-hosts} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const char $\ast$}]{hosts\-\_\-fname}
+\end{DoxyParamCaption}
+)}\label{dns_8h_af525d88e4075b04472db44e412cd6922}
+\-Load an /etc/hosts-\/style file from 'hosts\-\_\-fname' into 'base'.
+
+\-If hosts\-\_\-fname is \-N\-U\-L\-L, add minimal entries for localhost, and nothing else.
+
+\-Note that only evdns\-\_\-getaddrinfo uses the /etc/hosts entries.
+
+\-Return 0 on success, negative on failure. \index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-nameserver\-\_\-add@{evdns\-\_\-base\-\_\-nameserver\-\_\-add}}
+\index{evdns\-\_\-base\-\_\-nameserver\-\_\-add@{evdns\-\_\-base\-\_\-nameserver\-\_\-add}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-nameserver\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-base\-\_\-nameserver\-\_\-add} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{unsigned long int}]{address}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a187db99dc5996a2b7aa672321d50d5d8}
+\-Add a nameserver.
+
+\-The address should be an \-I\-Pv4 address in network byte order. \-The type of address is chosen so that it matches in\-\_\-addr.\-s\-\_\-addr.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to add the name server \\
+\hline
+{\em address} & an \-I\-P address in network byte order \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-base\-\_\-nameserver\-\_\-ip\-\_\-add()}{p.}{dns_8h_a5d90b3ed3156d5c1884a651e87e66e17} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-nameserver\-\_\-ip\-\_\-add@{evdns\-\_\-base\-\_\-nameserver\-\_\-ip\-\_\-add}}
+\index{evdns\-\_\-base\-\_\-nameserver\-\_\-ip\-\_\-add@{evdns\-\_\-base\-\_\-nameserver\-\_\-ip\-\_\-add}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-nameserver\-\_\-ip\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-base\-\_\-nameserver\-\_\-ip\-\_\-add} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const char $\ast$}]{ip\-\_\-as\-\_\-string}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a5d90b3ed3156d5c1884a651e87e66e17}
+\-Add a nameserver by string address.
+
+\-This function parses a n \-I\-Pv4 or \-I\-Pv6 address from a string and adds it as a nameserver. \-It supports the following formats\-:
+\begin{DoxyItemize}
+\item [\-I\-Pv6\-Address]\-:port
+\item [\-I\-Pv6\-Address]
+\item \-I\-Pv6\-Address
+\item \-I\-Pv4\-Address\-:port
+\item \-I\-Pv4\-Address
+\end{DoxyItemize}
+
+\-If no port is specified, it defaults to 53.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-base\-\_\-nameserver\-\_\-add()}{p.}{dns_8h_a187db99dc5996a2b7aa672321d50d5d8} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-nameserver\-\_\-sockaddr\-\_\-add@{evdns\-\_\-base\-\_\-nameserver\-\_\-sockaddr\-\_\-add}}
+\index{evdns\-\_\-base\-\_\-nameserver\-\_\-sockaddr\-\_\-add@{evdns\-\_\-base\-\_\-nameserver\-\_\-sockaddr\-\_\-add}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-nameserver\-\_\-sockaddr\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-base\-\_\-nameserver\-\_\-sockaddr\-\_\-add} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const struct sockaddr $\ast$}]{sa, }
+\item[{ev\-\_\-socklen\-\_\-t}]{len, }
+\item[{unsigned}]{flags}
+\end{DoxyParamCaption}
+)}\label{dns_8h_ab104a46eb83a9d36832d64d63935b8f4}
+\-Add a nameserver by sockaddr. \index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-new@{evdns\-\_\-base\-\_\-new}}
+\index{evdns\-\_\-base\-\_\-new@{evdns\-\_\-base\-\_\-new}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evdns\-\_\-base}$\ast$ {\bf evdns\-\_\-base\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{event\-\_\-base, }
+\item[{int}]{initialize\-\_\-nameservers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{dns_8h_a01e7ab67e97b46dc4962bbc29d0d0604}
+\-Initialize the asynchronous \-D\-N\-S library.
+
+\-This function initializes support for non-\/blocking name resolution by calling \doxyref{evdns\-\_\-resolv\-\_\-conf\-\_\-parse()}{p.}{dns__compat_8h_a1a04688076484579b5dd1ce07b584d42} on \-U\-N\-I\-X and evdns\-\_\-config\-\_\-windows\-\_\-nameservers() on \-Windows.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em \doxyref{event\-\_\-base}{p.}{structevent__base}} & the event base to associate the dns client with \\
+\hline
+{\em initialize\-\_\-nameservers} & 1 if resolve.\-conf processing should occur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\doxyref{evdns\-\_\-base}{p.}{structevdns__base} object if successful, or \-N\-U\-L\-L if an error occurred. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-base\-\_\-free()}{p.}{dns_8h_aff36a76fa50d96f9b60fdc6e3846ce03} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-resolv\-\_\-conf\-\_\-parse@{evdns\-\_\-base\-\_\-resolv\-\_\-conf\-\_\-parse}}
+\index{evdns\-\_\-base\-\_\-resolv\-\_\-conf\-\_\-parse@{evdns\-\_\-base\-\_\-resolv\-\_\-conf\-\_\-parse}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-resolv\-\_\-conf\-\_\-parse}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-base\-\_\-resolv\-\_\-conf\-\_\-parse} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{int}]{flags, }
+\item[{const char $\ast$const}]{filename}
+\end{DoxyParamCaption}
+)}\label{dns_8h_ad4b52689e65d384c37693b080d9eef21}
+\-Parse a resolv.\-conf file.
+
+\-The 'flags' parameter determines what information is parsed from the resolv.\-conf file. \-See the man page for resolv.\-conf for the format of this file.
+
+\-The following directives are not parsed from the file\-: sortlist, rotate, no-\/check-\/names, inet6, debug.
+
+\-If this function encounters an error, the possible return values are\-: 1 = failed to open file, 2 = failed to stat file, 3 = file too large, 4 = out of memory, 5 = short read from file, 6 = no nameservers listed in the file
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+{\em flags} & any of \-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-\_\-\-N\-A\-M\-E\-S\-E\-R\-V\-E\-R\-S$|$\-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-\_\-\-S\-E\-A\-R\-C\-H$|$\-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-\_\-\-M\-I\-S\-C$|$ \-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-S\-\_\-\-H\-O\-S\-T\-S\-F\-I\-L\-E$|$\-D\-N\-S\-\_\-\-O\-P\-T\-I\-O\-N\-S\-\_\-\-A\-L\-L \\
+\hline
+{\em filename} & the path to the resolv.\-conf file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or various positive error codes if an error occurred (see above) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+resolv.\-conf(3), evdns\-\_\-config\-\_\-windows\-\_\-nameservers() 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-resolve\-\_\-ipv4@{evdns\-\_\-base\-\_\-resolve\-\_\-ipv4}}
+\index{evdns\-\_\-base\-\_\-resolve\-\_\-ipv4@{evdns\-\_\-base\-\_\-resolve\-\_\-ipv4}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-resolve\-\_\-ipv4}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evdns\-\_\-request}$\ast$ {\bf evdns\-\_\-base\-\_\-resolve\-\_\-ipv4} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const char $\ast$}]{name, }
+\item[{int}]{flags, }
+\item[{{\bf evdns\-\_\-callback\-\_\-type}}]{callback, }
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{dns_8h_ac646ab50f11433ca375ce0be66be7efa}
+\-Lookup an \-A record for a given name.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+{\em name} & a \-D\-N\-S hostname \\
+\hline
+{\em flags} & either 0, or \-D\-N\-S\-\_\-\-Q\-U\-E\-R\-Y\-\_\-\-N\-O\-\_\-\-S\-E\-A\-R\-C\-H to disable searching for this query. \\
+\hline
+{\em callback} & a callback function to invoke when the request is completed \\
+\hline
+{\em ptr} & an argument to pass to the callback function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an \doxyref{evdns\-\_\-request}{p.}{structevdns__request} object if successful, or \-N\-U\-L\-L if an error occurred. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-resolve\-\_\-ipv6()}{p.}{dns__compat_8h_ab3f98800b12f4a7e839088c95adc2c3a}, \doxyref{evdns\-\_\-resolve\-\_\-reverse()}{p.}{dns__compat_8h_a8b2c2c8984d5596ab12dc6fdc0fb2018}, \doxyref{evdns\-\_\-resolve\-\_\-reverse\-\_\-ipv6()}{p.}{dns__compat_8h_a7f34271326be1fa9d85050e79e979f00}, \doxyref{evdns\-\_\-cancel\-\_\-request()}{p.}{dns_8h_ae7821a2c70c59fbc2860cf9cb91c0013} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-resolve\-\_\-ipv6@{evdns\-\_\-base\-\_\-resolve\-\_\-ipv6}}
+\index{evdns\-\_\-base\-\_\-resolve\-\_\-ipv6@{evdns\-\_\-base\-\_\-resolve\-\_\-ipv6}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-resolve\-\_\-ipv6}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evdns\-\_\-request}$\ast$ {\bf evdns\-\_\-base\-\_\-resolve\-\_\-ipv6} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const char $\ast$}]{name, }
+\item[{int}]{flags, }
+\item[{{\bf evdns\-\_\-callback\-\_\-type}}]{callback, }
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{dns_8h_ab7e002648bda9f02721322f767be8300}
+\-Lookup an \-A\-A\-A\-A record for a given name.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+{\em name} & a \-D\-N\-S hostname \\
+\hline
+{\em flags} & either 0, or \-D\-N\-S\-\_\-\-Q\-U\-E\-R\-Y\-\_\-\-N\-O\-\_\-\-S\-E\-A\-R\-C\-H to disable searching for this query. \\
+\hline
+{\em callback} & a callback function to invoke when the request is completed \\
+\hline
+{\em ptr} & an argument to pass to the callback function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an \doxyref{evdns\-\_\-request}{p.}{structevdns__request} object if successful, or \-N\-U\-L\-L if an error occurred. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-resolve\-\_\-ipv4()}{p.}{dns__compat_8h_a68e22e497f71fc97e7b85512319867ee}, \doxyref{evdns\-\_\-resolve\-\_\-reverse()}{p.}{dns__compat_8h_a8b2c2c8984d5596ab12dc6fdc0fb2018}, \doxyref{evdns\-\_\-resolve\-\_\-reverse\-\_\-ipv6()}{p.}{dns__compat_8h_a7f34271326be1fa9d85050e79e979f00}, \doxyref{evdns\-\_\-cancel\-\_\-request()}{p.}{dns_8h_ae7821a2c70c59fbc2860cf9cb91c0013} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-resolve\-\_\-reverse@{evdns\-\_\-base\-\_\-resolve\-\_\-reverse}}
+\index{evdns\-\_\-base\-\_\-resolve\-\_\-reverse@{evdns\-\_\-base\-\_\-resolve\-\_\-reverse}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-resolve\-\_\-reverse}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evdns\-\_\-request}$\ast$ {\bf evdns\-\_\-base\-\_\-resolve\-\_\-reverse} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const struct in\-\_\-addr $\ast$}]{in, }
+\item[{int}]{flags, }
+\item[{{\bf evdns\-\_\-callback\-\_\-type}}]{callback, }
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{dns_8h_a5044832b0101814228934cc3fd2a83c8}
+\-Lookup a \-P\-T\-R record for a given \-I\-P address.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+{\em in} & an \-I\-Pv4 address \\
+\hline
+{\em flags} & either 0, or \-D\-N\-S\-\_\-\-Q\-U\-E\-R\-Y\-\_\-\-N\-O\-\_\-\-S\-E\-A\-R\-C\-H to disable searching for this query. \\
+\hline
+{\em callback} & a callback function to invoke when the request is completed \\
+\hline
+{\em ptr} & an argument to pass to the callback function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an \doxyref{evdns\-\_\-request}{p.}{structevdns__request} object if successful, or \-N\-U\-L\-L if an error occurred. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-resolve\-\_\-reverse\-\_\-ipv6()}{p.}{dns__compat_8h_a7f34271326be1fa9d85050e79e979f00}, \doxyref{evdns\-\_\-cancel\-\_\-request()}{p.}{dns_8h_ae7821a2c70c59fbc2860cf9cb91c0013} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-resolve\-\_\-reverse\-\_\-ipv6@{evdns\-\_\-base\-\_\-resolve\-\_\-reverse\-\_\-ipv6}}
+\index{evdns\-\_\-base\-\_\-resolve\-\_\-reverse\-\_\-ipv6@{evdns\-\_\-base\-\_\-resolve\-\_\-reverse\-\_\-ipv6}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-resolve\-\_\-reverse\-\_\-ipv6}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evdns\-\_\-request}$\ast$ {\bf evdns\-\_\-base\-\_\-resolve\-\_\-reverse\-\_\-ipv6} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const struct {\bf in6\-\_\-addr} $\ast$}]{in, }
+\item[{int}]{flags, }
+\item[{{\bf evdns\-\_\-callback\-\_\-type}}]{callback, }
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{dns_8h_ac2ae80af5bff5627f59a6ce8ff5eeea8}
+\-Lookup a \-P\-T\-R record for a given \-I\-Pv6 address.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+{\em in} & an \-I\-Pv6 address \\
+\hline
+{\em flags} & either 0, or \-D\-N\-S\-\_\-\-Q\-U\-E\-R\-Y\-\_\-\-N\-O\-\_\-\-S\-E\-A\-R\-C\-H to disable searching for this query. \\
+\hline
+{\em callback} & a callback function to invoke when the request is completed \\
+\hline
+{\em ptr} & an argument to pass to the callback function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an \doxyref{evdns\-\_\-request}{p.}{structevdns__request} object if successful, or \-N\-U\-L\-L if an error occurred. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-resolve\-\_\-reverse\-\_\-ipv6()}{p.}{dns__compat_8h_a7f34271326be1fa9d85050e79e979f00}, \doxyref{evdns\-\_\-cancel\-\_\-request()}{p.}{dns_8h_ae7821a2c70c59fbc2860cf9cb91c0013} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-resume@{evdns\-\_\-base\-\_\-resume}}
+\index{evdns\-\_\-base\-\_\-resume@{evdns\-\_\-base\-\_\-resume}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-resume}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-base\-\_\-resume} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a2a70398d61d38e13f559cf135abb8406}
+\-Resume normal operation and continue any suspended resolve requests.
+
+\-Re-\/attempt resolves left in limbo after an earlier call to \doxyref{evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend()}{p.}{dns_8h_a6905231913b16b4be9b49739597be64e}.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend()}{p.}{dns_8h_a6905231913b16b4be9b49739597be64e} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-search\-\_\-add@{evdns\-\_\-base\-\_\-search\-\_\-add}}
+\index{evdns\-\_\-base\-\_\-search\-\_\-add@{evdns\-\_\-base\-\_\-search\-\_\-add}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-search\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-base\-\_\-search\-\_\-add} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const char $\ast$}]{domain}
+\end{DoxyParamCaption}
+)}\label{dns_8h_addf2cfb1c1a237d68409fc1464b26b00}
+\-Add a domain to the list of search domains
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em domain} & the domain to be added to the search list \\
+\hline
+\end{DoxyParams}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-search\-\_\-clear@{evdns\-\_\-base\-\_\-search\-\_\-clear}}
+\index{evdns\-\_\-base\-\_\-search\-\_\-clear@{evdns\-\_\-base\-\_\-search\-\_\-clear}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-search\-\_\-clear}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-base\-\_\-search\-\_\-clear} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a0ba91c6fda38169eeed7040c9721ed2b}
+\-Obtain nameserver information using the \-Windows \-A\-P\-I.
+
+\-Attempt to configure a set of nameservers based on platform settings on a win32 host. \-Preferentially tries to use \-Get\-Network\-Params; if that fails, looks in the registry.
+
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-resolv\-\_\-conf\-\_\-parse()}{p.}{dns__compat_8h_a1a04688076484579b5dd1ce07b584d42} \-Clear the list of search domains. 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-search\-\_\-ndots\-\_\-set@{evdns\-\_\-base\-\_\-search\-\_\-ndots\-\_\-set}}
+\index{evdns\-\_\-base\-\_\-search\-\_\-ndots\-\_\-set@{evdns\-\_\-base\-\_\-search\-\_\-ndots\-\_\-set}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-search\-\_\-ndots\-\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-base\-\_\-search\-\_\-ndots\-\_\-set} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const int}]{ndots}
+\end{DoxyParamCaption}
+)}\label{dns_8h_aaac85133f8d6288055093c99120bdd82}
+\-Set the 'ndots' parameter for searches.
+
+\-Sets the number of dots which, when found in a name, causes the first query to be without any search domain.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ndots} & the new ndots parameter \\
+\hline
+\end{DoxyParams}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-base\-\_\-set\-\_\-option@{evdns\-\_\-base\-\_\-set\-\_\-option}}
+\index{evdns\-\_\-base\-\_\-set\-\_\-option@{evdns\-\_\-base\-\_\-set\-\_\-option}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-base\-\_\-set\-\_\-option}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-base\-\_\-set\-\_\-option} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{const char $\ast$}]{option, }
+\item[{const char $\ast$}]{val}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a3308067aed25c60a2ddeee83e5dd84d9}
+\-Set the value of a configuration option.
+
+\-The currently available configuration options are\-:
+
+ndots, timeout, max-\/timeouts, max-\/inflight, attempts, randomize-\/case, bind-\/to, initial-\/probe-\/timeout, getaddrinfo-\/allow-\/skew.
+
+\-In versions before \-Libevent 2.\-0.\-3-\/alpha, the option name needed to end with a colon.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to which to apply this operation \\
+\hline
+{\em option} & the name of the configuration option to be modified \\
+\hline
+{\em val} & the value to be set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-cancel\-\_\-request@{evdns\-\_\-cancel\-\_\-request}}
+\index{evdns\-\_\-cancel\-\_\-request@{evdns\-\_\-cancel\-\_\-request}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-cancel\-\_\-request}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-cancel\-\_\-request} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{base, }
+\item[{struct {\bf evdns\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{dns_8h_ae7821a2c70c59fbc2860cf9cb91c0013}
+\-Cancels a pending \-D\-N\-S resolution request.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evdns\-\_\-base}{p.}{structevdns__base} that was used to make the request \\
+\hline
+{\em req} & the \doxyref{evdns\-\_\-request}{p.}{structevdns__request} that was returned by calling a resolve function \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evdns\-\_\-base\-\_\-resolve\-\_\-ipv4()}{p.}{dns_8h_ac646ab50f11433ca375ce0be66be7efa}, \doxyref{evdns\-\_\-base\-\_\-resolve\-\_\-ipv6}{p.}{dns_8h_ab7e002648bda9f02721322f767be8300}, \doxyref{evdns\-\_\-base\-\_\-resolve\-\_\-reverse}{p.}{dns_8h_a5044832b0101814228934cc3fd2a83c8} 
+\end{DoxySeeAlso}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-close\-\_\-server\-\_\-port@{evdns\-\_\-close\-\_\-server\-\_\-port}}
+\index{evdns\-\_\-close\-\_\-server\-\_\-port@{evdns\-\_\-close\-\_\-server\-\_\-port}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-close\-\_\-server\-\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-close\-\_\-server\-\_\-port} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-server\-\_\-port} $\ast$}]{port}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a3056e0b4176d414844bed2a8daacf413}
+\-Close down a \-D\-N\-S server port, and free associated structures. \index{dns.\-h@{dns.\-h}!evdns\-\_\-err\-\_\-to\-\_\-string@{evdns\-\_\-err\-\_\-to\-\_\-string}}
+\index{evdns\-\_\-err\-\_\-to\-\_\-string@{evdns\-\_\-err\-\_\-to\-\_\-string}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-err\-\_\-to\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evdns\-\_\-err\-\_\-to\-\_\-string} (
+\begin{DoxyParamCaption}
+\item[{int}]{err}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a29f1dbaae5b022be46a0d5ba451858fd}
+\-Convert a \-D\-N\-S error code to a string.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em err} & the \-D\-N\-S error code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a string containing an explanation of the error code 
+\end{DoxyReturn}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-getaddrinfo@{evdns\-\_\-getaddrinfo}}
+\index{evdns\-\_\-getaddrinfo@{evdns\-\_\-getaddrinfo}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-getaddrinfo}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evdns\-\_\-getaddrinfo\-\_\-request}$\ast$ {\bf evdns\-\_\-getaddrinfo} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{dns\-\_\-base, }
+\item[{const char $\ast$}]{nodename, }
+\item[{const char $\ast$}]{servname, }
+\item[{const struct {\bf evutil\-\_\-addrinfo} $\ast$}]{hints\-\_\-in, }
+\item[{{\bf evdns\-\_\-getaddrinfo\-\_\-cb}}]{cb, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{dns_8h_a8420b042d9c114d75ea1d8b4de7f9b23}
+\-Make a non-\/blocking getaddrinfo request using the dns\-\_\-base in 'dns\-\_\-base'.
+
+\-If we can answer the request immediately (with an error or not!), then we invoke cb immediately and return \-N\-U\-L\-L. \-Otherwise we return an \doxyref{evdns\-\_\-getaddrinfo\-\_\-request}{p.}{structevdns__getaddrinfo__request} and invoke cb later.
+
+\-When the callback is invoked, we pass as its first argument the error code that getaddrinfo would return (or 0 for no error). \-As its second argument, we pass the \doxyref{evutil\-\_\-addrinfo}{p.}{structevutil__addrinfo} structures we found (or \-N\-U\-L\-L on error). \-We pass 'arg' as the third argument.
+
+\-Limitations\-:
+
+
+\begin{DoxyItemize}
+\item \-The \-A\-I\-\_\-\-V4\-M\-A\-P\-P\-E\-D and \-A\-I\-\_\-\-A\-L\-L flags are not currently implemented.
+\item \-For ai\-\_\-socktype, we only handle \-S\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-S\-T\-R\-E\-A\-M, \-S\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-U\-D\-P, and 0.
+\item \-For ai\-\_\-protocol, we only handle \-I\-P\-P\-R\-O\-T\-O\-\_\-\-T\-C\-P, \-I\-P\-P\-R\-O\-T\-O\-\_\-\-U\-D\-P, and 0. 
+\end{DoxyItemize}\index{dns.\-h@{dns.\-h}!evdns\-\_\-server\-\_\-request\-\_\-drop@{evdns\-\_\-server\-\_\-request\-\_\-drop}}
+\index{evdns\-\_\-server\-\_\-request\-\_\-drop@{evdns\-\_\-server\-\_\-request\-\_\-drop}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-server\-\_\-request\-\_\-drop}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-server\-\_\-request\-\_\-drop} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-server\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a143348e3105e6a0581829303a0fc9205}
+\-Free a \-D\-N\-S request without sending back a reply. \index{dns.\-h@{dns.\-h}!evdns\-\_\-server\-\_\-request\-\_\-get\-\_\-requesting\-\_\-addr@{evdns\-\_\-server\-\_\-request\-\_\-get\-\_\-requesting\-\_\-addr}}
+\index{evdns\-\_\-server\-\_\-request\-\_\-get\-\_\-requesting\-\_\-addr@{evdns\-\_\-server\-\_\-request\-\_\-get\-\_\-requesting\-\_\-addr}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-server\-\_\-request\-\_\-get\-\_\-requesting\-\_\-addr}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-server\-\_\-request\-\_\-get\-\_\-requesting\-\_\-addr} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-server\-\_\-request} $\ast$}]{\-\_\-req, }
+\item[{struct sockaddr $\ast$}]{sa, }
+\item[{int}]{addr\-\_\-len}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a3b4d513feda07c7945eac6edfda87701}
+\-Get the address that made a \-D\-N\-S request. \index{dns.\-h@{dns.\-h}!evdns\-\_\-server\-\_\-request\-\_\-respond@{evdns\-\_\-server\-\_\-request\-\_\-respond}}
+\index{evdns\-\_\-server\-\_\-request\-\_\-respond@{evdns\-\_\-server\-\_\-request\-\_\-respond}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-server\-\_\-request\-\_\-respond}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evdns\-\_\-server\-\_\-request\-\_\-respond} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-server\-\_\-request} $\ast$}]{req, }
+\item[{int}]{err}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a2bf5b15c802d00042211386ee19bbb97}
+\-Send back a response to a \-D\-N\-S request, and free the request structure. \index{dns.\-h@{dns.\-h}!evdns\-\_\-server\-\_\-request\-\_\-set\-\_\-flags@{evdns\-\_\-server\-\_\-request\-\_\-set\-\_\-flags}}
+\index{evdns\-\_\-server\-\_\-request\-\_\-set\-\_\-flags@{evdns\-\_\-server\-\_\-request\-\_\-set\-\_\-flags}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-server\-\_\-request\-\_\-set\-\_\-flags}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-server\-\_\-request\-\_\-set\-\_\-flags} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evdns\-\_\-server\-\_\-request} $\ast$}]{req, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a9c9cd6c07a882817e9ede32fad636ef7}
+\-Sets some flags in a reply we're building. \-Allows setting of the \-A\-A or \-R\-D flags \index{dns.\-h@{dns.\-h}!evdns\-\_\-set\-\_\-log\-\_\-fn@{evdns\-\_\-set\-\_\-log\-\_\-fn}}
+\index{evdns\-\_\-set\-\_\-log\-\_\-fn@{evdns\-\_\-set\-\_\-log\-\_\-fn}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-set\-\_\-log\-\_\-fn}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-set\-\_\-log\-\_\-fn} (
+\begin{DoxyParamCaption}
+\item[{{\bf evdns\-\_\-debug\-\_\-log\-\_\-fn\-\_\-type}}]{fn}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a9514c4fccfa1f8b1b9163ede5915be9e}
+\-Set the callback function to handle \-D\-N\-S log messages. \-If this callback is not set, evdns log messages are handled with the regular \-Libevent logging system.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em fn} & the callback to be invoked when a log message is generated \\
+\hline
+\end{DoxyParams}
+\index{dns.\-h@{dns.\-h}!evdns\-\_\-set\-\_\-random\-\_\-bytes\-\_\-fn@{evdns\-\_\-set\-\_\-random\-\_\-bytes\-\_\-fn}}
+\index{evdns\-\_\-set\-\_\-random\-\_\-bytes\-\_\-fn@{evdns\-\_\-set\-\_\-random\-\_\-bytes\-\_\-fn}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-set\-\_\-random\-\_\-bytes\-\_\-fn}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-set\-\_\-random\-\_\-bytes\-\_\-fn} (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(char $\ast$, size\-\_\-t)}]{fn}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a8695b6dd94e5dd283f524d9fe23a0ef4}
+\-Set a callback used to generate random bytes. \-By default, we use the same function as passed to evdns\-\_\-set\-\_\-transaction\-\_\-id\-\_\-fn to generate bytes two at a time. \-If a function is provided here, it's also used to generate transaction \-I\-Ds.
+
+\-N\-O\-T\-E\-: \-This function has no effect in \-Libevent 2.\-0.\-4-\/alpha and later, since \-Libevent now provides its own secure \-R\-N\-G. \index{dns.\-h@{dns.\-h}!evdns\-\_\-set\-\_\-transaction\-\_\-id\-\_\-fn@{evdns\-\_\-set\-\_\-transaction\-\_\-id\-\_\-fn}}
+\index{evdns\-\_\-set\-\_\-transaction\-\_\-id\-\_\-fn@{evdns\-\_\-set\-\_\-transaction\-\_\-id\-\_\-fn}!dns.h@{dns.\-h}}
+\subsubsection[{evdns\-\_\-set\-\_\-transaction\-\_\-id\-\_\-fn}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evdns\-\_\-set\-\_\-transaction\-\_\-id\-\_\-fn} (
+\begin{DoxyParamCaption}
+\item[{ev\-\_\-uint16\-\_\-t($\ast$)(void)}]{fn}
+\end{DoxyParamCaption}
+)}\label{dns_8h_a5fe5f6a7af49af801d23bf787117bb74}
+\-Set a callback that will be invoked to generate transaction \-I\-Ds. \-By default, we pick transaction \-I\-Ds based on the current clock time, which is bad for security.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em fn} & the new callback, or \-N\-U\-L\-L to use the default.\\
+\hline
+\end{DoxyParams}
+\-N\-O\-T\-E\-: \-This function has no effect in \-Libevent 2.\-0.\-4-\/alpha and later, since \-Libevent now provides its own secure \-R\-N\-G. 

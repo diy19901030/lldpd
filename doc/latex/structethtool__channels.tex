@@ -1,0 +1,46 @@
+\section{ethtool\-\_\-channels \-Struct \-Reference}
+\label{structethtool__channels}\index{ethtool\-\_\-channels@{ethtool\-\_\-channels}}
+
+
+{\ttfamily \#include $<$ethtool.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-u32 {\bfseries cmd}\label{structethtool__channels_a66d231264d5aa36fd7d347e2c967769a}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries max\-\_\-rx}\label{structethtool__channels_a226b0516396977aab6c9d76be6a28e80}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries max\-\_\-tx}\label{structethtool__channels_a1fcb138d9b88480ed79e684d7b80c11b}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries max\-\_\-other}\label{structethtool__channels_afca3a720c4e49baeebc06f9da1ce0db8}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries max\-\_\-combined}\label{structethtool__channels_a68be9c19c6d594a0769638e2a7477b8a}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries rx\-\_\-count}\label{structethtool__channels_a2ccf8b02f94721c61213b6a709f58186}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries tx\-\_\-count}\label{structethtool__channels_a1167e6787594fd49af50159464b6a84a}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries other\-\_\-count}\label{structethtool__channels_a3564f5be1c61aba1565866c959172fb4}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries combined\-\_\-count}\label{structethtool__channels_a7ad4bc5810c25f7dc38222c72c1505f2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+struct \doxyref{ethtool\-\_\-channels}{p.}{structethtool__channels} -\/ configuring number of network channel \-: \-E\-T\-H\-T\-O\-O\-L\-\_\-\{\-G,\-S\}\-C\-H\-A\-N\-N\-E\-L\-S \-: \-Read only. \-Maximum number of receive channel the driver support. \-: \-Read only. \-Maximum number of transmit channel the driver support. \-: \-Read only. \-Maximum number of other channel the driver support. \-: \-Read only. \-Maximum number of combined channel the driver support. \-Set of queues \-R\-X, \-T\-X or other. \-: \-Valid values are in the range 1 to the max\-\_\-rx. \-: \-Valid values are in the range 1 to the max\-\_\-tx. \-: \-Valid values are in the range 1 to the max\-\_\-other. \-: \-Valid values are in the range 1 to the max\-\_\-combined.
+
+\-This can be used to configure \-R\-X, \-T\-X and other channels. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/ethtool.\-h\end{DoxyCompactItemize}

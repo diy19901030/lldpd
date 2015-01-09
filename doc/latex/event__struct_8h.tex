@@ -1,0 +1,89 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/include/event2/event\-\_\-struct.h \-File \-Reference}
+\label{event__struct_8h}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/event\-\_\-struct.\-h@{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/event\-\_\-struct.\-h}}
+{\ttfamily \#include $<$event2/event-\/config.\-h$>$}\*
+{\ttfamily \#include $<$event2/util.\-h$>$}\*
+{\ttfamily \#include $<$event2/keyvalq\-\_\-struct.\-h$>$}\*
+\-Include dependency graph for event\-\_\-struct.\-h\-:
+\-This graph shows which files directly or indirectly include this file\-:
+\subsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf event}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries \-E\-V\-L\-I\-S\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}~0x01\label{event__struct_8h_afd2b522123bb498e82f0cba3154c96bf}
+
+\item 
+\#define {\bfseries \-E\-V\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-E\-D}~0x02\label{event__struct_8h_a1e4e9dd49bfbb4cccc279d653263bf0d}
+
+\item 
+\#define {\bfseries \-E\-V\-L\-I\-S\-T\-\_\-\-S\-I\-G\-N\-A\-L}~0x04\label{event__struct_8h_a105489ac55c9ced60e0ce20af2024f2a}
+
+\item 
+\#define {\bfseries \-E\-V\-L\-I\-S\-T\-\_\-\-A\-C\-T\-I\-V\-E}~0x08\label{event__struct_8h_aceaf2fdd81437ac1daebde3c023cbd62}
+
+\item 
+\#define {\bfseries \-E\-V\-L\-I\-S\-T\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L}~0x10\label{event__struct_8h_a27a22542705d3dd63e32d5681da2bfb3}
+
+\item 
+\#define {\bfseries \-E\-V\-L\-I\-S\-T\-\_\-\-I\-N\-I\-T}~0x80\label{event__struct_8h_aed6bac1f3d7c88dae44e82ff987729a9}
+
+\item 
+\#define {\bfseries \-E\-V\-L\-I\-S\-T\-\_\-\-A\-L\-L}~(0xf000 $|$ 0x9f)\label{event__struct_8h_a1322cc51314cd035cfae7e568d7214e5}
+
+\item 
+\#define {\bfseries \-\_\-\-E\-V\-E\-N\-T\-\_\-\-D\-E\-F\-I\-N\-E\-D\-\_\-\-T\-Q\-E\-N\-T\-R\-Y}\label{event__struct_8h_a1c5d5563dbaafdae9e5337ce227beb71}
+
+\item 
+\#define {\bfseries \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}(type)
+\item 
+\#define {\bfseries \-\_\-\-E\-V\-E\-N\-T\-\_\-\-D\-E\-F\-I\-N\-E\-D\-\_\-\-T\-Q\-H\-E\-A\-D}\label{event__struct_8h_a6c7fb7582946a9439bc1498ef9dbd4c3}
+
+\item 
+\#define {\bfseries \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}(name, type)
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (event\-\_\-list, {\bf event})\label{event__struct_8h_a45136c02c5f04444bfa4b01e390b46c8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Structures used by event.\-h. \-Using these structures directly \-W\-I\-L\-L harm forward compatibility\-: be careful.
+
+\-No field declared in this file should be used directly in user code. \-Except for historical reasons, these fields would not be exposed at all. 
+
+\subsection{\-Define \-Documentation}
+\index{event\-\_\-struct.\-h@{event\-\_\-struct.\-h}!\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}}
+\index{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}!event_struct.h@{event\-\_\-struct.\-h}}
+\subsubsection[{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{event__struct_8h_af71bfd90dc9d00fb03545fe66c67d673}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+struct {                                                                \
+        struct type *tqe_next;  /* next element */                      \
+        struct type **tqe_prev; /* address of previous next element */  \
+}
+\end{DoxyCode}
+\index{event\-\_\-struct.\-h@{event\-\_\-struct.\-h}!\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}}
+\index{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}!event_struct.h@{event\-\_\-struct.\-h}}
+\subsubsection[{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{name, }
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{event__struct_8h_a4abce769a262e090c1f601605b9d6c76}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+struct name {                                   \
+        struct type *tqh_first;                 \
+        struct type **tqh_last;                 \
+}
+\end{DoxyCode}

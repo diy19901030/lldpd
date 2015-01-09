@@ -1,0 +1,108 @@
+\section{bufferevent\-\_\-private \-Struct \-Reference}
+\label{structbufferevent__private}\index{bufferevent\-\_\-private@{bufferevent\-\_\-private}}
+
+
+{\ttfamily \#include $<$bufferevent-\/internal.\-h$>$}
+
+
+
+\-Collaboration diagram for bufferevent\-\_\-private\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf bufferevent} {\bf bev}
+\item 
+struct {\bf evbuffer\-\_\-cb\-\_\-entry} $\ast$ {\bf read\-\_\-watermarks\-\_\-cb}
+\item 
+unsigned {\bf own\-\_\-lock}\-: 1
+\item 
+unsigned {\bf readcb\-\_\-pending}\-: 1
+\item 
+unsigned {\bf writecb\-\_\-pending}\-: 1
+\item 
+unsigned {\bf connecting}\-: 1
+\item 
+unsigned {\bf connection\-\_\-refused}\-: 1
+\item 
+short {\bf eventcb\-\_\-pending}
+\item 
+bufferevent\-\_\-suspend\-\_\-flags {\bf read\-\_\-suspended}
+\item 
+bufferevent\-\_\-suspend\-\_\-flags {\bf write\-\_\-suspended}
+\item 
+int {\bf errno\-\_\-pending}
+\item 
+int {\bf dns\-\_\-error}
+\item 
+struct {\bf deferred\-\_\-cb} {\bf deferred}
+\item 
+enum {\bf bufferevent\-\_\-options} {\bf options}
+\item 
+int {\bf refcnt}
+\item 
+void $\ast$ {\bf lock}
+\item 
+struct {\bf bufferevent\-\_\-rate\-\_\-limit} $\ast$ {\bf rate\-\_\-limiting}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Parts of the bufferevent structure that are shared among all bufferevent types, but not exposed in \doxyref{bufferevent\-\_\-struct.\-h}{p.}{bufferevent__struct_8h}. 
+
+\subsection{\-Field \-Documentation}
+\index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!bev@{bev}}
+\index{bev@{bev}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{bev}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent} {\bf bev}}\label{structbufferevent__private_acc300c6dc91fee849d3a668a109d7c38}
+\-The underlying bufferevent structure. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!connecting@{connecting}}
+\index{connecting@{connecting}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{connecting}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf connecting}}\label{structbufferevent__private_a3dc371e89c769c84ad42e2e3a00f7209}
+\-Flag\-: set if we are currently busy connecting. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!connection\-\_\-refused@{connection\-\_\-refused}}
+\index{connection\-\_\-refused@{connection\-\_\-refused}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{connection\-\_\-refused}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf connection\-\_\-refused}}\label{structbufferevent__private_af12dc29e1fa46704fb2600be4c5399d0}
+\-Flag\-: set if a connect failed prematurely; this is a hack for getting around the bufferevent abstraction. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!deferred@{deferred}}
+\index{deferred@{deferred}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{deferred}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf deferred\-\_\-cb} {\bf deferred}}\label{structbufferevent__private_aebe8e3d0c896b175676d2a8ab6c9c725}
+\-Used to implement deferred callbacks \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!dns\-\_\-error@{dns\-\_\-error}}
+\index{dns\-\_\-error@{dns\-\_\-error}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{dns\-\_\-error}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dns\-\_\-error}}\label{structbufferevent__private_a9d030f0c85a566c52fdfe9941d88f7b5}
+\-The \-D\-N\-S error code for bufferevent\-\_\-socket\-\_\-connect\-\_\-hostname \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!errno\-\_\-pending@{errno\-\_\-pending}}
+\index{errno\-\_\-pending@{errno\-\_\-pending}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{errno\-\_\-pending}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf errno\-\_\-pending}}\label{structbufferevent__private_a2af62ccc202044d4c1062ec5753c13c5}
+\-Set to the current socket errno if we have deferred callbacks and an events callback is pending. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!eventcb\-\_\-pending@{eventcb\-\_\-pending}}
+\index{eventcb\-\_\-pending@{eventcb\-\_\-pending}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{eventcb\-\_\-pending}]{\setlength{\rightskip}{0pt plus 5cm}short {\bf eventcb\-\_\-pending}}\label{structbufferevent__private_aede80dacba65498e3f45a5ab2573bf03}
+\-Set to the events pending if we have deferred callbacks and an events callback is pending. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!lock@{lock}}
+\index{lock@{lock}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf lock}}\label{structbufferevent__private_a100fdaedb8eb0d56fd262e7ea2930930}
+\-Lock for this bufferevent. \-Shared by the inbuf and the outbuf. \-If \-N\-U\-L\-L, locking is disabled. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!options@{options}}
+\index{options@{options}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{options}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bufferevent\-\_\-options} {\bf options}}\label{structbufferevent__private_a93ca6d8f50e6bb337a3727a29c137cb0}
+\-The options this bufferevent was constructed with \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!own\-\_\-lock@{own\-\_\-lock}}
+\index{own\-\_\-lock@{own\-\_\-lock}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{own\-\_\-lock}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf own\-\_\-lock}}\label{structbufferevent__private_a5f18976d54ba259145f3c86cec07e65b}
+\-If set, we should free the lock when we free the bufferevent. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!rate\-\_\-limiting@{rate\-\_\-limiting}}
+\index{rate\-\_\-limiting@{rate\-\_\-limiting}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{rate\-\_\-limiting}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent\-\_\-rate\-\_\-limit}$\ast$ {\bf rate\-\_\-limiting}}\label{structbufferevent__private_a6b6ba7c970f1e75bd742f08200212102}
+\-Rate-\/limiting information for this bufferevent \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!read\-\_\-suspended@{read\-\_\-suspended}}
+\index{read\-\_\-suspended@{read\-\_\-suspended}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{read\-\_\-suspended}]{\setlength{\rightskip}{0pt plus 5cm}bufferevent\-\_\-suspend\-\_\-flags {\bf read\-\_\-suspended}}\label{structbufferevent__private_a15d4d78d0d2abe759a0dd19f5394338c}
+\-If set, read is suspended until one or more conditions are over. \-The actual value here is a bitfield of those conditions; see the \-B\-E\-V\-\_\-\-S\-U\-S\-P\-E\-N\-D\-\_\-$\ast$ flags above. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!read\-\_\-watermarks\-\_\-cb@{read\-\_\-watermarks\-\_\-cb}}
+\index{read\-\_\-watermarks\-\_\-cb@{read\-\_\-watermarks\-\_\-cb}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{read\-\_\-watermarks\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer\-\_\-cb\-\_\-entry}$\ast$ {\bf read\-\_\-watermarks\-\_\-cb}}\label{structbufferevent__private_a3651a9a754aa1692524e85806c49d29a}
+\-Evbuffer callback to enforce watermarks on input. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!readcb\-\_\-pending@{readcb\-\_\-pending}}
+\index{readcb\-\_\-pending@{readcb\-\_\-pending}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{readcb\-\_\-pending}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf readcb\-\_\-pending}}\label{structbufferevent__private_ac1cdda96267a46527600765b73ebfc56}
+\-Flag\-: set if we have deferred callbacks and a read callback is pending. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!refcnt@{refcnt}}
+\index{refcnt@{refcnt}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{refcnt}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf refcnt}}\label{structbufferevent__private_afc0873ec70fe10be301b3ec811a1d6e5}
+\-Current reference count for this bufferevent. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!write\-\_\-suspended@{write\-\_\-suspended}}
+\index{write\-\_\-suspended@{write\-\_\-suspended}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{write\-\_\-suspended}]{\setlength{\rightskip}{0pt plus 5cm}bufferevent\-\_\-suspend\-\_\-flags {\bf write\-\_\-suspended}}\label{structbufferevent__private_a3da20bafd365684ae3eff0eddcbf6539}
+\-If set, writing is suspended until one or more conditions are over. \-The actual value here is a bitfield of those conditions; see the \-B\-E\-V\-\_\-\-S\-U\-S\-P\-E\-N\-D\-\_\-$\ast$ flags above. \index{bufferevent\-\_\-private@{bufferevent\-\_\-private}!writecb\-\_\-pending@{writecb\-\_\-pending}}
+\index{writecb\-\_\-pending@{writecb\-\_\-pending}!bufferevent_private@{bufferevent\-\_\-private}}
+\subsubsection[{writecb\-\_\-pending}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf writecb\-\_\-pending}}\label{structbufferevent__private_a1f07405cabf5bd18bdf12c6fd14b3394}
+\-Flag\-: set if we have deferred callbacks and a write callback is pending. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/bufferevent-\/internal.\-h\end{DoxyCompactItemize}

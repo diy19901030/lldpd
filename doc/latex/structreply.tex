@@ -1,0 +1,37 @@
+\section{reply \-Struct \-Reference}
+\label{structreply}\index{reply@{reply}}
+
+
+\-Collaboration diagram for reply\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int {\bfseries type}\label{structreply_a4bfea42429249a1f65204f0c0f34704a}
+
+\item 
+unsigned int {\bfseries have\-\_\-answer}\-: 1\label{structreply_a1d6e7ef5a18922cdb2a226a4a27b1fbb}
+
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct \{\\
+\>\>u32 {\bfseries addrcount}\\
+\>\>u32 {\bfseries addresses} [MAX\_V4\_ADDRS]\\
+\>\} {\bfseries a}\\
+\>struct \{\\
+\>\>u32 {\bfseries addrcount}\\
+\>\>struct {\bf in6\_addr} {\bfseries addresses} [MAX\_V6\_ADDRS]\\
+\>\} {\bfseries aaaa}\\
+\>struct \{\\
+\>\>char {\bfseries name} [HOST\_NAME\_MAX]\\
+\>\} {\bfseries ptr}\\
+\} {\bfseries data}\label{structreply_a8100e148d9aa4faeede59b5cc568c9ef}
+\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/evdns.\-c\end{DoxyCompactItemize}

@@ -1,0 +1,47 @@
+\section{evthread\-\_\-condition\-\_\-callbacks \-Struct \-Reference}
+\label{structevthread__condition__callbacks}\index{evthread\-\_\-condition\-\_\-callbacks@{evthread\-\_\-condition\-\_\-callbacks}}
+
+
+{\ttfamily \#include $<$thread.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf condition\-\_\-api\-\_\-version}
+\item 
+void $\ast$($\ast$ {\bf alloc\-\_\-condition} )(unsigned condtype)
+\item 
+void($\ast$ {\bf free\-\_\-condition} )(void $\ast$cond)
+\item 
+int($\ast$ {\bf signal\-\_\-condition} )(void $\ast$cond, int broadcast)
+\item 
+int($\ast$ {\bf wait\-\_\-condition} )(void $\ast$cond, void $\ast$lock, const struct timeval $\ast$timeout)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This structure describes the interface a threading library uses for condition variables. \-It's used to tell evthread\-\_\-set\-\_\-condition\-\_\-callbacks how to use locking on this platform. 
+
+\subsection{\-Field \-Documentation}
+\index{evthread\-\_\-condition\-\_\-callbacks@{evthread\-\_\-condition\-\_\-callbacks}!alloc\-\_\-condition@{alloc\-\_\-condition}}
+\index{alloc\-\_\-condition@{alloc\-\_\-condition}!evthread_condition_callbacks@{evthread\-\_\-condition\-\_\-callbacks}}
+\subsubsection[{alloc\-\_\-condition}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$($\ast$ {\bf alloc\-\_\-condition})(unsigned condtype)}\label{structevthread__condition__callbacks_a4b30fd8e12cc870c369766d927a0a05c}
+\-Function to allocate and initialize a new condition variable. \-Returns the condition variable on success, and \-N\-U\-L\-L on failure. \-The 'condtype' argument will be 0 with this \-A\-P\-I version. \index{evthread\-\_\-condition\-\_\-callbacks@{evthread\-\_\-condition\-\_\-callbacks}!condition\-\_\-api\-\_\-version@{condition\-\_\-api\-\_\-version}}
+\index{condition\-\_\-api\-\_\-version@{condition\-\_\-api\-\_\-version}!evthread_condition_callbacks@{evthread\-\_\-condition\-\_\-callbacks}}
+\subsubsection[{condition\-\_\-api\-\_\-version}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf condition\-\_\-api\-\_\-version}}\label{structevthread__condition__callbacks_af2f89f88c8bcf3bf95b078559340d522}
+\-The current version of the conditions \-A\-P\-I. \-Set this to \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-C\-O\-N\-D\-I\-T\-I\-O\-N\-\_\-\-A\-P\-I\-\_\-\-V\-E\-R\-S\-I\-O\-N \index{evthread\-\_\-condition\-\_\-callbacks@{evthread\-\_\-condition\-\_\-callbacks}!free\-\_\-condition@{free\-\_\-condition}}
+\index{free\-\_\-condition@{free\-\_\-condition}!evthread_condition_callbacks@{evthread\-\_\-condition\-\_\-callbacks}}
+\subsubsection[{free\-\_\-condition}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ {\bf free\-\_\-condition})(void $\ast$cond)}\label{structevthread__condition__callbacks_a4b553f2b383f8962091b971be2d42820}
+\-Function to free a condition variable. \index{evthread\-\_\-condition\-\_\-callbacks@{evthread\-\_\-condition\-\_\-callbacks}!signal\-\_\-condition@{signal\-\_\-condition}}
+\index{signal\-\_\-condition@{signal\-\_\-condition}!evthread_condition_callbacks@{evthread\-\_\-condition\-\_\-callbacks}}
+\subsubsection[{signal\-\_\-condition}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf signal\-\_\-condition})(void $\ast$cond, int broadcast)}\label{structevthread__condition__callbacks_ad081cb82eb1b8cd75538ca762cb0531a}
+\-Function to signal a condition variable. \-If 'broadcast' is 1, all threads waiting on 'cond' should be woken; otherwise, only on one thread is worken. \-Should return 0 on success, -\/1 on failure. \-This function will only be called while holding the associated lock for the condition. \index{evthread\-\_\-condition\-\_\-callbacks@{evthread\-\_\-condition\-\_\-callbacks}!wait\-\_\-condition@{wait\-\_\-condition}}
+\index{wait\-\_\-condition@{wait\-\_\-condition}!evthread_condition_callbacks@{evthread\-\_\-condition\-\_\-callbacks}}
+\subsubsection[{wait\-\_\-condition}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf wait\-\_\-condition})(void $\ast$cond, void $\ast$lock, const struct timeval $\ast$timeout)}\label{structevthread__condition__callbacks_a9b6dc6fa81952b82fdef25f4b96e3b91}
+\-Function to wait for a condition variable. \-The lock 'lock' will be held when this function is called; should be released while waiting for the condition to be come signalled, and should be held again when this function returns. \-If timeout is provided, it is interval of seconds to wait for the event to become signalled; if it is \-N\-U\-L\-L, the function should wait indefinitely.
+
+\-The function should return -\/1 on error; 0 if the condition was signalled, or 1 on a timeout. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/{\bf thread.\-h}\end{DoxyCompactItemize}

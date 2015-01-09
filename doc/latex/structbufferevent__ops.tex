@@ -1,0 +1,62 @@
+\section{bufferevent\-\_\-ops \-Struct \-Reference}
+\label{structbufferevent__ops}\index{bufferevent\-\_\-ops@{bufferevent\-\_\-ops}}
+
+
+{\ttfamily \#include $<$bufferevent-\/internal.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ {\bf type}
+\item 
+off\-\_\-t {\bf mem\-\_\-offset}
+\item 
+int($\ast$ {\bf enable} )(struct {\bf bufferevent} $\ast$, short)
+\item 
+int($\ast$ {\bf disable} )(struct {\bf bufferevent} $\ast$, short)
+\item 
+void($\ast$ {\bf destruct} )(struct {\bf bufferevent} $\ast$)
+\item 
+int($\ast$ {\bf adj\-\_\-timeouts} )(struct {\bf bufferevent} $\ast$)
+\item 
+int($\ast$ {\bf flush} )(struct {\bf bufferevent} $\ast$, short, enum {\bf bufferevent\-\_\-flush\-\_\-mode})
+\item 
+int($\ast$ {\bf ctrl} )(struct {\bf bufferevent} $\ast$, enum bufferevent\-\_\-ctrl\-\_\-op, union {\bf bufferevent\-\_\-ctrl\-\_\-data} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Implementation table for a bufferevent\-: holds function pointers and other information to make the various bufferevent types work. 
+
+\subsection{\-Field \-Documentation}
+\index{bufferevent\-\_\-ops@{bufferevent\-\_\-ops}!adj\-\_\-timeouts@{adj\-\_\-timeouts}}
+\index{adj\-\_\-timeouts@{adj\-\_\-timeouts}!bufferevent_ops@{bufferevent\-\_\-ops}}
+\subsubsection[{adj\-\_\-timeouts}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf adj\-\_\-timeouts})(struct {\bf bufferevent} $\ast$)}\label{structbufferevent__ops_a421a8e68492c59c0cb7fdc2fa78908d6}
+\-Called when the timeouts on the bufferevent have changed. \index{bufferevent\-\_\-ops@{bufferevent\-\_\-ops}!ctrl@{ctrl}}
+\index{ctrl@{ctrl}!bufferevent_ops@{bufferevent\-\_\-ops}}
+\subsubsection[{ctrl}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf ctrl})(struct {\bf bufferevent} $\ast$, enum bufferevent\-\_\-ctrl\-\_\-op, union {\bf bufferevent\-\_\-ctrl\-\_\-data} $\ast$)}\label{structbufferevent__ops_a137be51602bbde05eab1b5753e7bb727}
+\-Called to access miscellaneous fields. \index{bufferevent\-\_\-ops@{bufferevent\-\_\-ops}!destruct@{destruct}}
+\index{destruct@{destruct}!bufferevent_ops@{bufferevent\-\_\-ops}}
+\subsubsection[{destruct}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ {\bf destruct})(struct {\bf bufferevent} $\ast$)}\label{structbufferevent__ops_a840fc11c5403abdfb2459c85d300c210}
+\-Free any storage and deallocate any extra data or structures used in this implementation. \index{bufferevent\-\_\-ops@{bufferevent\-\_\-ops}!disable@{disable}}
+\index{disable@{disable}!bufferevent_ops@{bufferevent\-\_\-ops}}
+\subsubsection[{disable}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf disable})(struct {\bf bufferevent} $\ast$, short)}\label{structbufferevent__ops_a03f52d6bf34755e85157ebb5b80dddd3}
+\-Disables one or more of \-E\-V\-\_\-\-R\-E\-A\-D$|$\-E\-V\-\_\-\-W\-R\-I\-T\-E on a bufferevent. \-Does not need to adjust the 'enabled' field. \-Returns 0 on success, -\/1 on failure. \index{bufferevent\-\_\-ops@{bufferevent\-\_\-ops}!enable@{enable}}
+\index{enable@{enable}!bufferevent_ops@{bufferevent\-\_\-ops}}
+\subsubsection[{enable}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf enable})(struct {\bf bufferevent} $\ast$, short)}\label{structbufferevent__ops_aa7659c0c6097a0d4bd0275080e09787a}
+\-Enables one or more of \-E\-V\-\_\-\-R\-E\-A\-D$|$\-E\-V\-\_\-\-W\-R\-I\-T\-E on a bufferevent. \-Does not need to adjust the 'enabled' field. \-Returns 0 on success, -\/1 on failure. \index{bufferevent\-\_\-ops@{bufferevent\-\_\-ops}!flush@{flush}}
+\index{flush@{flush}!bufferevent_ops@{bufferevent\-\_\-ops}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf flush})(struct {\bf bufferevent} $\ast$, short, enum {\bf bufferevent\-\_\-flush\-\_\-mode})}\label{structbufferevent__ops_a218ce613641e37232fe15ee223a3a155}
+\-Called to flush data. \index{bufferevent\-\_\-ops@{bufferevent\-\_\-ops}!mem\-\_\-offset@{mem\-\_\-offset}}
+\index{mem\-\_\-offset@{mem\-\_\-offset}!bufferevent_ops@{bufferevent\-\_\-ops}}
+\subsubsection[{mem\-\_\-offset}]{\setlength{\rightskip}{0pt plus 5cm}off\-\_\-t {\bf mem\-\_\-offset}}\label{structbufferevent__ops_afb18b58d46332cdc01a91ddff9f43c84}
+\-At what offset into the implementation type will we find a bufferevent structure?
+
+\-Example\-: if the type is implemented as struct bufferevent\-\_\-x \{ int extra\-\_\-data; struct bufferevent bev; \} then mem\-\_\-offset should be offsetof(struct bufferevent\-\_\-x, bev) \index{bufferevent\-\_\-ops@{bufferevent\-\_\-ops}!type@{type}}
+\index{type@{type}!bufferevent_ops@{bufferevent\-\_\-ops}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf type}}\label{structbufferevent__ops_a763fd8db6bba8fbbbc113ca0d61c47c2}
+\-The name of the bufferevent's type. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/bufferevent-\/internal.\-h\end{DoxyCompactItemize}

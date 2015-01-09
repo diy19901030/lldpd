@@ -1,0 +1,84 @@
+\section{bufferevent \-Struct \-Reference}
+\label{structbufferevent}\index{bufferevent@{bufferevent}}
+
+
+{\ttfamily \#include $<$bufferevent\-\_\-struct.\-h$>$}
+
+
+
+\-Collaboration diagram for bufferevent\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf event\-\_\-base} $\ast$ {\bf ev\-\_\-base}
+\item 
+struct {\bf bufferevent\-\_\-ops} $\ast$ {\bf be\-\_\-ops}
+\item 
+struct {\bf event} {\bf ev\-\_\-read}
+\item 
+struct {\bf event} {\bf ev\-\_\-write}
+\item 
+struct {\bf evbuffer} $\ast$ {\bf input}
+\item 
+struct {\bf evbuffer} $\ast$ {\bf output}
+\item 
+struct {\bf event\-\_\-watermark} {\bfseries wm\-\_\-read}\label{structbufferevent_a929afd0dfd722ade75580fed4576d78d}
+
+\item 
+struct {\bf event\-\_\-watermark} {\bfseries wm\-\_\-write}\label{structbufferevent_a115bc662d05e88b56fac3313603cc852}
+
+\item 
+{\bf bufferevent\-\_\-data\-\_\-cb} {\bfseries readcb}\label{structbufferevent_af14e28ae450704cb7ecef85cec948a0e}
+
+\item 
+{\bf bufferevent\-\_\-data\-\_\-cb} {\bfseries writecb}\label{structbufferevent_a6178900b2733af6993824bbbdae5fddc}
+
+\item 
+{\bf bufferevent\-\_\-event\-\_\-cb} {\bfseries errorcb}\label{structbufferevent_ac5cc9a0d3231c174e171a8eec5170e53}
+
+\item 
+void $\ast$ {\bfseries cbarg}\label{structbufferevent_aafd3d1a6343925cb274875556a6faa0e}
+
+\item 
+struct timeval {\bfseries timeout\-\_\-read}\label{structbufferevent_a4d8958e3e5e7c17b59f2cfd85e5307c1}
+
+\item 
+struct timeval {\bfseries timeout\-\_\-write}\label{structbufferevent_a45111ccd3ef795ee17cc5f238830de0e}
+
+\item 
+short {\bf enabled}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Shared implementation of a bufferevent.
+
+\-This type is exposed only because it was exposed in previous versions, and some people's code may rely on manipulating it. \-Otherwise, you should really not rely on the layout, size, or contents of this structure\-: it is fairly volatile, and \-W\-I\-L\-L change in future versions of the code. 
+
+\subsection{\-Field \-Documentation}
+\index{bufferevent@{bufferevent}!be\-\_\-ops@{be\-\_\-ops}}
+\index{be\-\_\-ops@{be\-\_\-ops}!bufferevent@{bufferevent}}
+\subsubsection[{be\-\_\-ops}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent\-\_\-ops}$\ast$ {\bf be\-\_\-ops}}\label{structbufferevent_a9440d1400d033e0127a4f2ced19e8499}
+\-Pointer to a table of function pointers to set up how this bufferevent behaves. \index{bufferevent@{bufferevent}!enabled@{enabled}}
+\index{enabled@{enabled}!bufferevent@{bufferevent}}
+\subsubsection[{enabled}]{\setlength{\rightskip}{0pt plus 5cm}short {\bf enabled}}\label{structbufferevent_af32a952d39fc6df71dd3e6ad55a318f5}
+\-Events that are currently enabled\-: currently \-E\-V\-\_\-\-R\-E\-A\-D and \-E\-V\-\_\-\-W\-R\-I\-T\-E are supported. \index{bufferevent@{bufferevent}!ev\-\_\-base@{ev\-\_\-base}}
+\index{ev\-\_\-base@{ev\-\_\-base}!bufferevent@{bufferevent}}
+\subsubsection[{ev\-\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event\-\_\-base}$\ast$ {\bf ev\-\_\-base}}\label{structbufferevent_a79005f93f769baaa5ab5d2a45b52ec62}
+\-Event base for which this bufferevent was created. \index{bufferevent@{bufferevent}!ev\-\_\-read@{ev\-\_\-read}}
+\index{ev\-\_\-read@{ev\-\_\-read}!bufferevent@{bufferevent}}
+\subsubsection[{ev\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event} {\bf ev\-\_\-read}}\label{structbufferevent_ad0ecd4c4acef2807ba249845f21a9123}
+\-A read event that triggers when a timeout has happened or a socket is ready to read data. \-Only used by some subtypes of bufferevent. \index{bufferevent@{bufferevent}!ev\-\_\-write@{ev\-\_\-write}}
+\index{ev\-\_\-write@{ev\-\_\-write}!bufferevent@{bufferevent}}
+\subsubsection[{ev\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event} {\bf ev\-\_\-write}}\label{structbufferevent_aff4a06b8fc928749d88997e4e724e24e}
+\-A write event that triggers when a timeout has happened or a socket is ready to write data. \-Only used by some subtypes of bufferevent. \index{bufferevent@{bufferevent}!input@{input}}
+\index{input@{input}!bufferevent@{bufferevent}}
+\subsubsection[{input}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer}$\ast$ {\bf input}}\label{structbufferevent_a4254794661c455f0e2885938d072c09c}
+\-An input buffer. \-Only the bufferevent is allowed to add data to this buffer, though the user is allowed to drain it. \index{bufferevent@{bufferevent}!output@{output}}
+\index{output@{output}!bufferevent@{bufferevent}}
+\subsubsection[{output}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer}$\ast$ {\bf output}}\label{structbufferevent_a059a4a782fcbefd9a976033f1326e813}
+\-An input buffer. \-Only the bufferevent is allowed to drain data from this buffer, though the user is allowed to add it. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/{\bf bufferevent\-\_\-struct.\-h}\end{DoxyCompactItemize}

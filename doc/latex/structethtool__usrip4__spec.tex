@@ -1,0 +1,35 @@
+\section{ethtool\-\_\-usrip4\-\_\-spec \-Struct \-Reference}
+\label{structethtool__usrip4__spec}\index{ethtool\-\_\-usrip4\-\_\-spec@{ethtool\-\_\-usrip4\-\_\-spec}}
+
+
+{\ttfamily \#include $<$ethtool.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-be32 {\bfseries ip4src}\label{structethtool__usrip4__spec_a06509e655ba26058123d3c914b64e0c7}
+
+\item 
+\-\_\-\-\_\-be32 {\bfseries ip4dst}\label{structethtool__usrip4__spec_a693738c818af5dfa7260d9574bab5b7a}
+
+\item 
+\-\_\-\-\_\-be32 {\bfseries l4\-\_\-4\-\_\-bytes}\label{structethtool__usrip4__spec_a601f8bbe1491246de40feb1d4c2fb0b3}
+
+\item 
+\-\_\-\-\_\-u8 {\bfseries tos}\label{structethtool__usrip4__spec_aabd17e6458449b589ae5385d8e07618a}
+
+\item 
+\-\_\-\-\_\-u8 {\bfseries ip\-\_\-ver}\label{structethtool__usrip4__spec_a46e81ecd29884465410d5c1f22e56aba}
+
+\item 
+\-\_\-\-\_\-u8 {\bfseries proto}\label{structethtool__usrip4__spec_aa10718770c4b82fd3f5876fa0fc03695}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+struct \doxyref{ethtool\-\_\-usrip4\-\_\-spec}{p.}{structethtool__usrip4__spec} -\/ general flow specification for \-I\-Pv4 \-: \-Source host \-: \-Destination host \-: \-First 4 bytes of transport (layer 4) header \-: \-Type-\/of-\/service \-: \-Value must be \-E\-T\-H\-\_\-\-R\-X\-\_\-\-N\-F\-C\-\_\-\-I\-P4; mask must be 0 \-: \-Transport protocol number; mask must be 0 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/ethtool.\-h\end{DoxyCompactItemize}

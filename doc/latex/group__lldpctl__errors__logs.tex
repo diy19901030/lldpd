@@ -1,0 +1,162 @@
+\section{\-Errors and logs handling}
+\label{group__lldpctl__errors__logs}\index{\-Errors and logs handling@{\-Errors and logs handling}}
+\-Collaboration diagram for \-Errors and logs handling\-:
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf lldpctl\-\_\-last\-\_\-strerror}(conn)~{\bf lldpctl\-\_\-strerror}({\bf lldpctl\-\_\-last\-\_\-error}(conn))
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf lldpctl\-\_\-error\-\_\-t} \{ \*
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R} =  0, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K} =  -\/501, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-E\-O\-F} =  -\/502, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-\_\-\-E\-X\-I\-S\-T} =  -\/503, 
+\*
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T} =  -\/504, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-C\-O\-R\-R\-E\-C\-T\-\_\-\-A\-T\-O\-M\-\_\-\-T\-Y\-P\-E} =  -\/505, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-A\-T\-I\-O\-N} =  -\/506, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-S\-T\-A\-T\-E} =  -\/507, 
+\*
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-I\-T\-E\-R\-A\-T\-E} =  -\/508, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E} =  -\/509, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-R\-E\-A\-T\-E} =  -\/510, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-F\-A\-T\-A\-L} =  -\/900, 
+\*
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-M\-E\-M} =  -\/901, 
+{\bf \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-\_\-\-F\-A\-I\-L\-U\-R\-E} =  -\/902
+ \}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf lldpctl\-\_\-log\-\_\-callback} (void($\ast$cb)(int severity, const char $\ast${\bf msg}))
+\item 
+const char $\ast$ {\bf lldpctl\-\_\-strerror} ({\bf lldpctl\-\_\-error\-\_\-t} error)
+\item 
+{\bf lldpctl\-\_\-error\-\_\-t} {\bf lldpctl\-\_\-last\-\_\-error} ({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Error codes and logs handling.
+
+\-When a function returns a pointer, it may return {\ttfamily \-N\-U\-L\-L} to indicate an error condition. \-In this case, it is possible to use \doxyref{lldpctl\-\_\-last\-\_\-error()}{p.}{group__lldpctl__errors__logs_ga591c61c3e5c5dc5ab87ec238bece4571} to get the related error code which is one of the values in \doxyref{lldpctl\-\_\-error\-\_\-t}{p.}{group__lldpctl__errors__logs_gad9b373c0bb7b1cf850f5b1901b33e822} enumeration. \-For display purpose \doxyref{lldpctl\-\_\-strerror()}{p.}{group__lldpctl__errors__logs_gab88dc1cdcca63b82e652edbca3497714} may be used to translate this error code.
+
+\-When a function returns an integer, it may return a negative value. \-It usually means this is an error but some functions may return a legetimate negative value (for example \doxyref{lldpctl\-\_\-atom\-\_\-get\-\_\-int()}{p.}{group__lldpctl__atoms_gaef010e71841ae2fa831b066265d5c06c}). \-When there is a doubt, \doxyref{lldpctl\-\_\-last\-\_\-error()}{p.}{group__lldpctl__errors__logs_ga591c61c3e5c5dc5ab87ec238bece4571} should be checked.
+
+\-An error is attached to a connection. \-If there is no connection, no error handling is available. \-Most functions use a connection or an atom as first argument and therefore are attached to a connection. \-To get the connection related to an atom, use \doxyref{lldpctl\-\_\-atom\-\_\-get\-\_\-connection()}{p.}{group__lldpctl__atoms_ga334affdf0d559a1850613567d98de490}.
+
+\-Also have a look at \doxyref{lldpctl\-\_\-log\-\_\-callback()}{p.}{group__lldpctl__errors__logs_ga8554cbee2503ca1f1c0c58aad1e6744f} function if you want a custom log handling. 
+
+\subsection{\-Define \-Documentation}
+\index{\-Errors and logs handling@{\-Errors and logs handling}!lldpctl\-\_\-last\-\_\-strerror@{lldpctl\-\_\-last\-\_\-strerror}}
+\index{lldpctl\-\_\-last\-\_\-strerror@{lldpctl\-\_\-last\-\_\-strerror}!Errors and logs handling@{\-Errors and logs handling}}
+\subsubsection[{lldpctl\-\_\-last\-\_\-strerror}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf lldpctl\-\_\-last\-\_\-strerror}(
+\begin{DoxyParamCaption}
+\item[{}]{conn}
+\end{DoxyParamCaption}
+)~{\bf lldpctl\-\_\-strerror}({\bf lldpctl\-\_\-last\-\_\-error}(conn))}\label{group__lldpctl__errors__logs_ga7a4765175226856a2e064b41b7d2a7c6}
+\-Describe the last error associate to a connection.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Previously allocated handler to a connection to lldpd. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Statically allocated string describing the error 
+\end{DoxyReturn}
+
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\index{\-Errors and logs handling@{\-Errors and logs handling}!lldpctl\-\_\-error\-\_\-t@{lldpctl\-\_\-error\-\_\-t}}
+\index{lldpctl\-\_\-error\-\_\-t@{lldpctl\-\_\-error\-\_\-t}!Errors and logs handling@{\-Errors and logs handling}}
+\subsubsection[{lldpctl\-\_\-error\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf lldpctl\-\_\-error\-\_\-t}}\label{group__lldpctl__errors__logs_gad9b373c0bb7b1cf850f5b1901b33e822}
+\-Possible error codes for functions that return negative integers on this purpose or for {\ttfamily \doxyref{lldpctl\-\_\-last\-\_\-error()}{p.}{group__lldpctl__errors__logs_ga591c61c3e5c5dc5ab87ec238bece4571}}. \begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822a86a058533661e23a1fac644808144e3c}
+}]\-No error has happened (yet). \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822a29adacee5e8970e0bc3a3e6b95a299ef}
+}]\-A \-I\-O related operation would block if performed. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-E\-O\-F@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-E\-O\-F}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-E\-O\-F@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-E\-O\-F}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-E\-O\-F\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822abd5dce58f6b3cc46e374c8992414bc82}
+}]\-A \-I\-O related operation has reached a end of file condition. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-\_\-\-E\-X\-I\-S\-T@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-\_\-\-E\-X\-I\-S\-T}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-\_\-\-E\-X\-I\-S\-T@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-\_\-\-E\-X\-I\-S\-T}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-T\-\_\-\-E\-X\-I\-S\-T\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822a115bfa1f1be7bc1d86d269a69f311415}
+}]\-The requested information does not exist. \-For example, when requesting an inexistant information from an atom. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822a18924712f405037e2ae3f30601a7a838}
+}]\-Cannot connect to the lldpd daemon. \-This error only happens with default synchronous handlers. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-C\-O\-R\-R\-E\-C\-T\-\_\-\-A\-T\-O\-M\-\_\-\-T\-Y\-P\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-C\-O\-R\-R\-E\-C\-T\-\_\-\-A\-T\-O\-M\-\_\-\-T\-Y\-P\-E}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-C\-O\-R\-R\-E\-C\-T\-\_\-\-A\-T\-O\-M\-\_\-\-T\-Y\-P\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-C\-O\-R\-R\-E\-C\-T\-\_\-\-A\-T\-O\-M\-\_\-\-T\-Y\-P\-E}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-C\-O\-R\-R\-E\-C\-T\-\_\-\-A\-T\-O\-M\-\_\-\-T\-Y\-P\-E\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822a576e5eff5f89035313a1ca0ca0fee462}
+}]\-Atom is of incorrect type for the requested operation. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-A\-T\-I\-O\-N@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-A\-T\-I\-O\-N}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-A\-T\-I\-O\-N@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-A\-T\-I\-O\-N}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-S\-E\-R\-I\-A\-L\-I\-Z\-A\-T\-I\-O\-N\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822ab7289f09cb2d6c1dd8d107f5e5f095fd}
+}]\-An error occurred during serialization of message. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-S\-T\-A\-T\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-S\-T\-A\-T\-E}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-S\-T\-A\-T\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-S\-T\-A\-T\-E}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-S\-T\-A\-T\-E\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822ac708f4faeb630abcff3ba19b5deeafe1}
+}]\-The requested operation cannot be performed because we have another operation already running. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-I\-T\-E\-R\-A\-T\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-I\-T\-E\-R\-A\-T\-E}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-I\-T\-E\-R\-A\-T\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-I\-T\-E\-R\-A\-T\-E}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-I\-T\-E\-R\-A\-T\-E\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822aeaf981f3f0778ce569d505efd6058736}
+}]\-The provided atom cannot be iterated. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822a797376fa40d5b4d32f1899fef7ce68c9}
+}]\-The provided value is invalid. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-R\-E\-A\-T\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-R\-E\-A\-T\-E}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-R\-E\-A\-T\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-R\-E\-A\-T\-E}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-N\-N\-O\-T\-\_\-\-C\-R\-E\-A\-T\-E\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822a90971aae52e1aeefe06ca231d625a8a7}
+}]\-No new element can be created for this element. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-F\-A\-T\-A\-L@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-F\-A\-T\-A\-L}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-F\-A\-T\-A\-L@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-F\-A\-T\-A\-L}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-F\-A\-T\-A\-L\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822ae0814fd7ee7ea913f1f89d5cf24b9a07}
+}]\-The library is under unexpected conditions and cannot process any further data reliably. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-M\-E\-M@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-M\-E\-M}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-M\-E\-M@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-M\-E\-M}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-N\-O\-M\-E\-M\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822a5e96a41552fd290493e2610c620141f1}
+}]\-Out of memory condition. \-Things may get havoc here but we should be able to recover. \index{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-\_\-\-F\-A\-I\-L\-U\-R\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-\_\-\-F\-A\-I\-L\-U\-R\-E}!\-Errors and logs handling@{\-Errors and logs handling}}\index{\-Errors and logs handling@{\-Errors and logs handling}!\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-\_\-\-F\-A\-I\-L\-U\-R\-E@{\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-\_\-\-F\-A\-I\-L\-U\-R\-E}}\item[{\em 
+\-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-\_\-\-F\-A\-I\-L\-U\-R\-E\label{group__lldpctl__errors__logs_ggad9b373c0bb7b1cf850f5b1901b33e822ab853925dc583e4e7f0a9385ad8a1c93b}
+}]\-An error occurred in a user provided callback. \end{description}
+\end{Desc}
+
+
+
+\subsection{\-Function \-Documentation}
+\index{\-Errors and logs handling@{\-Errors and logs handling}!lldpctl\-\_\-last\-\_\-error@{lldpctl\-\_\-last\-\_\-error}}
+\index{lldpctl\-\_\-last\-\_\-error@{lldpctl\-\_\-last\-\_\-error}!Errors and logs handling@{\-Errors and logs handling}}
+\subsubsection[{lldpctl\-\_\-last\-\_\-error}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-error\-\_\-t} {\bf lldpctl\-\_\-last\-\_\-error} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__errors__logs_ga591c61c3e5c5dc5ab87ec238bece4571}
+\-Get the last error associated to a connection to lldpd.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Previously allocated handler to a connection to lldpd. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if no error is currently registered. \-A negative integer otherwise.
+\end{DoxyReturn}
+\-For functions returning int, this function will return the same error number. \-For functions returning something else, you can use this function to get the appropriate error number. 
+
+\-Here is the caller graph for this function\-:
+
+
+\index{\-Errors and logs handling@{\-Errors and logs handling}!lldpctl\-\_\-log\-\_\-callback@{lldpctl\-\_\-log\-\_\-callback}}
+\index{lldpctl\-\_\-log\-\_\-callback@{lldpctl\-\_\-log\-\_\-callback}!Errors and logs handling@{\-Errors and logs handling}}
+\subsubsection[{lldpctl\-\_\-log\-\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf lldpctl\-\_\-log\-\_\-callback} (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(int severity, const char $\ast${\bf msg})}]{cb}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__errors__logs_ga8554cbee2503ca1f1c0c58aad1e6744f}
+\-Setup log handlers.
+
+\-By default, liblldpctl will log to stderr. \-The following function will register another callback for this purpose. \-Messages logged through this callback may be cryptic. \-They are targeted for the developer. \-Message for end users should rely on return codes. \index{\-Errors and logs handling@{\-Errors and logs handling}!lldpctl\-\_\-strerror@{lldpctl\-\_\-strerror}}
+\index{lldpctl\-\_\-strerror@{lldpctl\-\_\-strerror}!Errors and logs handling@{\-Errors and logs handling}}
+\subsubsection[{lldpctl\-\_\-strerror}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf lldpctl\-\_\-strerror} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-error\-\_\-t}}]{error}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__errors__logs_gab88dc1cdcca63b82e652edbca3497714}
+\-Describe a provided error code.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em error} & \-Error code to be described. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Statically allocated string describing the error. 
+\end{DoxyReturn}

@@ -1,0 +1,33 @@
+\section{ev\-\_\-token\-\_\-bucket \-Struct \-Reference}
+\label{structev__token__bucket}\index{ev\-\_\-token\-\_\-bucket@{ev\-\_\-token\-\_\-bucket}}
+
+
+{\ttfamily \#include $<$ratelim-\/internal.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+ev\-\_\-ssize\-\_\-t {\bf read\-\_\-limit}
+\item 
+ev\-\_\-ssize\-\_\-t {\bfseries write\-\_\-limit}\label{structev__token__bucket_a392215ff577a4f5be274b4b2aa99b868}
+
+\item 
+ev\-\_\-uint32\-\_\-t {\bf last\-\_\-updated}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A token bucket is an internal structure that tracks how many bytes we are currently willing to read or write on a given bufferevent or group of bufferevents 
+
+\subsection{\-Field \-Documentation}
+\index{ev\-\_\-token\-\_\-bucket@{ev\-\_\-token\-\_\-bucket}!last\-\_\-updated@{last\-\_\-updated}}
+\index{last\-\_\-updated@{last\-\_\-updated}!ev_token_bucket@{ev\-\_\-token\-\_\-bucket}}
+\subsubsection[{last\-\_\-updated}]{\setlength{\rightskip}{0pt plus 5cm}ev\-\_\-uint32\-\_\-t {\bf last\-\_\-updated}}\label{structev__token__bucket_aad5d427c9a8cdf34a62170616a038870}
+\-When was this bucket last updated? \-Measured in abstract 'ticks' relative to the token bucket configuration. \index{ev\-\_\-token\-\_\-bucket@{ev\-\_\-token\-\_\-bucket}!read\-\_\-limit@{read\-\_\-limit}}
+\index{read\-\_\-limit@{read\-\_\-limit}!ev_token_bucket@{ev\-\_\-token\-\_\-bucket}}
+\subsubsection[{read\-\_\-limit}]{\setlength{\rightskip}{0pt plus 5cm}ev\-\_\-ssize\-\_\-t {\bf read\-\_\-limit}}\label{structev__token__bucket_a6ec8061fef44cbcb150004e465432c84}
+\-How many bytes are we willing to read or write right now? \-These values are signed so that we can do \char`\"{}defecit spending\char`\"{} 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/ratelim-\/internal.\-h\end{DoxyCompactItemize}

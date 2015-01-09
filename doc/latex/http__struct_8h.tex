@@ -1,0 +1,46 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/include/event2/http\-\_\-struct.h \-File \-Reference}
+\label{http__struct_8h}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/http\-\_\-struct.\-h@{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/http\-\_\-struct.\-h}}
+{\ttfamily \#include $<$event2/event-\/config.\-h$>$}\*
+{\ttfamily \#include $<$event2/util.\-h$>$}\*
+\-Include dependency graph for http\-\_\-struct.\-h\-:
+\-This graph shows which files directly or indirectly include this file\-:
+\subsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evhttp\-\_\-request}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-O\-W\-N\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N}~0x0001
+\item 
+\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-P\-R\-O\-X\-Y\-\_\-\-R\-E\-Q\-U\-E\-S\-T}~0x0002
+\item 
+\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-U\-S\-E\-R\-\_\-\-O\-W\-N\-E\-D}~0x0004
+\item 
+\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-D\-E\-F\-E\-R\-\_\-\-F\-R\-E\-E}~0x0008
+\item 
+\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-N\-E\-E\-D\-S\-\_\-\-F\-R\-E\-E}~0x0010
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Data structures for http. \-Using these structures may hurt forward compatibility with later versions of \-Libevent\-: be careful! 
+
+\subsection{\-Define \-Documentation}
+\index{http\-\_\-struct.\-h@{http\-\_\-struct.\-h}!\-E\-V\-H\-T\-T\-P\-\_\-\-P\-R\-O\-X\-Y\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{\-E\-V\-H\-T\-T\-P\-\_\-\-P\-R\-O\-X\-Y\-\_\-\-R\-E\-Q\-U\-E\-S\-T}}
+\index{\-E\-V\-H\-T\-T\-P\-\_\-\-P\-R\-O\-X\-Y\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{\-E\-V\-H\-T\-T\-P\-\_\-\-P\-R\-O\-X\-Y\-\_\-\-R\-E\-Q\-U\-E\-S\-T}!http_struct.h@{http\-\_\-struct.\-h}}
+\subsubsection[{\-E\-V\-H\-T\-T\-P\-\_\-\-P\-R\-O\-X\-Y\-\_\-\-R\-E\-Q\-U\-E\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-P\-R\-O\-X\-Y\-\_\-\-R\-E\-Q\-U\-E\-S\-T}~0x0002}\label{http__struct_8h_aa6d6f996e68a5eda249615c26468e67d}
+\-Request was made via a proxy \index{http\-\_\-struct.\-h@{http\-\_\-struct.\-h}!\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-D\-E\-F\-E\-R\-\_\-\-F\-R\-E\-E@{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-D\-E\-F\-E\-R\-\_\-\-F\-R\-E\-E}}
+\index{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-D\-E\-F\-E\-R\-\_\-\-F\-R\-E\-E@{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-D\-E\-F\-E\-R\-\_\-\-F\-R\-E\-E}!http_struct.h@{http\-\_\-struct.\-h}}
+\subsubsection[{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-D\-E\-F\-E\-R\-\_\-\-F\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-D\-E\-F\-E\-R\-\_\-\-F\-R\-E\-E}~0x0008}\label{http__struct_8h_a1172284bb7630bf390186dc5b67f60fd}
+\-The request will be used again upstack; freeing must be deferred \index{http\-\_\-struct.\-h@{http\-\_\-struct.\-h}!\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-N\-E\-E\-D\-S\-\_\-\-F\-R\-E\-E@{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-N\-E\-E\-D\-S\-\_\-\-F\-R\-E\-E}}
+\index{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-N\-E\-E\-D\-S\-\_\-\-F\-R\-E\-E@{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-N\-E\-E\-D\-S\-\_\-\-F\-R\-E\-E}!http_struct.h@{http\-\_\-struct.\-h}}
+\subsubsection[{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-N\-E\-E\-D\-S\-\_\-\-F\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-N\-E\-E\-D\-S\-\_\-\-F\-R\-E\-E}~0x0010}\label{http__struct_8h_a93d99bb1cb93bb6d306f3ed49a5cae67}
+\-The request should be freed upstack \index{http\-\_\-struct.\-h@{http\-\_\-struct.\-h}!\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-O\-W\-N\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N@{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-O\-W\-N\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N}}
+\index{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-O\-W\-N\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N@{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-O\-W\-N\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N}!http_struct.h@{http\-\_\-struct.\-h}}
+\subsubsection[{\-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-O\-W\-N\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-O\-W\-N\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N}~0x0001}\label{http__struct_8h_ac1ed79c48fba93d5455f5672c0f2127b}
+\-The request obj owns the evhttp connection and needs to free it \index{http\-\_\-struct.\-h@{http\-\_\-struct.\-h}!\-E\-V\-H\-T\-T\-P\-\_\-\-U\-S\-E\-R\-\_\-\-O\-W\-N\-E\-D@{\-E\-V\-H\-T\-T\-P\-\_\-\-U\-S\-E\-R\-\_\-\-O\-W\-N\-E\-D}}
+\index{\-E\-V\-H\-T\-T\-P\-\_\-\-U\-S\-E\-R\-\_\-\-O\-W\-N\-E\-D@{\-E\-V\-H\-T\-T\-P\-\_\-\-U\-S\-E\-R\-\_\-\-O\-W\-N\-E\-D}!http_struct.h@{http\-\_\-struct.\-h}}
+\subsubsection[{\-E\-V\-H\-T\-T\-P\-\_\-\-U\-S\-E\-R\-\_\-\-O\-W\-N\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-U\-S\-E\-R\-\_\-\-O\-W\-N\-E\-D}~0x0004}\label{http__struct_8h_a757053e4f471ea984ace48bc682e72cb}
+\-The request object is owned by the user; the user must free it 

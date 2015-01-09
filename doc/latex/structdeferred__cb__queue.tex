@@ -1,0 +1,54 @@
+\section{deferred\-\_\-cb\-\_\-queue \-Struct \-Reference}
+\label{structdeferred__cb__queue}\index{deferred\-\_\-cb\-\_\-queue@{deferred\-\_\-cb\-\_\-queue}}
+
+
+{\ttfamily \#include $<$defer-\/internal.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (deferred\-\_\-cb\-\_\-list, {\bf deferred\-\_\-cb}) deferred\-\_\-cb\-\_\-list
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ {\bf lock}
+\item 
+int {\bf active\-\_\-count}
+\item 
+void($\ast$ {\bf notify\-\_\-fn} )(struct {\bf deferred\-\_\-cb\-\_\-queue} $\ast$, void $\ast$)
+\item 
+void $\ast$ {\bfseries notify\-\_\-arg}\label{structdeferred__cb__queue_a20b5af7cf1457ef9d94f33b1e0c6f3d9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A \doxyref{deferred\-\_\-cb\-\_\-queue}{p.}{structdeferred__cb__queue} is a list of \doxyref{deferred\-\_\-cb}{p.}{structdeferred__cb} that we can add to and run. 
+
+\subsection{\-Member \-Function \-Documentation}
+\index{deferred\-\_\-cb\-\_\-queue@{deferred\-\_\-cb\-\_\-queue}!\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}}
+\index{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}!deferred_cb_queue@{deferred\-\_\-cb\-\_\-queue}}
+\subsubsection[{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (
+\begin{DoxyParamCaption}
+\item[{deferred\-\_\-cb\-\_\-list}]{, }
+\item[{{\bf deferred\-\_\-cb}}]{}
+\end{DoxyParamCaption}
+)}\label{structdeferred__cb__queue_a0f602d79e9aa857922ad910901366ff8}
+\-Deferred callback management\-: a list of deferred callbacks to run active the active events. 
+
+\subsection{\-Field \-Documentation}
+\index{deferred\-\_\-cb\-\_\-queue@{deferred\-\_\-cb\-\_\-queue}!active\-\_\-count@{active\-\_\-count}}
+\index{active\-\_\-count@{active\-\_\-count}!deferred_cb_queue@{deferred\-\_\-cb\-\_\-queue}}
+\subsubsection[{active\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf active\-\_\-count}}\label{structdeferred__cb__queue_a7f7d45d86644c99bc88e46889e97d27a}
+\-How many entries are in the queue? \index{deferred\-\_\-cb\-\_\-queue@{deferred\-\_\-cb\-\_\-queue}!lock@{lock}}
+\index{lock@{lock}!deferred_cb_queue@{deferred\-\_\-cb\-\_\-queue}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf lock}}\label{structdeferred__cb__queue_a100fdaedb8eb0d56fd262e7ea2930930}
+\-Lock used to protect the queue. \index{deferred\-\_\-cb\-\_\-queue@{deferred\-\_\-cb\-\_\-queue}!notify\-\_\-fn@{notify\-\_\-fn}}
+\index{notify\-\_\-fn@{notify\-\_\-fn}!deferred_cb_queue@{deferred\-\_\-cb\-\_\-queue}}
+\subsubsection[{notify\-\_\-fn}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ {\bf notify\-\_\-fn})(struct {\bf deferred\-\_\-cb\-\_\-queue} $\ast$, void $\ast$)}\label{structdeferred__cb__queue_ac3ea7e75bfb308e0e123aa0910ce003c}
+\-Function called when adding to the queue from another thread. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/defer-\/internal.\-h\end{DoxyCompactItemize}

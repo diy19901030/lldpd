@@ -1,0 +1,1 @@
+setproctitle.lo: ../../../src/compat/setproctitle.c

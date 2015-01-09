@@ -1,0 +1,175 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/evmap-\/internal.h \-File \-Reference}
+\label{evmap-internal_8h}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/evmap-\/internal.\-h@{/home/evan/lldpd-\/0.\-7.\-11/libevent/evmap-\/internal.\-h}}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf evmap\-\_\-io\-\_\-initmap} (struct event\-\_\-io\-\_\-map $\ast$ctx)
+\item 
+void {\bfseries evmap\-\_\-signal\-\_\-initmap} (struct {\bf event\-\_\-signal\-\_\-map} $\ast$ctx)\label{evmap-internal_8h_a80b4a9d3ff389e3e32c78079269932ea}
+
+\item 
+void {\bf evmap\-\_\-io\-\_\-clear} (struct event\-\_\-io\-\_\-map $\ast$ctx)
+\item 
+void {\bfseries evmap\-\_\-signal\-\_\-clear} (struct {\bf event\-\_\-signal\-\_\-map} $\ast$ctx)\label{evmap-internal_8h_ae5d4e30c6c752120b575fbc98022d021}
+
+\item 
+int {\bf evmap\-\_\-io\-\_\-add} (struct {\bf event\-\_\-base} $\ast$base, {\bf evutil\-\_\-socket\-\_\-t} fd, struct {\bf event} $\ast$ev)
+\item 
+int {\bf evmap\-\_\-io\-\_\-del} (struct {\bf event\-\_\-base} $\ast$base, {\bf evutil\-\_\-socket\-\_\-t} fd, struct {\bf event} $\ast$ev)
+\item 
+void {\bf evmap\-\_\-io\-\_\-active} (struct {\bf event\-\_\-base} $\ast$base, {\bf evutil\-\_\-socket\-\_\-t} fd, short events)
+\item 
+int {\bfseries evmap\-\_\-signal\-\_\-add} (struct {\bf event\-\_\-base} $\ast$base, int signum, struct {\bf event} $\ast$ev)\label{evmap-internal_8h_a398f044bc3239c0a156e901a6b8ac12a}
+
+\item 
+int {\bfseries evmap\-\_\-signal\-\_\-del} (struct {\bf event\-\_\-base} $\ast$base, int signum, struct {\bf event} $\ast$ev)\label{evmap-internal_8h_acb1de810206952cf02b2c598ca8f0811}
+
+\item 
+void {\bfseries evmap\-\_\-signal\-\_\-active} (struct {\bf event\-\_\-base} $\ast$base, {\bf evutil\-\_\-socket\-\_\-t} signum, int ncalls)\label{evmap-internal_8h_a68ae9e5826589615a9487a2448cfda2c}
+
+\item 
+void $\ast$ {\bfseries evmap\-\_\-io\-\_\-get\-\_\-fdinfo} (struct event\-\_\-io\-\_\-map $\ast$ctx, {\bf evutil\-\_\-socket\-\_\-t} fd)\label{evmap-internal_8h_af7d3a02c219288f840c89f745aeb8823}
+
+\item 
+void {\bfseries evmap\-\_\-check\-\_\-integrity} (struct {\bf event\-\_\-base} $\ast$base)\label{evmap-internal_8h_ac27030b4423323fc3c5952e584dc9109}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-An event\-\_\-map is a utility structure to map each fd or signal to zero or more events. \-Functions to manipulate event\-\_\-maps should only be used from inside libevent. \-They generally need to hold the lock on the corresponding \doxyref{event\-\_\-base}{p.}{structevent__base}. 
+
+\subsection{\-Function \-Documentation}
+\index{evmap-\/internal.\-h@{evmap-\/internal.\-h}!evmap\-\_\-io\-\_\-active@{evmap\-\_\-io\-\_\-active}}
+\index{evmap\-\_\-io\-\_\-active@{evmap\-\_\-io\-\_\-active}!evmap-internal.h@{evmap-\/internal.\-h}}
+\subsubsection[{evmap\-\_\-io\-\_\-active}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evmap\-\_\-io\-\_\-active} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base, }
+\item[{{\bf evutil\-\_\-socket\-\_\-t}}]{fd, }
+\item[{short}]{events}
+\end{DoxyParamCaption}
+)}\label{evmap-internal_8h_a2ccab98f18a20681477c76da0029b08e}
+\-Active the set of events waiting on an \doxyref{event\-\_\-base}{p.}{structevent__base} for a given fd.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{event\-\_\-base}{p.}{structevent__base} to operate on. \\
+\hline
+{\em fd} & the file descriptor that has become active. \\
+\hline
+{\em events} & a bitmask of \-E\-V\-\_\-\-R\-E\-A\-D$|$\-E\-V\-\_\-\-W\-R\-I\-T\-E$|$\-E\-V\-\_\-\-E\-T. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the call graph for this function\-:
+
+
+
+
+\-Here is the caller graph for this function\-:
+
+
+\index{evmap-\/internal.\-h@{evmap-\/internal.\-h}!evmap\-\_\-io\-\_\-add@{evmap\-\_\-io\-\_\-add}}
+\index{evmap\-\_\-io\-\_\-add@{evmap\-\_\-io\-\_\-add}!evmap-internal.h@{evmap-\/internal.\-h}}
+\subsubsection[{evmap\-\_\-io\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evmap\-\_\-io\-\_\-add} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base, }
+\item[{{\bf evutil\-\_\-socket\-\_\-t}}]{fd, }
+\item[{struct {\bf event} $\ast$}]{ev}
+\end{DoxyParamCaption}
+)}\label{evmap-internal_8h_a337c42f077943b9ec9e56d80bb5cc1da}
+\-Add an \-I\-O event (some combination of \-E\-V\-\_\-\-R\-E\-A\-D or \-E\-V\-\_\-\-W\-R\-I\-T\-E) to an \doxyref{event\-\_\-base}{p.}{structevent__base}'s list of events on a given file descriptor, and tell the underlying eventops about the fd if its state has changed.
+
+\-Requires that ev is not already added.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{event\-\_\-base}{p.}{structevent__base} to operate on. \\
+\hline
+{\em fd} & the file descriptor corresponding to ev. \\
+\hline
+{\em ev} & the event to add. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the call graph for this function\-:
+
+
+
+
+\-Here is the caller graph for this function\-:
+
+
+\index{evmap-\/internal.\-h@{evmap-\/internal.\-h}!evmap\-\_\-io\-\_\-clear@{evmap\-\_\-io\-\_\-clear}}
+\index{evmap\-\_\-io\-\_\-clear@{evmap\-\_\-io\-\_\-clear}!evmap-internal.h@{evmap-\/internal.\-h}}
+\subsubsection[{evmap\-\_\-io\-\_\-clear}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evmap\-\_\-io\-\_\-clear} (
+\begin{DoxyParamCaption}
+\item[{struct event\-\_\-io\-\_\-map $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}\label{evmap-internal_8h_aa86262101585908b054e3eadcccd41bb}
+\-Remove all entries from an event\-\_\-map.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ctx} & the map to clear. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the call graph for this function\-:
+
+
+
+
+\-Here is the caller graph for this function\-:
+
+
+\index{evmap-\/internal.\-h@{evmap-\/internal.\-h}!evmap\-\_\-io\-\_\-del@{evmap\-\_\-io\-\_\-del}}
+\index{evmap\-\_\-io\-\_\-del@{evmap\-\_\-io\-\_\-del}!evmap-internal.h@{evmap-\/internal.\-h}}
+\subsubsection[{evmap\-\_\-io\-\_\-del}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evmap\-\_\-io\-\_\-del} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base, }
+\item[{{\bf evutil\-\_\-socket\-\_\-t}}]{fd, }
+\item[{struct {\bf event} $\ast$}]{ev}
+\end{DoxyParamCaption}
+)}\label{evmap-internal_8h_a6e701fc134ed4b018c82883d4c4a6cee}
+\-Remove an \-I\-O event (some combination of \-E\-V\-\_\-\-R\-E\-A\-D or \-E\-V\-\_\-\-W\-R\-I\-T\-E) to an \doxyref{event\-\_\-base}{p.}{structevent__base}'s list of events on a given file descriptor, and tell the underlying eventops about the fd if its state has changed.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{event\-\_\-base}{p.}{structevent__base} to operate on. \\
+\hline
+{\em fd} & the file descriptor corresponding to ev. \\
+\hline
+{\em ev} & the event to remove. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the call graph for this function\-:
+
+
+
+
+\-Here is the caller graph for this function\-:
+
+
+\index{evmap-\/internal.\-h@{evmap-\/internal.\-h}!evmap\-\_\-io\-\_\-initmap@{evmap\-\_\-io\-\_\-initmap}}
+\index{evmap\-\_\-io\-\_\-initmap@{evmap\-\_\-io\-\_\-initmap}!evmap-internal.h@{evmap-\/internal.\-h}}
+\subsubsection[{evmap\-\_\-io\-\_\-initmap}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evmap\-\_\-io\-\_\-initmap} (
+\begin{DoxyParamCaption}
+\item[{struct event\-\_\-io\-\_\-map $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}\label{evmap-internal_8h_a7be51d319c7f67df6a032f852c415fcb}
+\-Initialize an event\-\_\-map for use. 
+
+\-Here is the call graph for this function\-:
+
+
+
+
+\-Here is the caller graph for this function\-:
+
+

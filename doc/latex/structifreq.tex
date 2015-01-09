@@ -1,0 +1,41 @@
+\section{ifreq \-Struct \-Reference}
+\label{structifreq}\index{ifreq@{ifreq}}
+
+
+\-Collaboration diagram for ifreq\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>char {\bfseries ifrn\_name} [IFNAMSIZ]\\
+\} {\bfseries ifr\_ifrn}\label{structifreq_a4cc61c82a227096fe342afa17294ffe3}
+\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct sockaddr {\bfseries ifru\_addr}\\
+\>struct sockaddr {\bfseries ifru\_dstaddr}\\
+\>struct sockaddr {\bfseries ifru\_broadaddr}\\
+\>struct sockaddr {\bfseries ifru\_netmask}\\
+\>struct sockaddr {\bfseries ifru\_hwaddr}\\
+\>short {\bfseries ifru\_flags}\\
+\>int {\bfseries ifru\_ivalue}\\
+\>int {\bfseries ifru\_mtu}\\
+\>struct {\bf ifmap} {\bfseries ifru\_map}\\
+\>char {\bfseries ifru\_slave} [IFNAMSIZ]\\
+\>char {\bfseries ifru\_newname} [IFNAMSIZ]\\
+\>void $\ast$ {\bfseries ifru\_data}\\
+\>struct {\bf if\_settings} {\bfseries ifru\_settings}\\
+\} {\bfseries ifr\_ifru}\label{structifreq_a1158df39365886410ab31a65682cfdc4}
+\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/if.\-h\end{DoxyCompactItemize}

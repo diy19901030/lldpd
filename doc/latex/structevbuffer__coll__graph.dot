@@ -1,0 +1,47 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="evbuffer",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cb_queue" ];
+  Node2 [label="deferred_cb_queue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structdeferred__cb__queue.html"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" last_with_datap\nlast\nfirst" ];
+  Node3 [label="evbuffer_chain",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevbuffer__chain.html"];
+  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" next" ];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" parent" ];
+  Node4 [label="bufferevent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structbufferevent.html"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" wm_read\nwm_write" ];
+  Node5 [label="event_watermark",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent__watermark.html"];
+  Node6 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ev_read\nev_write" ];
+  Node6 [label="event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent.html"];
+  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ev_base" ];
+  Node7 [label="event_base",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent__base.html"];
+  Node8 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" evsel\nevsigsel" ];
+  Node8 [label="eventop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structeventop.html"];
+  Node9 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sig" ];
+  Node9 [label="evsig_info",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevsig__info.html"];
+  Node6 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ev_signal" ];
+  Node10 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" timeheap" ];
+  Node10 [label="min_heap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structmin__heap.html"];
+  Node6 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" p" ];
+  Node2 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" defer_queue" ];
+  Node6 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" current_event\nth_notify" ];
+  Node11 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" common_timeout_queues" ];
+  Node11 [label="common_timeout_list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structcommon__timeout__list.html"];
+  Node6 -> Node11 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" timeout_event" ];
+  Node7 -> Node11 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" base" ];
+  Node12 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sigmap" ];
+  Node12 [label="event_signal_map",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent__signal__map.html"];
+  Node13 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" changelist" ];
+  Node13 [label="event_changelist",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent__changelist.html"];
+  Node14 -> Node13 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" changes" ];
+  Node14 [label="event_change",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent__change.html"];
+  Node1 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" output\ninput" ];
+  Node7 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ev_base" ];
+  Node4 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" errorcb\nreadcb\nwritecb" ];
+  Node15 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" be_ops" ];
+  Node15 [label="bufferevent_ops",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structbufferevent__ops.html"];
+  Node16 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" deferred" ];
+  Node16 [label="deferred_cb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structdeferred__cb.html"];
+  Node16 -> Node16 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cb" ];
+}

@@ -1,0 +1,83 @@
+
+\begin{DoxyRefList}
+\item[\label{deprecated__deprecated000004}%
+\-File \doxyref{bufferevent\-\_\-struct.h}{p.}{bufferevent__struct_8h} ]\-Use of \doxyref{bufferevent\-\_\-struct.\-h}{p.}{bufferevent__struct_8h} is completely deprecated; these structures are only exposed for backward compatibility with programs written before \-Libevent 2.\-0 that used them.  
+\item[\label{deprecated__deprecated000001}%
+\-Global \doxyref{evbuffer\-\_\-readline}{p.}{buffer__compat_8h_a65177a5ae259100c90f3f4c2812db070} (struct evbuffer $\ast$buffer)]\-This function is deprecated because its behavior is not correct for almost any protocol, and also because it's wholly subsumed by \doxyref{evbuffer\-\_\-readln()}{p.}{buffer_8h_ae2460b5060948d3233342c4c81888650}. 
+\item[\label{deprecated__deprecated000002}%
+\-Global \doxyref{evbuffer\-\_\-setcb}{p.}{buffer__compat_8h_a410c80ef25950aed88a08141278f23ab} (struct evbuffer $\ast$buffer, evbuffer\-\_\-cb cb, void $\ast$cbarg)]\-This function is deprecated because it clears all previous callbacks set on the evbuffer, which can cause confusing behavior if multiple parts of the code all want to add their own callbacks on a buffer. \-Instead, use \doxyref{evbuffer\-\_\-add()}{p.}{buffer_8h_a69c3b8893a49bdd919642c6920c1fcb4}, evbuffer\-\_\-del(), and evbuffer\-\_\-setflags() to manage your own evbuffer callbacks without interfering with callbacks set by others. 
+\item[\label{deprecated__deprecated000021}%
+\-Global \doxyref{evdns\-\_\-add\-\_\-server\-\_\-port}{p.}{dns__compat_8h_aaa1aa021d9a842e02366e36df2ebbb71} (evutil\-\_\-socket\-\_\-t socket, int flags, evdns\-\_\-request\-\_\-callback\-\_\-fn\-\_\-type callback, void $\ast$user\-\_\-data)]\-This function is deprecated because it does not allow the caller to specify which even\-\_\-base it uses. \-The recommended function is \doxyref{evdns\-\_\-add\-\_\-server\-\_\-port\-\_\-with\-\_\-base()}{p.}{dns_8h_ae85fd5477f58f798c15a5d31fe4405ec}. 
+\item[\label{deprecated__deprecated000010}%
+\-Global \doxyref{evdns\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend}{p.}{dns__compat_8h_a6131a72d3aa3d311666d7b0d1b51451c} (void)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-clear\-\_\-nameservers\-\_\-and\-\_\-suspend()}{p.}{dns_8h_a6905231913b16b4be9b49739597be64e}. 
+\item[\label{deprecated__deprecated000009}%
+\-Global \doxyref{evdns\-\_\-count\-\_\-nameservers}{p.}{dns__compat_8h_aefea2452917461e8eae9887069f76a23} (void)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-count\-\_\-nameservers()}{p.}{dns_8h_abf5ce2fb1c199f87d256d8dc929586d4}. 
+\item[\label{deprecated__deprecated000006}%
+\-Global \doxyref{evdns\-\_\-get\-\_\-global\-\_\-base}{p.}{dns__compat_8h_aa742958b366b3acf147487732b275436} (void)]\-This function is deprecated because use of the global \doxyref{evdns\-\_\-base}{p.}{structevdns__base} is error-\/prone.  
+\item[\label{deprecated__deprecated000005}%
+\-Global \doxyref{evdns\-\_\-init}{p.}{dns__compat_8h_afce412359a059f87cba10658dbd16b53} (void)]\-This function is deprecated because it always uses the current event base, and is easily confused by multiple calls to \doxyref{event\-\_\-init()}{p.}{event__compat_8h_a1bf74386dd3725e1538fed2d70c1c113}, and so is not safe for multithreaded use. \-Additionally, it allocates a global structure that only one thread can use. \-The replacement is \doxyref{evdns\-\_\-base\-\_\-new()}{p.}{dns_8h_a01e7ab67e97b46dc4962bbc29d0d0604}. 
+\item[\label{deprecated__deprecated000008}%
+\-Global \doxyref{evdns\-\_\-nameserver\-\_\-add}{p.}{dns__compat_8h_a0ba5d16d88f50668ef2a9ec8d08dc113} (unsigned long int address)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-nameserver\-\_\-add()}{p.}{dns_8h_a187db99dc5996a2b7aa672321d50d5d8}. 
+\item[\label{deprecated__deprecated000012}%
+\-Global \doxyref{evdns\-\_\-nameserver\-\_\-ip\-\_\-add}{p.}{dns__compat_8h_ab0b1ee113de5daac378625021aae0276} (const char $\ast$ip\-\_\-as\-\_\-string)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-nameserver\-\_\-ip\-\_\-add()}{p.}{dns_8h_a5d90b3ed3156d5c1884a651e87e66e17}. 
+\item[\label{deprecated__deprecated000017}%
+\-Global \doxyref{evdns\-\_\-resolv\-\_\-conf\-\_\-parse}{p.}{dns__compat_8h_a1a04688076484579b5dd1ce07b584d42} (int flags, const char $\ast$const filename)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-resolv\-\_\-conf\-\_\-parse()}{p.}{dns_8h_ad4b52689e65d384c37693b080d9eef21}. 
+\item[\label{deprecated__deprecated000013}%
+\-Global \doxyref{evdns\-\_\-resolve\-\_\-ipv4}{p.}{dns__compat_8h_a68e22e497f71fc97e7b85512319867ee} (const char $\ast$name, int flags, evdns\-\_\-callback\-\_\-type callback, void $\ast$ptr)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-resolve\-\_\-ipv4()}{p.}{dns_8h_ac646ab50f11433ca375ce0be66be7efa}. 
+\item[\label{deprecated__deprecated000014}%
+\-Global \doxyref{evdns\-\_\-resolve\-\_\-reverse}{p.}{dns__compat_8h_a8b2c2c8984d5596ab12dc6fdc0fb2018} (const struct in\-\_\-addr $\ast$in, int flags, evdns\-\_\-callback\-\_\-type callback, void $\ast$ptr)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-resolve\-\_\-reverse()}{p.}{dns_8h_a5044832b0101814228934cc3fd2a83c8}. 
+\item[\label{deprecated__deprecated000015}%
+\-Global \doxyref{evdns\-\_\-resolve\-\_\-reverse\-\_\-ipv6}{p.}{dns__compat_8h_a7f34271326be1fa9d85050e79e979f00} (const struct \doxyref{in6\-\_\-addr}{p.}{structin6__addr} $\ast$in, int flags, evdns\-\_\-callback\-\_\-type callback, void $\ast$ptr)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-resolve\-\_\-reverse\-\_\-ipv6()}{p.}{dns_8h_ac2ae80af5bff5627f59a6ce8ff5eeea8}. 
+\item[\label{deprecated__deprecated000011}%
+\-Global \doxyref{evdns\-\_\-resume}{p.}{dns__compat_8h_a27bf24a40c3d278373490421ed5ccf77} (void)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-resume()}{p.}{dns_8h_a2a70398d61d38e13f559cf135abb8406}. 
+\item[\label{deprecated__deprecated000019}%
+\-Global \doxyref{evdns\-\_\-search\-\_\-add}{p.}{dns__compat_8h_ae7a63c39b7eb75bf97555ab265a84858} (const char $\ast$domain)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-search\-\_\-add()}{p.}{dns_8h_addf2cfb1c1a237d68409fc1464b26b00}. 
+\item[\label{deprecated__deprecated000018}%
+\-Global \doxyref{evdns\-\_\-search\-\_\-clear}{p.}{dns__compat_8h_a61b92557ca2f3de783041b087c04690a} (void)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-search\-\_\-clear()}{p.}{dns_8h_a0ba91c6fda38169eeed7040c9721ed2b}.  
+\item[\label{deprecated__deprecated000020}%
+\-Global \doxyref{evdns\-\_\-search\-\_\-ndots\-\_\-set}{p.}{dns__compat_8h_a06910efcf0ead0173affeb50851e149d} (const int ndots)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-search\-\_\-ndots\-\_\-set()}{p.}{dns_8h_aaac85133f8d6288055093c99120bdd82}. 
+\item[\label{deprecated__deprecated000016}%
+\-Global \doxyref{evdns\-\_\-set\-\_\-option}{p.}{dns__compat_8h_aad9d40ceab56f58f546076439a3ee2eb} (const char $\ast$option, const char $\ast$val, int flags)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is \doxyref{evdns\-\_\-base\-\_\-set\-\_\-option()}{p.}{dns_8h_a3308067aed25c60a2ddeee83e5dd84d9}. 
+\item[\label{deprecated__deprecated000007}%
+\-Global \doxyref{evdns\-\_\-shutdown}{p.}{dns__compat_8h_a4dc777ee490a8039c2b990487ae18af8} (int fail\-\_\-requests)]\-This function is deprecated because it does not allow the caller to specify which \doxyref{evdns\-\_\-base}{p.}{structevdns__base} it applies to. \-The recommended function is evdns\-\_\-base\-\_\-shutdown(). 
+\item[\label{deprecated__deprecated000022}%
+\-File \doxyref{event\-\_\-compat.h}{p.}{event__compat_8h} ]\-All functions in this file are by definition deprecated.  
+\item[\label{deprecated__deprecated000024}%
+\-Global \doxyref{event\-\_\-dispatch}{p.}{event__compat_8h_a1f4991bceb8aaf33545d1fc857230b51} (void)]\-This function is deprecated because it is easily confused by multiple calls to \doxyref{event\-\_\-init()}{p.}{event__compat_8h_a1bf74386dd3725e1538fed2d70c1c113}, and because it is not safe for multithreaded use. \-The replacement is \doxyref{event\-\_\-base\-\_\-dispatch()}{p.}{include_2event2_2event_8h_a01e457364ed5216a8c7bc219033b946f}. 
+\item[\label{deprecated__deprecated000029}%
+\-Global \doxyref{event\-\_\-get\-\_\-method}{p.}{event__compat_8h_a8a03c9175e0578017a384b4c039b090f} (void)]\-This function is obsolete, and has been replaced by \doxyref{event\-\_\-base\-\_\-get\-\_\-method()}{p.}{include_2event2_2event_8h_a10914a893ed07dc8238d3274a9cbb3fc}. \-Its use is deprecated because it relies on the \char`\"{}current\char`\"{} base configured by \doxyref{event\-\_\-init()}{p.}{event__compat_8h_a1bf74386dd3725e1538fed2d70c1c113}. 
+\item[\label{deprecated__deprecated000023}%
+\-Global \doxyref{event\-\_\-init}{p.}{event__compat_8h_a1bf74386dd3725e1538fed2d70c1c113} (void)]\-This function is deprecated because it replaces the \char`\"{}current\char`\"{} \doxyref{event\-\_\-base}{p.}{structevent__base}, and is totally unsafe for multithreaded use. \-The replacement is \doxyref{event\-\_\-base\-\_\-new()}{p.}{include_2event2_2event_8h_a4c16f1203aebc67f94791ae0240b7353}. 
+\item[\label{deprecated__deprecated000025}%
+\-Global \doxyref{event\-\_\-loop}{p.}{event__compat_8h_a765c1875642fc730addf04e9433f6448} (int)]\-This function is deprecated because it uses the event base from the last call to event\-\_\-init, and is therefore not safe for multithreaded use. \-The replacement is \doxyref{event\-\_\-base\-\_\-loop()}{p.}{include_2event2_2event_8h_ad712706e6a763b6662f0eb03b3d8cd80}. 
+\item[\label{deprecated__deprecated000027}%
+\-Global \doxyref{event\-\_\-loopbreak}{p.}{event__compat_8h_a3a5c57caea1d97160f6990b3deeb6961} (void)]\-This function is deprecated because it uses the event base from the last call to event\-\_\-init, and is therefore not safe for multithreaded use. \-The replacement is \doxyref{event\-\_\-base\-\_\-loopbreak()}{p.}{include_2event2_2event_8h_a07a7599e478e4031fa8cf52e26d8aa1e}. 
+\item[\label{deprecated__deprecated000026}%
+\-Global \doxyref{event\-\_\-loopexit}{p.}{event__compat_8h_a2e3d894ac7986bb4967ebfe67a2d9977} (const struct timeval $\ast$)]\-This function is deprecated because it uses the event base from the last call to event\-\_\-init, and is therefore not safe for multithreaded use. \-The replacement is \doxyref{event\-\_\-base\-\_\-loopexit()}{p.}{include_2event2_2event_8h_ac2c66174ee5f10df65b9a9b62fca7dd9}. 
+\item[\label{deprecated__deprecated000028}%
+\-Global \doxyref{event\-\_\-once}{p.}{event__compat_8h_a074cf31709035ec2b7b660374bbd3b90} (evutil\-\_\-socket\-\_\-t, short, void($\ast$)(evutil\-\_\-socket\-\_\-t, short, void $\ast$), void $\ast$, const struct timeval $\ast$)]\-This function is obsolete, and has been replaced by \doxyref{event\-\_\-base\-\_\-once()}{p.}{include_2event2_2event_8h_acddee16b430c037ae061f966dc18eb9d}. \-Its use is deprecated because it relies on the \char`\"{}current\char`\"{} base configured by \doxyref{event\-\_\-init()}{p.}{event__compat_8h_a1bf74386dd3725e1538fed2d70c1c113}. 
+\item[\label{deprecated__deprecated000030}%
+\-Global \doxyref{event\-\_\-priority\-\_\-init}{p.}{event__compat_8h_ac98d83bce2fe3e97ac655329fb30fccb} (int)]\-This function is deprecated because it is easily confused by multiple calls to \doxyref{event\-\_\-init()}{p.}{event__compat_8h_a1bf74386dd3725e1538fed2d70c1c113}, and because it is not safe for multithreaded use. \-The replacement is \doxyref{event\-\_\-base\-\_\-priority\-\_\-init()}{p.}{include_2event2_2event_8h_a67067fe995561cd36a7f34ef19e030e8}. 
+\item[\label{deprecated__deprecated000031}%
+\-Global \doxyref{event\-\_\-set}{p.}{event__compat_8h_ace184d66066e9bac013779d8f6921d11} (struct event $\ast$, evutil\-\_\-socket\-\_\-t, short, void($\ast$)(evutil\-\_\-socket\-\_\-t, short, void $\ast$), void $\ast$)]\doxyref{event\-\_\-set()}{p.}{event__compat_8h_ace184d66066e9bac013779d8f6921d11} is not recommended for new code, because it requires a subsequent call to \doxyref{event\-\_\-base\-\_\-set()}{p.}{include_2event2_2event_8h_a2efd0ac7e54428d1941f212bc16ed9ce} to be safe under most circumstances. \-Use \doxyref{event\-\_\-assign()}{p.}{include_2event2_2event_8h_afade5e4859dee5b85d502e5594a05cf0} or \doxyref{event\-\_\-new()}{p.}{include_2event2_2event_8h_ab9a66f828d205eda84b321e32014cbbd} instead.  
+\item[\label{deprecated__deprecated000037}%
+\-Global \doxyref{evhttp\-\_\-connection\-\_\-new}{p.}{http__compat_8h_a3fab40a20af95f525d5d7f21ea215535} (const char $\ast$address, unsigned short port)]\-It does not allow an event base to be specified  
+\item[\label{deprecated__deprecated000038}%
+\-Global \doxyref{evhttp\-\_\-connection\-\_\-set\-\_\-base}{p.}{http__compat_8h_a7a3a6de60e64dd0469affb45f267888a} (struct \doxyref{evhttp\-\_\-connection}{p.}{structevhttp__connection} $\ast$evcon, struct \doxyref{event\-\_\-base}{p.}{structevent__base} $\ast$base)]\-X\-X\-X\-X \-Why?  
+\item[\label{deprecated__deprecated000034}%
+\-Global \doxyref{evhttp\-\_\-decode\-\_\-uri}{p.}{http_8h_a681a8e967dec9f73fb8e27f465fdae4b} (const char $\ast$uri)]\-This function is deprecated; you probably want to use evhttp\-\_\-get\-\_\-decoded\-\_\-uri instead. 
+\item[\label{deprecated__deprecated000035}%
+\-Global \doxyref{evhttp\-\_\-parse\-\_\-query}{p.}{http_8h_a12d3940d23fb53c38106f8ac0d3dfff6} (const char $\ast$uri, struct evkeyvalq $\ast$headers)]\-This function is deprecated as of \-Libevent 2.\-0.\-9. \-Use evhttp\-\_\-uri\-\_\-parse and evhttp\-\_\-parse\-\_\-query\-\_\-str instead. 
+\item[\label{deprecated__deprecated000036}%
+\-Global \doxyref{evhttp\-\_\-start}{p.}{http__compat_8h_aff4e96ef72ca014740878e3e5f02befc} (const char $\ast$address, unsigned short port)]\-It does not allow an event base to be specified 
+\item[\label{deprecated__deprecated000039}%
+\-Group \doxyref{\-Misnamed functions}{p.}{tag__compat_8h_amgrp09b657270e45b27a6d7dedbf0426e43f} ]\-These macros are deprecated because their names don't follow \-Libevent's naming conventions. \-Use evtag\-\_\-encode\-\_\-int and evtag\-\_\-encode\-\_\-int64 instead. 
+\item[\label{deprecated__deprecated000033}%
+\-Group \doxyref{signal\-\_\-$\ast$ macros}{p.}{event__compat_8h_amgrpd275339f7c05b5ba515c4e8f8ebb479f} ]\-These macros are deprecated because their naming is inconsistent with the rest of \-Libevent. \-Use the evsignal\-\_\-$\ast$ macros instead.
+
+
+\item[\label{deprecated__deprecated000032}%
+\-Group \doxyref{timeout\-\_\-$\ast$ macros}{p.}{event__compat_8h_amgrp20d51f2b412be5ac9dbaae67f8db07f5} ]\-These macros are deprecated because their naming is inconsistent with the rest of \-Libevent. \-Use the evtimer\-\_\-$\ast$ macros instead.
+
+
+\end{DoxyRefList}

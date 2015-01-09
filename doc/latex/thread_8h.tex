@@ -1,0 +1,136 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/include/event2/thread.h \-File \-Reference}
+\label{thread_8h}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/thread.\-h@{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/thread.\-h}}
+{\ttfamily \#include $<$event2/event-\/config.\-h$>$}\*
+\-Include dependency graph for thread.\-h\-:
+\-This graph shows which files directly or indirectly include this file\-:
+\subsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evthread\-\_\-lock\-\_\-callbacks}
+\item 
+struct {\bf evthread\-\_\-condition\-\_\-callbacks}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-\_\-\-A\-P\-I\-\_\-\-V\-E\-R\-S\-I\-O\-N}~1\label{thread_8h_a911771b77b303b553612bef600573448}
+
+\item 
+\#define {\bfseries \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-C\-O\-N\-D\-I\-T\-I\-O\-N\-\_\-\-A\-P\-I\-\_\-\-V\-E\-R\-S\-I\-O\-N}~1\label{thread_8h_a83fecb8503fdb40ca4e57bac66608721}
+
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf \-Flags passed to lock functions}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-W\-R\-I\-T\-E}~0x04
+\item 
+\#define {\bf \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-A\-D}~0x08
+\item 
+\#define {\bf \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-T\-R\-Y}~0x10
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \-Types of locks}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-C\-U\-R\-S\-I\-V\-E}~1
+\item 
+\#define {\bfseries \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-A\-D\-W\-R\-I\-T\-E}~2\label{thread_8h_aefbfdb33065b9e3a50e69c7c02cf2f42}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf evthread\-\_\-set\-\_\-lock\-\_\-callbacks} (const struct {\bf evthread\-\_\-lock\-\_\-callbacks} $\ast$)
+\item 
+int {\bf evthread\-\_\-set\-\_\-condition\-\_\-callbacks} (const struct {\bf evthread\-\_\-condition\-\_\-callbacks} $\ast$)
+\item 
+void {\bf evthread\-\_\-set\-\_\-id\-\_\-callback} (unsigned long($\ast$id\-\_\-fn)(void))
+\item 
+void {\bf evthread\-\_\-enable\-\_\-lock\-\_\-debuging} (void)
+\item 
+int {\bf evthread\-\_\-make\-\_\-base\-\_\-notifiable} (struct {\bf event\-\_\-base} $\ast$base)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Functions for multi-\/threaded applications using \-Libevent.
+
+\-When using a multi-\/threaded application in which multiple threads add and delete events from a single event base, \-Libevent needs to lock its data structures.
+
+\-Like the memory-\/management function hooks, all of the threading functions \-\_\-must\-\_\- be set up before an \doxyref{event\-\_\-base}{p.}{structevent__base} is created if you want the base to use them.
+
+\-Most programs will either be using \-Windows threads or \-Posix threads. \-You can configure \-Libevent to use one of these event\-\_\-use\-\_\-windows\-\_\-threads() or event\-\_\-use\-\_\-pthreads() respectively. \-If you're using another threading library, you'll need to configure threading functions manually using \doxyref{evthread\-\_\-set\-\_\-lock\-\_\-callbacks()}{p.}{thread_8h_a89fd5de575d5f0fba24d0e8e0a25c641} and \doxyref{evthread\-\_\-set\-\_\-condition\-\_\-callbacks()}{p.}{thread_8h_a05b941ee76d9798da61270d4016bb015}. 
+
+\subsection{\-Define \-Documentation}
+\index{thread.\-h@{thread.\-h}!\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-C\-U\-R\-S\-I\-V\-E@{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-C\-U\-R\-S\-I\-V\-E}}
+\index{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-C\-U\-R\-S\-I\-V\-E@{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-C\-U\-R\-S\-I\-V\-E}!thread.h@{thread.\-h}}
+\subsubsection[{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-C\-U\-R\-S\-I\-V\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-C\-U\-R\-S\-I\-V\-E}~1}\label{thread_8h_a8fbf4020f11c3b98459fd8d4d427513c}
+\-A recursive lock is one that can be acquired multiple times at once by the same thread. \-No other process can allocate the lock until the thread that has been holding it has unlocked it as many times as it locked it. \index{thread.\-h@{thread.\-h}!\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-A\-D@{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-A\-D}}
+\index{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-A\-D@{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-A\-D}!thread.h@{thread.\-h}}
+\subsubsection[{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-A\-D}~0x08}\label{thread_8h_a8c7a3fb4b1f521b4a262e5043f3fa14c}
+\-A flag passed to a locking callback when the lock was allocated as a read-\/write lock, and we want to acquire or release the lock for reading. \index{thread.\-h@{thread.\-h}!\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-T\-R\-Y@{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-T\-R\-Y}}
+\index{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-T\-R\-Y@{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-T\-R\-Y}!thread.h@{thread.\-h}}
+\subsubsection[{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-T\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-T\-R\-Y}~0x10}\label{thread_8h_a746e63692bf5bd5b4ee5d929df1592e2}
+\-A flag passed to a locking callback when we don't want to block waiting for the lock; if we can't get the lock immediately, we will instead return nonzero from the locking callback. \index{thread.\-h@{thread.\-h}!\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-W\-R\-I\-T\-E@{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-W\-R\-I\-T\-E}}
+\index{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-W\-R\-I\-T\-E@{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-W\-R\-I\-T\-E}!thread.h@{thread.\-h}}
+\subsubsection[{\-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-W\-R\-I\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-W\-R\-I\-T\-E}~0x04}\label{thread_8h_aa9fb1861f3b09a03c5986561dd00db0d}
+\-A flag passed to a locking callback when the lock was allocated as a read-\/write lock, and we want to acquire or release the lock for writing. 
+
+\subsection{\-Function \-Documentation}
+\index{thread.\-h@{thread.\-h}!evthread\-\_\-enable\-\_\-lock\-\_\-debuging@{evthread\-\_\-enable\-\_\-lock\-\_\-debuging}}
+\index{evthread\-\_\-enable\-\_\-lock\-\_\-debuging@{evthread\-\_\-enable\-\_\-lock\-\_\-debuging}!thread.h@{thread.\-h}}
+\subsubsection[{evthread\-\_\-enable\-\_\-lock\-\_\-debuging}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evthread\-\_\-enable\-\_\-lock\-\_\-debuging} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a473ab66bfe6a74fe78eb95a86053ae67}
+\-Enable debugging wrappers around the current lock callbacks. \-If \-Libevent makes one of several common locking errors, exit with an assertion failure.
+
+\-If you're going to call this function, you must do so before any locks are allocated. \index{thread.\-h@{thread.\-h}!evthread\-\_\-make\-\_\-base\-\_\-notifiable@{evthread\-\_\-make\-\_\-base\-\_\-notifiable}}
+\index{evthread\-\_\-make\-\_\-base\-\_\-notifiable@{evthread\-\_\-make\-\_\-base\-\_\-notifiable}!thread.h@{thread.\-h}}
+\subsubsection[{evthread\-\_\-make\-\_\-base\-\_\-notifiable}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evthread\-\_\-make\-\_\-base\-\_\-notifiable} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base}
+\end{DoxyParamCaption}
+)}\label{thread_8h_ad6ce3b3efff53b41758944a8b486f62c}
+\-Make sure it's safe to tell an event base to wake up from another thread or a signal handler.
+
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+\index{thread.\-h@{thread.\-h}!evthread\-\_\-set\-\_\-condition\-\_\-callbacks@{evthread\-\_\-set\-\_\-condition\-\_\-callbacks}}
+\index{evthread\-\_\-set\-\_\-condition\-\_\-callbacks@{evthread\-\_\-set\-\_\-condition\-\_\-callbacks}!thread.h@{thread.\-h}}
+\subsubsection[{evthread\-\_\-set\-\_\-condition\-\_\-callbacks}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evthread\-\_\-set\-\_\-condition\-\_\-callbacks} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evthread\-\_\-condition\-\_\-callbacks} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a05b941ee76d9798da61270d4016bb015}
+\-Sets a group of functions that \-Libevent should use for condition variables. \-For full information on the required callback \-A\-P\-I, see the documentation for the individual members of \doxyref{evthread\-\_\-condition\-\_\-callbacks}{p.}{structevthread__condition__callbacks}.
+
+\-Note that if you're using \-Windows or the \-Pthreads threading library, you probably shouldn't call this function; instead, use evthread\-\_\-use\-\_\-windows\-\_\-threads() or evthread\-\_\-use\-\_\-pthreads() if you can. \index{thread.\-h@{thread.\-h}!evthread\-\_\-set\-\_\-id\-\_\-callback@{evthread\-\_\-set\-\_\-id\-\_\-callback}}
+\index{evthread\-\_\-set\-\_\-id\-\_\-callback@{evthread\-\_\-set\-\_\-id\-\_\-callback}!thread.h@{thread.\-h}}
+\subsubsection[{evthread\-\_\-set\-\_\-id\-\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evthread\-\_\-set\-\_\-id\-\_\-callback} (
+\begin{DoxyParamCaption}
+\item[{unsigned long($\ast$)(void)}]{id\-\_\-fn}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a3eae2571d33fc83f16d1810ab56211d3}
+\-Sets the function for determining the thread id.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the event base for which to set the id function \\
+\hline
+{\em id\-\_\-fn} & the identify function \-Libevent should invoke to determine the identity of a thread. \\
+\hline
+\end{DoxyParams}
+\index{thread.\-h@{thread.\-h}!evthread\-\_\-set\-\_\-lock\-\_\-callbacks@{evthread\-\_\-set\-\_\-lock\-\_\-callbacks}}
+\index{evthread\-\_\-set\-\_\-lock\-\_\-callbacks@{evthread\-\_\-set\-\_\-lock\-\_\-callbacks}!thread.h@{thread.\-h}}
+\subsubsection[{evthread\-\_\-set\-\_\-lock\-\_\-callbacks}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evthread\-\_\-set\-\_\-lock\-\_\-callbacks} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evthread\-\_\-lock\-\_\-callbacks} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a89fd5de575d5f0fba24d0e8e0a25c641}
+\-Sets a group of functions that \-Libevent should use for locking. \-For full information on the required callback \-A\-P\-I, see the documentation for the individual members of \doxyref{evthread\-\_\-lock\-\_\-callbacks}{p.}{structevthread__lock__callbacks}.
+
+\-Note that if you're using \-Windows or the \-Pthreads threading library, you probably shouldn't call this function; instead, use evthread\-\_\-use\-\_\-windows\-\_\-threads() or evthread\-\_\-use\-\_\-posix\-\_\-threads() if you can. 

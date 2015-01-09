@@ -1,0 +1,104 @@
+\section{evhttp\-\_\-request \-Struct \-Reference}
+\label{structevhttp__request}\index{evhttp\-\_\-request@{evhttp\-\_\-request}}
+
+
+{\ttfamily \#include $<$http\-\_\-struct.\-h$>$}
+
+
+
+\-Collaboration diagram for evhttp\-\_\-request\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>struct {\bf evhttp\_request} $\ast$ {\bfseries tqe\_next}\\
+\>struct {\bf evhttp\_request} $\ast$$\ast$ {\bfseries tqe\_prev}\\
+\} {\bfseries next}\label{structevhttp__request_aece6a6a39ba9e5536580ab2d778340e9}
+\\
+
+\end{tabbing}\item 
+struct {\bf evhttp\-\_\-connection} $\ast$ {\bfseries evcon}\label{structevhttp__request_a507c84afa3bb93e17efc8aecd1bf18d2}
+
+\item 
+int {\bfseries flags}\label{structevhttp__request_ac8bf36fe0577cba66bccda3a6f7e80a4}
+
+\item 
+struct evkeyvalq $\ast$ {\bfseries input\-\_\-headers}\label{structevhttp__request_aede60c2050dad66a8acb668e6dce62da}
+
+\item 
+struct evkeyvalq $\ast$ {\bfseries output\-\_\-headers}\label{structevhttp__request_a04d464c0375677d5947d1dea3cf1ffbf}
+
+\item 
+char $\ast$ {\bfseries remote\-\_\-host}\label{structevhttp__request_ad3b3b50ad62505bf7cedcbc9a4449a6e}
+
+\item 
+ev\-\_\-uint16\-\_\-t {\bfseries remote\-\_\-port}\label{structevhttp__request_a1a0f4454cfb82fd79086a37770aeaaea}
+
+\item 
+char $\ast$ {\bfseries host\-\_\-cache}\label{structevhttp__request_a7d0b74418b8de9c36d3168a6dade73a1}
+
+\item 
+enum {\bf evhttp\-\_\-request\-\_\-kind} {\bfseries kind}\label{structevhttp__request_aa53cee05790b7cffbdad794ff42919b7}
+
+\item 
+enum {\bf evhttp\-\_\-cmd\-\_\-type} {\bfseries type}\label{structevhttp__request_aa6526555032f25dd1205204b60ddd41d}
+
+\item 
+size\-\_\-t {\bfseries headers\-\_\-size}\label{structevhttp__request_a414cd4b4d35e441b98dd8605365e8b0b}
+
+\item 
+size\-\_\-t {\bfseries body\-\_\-size}\label{structevhttp__request_ae1855d81db1795c9b018b1f1767c468b}
+
+\item 
+char $\ast$ {\bfseries uri}\label{structevhttp__request_af98b83cec5342c54027dd92f7357d6e6}
+
+\item 
+struct {\bf evhttp\-\_\-uri} $\ast$ {\bfseries uri\-\_\-elems}\label{structevhttp__request_a7988edd0ffe6c65dc7c009bea57f81c9}
+
+\item 
+char {\bfseries major}\label{structevhttp__request_a5ff67cfba8dbe05179c43140cbe52b72}
+
+\item 
+char {\bfseries minor}\label{structevhttp__request_a373918edcc23e4f9efb29b0922832fe9}
+
+\item 
+int {\bfseries response\-\_\-code}\label{structevhttp__request_ab87e6ba68d41639a13e89b5a2cf400e7}
+
+\item 
+char $\ast$ {\bfseries response\-\_\-code\-\_\-line}\label{structevhttp__request_aeb8fb4f5b06ddb71a62c34075a064ff4}
+
+\item 
+struct {\bf evbuffer} $\ast$ {\bfseries input\-\_\-buffer}\label{structevhttp__request_a6563c3bec6373038d8ae9f8d17ac4bc3}
+
+\item 
+ev\-\_\-int64\-\_\-t {\bfseries ntoread}\label{structevhttp__request_a4bb14fd87ed737b58164a1489ffcdfd4}
+
+\item 
+unsigned {\bfseries chunked}\-:1\label{structevhttp__request_aef585077270a772d5e204784ef71ee85}
+
+\item 
+unsigned {\bfseries userdone}\-:1\label{structevhttp__request_a87d046996fd73792dcde0eb78446f4c8}
+
+\item 
+struct {\bf evbuffer} $\ast$ {\bfseries output\-\_\-buffer}\label{structevhttp__request_a3b78abf045f4ac7551287d298f3e53b7}
+
+\item 
+void($\ast$ {\bfseries cb} )(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$)\label{structevhttp__request_a075b5a6108110ecc4f8c80c1606b1c2e}
+
+\item 
+void $\ast$ {\bfseries cb\-\_\-arg}\label{structevhttp__request_aa2a0fc874870115f7d31aabcbb53ec0b}
+
+\item 
+void($\ast$ {\bfseries chunk\-\_\-cb} )(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$)\label{structevhttp__request_a1f002a58a1a7bc05a64a78d002619125}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+the request structure that a server receives. \-W\-A\-R\-N\-I\-N\-G\-: expect this structure to change. \-I will try to provide reasonable accessors. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/{\bf http\-\_\-struct.\-h}\end{DoxyCompactItemize}

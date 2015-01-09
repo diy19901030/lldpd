@@ -1,0 +1,54 @@
+\section{bufferevent\-\_\-filtered \-Struct \-Reference}
+\label{structbufferevent__filtered}\index{bufferevent\-\_\-filtered@{bufferevent\-\_\-filtered}}
+
+
+\-Collaboration diagram for bufferevent\-\_\-filtered\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf bufferevent\-\_\-private} {\bfseries bev}\label{structbufferevent__filtered_ac89d86467e491d6accc55fc1aaea8a13}
+
+\item 
+struct {\bf bufferevent} $\ast$ {\bf underlying}
+\item 
+struct {\bf evbuffer\-\_\-cb\-\_\-entry} $\ast$ {\bf outbuf\-\_\-cb}
+\item 
+unsigned {\bf got\-\_\-eof}
+\item 
+void($\ast$ {\bf free\-\_\-context} )(void $\ast$)
+\item 
+{\bf bufferevent\-\_\-filter\-\_\-cb} {\bf process\-\_\-in}
+\item 
+{\bf bufferevent\-\_\-filter\-\_\-cb} {\bf process\-\_\-out}
+\item 
+void $\ast$ {\bf context}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Field \-Documentation}
+\index{bufferevent\-\_\-filtered@{bufferevent\-\_\-filtered}!context@{context}}
+\index{context@{context}!bufferevent_filtered@{bufferevent\-\_\-filtered}}
+\subsubsection[{context}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf context}}\label{structbufferevent__filtered_ae376f130b17d169ee51be68077a89ed0}
+\-User-\/supplied argument to the filters. \index{bufferevent\-\_\-filtered@{bufferevent\-\_\-filtered}!free\-\_\-context@{free\-\_\-context}}
+\index{free\-\_\-context@{free\-\_\-context}!bufferevent_filtered@{bufferevent\-\_\-filtered}}
+\subsubsection[{free\-\_\-context}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ {\bf free\-\_\-context})(void $\ast$)}\label{structbufferevent__filtered_ab0a3809972d3b1423631e37f9440491f}
+\-Function to free context when we're done. \index{bufferevent\-\_\-filtered@{bufferevent\-\_\-filtered}!got\-\_\-eof@{got\-\_\-eof}}
+\index{got\-\_\-eof@{got\-\_\-eof}!bufferevent_filtered@{bufferevent\-\_\-filtered}}
+\subsubsection[{got\-\_\-eof}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf got\-\_\-eof}}\label{structbufferevent__filtered_a3b64547292f52c97c61a22338765928c}
+\-True iff we have received an \-E\-O\-F callback from the underlying bufferevent. \index{bufferevent\-\_\-filtered@{bufferevent\-\_\-filtered}!outbuf\-\_\-cb@{outbuf\-\_\-cb}}
+\index{outbuf\-\_\-cb@{outbuf\-\_\-cb}!bufferevent_filtered@{bufferevent\-\_\-filtered}}
+\subsubsection[{outbuf\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer\-\_\-cb\-\_\-entry}$\ast$ {\bf outbuf\-\_\-cb}}\label{structbufferevent__filtered_aaba8f48af30064e0972e59231278c55f}
+\-A callback on our outbuf to notice when somebody adds data \index{bufferevent\-\_\-filtered@{bufferevent\-\_\-filtered}!process\-\_\-in@{process\-\_\-in}}
+\index{process\-\_\-in@{process\-\_\-in}!bufferevent_filtered@{bufferevent\-\_\-filtered}}
+\subsubsection[{process\-\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bufferevent\-\_\-filter\-\_\-cb} {\bf process\-\_\-in}}\label{structbufferevent__filtered_a114e95745c297dd5774d755c4db33a41}
+\-Input filter \index{bufferevent\-\_\-filtered@{bufferevent\-\_\-filtered}!process\-\_\-out@{process\-\_\-out}}
+\index{process\-\_\-out@{process\-\_\-out}!bufferevent_filtered@{bufferevent\-\_\-filtered}}
+\subsubsection[{process\-\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bufferevent\-\_\-filter\-\_\-cb} {\bf process\-\_\-out}}\label{structbufferevent__filtered_af1d84f528bdb3ba4dbe9ede92069081f}
+\-Output filter \index{bufferevent\-\_\-filtered@{bufferevent\-\_\-filtered}!underlying@{underlying}}
+\index{underlying@{underlying}!bufferevent_filtered@{bufferevent\-\_\-filtered}}
+\subsubsection[{underlying}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent}$\ast$ {\bf underlying}}\label{structbufferevent__filtered_a28dd39cec675d7f406ea714d8b4aa00c}
+\-The bufferevent that we read/write filtered data from/to. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/bufferevent\-\_\-filter.\-c\end{DoxyCompactItemize}

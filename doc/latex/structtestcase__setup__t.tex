@@ -1,0 +1,30 @@
+\section{testcase\-\_\-setup\-\_\-t \-Struct \-Reference}
+\label{structtestcase__setup__t}\index{testcase\-\_\-setup\-\_\-t@{testcase\-\_\-setup\-\_\-t}}
+
+
+{\ttfamily \#include $<$tinytest.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$($\ast$ {\bf setup\-\_\-fn} )(const struct {\bf testcase\-\_\-t} $\ast$)
+\item 
+int($\ast$ {\bf cleanup\-\_\-fn} )(const struct {\bf testcase\-\_\-t} $\ast$, void $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Functions to initialize/teardown a structure for a testcase. 
+
+\subsection{\-Field \-Documentation}
+\index{testcase\-\_\-setup\-\_\-t@{testcase\-\_\-setup\-\_\-t}!cleanup\-\_\-fn@{cleanup\-\_\-fn}}
+\index{cleanup\-\_\-fn@{cleanup\-\_\-fn}!testcase_setup_t@{testcase\-\_\-setup\-\_\-t}}
+\subsubsection[{cleanup\-\_\-fn}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf cleanup\-\_\-fn})(const struct {\bf testcase\-\_\-t} $\ast$, void $\ast$)}\label{structtestcase__setup__t_a3814fa1bd63919aa821f1cdac47fd3c1}
+\-Clean/free a structure from setup\-\_\-fn. \-Return 1 if ok, 0 on err. \index{testcase\-\_\-setup\-\_\-t@{testcase\-\_\-setup\-\_\-t}!setup\-\_\-fn@{setup\-\_\-fn}}
+\index{setup\-\_\-fn@{setup\-\_\-fn}!testcase_setup_t@{testcase\-\_\-setup\-\_\-t}}
+\subsubsection[{setup\-\_\-fn}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$($\ast$ {\bf setup\-\_\-fn})(const struct {\bf testcase\-\_\-t} $\ast$)}\label{structtestcase__setup__t_a115d5ed5f18a649e3ec99919b184ce1e}
+\-Return a new structure for use by a given testcase. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/test/tinytest.\-h\end{DoxyCompactItemize}

@@ -1,0 +1,40 @@
+\section{ethtool\-\_\-ts\-\_\-info \-Struct \-Reference}
+\label{structethtool__ts__info}\index{ethtool\-\_\-ts\-\_\-info@{ethtool\-\_\-ts\-\_\-info}}
+
+
+{\ttfamily \#include $<$ethtool.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-u32 {\bfseries cmd}\label{structethtool__ts__info_a66d231264d5aa36fd7d347e2c967769a}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries so\-\_\-timestamping}\label{structethtool__ts__info_a78f1c200804e145215561f5555e79215}
+
+\item 
+\-\_\-\-\_\-s32 {\bfseries phc\-\_\-index}\label{structethtool__ts__info_a5b7bdb20c12d6f3ded6899fdfb7dc33f}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries tx\-\_\-types}\label{structethtool__ts__info_ac7fdbc6a2a0b311355e8e42f87450c63}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries tx\-\_\-reserved} [3]\label{structethtool__ts__info_aea7a79a1ad0858a7c7b96dabbda843ea}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries rx\-\_\-filters}\label{structethtool__ts__info_a07047ec9e453254869fcd3b4b16be5f2}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries rx\-\_\-reserved} [3]\label{structethtool__ts__info_af7fe387067605dc70b191d3ccb560d40}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+struct \doxyref{ethtool\-\_\-ts\-\_\-info}{p.}{structethtool__ts__info} -\/ holds a device's timestamping and \-P\-H\-C association \-: command number = \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-E\-T\-\_\-\-T\-S\-\_\-\-I\-N\-F\-O \-: bit mask of the sum of the supported \-S\-O\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P\-I\-N\-G flags \-: device index of the associated \-P\-H\-C, or -\/1 if there is none \-: bit mask of the supported hwtstamp\-\_\-tx\-\_\-types enumeration values \-: bit mask of the supported hwtstamp\-\_\-rx\-\_\-filters enumeration values
+
+\-The bits in the 'tx\-\_\-types' and 'rx\-\_\-filters' fields correspond to the 'hwtstamp\-\_\-tx\-\_\-types' and 'hwtstamp\-\_\-rx\-\_\-filters' enumeration values, respectively. \-For example, if the device supports \-H\-W\-T\-S\-T\-A\-M\-P\-\_\-\-T\-X\-\_\-\-O\-N, then (1 $<$$<$ \-H\-W\-T\-S\-T\-A\-M\-P\-\_\-\-T\-X\-\_\-\-O\-N) in 'tx\-\_\-types' will be set. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/ethtool.\-h\end{DoxyCompactItemize}

@@ -1,0 +1,53 @@
+\section{evbuffer\-\_\-chain \-Struct \-Reference}
+\label{structevbuffer__chain}\index{evbuffer\-\_\-chain@{evbuffer\-\_\-chain}}
+
+
+{\ttfamily \#include $<$evbuffer-\/internal.\-h$>$}
+
+
+
+\-Collaboration diagram for evbuffer\-\_\-chain\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evbuffer\-\_\-chain} $\ast$ {\bf next}
+\item 
+size\-\_\-t {\bf buffer\-\_\-len}
+\item 
+ev\-\_\-off\-\_\-t {\bf misalign}
+\item 
+size\-\_\-t {\bf off}
+\item 
+unsigned {\bf flags}
+\item 
+unsigned char $\ast$ {\bf buffer}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A single item in an evbuffer. 
+
+\subsection{\-Field \-Documentation}
+\index{evbuffer\-\_\-chain@{evbuffer\-\_\-chain}!buffer@{buffer}}
+\index{buffer@{buffer}!evbuffer_chain@{evbuffer\-\_\-chain}}
+\subsubsection[{buffer}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char$\ast$ {\bf buffer}}\label{structevbuffer__chain_a70e7ad2e1a45c8db5fba9ad4778bd400}
+\-Usually points to the read-\/write memory belonging to this buffer allocated as part of the \doxyref{evbuffer\-\_\-chain}{p.}{structevbuffer__chain} allocation. \-For mmap, this can be a read-\/only buffer and \-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-I\-M\-M\-U\-T\-A\-B\-L\-E will be set in flags. \-For sendfile, it may point to \-N\-U\-L\-L. \index{evbuffer\-\_\-chain@{evbuffer\-\_\-chain}!buffer\-\_\-len@{buffer\-\_\-len}}
+\index{buffer\-\_\-len@{buffer\-\_\-len}!evbuffer_chain@{evbuffer\-\_\-chain}}
+\subsubsection[{buffer\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf buffer\-\_\-len}}\label{structevbuffer__chain_a6bfa135ea1282c77528701bbb081ed06}
+total allocation available in the buffer field. \index{evbuffer\-\_\-chain@{evbuffer\-\_\-chain}!flags@{flags}}
+\index{flags@{flags}!evbuffer_chain@{evbuffer\-\_\-chain}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf flags}}\label{structevbuffer__chain_a8b08a4d2ec878257d64c55f64a62242c}
+\-Set if special handling is required for this chain \index{evbuffer\-\_\-chain@{evbuffer\-\_\-chain}!misalign@{misalign}}
+\index{misalign@{misalign}!evbuffer_chain@{evbuffer\-\_\-chain}}
+\subsubsection[{misalign}]{\setlength{\rightskip}{0pt plus 5cm}ev\-\_\-off\-\_\-t {\bf misalign}}\label{structevbuffer__chain_a17dd937c4e81426858da22165d740a8f}
+unused space at the beginning of buffer or an offset into a file for sendfile buffers. \index{evbuffer\-\_\-chain@{evbuffer\-\_\-chain}!next@{next}}
+\index{next@{next}!evbuffer_chain@{evbuffer\-\_\-chain}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer\-\_\-chain}$\ast$ {\bf next}}\label{structevbuffer__chain_a747cab9940afc2ee7fdfa05b1d0e1b36}
+points to next buffer in the chain \index{evbuffer\-\_\-chain@{evbuffer\-\_\-chain}!off@{off}}
+\index{off@{off}!evbuffer_chain@{evbuffer\-\_\-chain}}
+\subsubsection[{off}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf off}}\label{structevbuffer__chain_a9536cbff2e1f5e767a86a07627dac302}
+\-Offset into buffer + misalign at which to start writing. \-In other words, the total number of bytes actually stored in buffer. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/evbuffer-\/internal.\-h\end{DoxyCompactItemize}

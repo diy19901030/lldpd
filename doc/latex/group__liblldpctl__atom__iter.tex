@@ -1,0 +1,152 @@
+\section{\-Iterating over atoms}
+\label{group__liblldpctl__atom__iter}\index{\-Iterating over atoms@{\-Iterating over atoms}}
+\-Collaboration diagram for \-Iterating over atoms\-:
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf lldpctl\-\_\-atom\-\_\-foreach}(atom, value)
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t} {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-iter} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-next} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t} $\ast$iter)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-value} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t} $\ast$iter)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-create} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Iterate over atoms (lists). 
+
+\subsection{\-Define \-Documentation}
+\index{\-Iterating over atoms@{\-Iterating over atoms}!lldpctl\-\_\-atom\-\_\-foreach@{lldpctl\-\_\-atom\-\_\-foreach}}
+\index{lldpctl\-\_\-atom\-\_\-foreach@{lldpctl\-\_\-atom\-\_\-foreach}!Iterating over atoms@{\-Iterating over atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-foreach}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf lldpctl\-\_\-atom\-\_\-foreach}(
+\begin{DoxyParamCaption}
+\item[{}]{atom, }
+\item[{}]{value}
+\end{DoxyParamCaption}
+)}\label{group__liblldpctl__atom__iter_ga0ede5e33e0eb9efa92470c6a90e98a04}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+for (lldpctl_atom_iter_t *iter = lldpctl_atom_iter(atom);       \
+             iter && (value = lldpctl_atom_iter_value(atom, iter));     \
+             iter = lldpctl_atom_iter_next(atom, iter),                 \
+                 lldpctl_atom_dec_ref(value))
+\end{DoxyCode}
+\-Convenience macro to iter over every value of an iterable object.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom you want to iterate on. \\
+\hline
+{\em value} & \-Atom that will be used to contain each value.\\
+\hline
+\end{DoxyParams}
+\-This macro behaves as a for loop. \-Moreover, at the end of each iteration, value is deallocated. \-Don't use it outside of the loop! 
+
+\subsection{\-Typedef \-Documentation}
+\index{\-Iterating over atoms@{\-Iterating over atoms}!lldpctl\-\_\-atom\-\_\-iter\-\_\-t@{lldpctl\-\_\-atom\-\_\-iter\-\_\-t}}
+\index{lldpctl\-\_\-atom\-\_\-iter\-\_\-t@{lldpctl\-\_\-atom\-\_\-iter\-\_\-t}!Iterating over atoms@{\-Iterating over atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-iter\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t} {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t}}\label{group__liblldpctl__atom__iter_ga0c06b2c90f38e11e1ec43e30358498eb}
+\-Iterator over an iterable atom (a list of ports, a list of \-V\-L\-A\-N, ...). \-When an atom is a list, it can be iterated over to extract the appropriate values.
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{lldpctl\-\_\-atom\-\_\-iter()}{p.}{group__liblldpctl__atom__iter_ga90be00d5d840e32433ec1cdcbe4d8ae0}, \doxyref{lldpctl\-\_\-atom\-\_\-iter\-\_\-next()}{p.}{group__liblldpctl__atom__iter_gab71140f30774f2fff7ba0d31427d9f9d}, \doxyref{lldpctl\-\_\-atom\-\_\-iter\-\_\-value()}{p.}{group__liblldpctl__atom__iter_ga421374637a04f1b67eb11ccfeaec3f69} 
+\end{DoxySeeAlso}
+
+
+\subsection{\-Function \-Documentation}
+\index{\-Iterating over atoms@{\-Iterating over atoms}!lldpctl\-\_\-atom\-\_\-create@{lldpctl\-\_\-atom\-\_\-create}}
+\index{lldpctl\-\_\-atom\-\_\-create@{lldpctl\-\_\-atom\-\_\-create}!Iterating over atoms@{\-Iterating over atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-create} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom}
+\end{DoxyParamCaption}
+)}\label{group__liblldpctl__atom__iter_gaa4bb165d009a4650542faa0369f86829}
+\-Create a new value for an iterable element.
+
+\-The value is meant to be appended using {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-set()}{p.}{group__lldpctl__atoms_ga1552a4cadffaa6cae6e88b67520e33ff}}. \-Currently, there is no way to delete an element from a list. \-It is also not advisable to use getters on a newly created object until it is fully initialized. \-If its internal representation is using a buffer, it may not be initialized until the first set.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want to create a new element for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The new element. 
+\end{DoxyReturn}
+\index{\-Iterating over atoms@{\-Iterating over atoms}!lldpctl\-\_\-atom\-\_\-iter@{lldpctl\-\_\-atom\-\_\-iter}}
+\index{lldpctl\-\_\-atom\-\_\-iter@{lldpctl\-\_\-atom\-\_\-iter}!Iterating over atoms@{\-Iterating over atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-iter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-iter} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom}
+\end{DoxyParamCaption}
+)}\label{group__liblldpctl__atom__iter_ga90be00d5d840e32433ec1cdcbe4d8ae0}
+\-Return an iterator over a given atom.
+
+\-If an atom is iterable (if it is a list, like a list of ports, a list of \-V\-L\-A\-N, a list of neighbors), it is possible to iterate over it. \-First use this function to get an iterator then use {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-iter\-\_\-next()}{p.}{group__liblldpctl__atom__iter_gab71140f30774f2fff7ba0d31427d9f9d}} to get the next item and {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-iter\-\_\-value()}{p.}{group__liblldpctl__atom__iter_ga421374637a04f1b67eb11ccfeaec3f69}} to the actuel item.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want to create an iterator from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The iterator or {\ttfamily \-N\-U\-L\-L} if an error happened or if the atom is empty (check with {\ttfamily \doxyref{lldpctl\-\_\-last\-\_\-error()}{p.}{group__lldpctl__errors__logs_ga591c61c3e5c5dc5ab87ec238bece4571}}).
+\end{DoxyReturn}
+\-As a convenience, if the provided atom is {\ttfamily \-N\-U\-L\-L}, this function will return {\ttfamily \-N\-U\-L\-L} and no error will be raised. \index{\-Iterating over atoms@{\-Iterating over atoms}!lldpctl\-\_\-atom\-\_\-iter\-\_\-next@{lldpctl\-\_\-atom\-\_\-iter\-\_\-next}}
+\index{lldpctl\-\_\-atom\-\_\-iter\-\_\-next@{lldpctl\-\_\-atom\-\_\-iter\-\_\-next}!Iterating over atoms@{\-Iterating over atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-iter\-\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-next} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t} $\ast$}]{iter}
+\end{DoxyParamCaption}
+)}\label{group__liblldpctl__atom__iter_gab71140f30774f2fff7ba0d31427d9f9d}
+\-Return the next element of an iterator.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we are currently iterating. \\
+\hline
+{\em iter} & \-The iterator we want the next element from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-An iterator starting on the next element or {\ttfamily \-N\-U\-L\-L} if we have no more elements
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{lldpctl\-\_\-atom\-\_\-iter()}{p.}{group__liblldpctl__atom__iter_ga90be00d5d840e32433ec1cdcbe4d8ae0}, \doxyref{lldpctl\-\_\-atom\-\_\-iter\-\_\-value()}{p.}{group__liblldpctl__atom__iter_ga421374637a04f1b67eb11ccfeaec3f69}.
+\end{DoxySeeAlso}
+\-As a convenience, if the provided atom is {\ttfamily \-N\-U\-L\-L}, this function will return {\ttfamily \-N\-U\-L\-L} and no error will be raised. \index{\-Iterating over atoms@{\-Iterating over atoms}!lldpctl\-\_\-atom\-\_\-iter\-\_\-value@{lldpctl\-\_\-atom\-\_\-iter\-\_\-value}}
+\index{lldpctl\-\_\-atom\-\_\-iter\-\_\-value@{lldpctl\-\_\-atom\-\_\-iter\-\_\-value}!Iterating over atoms@{\-Iterating over atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-iter\-\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-value} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-atom\-\_\-iter\-\_\-t} $\ast$}]{iter}
+\end{DoxyParamCaption}
+)}\label{group__liblldpctl__atom__iter_ga421374637a04f1b67eb11ccfeaec3f69}
+\-Return the value of an iterator.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we are currently iterating. \\
+\hline
+{\em iter} & \-The iterator we want the next element from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The atom currently associated with the iterator.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{lldpctl\-\_\-atom\-\_\-iter()}{p.}{group__liblldpctl__atom__iter_ga90be00d5d840e32433ec1cdcbe4d8ae0}, \doxyref{lldpctl\-\_\-atom\-\_\-iter\-\_\-next()}{p.}{group__liblldpctl__atom__iter_gab71140f30774f2fff7ba0d31427d9f9d}. 
+\end{DoxySeeAlso}

@@ -1,0 +1,74 @@
+\section{\-Retrieving atoms from lldpd}
+\label{group__liblldpctl__atom__get__special}\index{\-Retrieving atoms from lldpd@{\-Retrieving atoms from lldpd}}
+\-Collaboration diagram for \-Retrieving atoms from lldpd\-:
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-get\-\_\-configuration} ({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-get\-\_\-interfaces} ({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-get\-\_\-port} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$port)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Special access functions.
+
+\-Most information can be retrieved through \doxyref{lldpctl\-\_\-atom\-\_\-get()}{p.}{group__lldpctl__atoms_ga6e0a236d507b07293ca65eb8d229c0c4}, \doxyref{lldpctl\-\_\-atom\-\_\-get\-\_\-int()}{p.}{group__lldpctl__atoms_gaef010e71841ae2fa831b066265d5c06c}, \doxyref{lldpctl\-\_\-atom\-\_\-get\-\_\-str()}{p.}{group__lldpctl__atoms_ga986160896cdfc930e4e5cf99e0fafc13} or \doxyref{lldpctl\-\_\-atom\-\_\-get\-\_\-buffer()}{p.}{group__lldpctl__atoms_ga42008b960c35ec941f888ec090f4c086} but some information can only be retrieved through special functions because \-I\-O operation is needed (and also, for some of them, because we don't have an atom yet). 
+
+\subsection{\-Function \-Documentation}
+\index{\-Retrieving atoms from lldpd@{\-Retrieving atoms from lldpd}!lldpctl\-\_\-get\-\_\-configuration@{lldpctl\-\_\-get\-\_\-configuration}}
+\index{lldpctl\-\_\-get\-\_\-configuration@{lldpctl\-\_\-get\-\_\-configuration}!Retrieving atoms from lldpd@{\-Retrieving atoms from lldpd}}
+\subsubsection[{lldpctl\-\_\-get\-\_\-configuration}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-get\-\_\-configuration} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}\label{group__liblldpctl__atom__get__special_ga0ed0fb07e8066f521b4e0c8fe41dcb3b}
+\-Retrieve global configuration of lldpd daemon.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Connection with lldpd. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The global configuration or {\ttfamily \-N\-U\-L\-L} if an error happened.
+\end{DoxyReturn}
+\-This function will make \-I\-O with the daemon to get the configuration. \-Depending on the \-I\-O model, information may not be available right now and the function should be called again later. \-If {\ttfamily \-N\-U\-L\-L} is returned, check the last error. \-If it is {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}, try again later. \index{\-Retrieving atoms from lldpd@{\-Retrieving atoms from lldpd}!lldpctl\-\_\-get\-\_\-interfaces@{lldpctl\-\_\-get\-\_\-interfaces}}
+\index{lldpctl\-\_\-get\-\_\-interfaces@{lldpctl\-\_\-get\-\_\-interfaces}!Retrieving atoms from lldpd@{\-Retrieving atoms from lldpd}}
+\subsubsection[{lldpctl\-\_\-get\-\_\-interfaces}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-get\-\_\-interfaces} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}\label{group__liblldpctl__atom__get__special_gab74240d3cbaa26fc4912de0c156a9f54}
+\-Retrieve the list of available interfaces.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Previously allocated handler to a connection to lldpd. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The list of available ports or {\ttfamily \-N\-U\-L\-L} if an error happened.
+\end{DoxyReturn}
+\-This function will make \-I\-O with the daemon to get the list of ports. \-Depending on the \-I\-O model, information may not be available right now and the function should be called again later. \-If {\ttfamily \-N\-U\-L\-L} is returned, check what the last error is. \-If it is {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}, try again later (when more data is available).
+
+\-The list of available ports can be iterated with \doxyref{lldpctl\-\_\-atom\-\_\-foreach()}{p.}{group__liblldpctl__atom__iter_ga0ede5e33e0eb9efa92470c6a90e98a04}. \index{\-Retrieving atoms from lldpd@{\-Retrieving atoms from lldpd}!lldpctl\-\_\-get\-\_\-port@{lldpctl\-\_\-get\-\_\-port}}
+\index{lldpctl\-\_\-get\-\_\-port@{lldpctl\-\_\-get\-\_\-port}!Retrieving atoms from lldpd@{\-Retrieving atoms from lldpd}}
+\subsubsection[{lldpctl\-\_\-get\-\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-get\-\_\-port} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{port}
+\end{DoxyParamCaption}
+)}\label{group__liblldpctl__atom__get__special_ga3ef245c50f8c728a106129f48c4ade00}
+\-Retrieve the information related to a given interface.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em port} & \-The port we want to retrieve information from. \-This port is an atom retrieved from an interation on {\ttfamily \doxyref{lldpctl\-\_\-get\-\_\-interfaces()}{p.}{group__liblldpctl__atom__get__special_gab74240d3cbaa26fc4912de0c156a9f54}}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Atom related to this port which may be used in subsequent functions.
+\end{DoxyReturn}
+\-This functions may have to do \-I\-O to get the information related to the given port. \-Depending on the \-I\-O mode, information may not be available tight now and the function should be called again later. \-If {\ttfamily \-N\-U\-L\-L} is returned, check what the last error is. \-If it is {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}, try again later (when more data is available). 

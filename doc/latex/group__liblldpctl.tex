@@ -1,0 +1,29 @@
+\section{liblldpctl\-: library to interface with lldpd}
+\label{group__liblldpctl}\index{liblldpctl\-: library to interface with lldpd@{liblldpctl\-: library to interface with lldpd}}
+\-Collaboration diagram for liblldpctl\-: library to interface with lldpd\-:
+\subsection*{\-Modules}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Managing connection to lldpd}
+\item 
+{\bf \-Errors and logs handling}
+\item 
+{\bf \-Extracting information\-: atoms}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+`liblldpctl` allows any program to convenienty query and modify the behaviour of a running lldpd daemon.
+
+\-To use this library, use `pkg-\/config` to get the appropriate options\-: $\ast$ `pkg-\/config -\/-\/libs lldpctl` for `\-L\-I\-B\-S` or `\-L\-D\-F\-L\-A\-G\-S` $\ast$ `pkg-\/config -\/-\/cflags lldpctl` for `\-C\-F\-L\-A\-G\-S`
+
+\begin{DoxyWarning}{\-Warning}
+\-This library is tightly coupled with lldpd. \-The library to use should be the one shipped with lldpd. \-Clients of the library are then tied by the classic \-A\-P\-I/\-A\-B\-I rules and may be compiled separatly.
+\end{DoxyWarning}
+\-There are two important structures in this library\-: {\ttfamily \doxyref{lldpctl\-\_\-conn\-\_\-t}{p.}{structlldpctl__conn__t}} which represents a connection and {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-t}{p.}{structlldpctl__atom__t}} which represents a piece of information. \-Those types are opaque. \-No direct access to them should be done.
+
+\-The library is expected to be reentrant and therefore thread-\/safe. \-It is however not expected that a connection to be used in several thread simultaneously. \-This also applies to the different pieces of information gathered through this connection. \-Several connection to lldpd can be used simultaneously.
+
+\-The first step is to establish a connection. \-See \doxyref{\-Managing connection to lldpd}{p.}{group__lldpctl__connection} for more information about this. \-The next step is to query the lldpd daemon. \-See \doxyref{\-Extracting information\-: atoms}{p.}{group__lldpctl__atoms} on how to do this.
+
+`liblldpctl` tries to handle errors in a coherent way. \-Any function returning a pointer will return {\ttfamily \-N\-U\-L\-L} on error and the last error can be retrieved through \doxyref{lldpctl\-\_\-last\-\_\-error()}{p.}{group__lldpctl__errors__logs_ga591c61c3e5c5dc5ab87ec238bece4571} function. \-Most functions returning integers will return a negative integer representing the error if something goes wrong. \-The use of \doxyref{lldpctl\-\_\-last\-\_\-error()}{p.}{group__lldpctl__errors__logs_ga591c61c3e5c5dc5ab87ec238bece4571} allows one to check if this is a real error if there is a doubt. \-See \doxyref{\-Errors and logs handling}{p.}{group__lldpctl__errors__logs} for more about this. 

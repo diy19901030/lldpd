@@ -1,0 +1,36 @@
+\section{rta\-\_\-session \-Struct \-Reference}
+\label{structrta__session}\index{rta\-\_\-session@{rta\-\_\-session}}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-u8 {\bfseries proto}\label{structrta__session_aa10718770c4b82fd3f5876fa0fc03695}
+
+\item 
+\-\_\-\-\_\-u8 {\bfseries pad1}\label{structrta__session_a19c8df3232dae98313fbddfaaa9b0881}
+
+\item 
+\-\_\-\-\_\-u16 {\bfseries pad2}\label{structrta__session_a0fde79048f42d4d54137aa2ca7b8720f}
+
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct \{\\
+\>\>\_\_u16 {\bfseries sport}\\
+\>\>\_\_u16 {\bfseries dport}\\
+\>\} {\bfseries ports}\\
+\>struct \{\\
+\>\>\_\_u8 {\bfseries type}\\
+\>\>\_\_u8 {\bfseries code}\\
+\>\>\_\_u16 {\bfseries ident}\\
+\>\} {\bfseries icmpt}\\
+\>\_\_u32 {\bfseries spi}\\
+\} {\bfseries u}\label{structrta__session_a17c804871c3fc5e8ed0d34bf81624053}
+\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/rtnetlink.\-h\end{DoxyCompactItemize}

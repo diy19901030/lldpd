@@ -1,0 +1,14 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="_lldpctl_atom_config_t",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" config" ];
+  Node2 [label="lldpd_config",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlldpd__config.html"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" base" ];
+  Node3 [label="lldpctl_atom_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlldpctl__atom__t.html"];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" conn" ];
+  Node4 [label="lldpctl_conn_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlldpctl__conn__t.html"];
+  Node4 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" recv\nwatch_cb\nsend" ];
+  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" set_str\nset_int\nset\nvalue\ncreate\nset_buffer\nget" ];
+}

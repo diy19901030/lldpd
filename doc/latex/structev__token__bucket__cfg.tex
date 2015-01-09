@@ -1,0 +1,46 @@
+\section{ev\-\_\-token\-\_\-bucket\-\_\-cfg \-Struct \-Reference}
+\label{structev__token__bucket__cfg}\index{ev\-\_\-token\-\_\-bucket\-\_\-cfg@{ev\-\_\-token\-\_\-bucket\-\_\-cfg}}
+
+
+{\ttfamily \#include $<$ratelim-\/internal.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t {\bf read\-\_\-rate}
+\item 
+size\-\_\-t {\bf read\-\_\-maximum}
+\item 
+size\-\_\-t {\bf write\-\_\-rate}
+\item 
+size\-\_\-t {\bf write\-\_\-maximum}
+\item 
+struct timeval {\bfseries tick\-\_\-timeout}\label{structev__token__bucket__cfg_a0693b06d1004835f88a1e5dce7d73498}
+
+\item 
+unsigned {\bfseries msec\-\_\-per\-\_\-tick}\label{structev__token__bucket__cfg_a92bd3c93e7a0c42293f3df54df0dbfaa}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Configuration info for a token bucket or set of token buckets. 
+
+\subsection{\-Field \-Documentation}
+\index{ev\-\_\-token\-\_\-bucket\-\_\-cfg@{ev\-\_\-token\-\_\-bucket\-\_\-cfg}!read\-\_\-maximum@{read\-\_\-maximum}}
+\index{read\-\_\-maximum@{read\-\_\-maximum}!ev_token_bucket_cfg@{ev\-\_\-token\-\_\-bucket\-\_\-cfg}}
+\subsubsection[{read\-\_\-maximum}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf read\-\_\-maximum}}\label{structev__token__bucket__cfg_a24b8af5172e9068717b781324cd5ed99}
+\-How many bytes are we willing to read at most in any one tick? \index{ev\-\_\-token\-\_\-bucket\-\_\-cfg@{ev\-\_\-token\-\_\-bucket\-\_\-cfg}!read\-\_\-rate@{read\-\_\-rate}}
+\index{read\-\_\-rate@{read\-\_\-rate}!ev_token_bucket_cfg@{ev\-\_\-token\-\_\-bucket\-\_\-cfg}}
+\subsubsection[{read\-\_\-rate}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf read\-\_\-rate}}\label{structev__token__bucket__cfg_a3d423556d4feeefabd98dfb7b16b0ef8}
+\-How many bytes are we willing to read on average per tick? \index{ev\-\_\-token\-\_\-bucket\-\_\-cfg@{ev\-\_\-token\-\_\-bucket\-\_\-cfg}!write\-\_\-maximum@{write\-\_\-maximum}}
+\index{write\-\_\-maximum@{write\-\_\-maximum}!ev_token_bucket_cfg@{ev\-\_\-token\-\_\-bucket\-\_\-cfg}}
+\subsubsection[{write\-\_\-maximum}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf write\-\_\-maximum}}\label{structev__token__bucket__cfg_ae14c574c73d253d28b3dc7d85b6c64da}
+\-How many bytes are we willing to write at most in any one tick? \index{ev\-\_\-token\-\_\-bucket\-\_\-cfg@{ev\-\_\-token\-\_\-bucket\-\_\-cfg}!write\-\_\-rate@{write\-\_\-rate}}
+\index{write\-\_\-rate@{write\-\_\-rate}!ev_token_bucket_cfg@{ev\-\_\-token\-\_\-bucket\-\_\-cfg}}
+\subsubsection[{write\-\_\-rate}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf write\-\_\-rate}}\label{structev__token__bucket__cfg_ac4d1b1b936e51f00413f4544e22f880b}
+\-How many bytes are we willing to write on average per tick? 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/ratelim-\/internal.\-h\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+\section{evbuffer\-\_\-overlapped \-Struct \-Reference}
+\label{structevbuffer__overlapped}\index{evbuffer\-\_\-overlapped@{evbuffer\-\_\-overlapped}}
+
+
+\-Collaboration diagram for evbuffer\-\_\-overlapped\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evbuffer} {\bfseries buffer}\label{structevbuffer__overlapped_a01e2d74ef433e45641fc19aa615d42b9}
+
+\item 
+{\bf evutil\-\_\-socket\-\_\-t} {\bf fd}
+\item 
+unsigned {\bf read\-\_\-in\-\_\-progress}\-: 1
+\item 
+unsigned {\bfseries write\-\_\-in\-\_\-progress}\-: 1\label{structevbuffer__overlapped_a90bf3ab335cf50e4cd764b3becbc82f7}
+
+\item 
+struct {\bf evbuffer\-\_\-chain} $\ast$ {\bf first\-\_\-pinned}
+\item 
+int {\bf n\-\_\-buffers}
+\item 
+\-W\-S\-A\-B\-U\-F {\bfseries buffers} [\-M\-A\-X\-\_\-\-W\-S\-A\-B\-U\-F\-S]\label{structevbuffer__overlapped_aad9a5077a405d7f284b3df11a28e5c62}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-An evbuffer that can handle overlapped \-I\-O. 
+
+\subsection{\-Field \-Documentation}
+\index{evbuffer\-\_\-overlapped@{evbuffer\-\_\-overlapped}!fd@{fd}}
+\index{fd@{fd}!evbuffer_overlapped@{evbuffer\-\_\-overlapped}}
+\subsubsection[{fd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf evutil\-\_\-socket\-\_\-t} {\bf fd}}\label{structevbuffer__overlapped_adf76ebacdedde5572e9ba938beab2afe}
+\-The socket that we're doing overlapped \-I\-O on. \index{evbuffer\-\_\-overlapped@{evbuffer\-\_\-overlapped}!first\-\_\-pinned@{first\-\_\-pinned}}
+\index{first\-\_\-pinned@{first\-\_\-pinned}!evbuffer_overlapped@{evbuffer\-\_\-overlapped}}
+\subsubsection[{first\-\_\-pinned}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer\-\_\-chain}$\ast$ {\bf first\-\_\-pinned}}\label{structevbuffer__overlapped_afa59f83f34c81f28d71271be39fc2601}
+\-The first pinned chain in the buffer. \index{evbuffer\-\_\-overlapped@{evbuffer\-\_\-overlapped}!n\-\_\-buffers@{n\-\_\-buffers}}
+\index{n\-\_\-buffers@{n\-\_\-buffers}!evbuffer_overlapped@{evbuffer\-\_\-overlapped}}
+\subsubsection[{n\-\_\-buffers}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf n\-\_\-buffers}}\label{structevbuffer__overlapped_a43cf6459f3ae558bca3a5b76a437f745}
+\-How many chains are pinned; how many of the fields in buffers are we using. \index{evbuffer\-\_\-overlapped@{evbuffer\-\_\-overlapped}!read\-\_\-in\-\_\-progress@{read\-\_\-in\-\_\-progress}}
+\index{read\-\_\-in\-\_\-progress@{read\-\_\-in\-\_\-progress}!evbuffer_overlapped@{evbuffer\-\_\-overlapped}}
+\subsubsection[{read\-\_\-in\-\_\-progress}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf read\-\_\-in\-\_\-progress}}\label{structevbuffer__overlapped_a42ee797ba885a54afac61ff9bb876bcf}
+pending \-I/\-O type 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/{\bf buffer\-\_\-iocp.\-c}\end{DoxyCompactItemize}

@@ -1,0 +1,44 @@
+\section{bufferevent\-\_\-rate\-\_\-limit \-Struct \-Reference}
+\label{structbufferevent__rate__limit}\index{bufferevent\-\_\-rate\-\_\-limit@{bufferevent\-\_\-rate\-\_\-limit}}
+
+
+{\ttfamily \#include $<$bufferevent-\/internal.\-h$>$}
+
+
+
+\-Collaboration diagram for bufferevent\-\_\-rate\-\_\-limit\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} ({\bf bufferevent\-\_\-private}) next\-\_\-in\-\_\-group\label{structbufferevent__rate__limit_af0c127ae79308e67ae215c0eaccd360a}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct \*
+{\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$ {\bf group}
+\item 
+struct {\bf ev\-\_\-token\-\_\-bucket} {\bfseries limit}\label{structbufferevent__rate__limit_a3c810003e1c46e5b95fc1120f23bf782}
+
+\item 
+struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$ {\bfseries cfg}\label{structbufferevent__rate__limit_af7192cdbb108fb67a3d1512c87c6c48b}
+
+\item 
+struct {\bf event} {\bfseries refill\-\_\-bucket\-\_\-event}\label{structbufferevent__rate__limit_a1792a48af582a7009407e31ad3d268a2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Fields for rate-\/limiting a single bufferevent. 
+
+\subsection{\-Field \-Documentation}
+\index{bufferevent\-\_\-rate\-\_\-limit@{bufferevent\-\_\-rate\-\_\-limit}!group@{group}}
+\index{group@{group}!bufferevent_rate_limit@{bufferevent\-\_\-rate\-\_\-limit}}
+\subsubsection[{group}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group}$\ast$ {\bf group}}\label{structbufferevent__rate__limit_a794b60aaba3c4fd85426bc20dd2e37fb}
+\-The rate-\/limiting group for this bufferevent, or \-N\-U\-L\-L if it is only rate-\/limited on its own. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/bufferevent-\/internal.\-h\end{DoxyCompactItemize}

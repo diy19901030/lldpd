@@ -1,0 +1,191 @@
+\section{event\-\_\-base \-Struct \-Reference}
+\label{structevent__base}\index{event\-\_\-base@{event\-\_\-base}}
+
+
+\-Collaboration diagram for event\-\_\-base\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf eventop} $\ast$ {\bf evsel}
+\item 
+void $\ast$ {\bf evbase}
+\item 
+struct {\bf event\-\_\-changelist} {\bf changelist}
+\item 
+struct {\bf eventop} $\ast$ {\bf evsigsel}
+\item 
+struct {\bf evsig\-\_\-info} {\bf sig}
+\item 
+int {\bf virtual\-\_\-event\-\_\-count}
+\item 
+int {\bf event\-\_\-count}
+\item 
+int {\bf event\-\_\-count\-\_\-active}
+\item 
+int {\bf event\-\_\-gotterm}
+\item 
+int {\bf event\-\_\-break}
+\item 
+int {\bf event\-\_\-continue}
+\item 
+int {\bf event\-\_\-running\-\_\-priority}
+\item 
+int {\bf running\-\_\-loop}
+\item 
+struct event\-\_\-list $\ast$ {\bf activequeues}
+\item 
+int {\bf nactivequeues}
+\item 
+struct {\bf common\-\_\-timeout\-\_\-list} $\ast$$\ast$ {\bf common\-\_\-timeout\-\_\-queues}
+\item 
+int {\bf n\-\_\-common\-\_\-timeouts}
+\item 
+int {\bf n\-\_\-common\-\_\-timeouts\-\_\-allocated}
+\item 
+struct {\bf deferred\-\_\-cb\-\_\-queue} {\bf defer\-\_\-queue}
+\item 
+struct event\-\_\-io\-\_\-map {\bf io}
+\item 
+struct {\bf event\-\_\-signal\-\_\-map} {\bf sigmap}
+\item 
+struct event\-\_\-list {\bf eventqueue}
+\item 
+struct timeval {\bf event\-\_\-tv}
+\item 
+struct {\bf min\-\_\-heap} {\bf timeheap}
+\item 
+struct timeval {\bf tv\-\_\-cache}
+\item 
+unsigned long {\bf th\-\_\-owner\-\_\-id}
+\item 
+void $\ast$ {\bf th\-\_\-base\-\_\-lock}
+\item 
+struct {\bf event} $\ast$ {\bf current\-\_\-event}
+\item 
+void $\ast$ {\bf current\-\_\-event\-\_\-cond}
+\item 
+int {\bf current\-\_\-event\-\_\-waiters}
+\item 
+enum {\bf event\-\_\-base\-\_\-config\-\_\-flag} {\bf flags}
+\item 
+int {\bf is\-\_\-notify\-\_\-pending}
+\item 
+{\bf evutil\-\_\-socket\-\_\-t} {\bf th\-\_\-notify\-\_\-fd} [2]
+\item 
+struct {\bf event} {\bf th\-\_\-notify}
+\item 
+int($\ast$ {\bf th\-\_\-notify\-\_\-fn} )(struct {\bf event\-\_\-base} $\ast$base)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Field \-Documentation}
+\index{event\-\_\-base@{event\-\_\-base}!activequeues@{activequeues}}
+\index{activequeues@{activequeues}!event_base@{event\-\_\-base}}
+\subsubsection[{activequeues}]{\setlength{\rightskip}{0pt plus 5cm}struct event\-\_\-list$\ast$ {\bf activequeues}}\label{structevent__base_adf9dda799c91e114f6ccee4cc219c5c7}
+\-An array of nactivequeues queues for active events (ones that have triggered, and whose callbacks need to be called). \-Low priority numbers are more important, and stall higher ones. \index{event\-\_\-base@{event\-\_\-base}!changelist@{changelist}}
+\index{changelist@{changelist}!event_base@{event\-\_\-base}}
+\subsubsection[{changelist}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event\-\_\-changelist} {\bf changelist}}\label{structevent__base_ae307ac09d3fc84701259bba7268350f9}
+\-List of changes to tell backend about at next dispatch. \-Only used by the \-O(1) backends. \index{event\-\_\-base@{event\-\_\-base}!common\-\_\-timeout\-\_\-queues@{common\-\_\-timeout\-\_\-queues}}
+\index{common\-\_\-timeout\-\_\-queues@{common\-\_\-timeout\-\_\-queues}!event_base@{event\-\_\-base}}
+\subsubsection[{common\-\_\-timeout\-\_\-queues}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf common\-\_\-timeout\-\_\-list}$\ast$$\ast$ {\bf common\-\_\-timeout\-\_\-queues}}\label{structevent__base_a3bae635d0ed2cd6d4d52b7c48d1fde1d}
+\-An array of common\-\_\-timeout\-\_\-list$\ast$ for all of the common timeout values we know. \index{event\-\_\-base@{event\-\_\-base}!current\-\_\-event@{current\-\_\-event}}
+\index{current\-\_\-event@{current\-\_\-event}!event_base@{event\-\_\-base}}
+\subsubsection[{current\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event}$\ast$ {\bf current\-\_\-event}}\label{structevent__base_a695f0afbdff41d3c6bc9495ca2873fbf}
+\-The event whose callback is executing right now \index{event\-\_\-base@{event\-\_\-base}!current\-\_\-event\-\_\-cond@{current\-\_\-event\-\_\-cond}}
+\index{current\-\_\-event\-\_\-cond@{current\-\_\-event\-\_\-cond}!event_base@{event\-\_\-base}}
+\subsubsection[{current\-\_\-event\-\_\-cond}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf current\-\_\-event\-\_\-cond}}\label{structevent__base_a8058598d477f08cdace748313fde9c58}
+\-A condition that gets signalled when we're done processing an event with waiters on it. \index{event\-\_\-base@{event\-\_\-base}!current\-\_\-event\-\_\-waiters@{current\-\_\-event\-\_\-waiters}}
+\index{current\-\_\-event\-\_\-waiters@{current\-\_\-event\-\_\-waiters}!event_base@{event\-\_\-base}}
+\subsubsection[{current\-\_\-event\-\_\-waiters}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf current\-\_\-event\-\_\-waiters}}\label{structevent__base_ab1b7eebb98bc9821732ea545f21608c3}
+\-Number of threads blocking on current\-\_\-event\-\_\-cond. \index{event\-\_\-base@{event\-\_\-base}!defer\-\_\-queue@{defer\-\_\-queue}}
+\index{defer\-\_\-queue@{defer\-\_\-queue}!event_base@{event\-\_\-base}}
+\subsubsection[{defer\-\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf deferred\-\_\-cb\-\_\-queue} {\bf defer\-\_\-queue}}\label{structevent__base_a87acc02a0e80429967a0c48791617d53}
+\-List of defered\-\_\-cb that are active. \-We run these after the active events. \index{event\-\_\-base@{event\-\_\-base}!evbase@{evbase}}
+\index{evbase@{evbase}!event_base@{event\-\_\-base}}
+\subsubsection[{evbase}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf evbase}}\label{structevent__base_ae3c9886aa4c96b6708144cbcf83c718c}
+\-Pointer to backend-\/specific data. \index{event\-\_\-base@{event\-\_\-base}!event\-\_\-break@{event\-\_\-break}}
+\index{event\-\_\-break@{event\-\_\-break}!event_base@{event\-\_\-base}}
+\subsubsection[{event\-\_\-break}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf event\-\_\-break}}\label{structevent__base_a7f78ea3d524fc6a5ae7d500218c5fb54}
+\-Set if we should terminate the loop immediately \index{event\-\_\-base@{event\-\_\-base}!event\-\_\-continue@{event\-\_\-continue}}
+\index{event\-\_\-continue@{event\-\_\-continue}!event_base@{event\-\_\-base}}
+\subsubsection[{event\-\_\-continue}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf event\-\_\-continue}}\label{structevent__base_a142f7c2e6fe3f4d436cc2c9df47a5c45}
+\-Set if we should start a new instance of the loop immediately. \index{event\-\_\-base@{event\-\_\-base}!event\-\_\-count@{event\-\_\-count}}
+\index{event\-\_\-count@{event\-\_\-count}!event_base@{event\-\_\-base}}
+\subsubsection[{event\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf event\-\_\-count}}\label{structevent__base_ab92424784d1d3b3b593a0d9157d7de62}
+\-Number of total events added to this \doxyref{event\-\_\-base}{p.}{structevent__base} \index{event\-\_\-base@{event\-\_\-base}!event\-\_\-count\-\_\-active@{event\-\_\-count\-\_\-active}}
+\index{event\-\_\-count\-\_\-active@{event\-\_\-count\-\_\-active}!event_base@{event\-\_\-base}}
+\subsubsection[{event\-\_\-count\-\_\-active}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf event\-\_\-count\-\_\-active}}\label{structevent__base_a46bd7ae7cf82dedc539da73f0083b156}
+\-Number of total events active in this \doxyref{event\-\_\-base}{p.}{structevent__base} \index{event\-\_\-base@{event\-\_\-base}!event\-\_\-gotterm@{event\-\_\-gotterm}}
+\index{event\-\_\-gotterm@{event\-\_\-gotterm}!event_base@{event\-\_\-base}}
+\subsubsection[{event\-\_\-gotterm}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf event\-\_\-gotterm}}\label{structevent__base_a5f07602aac7c752d54282c2f402df0e7}
+\-Set if we should terminate the loop once we're done processing events. \index{event\-\_\-base@{event\-\_\-base}!event\-\_\-running\-\_\-priority@{event\-\_\-running\-\_\-priority}}
+\index{event\-\_\-running\-\_\-priority@{event\-\_\-running\-\_\-priority}!event_base@{event\-\_\-base}}
+\subsubsection[{event\-\_\-running\-\_\-priority}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf event\-\_\-running\-\_\-priority}}\label{structevent__base_ad5a78b6206c33c429d664c7388b1ea8a}
+\-The currently running priority of events \index{event\-\_\-base@{event\-\_\-base}!event\-\_\-tv@{event\-\_\-tv}}
+\index{event\-\_\-tv@{event\-\_\-tv}!event_base@{event\-\_\-base}}
+\subsubsection[{event\-\_\-tv}]{\setlength{\rightskip}{0pt plus 5cm}struct timeval {\bf event\-\_\-tv}}\label{structevent__base_acdf85457d0187dfc8642141769433848}
+\-Stored timeval; used to detect when time is running backwards. \index{event\-\_\-base@{event\-\_\-base}!eventqueue@{eventqueue}}
+\index{eventqueue@{eventqueue}!event_base@{event\-\_\-base}}
+\subsubsection[{eventqueue}]{\setlength{\rightskip}{0pt plus 5cm}struct event\-\_\-list {\bf eventqueue}}\label{structevent__base_a171f817408ade317f556caa6bea79bda}
+\-All events that have been enabled (added) in this \doxyref{event\-\_\-base}{p.}{structevent__base} \index{event\-\_\-base@{event\-\_\-base}!evsel@{evsel}}
+\index{evsel@{evsel}!event_base@{event\-\_\-base}}
+\subsubsection[{evsel}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf eventop}$\ast$ {\bf evsel}}\label{structevent__base_ae8b3b540d96fe3e89c3ac74cdf582b52}
+\-Function pointers and other data to describe this \doxyref{event\-\_\-base}{p.}{structevent__base}'s backend. \index{event\-\_\-base@{event\-\_\-base}!evsigsel@{evsigsel}}
+\index{evsigsel@{evsigsel}!event_base@{event\-\_\-base}}
+\subsubsection[{evsigsel}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf eventop}$\ast$ {\bf evsigsel}}\label{structevent__base_a89423b76790c87a66a9289cbcde7f9d8}
+\-Function pointers used to describe the backend that this \doxyref{event\-\_\-base}{p.}{structevent__base} uses for signals \index{event\-\_\-base@{event\-\_\-base}!flags@{flags}}
+\index{flags@{flags}!event_base@{event\-\_\-base}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf event\-\_\-base\-\_\-config\-\_\-flag} {\bf flags}}\label{structevent__base_a6945cc2120db27196326e72dc0417356}
+\-Flags that this base was configured with \index{event\-\_\-base@{event\-\_\-base}!io@{io}}
+\index{io@{io}!event_base@{event\-\_\-base}}
+\subsubsection[{io}]{\setlength{\rightskip}{0pt plus 5cm}struct event\-\_\-io\-\_\-map {\bf io}}\label{structevent__base_a061d17470222a48e4a386d5a3bc15436}
+\-Mapping from file descriptors to enabled (added) events \index{event\-\_\-base@{event\-\_\-base}!is\-\_\-notify\-\_\-pending@{is\-\_\-notify\-\_\-pending}}
+\index{is\-\_\-notify\-\_\-pending@{is\-\_\-notify\-\_\-pending}!event_base@{event\-\_\-base}}
+\subsubsection[{is\-\_\-notify\-\_\-pending}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf is\-\_\-notify\-\_\-pending}}\label{structevent__base_aa5011e7c6dca14886626955ee4f4ab8d}
+\-True if the base already has a pending notify, and we don't need to add any more. \index{event\-\_\-base@{event\-\_\-base}!n\-\_\-common\-\_\-timeouts@{n\-\_\-common\-\_\-timeouts}}
+\index{n\-\_\-common\-\_\-timeouts@{n\-\_\-common\-\_\-timeouts}!event_base@{event\-\_\-base}}
+\subsubsection[{n\-\_\-common\-\_\-timeouts}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf n\-\_\-common\-\_\-timeouts}}\label{structevent__base_a52241372d852d41b98cd4de9e62036ae}
+\-The number of entries used in common\-\_\-timeout\-\_\-queues \index{event\-\_\-base@{event\-\_\-base}!n\-\_\-common\-\_\-timeouts\-\_\-allocated@{n\-\_\-common\-\_\-timeouts\-\_\-allocated}}
+\index{n\-\_\-common\-\_\-timeouts\-\_\-allocated@{n\-\_\-common\-\_\-timeouts\-\_\-allocated}!event_base@{event\-\_\-base}}
+\subsubsection[{n\-\_\-common\-\_\-timeouts\-\_\-allocated}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf n\-\_\-common\-\_\-timeouts\-\_\-allocated}}\label{structevent__base_ae2f05dfe210e9aca31fdafdbdd287389}
+\-The total size of common\-\_\-timeout\-\_\-queues. \index{event\-\_\-base@{event\-\_\-base}!nactivequeues@{nactivequeues}}
+\index{nactivequeues@{nactivequeues}!event_base@{event\-\_\-base}}
+\subsubsection[{nactivequeues}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf nactivequeues}}\label{structevent__base_ae8b9511ff87b1b38798934b5c4afd745}
+\-The length of the activequeues array \index{event\-\_\-base@{event\-\_\-base}!running\-\_\-loop@{running\-\_\-loop}}
+\index{running\-\_\-loop@{running\-\_\-loop}!event_base@{event\-\_\-base}}
+\subsubsection[{running\-\_\-loop}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf running\-\_\-loop}}\label{structevent__base_aa191c9621bbd993ded76e803d4f5fe7d}
+\-Set if we're running the event\-\_\-base\-\_\-loop function, to prevent reentrant invocation. \index{event\-\_\-base@{event\-\_\-base}!sig@{sig}}
+\index{sig@{sig}!event_base@{event\-\_\-base}}
+\subsubsection[{sig}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evsig\-\_\-info} {\bf sig}}\label{structevent__base_a5d280fc973cc9ec3a0ee38a27f7a61eb}
+\-Data to implement the common signal handelr code. \index{event\-\_\-base@{event\-\_\-base}!sigmap@{sigmap}}
+\index{sigmap@{sigmap}!event_base@{event\-\_\-base}}
+\subsubsection[{sigmap}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event\-\_\-signal\-\_\-map} {\bf sigmap}}\label{structevent__base_a928bc0a64524bd86835b589a005b5bd3}
+\-Mapping from signal numbers to enabled (added) events. \index{event\-\_\-base@{event\-\_\-base}!th\-\_\-base\-\_\-lock@{th\-\_\-base\-\_\-lock}}
+\index{th\-\_\-base\-\_\-lock@{th\-\_\-base\-\_\-lock}!event_base@{event\-\_\-base}}
+\subsubsection[{th\-\_\-base\-\_\-lock}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf th\-\_\-base\-\_\-lock}}\label{structevent__base_a4c4a239ebe3850046d4b044d21cc9bba}
+\-A lock to prevent conflicting accesses to this \doxyref{event\-\_\-base}{p.}{structevent__base} \index{event\-\_\-base@{event\-\_\-base}!th\-\_\-notify@{th\-\_\-notify}}
+\index{th\-\_\-notify@{th\-\_\-notify}!event_base@{event\-\_\-base}}
+\subsubsection[{th\-\_\-notify}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event} {\bf th\-\_\-notify}}\label{structevent__base_a143435f2fb4830f83e73e09eba4c8c97}
+\-An event used by some th\-\_\-notify functions to wake up the main thread. \index{event\-\_\-base@{event\-\_\-base}!th\-\_\-notify\-\_\-fd@{th\-\_\-notify\-\_\-fd}}
+\index{th\-\_\-notify\-\_\-fd@{th\-\_\-notify\-\_\-fd}!event_base@{event\-\_\-base}}
+\subsubsection[{th\-\_\-notify\-\_\-fd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf evutil\-\_\-socket\-\_\-t} {\bf th\-\_\-notify\-\_\-fd}[2]}\label{structevent__base_ad4357b694a99563fe150ab58f89f76fe}
+\-A socketpair used by some th\-\_\-notify functions to wake up the main thread. \index{event\-\_\-base@{event\-\_\-base}!th\-\_\-notify\-\_\-fn@{th\-\_\-notify\-\_\-fn}}
+\index{th\-\_\-notify\-\_\-fn@{th\-\_\-notify\-\_\-fn}!event_base@{event\-\_\-base}}
+\subsubsection[{th\-\_\-notify\-\_\-fn}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf th\-\_\-notify\-\_\-fn})(struct {\bf event\-\_\-base} $\ast$base)}\label{structevent__base_a9b2527d2addebeab089075cae8924ef3}
+\-A function used to wake up the main thread from another thread. \index{event\-\_\-base@{event\-\_\-base}!th\-\_\-owner\-\_\-id@{th\-\_\-owner\-\_\-id}}
+\index{th\-\_\-owner\-\_\-id@{th\-\_\-owner\-\_\-id}!event_base@{event\-\_\-base}}
+\subsubsection[{th\-\_\-owner\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf th\-\_\-owner\-\_\-id}}\label{structevent__base_ac054f5d7bdd442f7487d9803aa9f398d}
+\-The thread currently running the event\-\_\-loop for this base \index{event\-\_\-base@{event\-\_\-base}!timeheap@{timeheap}}
+\index{timeheap@{timeheap}!event_base@{event\-\_\-base}}
+\subsubsection[{timeheap}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf min\-\_\-heap} {\bf timeheap}}\label{structevent__base_a12ccd70a06164ac9f7534c1f482062ad}
+\-Priority queue of events with timeouts. \index{event\-\_\-base@{event\-\_\-base}!tv\-\_\-cache@{tv\-\_\-cache}}
+\index{tv\-\_\-cache@{tv\-\_\-cache}!event_base@{event\-\_\-base}}
+\subsubsection[{tv\-\_\-cache}]{\setlength{\rightskip}{0pt plus 5cm}struct timeval {\bf tv\-\_\-cache}}\label{structevent__base_a6d77c278905a134d681d1ae1cf036890}
+\-Stored timeval\-: used to avoid calling gettimeofday/clock\-\_\-gettime too often. \index{event\-\_\-base@{event\-\_\-base}!virtual\-\_\-event\-\_\-count@{virtual\-\_\-event\-\_\-count}}
+\index{virtual\-\_\-event\-\_\-count@{virtual\-\_\-event\-\_\-count}!event_base@{event\-\_\-base}}
+\subsubsection[{virtual\-\_\-event\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf virtual\-\_\-event\-\_\-count}}\label{structevent__base_adf20d8544219f55f97df7d18bdd01638}
+\-Number of virtual events 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/event-\/internal.\-h\end{DoxyCompactItemize}

@@ -1,0 +1,53 @@
+\section{deferred\-\_\-cb \-Struct \-Reference}
+\label{structdeferred__cb}\index{deferred\-\_\-cb@{deferred\-\_\-cb}}
+
+
+{\ttfamily \#include $<$defer-\/internal.\-h$>$}
+
+
+
+\-Collaboration diagram for deferred\-\_\-cb\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} ({\bf deferred\-\_\-cb}) cb\-\_\-next
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned {\bf queued}\-: 1
+\item 
+deferred\-\_\-cb\-\_\-fn {\bf cb}
+\item 
+void $\ast$ {\bf arg}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A \doxyref{deferred\-\_\-cb}{p.}{structdeferred__cb} is a callback that can be scheduled to run as part of an \doxyref{event\-\_\-base}{p.}{structevent__base}'s event\-\_\-loop, rather than running immediately. 
+
+\subsection{\-Member \-Function \-Documentation}
+\index{deferred\-\_\-cb@{deferred\-\_\-cb}!\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}}
+\index{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}!deferred_cb@{deferred\-\_\-cb}}
+\subsubsection[{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} (
+\begin{DoxyParamCaption}
+\item[{{\bf deferred\-\_\-cb}}]{}
+\end{DoxyParamCaption}
+)}\label{structdeferred__cb_ae28b40d579fcedde739dcc82745d8860}
+\-Links to the adjacent active (pending) \doxyref{deferred\-\_\-cb}{p.}{structdeferred__cb} objects. 
+
+\subsection{\-Field \-Documentation}
+\index{deferred\-\_\-cb@{deferred\-\_\-cb}!arg@{arg}}
+\index{arg@{arg}!deferred_cb@{deferred\-\_\-cb}}
+\subsubsection[{arg}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf arg}}\label{structdeferred__cb_a9ce2ec4812a92cb6ab39f6e81e9173a9}
+\-The function's second argument. \index{deferred\-\_\-cb@{deferred\-\_\-cb}!cb@{cb}}
+\index{cb@{cb}!deferred_cb@{deferred\-\_\-cb}}
+\subsubsection[{cb}]{\setlength{\rightskip}{0pt plus 5cm}deferred\-\_\-cb\-\_\-fn {\bf cb}}\label{structdeferred__cb_a211e24461c47eafb59414d89d3b96eba}
+\-The function to execute when the callback runs. \index{deferred\-\_\-cb@{deferred\-\_\-cb}!queued@{queued}}
+\index{queued@{queued}!deferred_cb@{deferred\-\_\-cb}}
+\subsubsection[{queued}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf queued}}\label{structdeferred__cb_ae893fdabb79326db096ab888e014a40a}
+\-True iff this \doxyref{deferred\-\_\-cb}{p.}{structdeferred__cb} is pending in an \doxyref{event\-\_\-base}{p.}{structevent__base}. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/defer-\/internal.\-h\end{DoxyCompactItemize}

@@ -1,0 +1,118 @@
+\section{evbuffer \-Struct \-Reference}
+\label{structevbuffer}\index{evbuffer@{evbuffer}}
+
+
+\-Collaboration diagram for evbuffer\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (evbuffer\-\_\-cb\-\_\-queue, {\bf evbuffer\-\_\-cb\-\_\-entry}) callbacks
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evbuffer\-\_\-chain} $\ast$ {\bf first}
+\item 
+struct {\bf evbuffer\-\_\-chain} $\ast$ {\bf last}
+\item 
+struct {\bf evbuffer\-\_\-chain} $\ast$$\ast$ {\bf last\-\_\-with\-\_\-datap}
+\item 
+size\-\_\-t {\bf total\-\_\-len}
+\item 
+size\-\_\-t {\bf n\-\_\-add\-\_\-for\-\_\-cb}
+\item 
+size\-\_\-t {\bf n\-\_\-del\-\_\-for\-\_\-cb}
+\item 
+void $\ast$ {\bf lock}
+\item 
+unsigned {\bf own\-\_\-lock}\-: 1
+\item 
+unsigned {\bf freeze\-\_\-start}\-: 1
+\item 
+unsigned {\bf freeze\-\_\-end}\-: 1
+\item 
+unsigned {\bf deferred\-\_\-cbs}\-: 1
+\item 
+ev\-\_\-uint32\-\_\-t {\bf flags}
+\item 
+struct {\bf deferred\-\_\-cb\-\_\-queue} $\ast$ {\bf cb\-\_\-queue}
+\item 
+int {\bf refcnt}
+\item 
+struct {\bf deferred\-\_\-cb} {\bf deferred}
+\item 
+struct {\bf bufferevent} $\ast$ {\bf parent}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{evbuffer@{evbuffer}!\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}}
+\index{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}!evbuffer@{evbuffer}}
+\subsubsection[{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (
+\begin{DoxyParamCaption}
+\item[{evbuffer\-\_\-cb\-\_\-queue}]{, }
+\item[{{\bf evbuffer\-\_\-cb\-\_\-entry}}]{}
+\end{DoxyParamCaption}
+)}\label{structevbuffer_a7db680df1bef97e57e10e5e7baa31ebf}
+\-A doubly-\/linked-\/list of callback functions 
+
+\subsection{\-Field \-Documentation}
+\index{evbuffer@{evbuffer}!cb\-\_\-queue@{cb\-\_\-queue}}
+\index{cb\-\_\-queue@{cb\-\_\-queue}!evbuffer@{evbuffer}}
+\subsubsection[{cb\-\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf deferred\-\_\-cb\-\_\-queue}$\ast$ {\bf cb\-\_\-queue}}\label{structevbuffer_aef0be26b7399af631600db6b35df19fb}
+\-Used to implement deferred callbacks. \index{evbuffer@{evbuffer}!deferred@{deferred}}
+\index{deferred@{deferred}!evbuffer@{evbuffer}}
+\subsubsection[{deferred}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf deferred\-\_\-cb} {\bf deferred}}\label{structevbuffer_aebe8e3d0c896b175676d2a8ab6c9c725}
+\-A \doxyref{deferred\-\_\-cb}{p.}{structdeferred__cb} handle to make all of this buffer's callbacks invoked from the event loop. \index{evbuffer@{evbuffer}!deferred\-\_\-cbs@{deferred\-\_\-cbs}}
+\index{deferred\-\_\-cbs@{deferred\-\_\-cbs}!evbuffer@{evbuffer}}
+\subsubsection[{deferred\-\_\-cbs}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf deferred\-\_\-cbs}}\label{structevbuffer_ab66179bcc649255321e2cbf198bf00b2}
+\-True iff this evbuffer's callbacks are not invoked immediately upon a change in the buffer, but instead are deferred to be invoked from the \doxyref{event\-\_\-base}{p.}{structevent__base}'s loop. \-Useful for preventing enormous stack overflows when we have mutually recursive callbacks, and for serializing callbacks in a single thread. \index{evbuffer@{evbuffer}!first@{first}}
+\index{first@{first}!evbuffer@{evbuffer}}
+\subsubsection[{first}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer\-\_\-chain}$\ast$ {\bf first}}\label{structevbuffer_ae5d4dd177b7c4ab8e5addfde55a843d0}
+\-The first chain in this buffer's linked list of chains. \index{evbuffer@{evbuffer}!flags@{flags}}
+\index{flags@{flags}!evbuffer@{evbuffer}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}ev\-\_\-uint32\-\_\-t {\bf flags}}\label{structevbuffer_a46fb11e4f55160a35cb5e6113300d864}
+\-Zero or more \-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-F\-L\-A\-G\-\_\-$\ast$ bits \index{evbuffer@{evbuffer}!freeze\-\_\-end@{freeze\-\_\-end}}
+\index{freeze\-\_\-end@{freeze\-\_\-end}!evbuffer@{evbuffer}}
+\subsubsection[{freeze\-\_\-end}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf freeze\-\_\-end}}\label{structevbuffer_a164d26e2922717053aa1dad7e21bc0d6}
+\-True iff we should not allow changes to the end of the buffer (appends) \index{evbuffer@{evbuffer}!freeze\-\_\-start@{freeze\-\_\-start}}
+\index{freeze\-\_\-start@{freeze\-\_\-start}!evbuffer@{evbuffer}}
+\subsubsection[{freeze\-\_\-start}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf freeze\-\_\-start}}\label{structevbuffer_af1193eaa1bdcb77eaa7b3329b2e85b78}
+\-True iff we should not allow changes to the front of the buffer (drains or prepends). \index{evbuffer@{evbuffer}!last@{last}}
+\index{last@{last}!evbuffer@{evbuffer}}
+\subsubsection[{last}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer\-\_\-chain}$\ast$ {\bf last}}\label{structevbuffer_a4abfabd53365959da29b2dc10105ba2f}
+\-The last chain in this buffer's linked list of chains. \index{evbuffer@{evbuffer}!last\-\_\-with\-\_\-datap@{last\-\_\-with\-\_\-datap}}
+\index{last\-\_\-with\-\_\-datap@{last\-\_\-with\-\_\-datap}!evbuffer@{evbuffer}}
+\subsubsection[{last\-\_\-with\-\_\-datap}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer\-\_\-chain}$\ast$$\ast$ {\bf last\-\_\-with\-\_\-datap}}\label{structevbuffer_a4f345dcb623a0aa38ef1080010f77b43}
+\-Pointer to the next pointer pointing at the 'last\-\_\-with\-\_\-data' chain.
+
+\-To unpack\-:
+
+\-The last\-\_\-with\-\_\-data chain is the last chain that has any data in it. \-If all chains in the buffer are empty, it is the first chain. \-If the buffer has no chains, it is \-N\-U\-L\-L.
+
+\-The last\-\_\-with\-\_\-datap pointer points at \-\_\-whatever 'next' pointer\-\_\- points at the last\-\_\-with\-\_\-datap chain. \-If the last\-\_\-with\-\_\-data chain is the first chain, or it is \-N\-U\-L\-L, then the last\-\_\-with\-\_\-datap pointer is \&buf-\/$>$first. \index{evbuffer@{evbuffer}!lock@{lock}}
+\index{lock@{lock}!evbuffer@{evbuffer}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf lock}}\label{structevbuffer_a100fdaedb8eb0d56fd262e7ea2930930}
+\-A lock used to mediate access to this buffer. \index{evbuffer@{evbuffer}!n\-\_\-add\-\_\-for\-\_\-cb@{n\-\_\-add\-\_\-for\-\_\-cb}}
+\index{n\-\_\-add\-\_\-for\-\_\-cb@{n\-\_\-add\-\_\-for\-\_\-cb}!evbuffer@{evbuffer}}
+\subsubsection[{n\-\_\-add\-\_\-for\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf n\-\_\-add\-\_\-for\-\_\-cb}}\label{structevbuffer_a9df4902363fb7de91d4c716a81f69ede}
+\-Number of bytes we have added to the buffer since we last tried to invoke callbacks. \index{evbuffer@{evbuffer}!n\-\_\-del\-\_\-for\-\_\-cb@{n\-\_\-del\-\_\-for\-\_\-cb}}
+\index{n\-\_\-del\-\_\-for\-\_\-cb@{n\-\_\-del\-\_\-for\-\_\-cb}!evbuffer@{evbuffer}}
+\subsubsection[{n\-\_\-del\-\_\-for\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf n\-\_\-del\-\_\-for\-\_\-cb}}\label{structevbuffer_a3a01f211a034cdcbe3a857faae8f06e4}
+\-Number of bytes we have removed from the buffer since we last tried to invoke callbacks. \index{evbuffer@{evbuffer}!own\-\_\-lock@{own\-\_\-lock}}
+\index{own\-\_\-lock@{own\-\_\-lock}!evbuffer@{evbuffer}}
+\subsubsection[{own\-\_\-lock}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf own\-\_\-lock}}\label{structevbuffer_a5f18976d54ba259145f3c86cec07e65b}
+\-True iff we should free the lock field when we free this evbuffer. \index{evbuffer@{evbuffer}!parent@{parent}}
+\index{parent@{parent}!evbuffer@{evbuffer}}
+\subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent}$\ast$ {\bf parent}}\label{structevbuffer_af196e0fec9c6301947f81adcbae449c2}
+\-The parent bufferevent object this evbuffer belongs to. \-N\-U\-L\-L if the evbuffer stands alone. \index{evbuffer@{evbuffer}!refcnt@{refcnt}}
+\index{refcnt@{refcnt}!evbuffer@{evbuffer}}
+\subsubsection[{refcnt}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf refcnt}}\label{structevbuffer_afc0873ec70fe10be301b3ec811a1d6e5}
+\-A reference count on this evbuffer. \-When the reference count reaches 0, the buffer is destroyed. \-Manipulated with evbuffer\-\_\-incref and evbuffer\-\_\-decref\-\_\-and\-\_\-unlock and evbuffer\-\_\-free. \index{evbuffer@{evbuffer}!total\-\_\-len@{total\-\_\-len}}
+\index{total\-\_\-len@{total\-\_\-len}!evbuffer@{evbuffer}}
+\subsubsection[{total\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf total\-\_\-len}}\label{structevbuffer_aa117fc7f9adae4a74d56508b20f7de1f}
+\-Total amount of bytes stored in all chains. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/evbuffer-\/internal.\-h\end{DoxyCompactItemize}

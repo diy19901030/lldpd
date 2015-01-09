@@ -1,0 +1,47 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="lldpd_hardware",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" h_cfg" ];
+  Node2 [label="lldpd",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlldpd.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" g_protocols" ];
+  Node3 [label="protocol",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structprotocol.html"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" g_ctl_event\ng_iface_event\ng_cleanup_timer\ng_main_loop\ng_iface_timer_event" ];
+  Node4 [label="event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent.html"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ev_base" ];
+  Node5 [label="event_base",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent__base.html"];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" evsel\nevsigsel" ];
+  Node6 [label="eventop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structeventop.html"];
+  Node7 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sig" ];
+  Node7 [label="evsig_info",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevsig__info.html"];
+  Node4 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ev_signal" ];
+  Node8 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" timeheap" ];
+  Node8 [label="min_heap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structmin__heap.html"];
+  Node4 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" p" ];
+  Node9 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" defer_queue" ];
+  Node9 [label="deferred_cb_queue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structdeferred__cb__queue.html"];
+  Node4 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" current_event\nth_notify" ];
+  Node10 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" common_timeout_queues" ];
+  Node10 [label="common_timeout_list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structcommon__timeout__list.html"];
+  Node4 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" timeout_event" ];
+  Node5 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" base" ];
+  Node11 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sigmap" ];
+  Node11 [label="event_signal_map",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent__signal__map.html"];
+  Node12 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" changelist" ];
+  Node12 [label="event_changelist",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent__changelist.html"];
+  Node13 -> Node12 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" changes" ];
+  Node13 [label="event_change",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structevent__change.html"];
+  Node14 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" g_config" ];
+  Node14 [label="lldpd_config",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlldpd__config.html"];
+  Node5 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" g_base" ];
+  Node15 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" h_lport" ];
+  Node15 [label="lldpd_port",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlldpd__port.html"];
+  Node16 -> Node15 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" p_lastframe" ];
+  Node16 [label="lldpd_frame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlldpd__frame.html"];
+  Node17 -> Node15 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" p_chassis" ];
+  Node17 [label="lldpd_chassis",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlldpd__chassis.html"];
+  Node18 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" h_ops" ];
+  Node18 [label="lldpd_ops",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structlldpd__ops.html"];
+}

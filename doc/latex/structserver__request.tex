@@ -1,0 +1,58 @@
+\section{server\-\_\-request \-Struct \-Reference}
+\label{structserver__request}\index{server\-\_\-request@{server\-\_\-request}}
+
+
+\-Collaboration diagram for server\-\_\-request\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf server\-\_\-request} $\ast$ {\bfseries next\-\_\-pending}\label{structserver__request_acbf23d5960521abde1fb447babd5f59f}
+
+\item 
+struct {\bf server\-\_\-request} $\ast$ {\bfseries prev\-\_\-pending}\label{structserver__request_ade8cd3f16b36db3688afbd77747de812}
+
+\item 
+u16 {\bfseries trans\-\_\-id}\label{structserver__request_a84c6bbef770a9b5f8f7c33ce3842a436}
+
+\item 
+struct {\bf evdns\-\_\-server\-\_\-port} $\ast$ {\bfseries port}\label{structserver__request_a56729fd244e435a7be531b5972541066}
+
+\item 
+struct {\bf sockaddr\-\_\-storage} {\bfseries addr}\label{structserver__request_a7fe4b3f87e7a49d2520a0d26563bb921}
+
+\item 
+ev\-\_\-socklen\-\_\-t {\bfseries addrlen}\label{structserver__request_a6880b3fcdc638f79016883fc28654a04}
+
+\item 
+int {\bfseries n\-\_\-answer}\label{structserver__request_a3411f0c13d4188861ca97b50fdaad5e5}
+
+\item 
+int {\bfseries n\-\_\-authority}\label{structserver__request_a05e55a8dafdc094f667af6e1de2f5062}
+
+\item 
+int {\bfseries n\-\_\-additional}\label{structserver__request_a797c1a6c81ea491d37b13cf206e509ea}
+
+\item 
+struct {\bf server\-\_\-reply\-\_\-item} $\ast$ {\bfseries answer}\label{structserver__request_ac4718b31bc19c54de6484f13814b31eb}
+
+\item 
+struct {\bf server\-\_\-reply\-\_\-item} $\ast$ {\bfseries authority}\label{structserver__request_a03fbcf610f72e74160f6b753317a66f1}
+
+\item 
+struct {\bf server\-\_\-reply\-\_\-item} $\ast$ {\bfseries additional}\label{structserver__request_a2f31e39297d11c8606fe78cdf36098c1}
+
+\item 
+char $\ast$ {\bfseries response}\label{structserver__request_a11373f02c42587a1853ad6c8be5fe10e}
+
+\item 
+size\-\_\-t {\bfseries response\-\_\-len}\label{structserver__request_a3a79283f6c033889a1a06a0a889eec84}
+
+\item 
+struct {\bf evdns\-\_\-server\-\_\-request} {\bfseries base}\label{structserver__request_a1d71ef5d5d5d57161543ce0264a75d4b}
+
+\end{DoxyCompactItemize}
+
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/evdns.\-c\end{DoxyCompactItemize}

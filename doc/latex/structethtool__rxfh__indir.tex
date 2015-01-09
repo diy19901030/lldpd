@@ -1,0 +1,28 @@
+\section{ethtool\-\_\-rxfh\-\_\-indir \-Struct \-Reference}
+\label{structethtool__rxfh__indir}\index{ethtool\-\_\-rxfh\-\_\-indir@{ethtool\-\_\-rxfh\-\_\-indir}}
+
+
+{\ttfamily \#include $<$ethtool.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-u32 {\bfseries cmd}\label{structethtool__rxfh__indir_a66d231264d5aa36fd7d347e2c967769a}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries size}\label{structethtool__rxfh__indir_a3b4e953e2801c3a815e11035b1a97c85}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries ring\-\_\-index} [0]\label{structethtool__rxfh__indir_a8be8478410e07d99543a4f7e777b7f73}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+struct \doxyref{ethtool\-\_\-rxfh\-\_\-indir}{p.}{structethtool__rxfh__indir} -\/ command to get or set \-R\-X flow hash indirection \-: \-Specific command number -\/ \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-F\-H\-I\-N\-D\-I\-R or \-E\-T\-H\-T\-O\-O\-L\-\_\-\-S\-R\-X\-F\-H\-I\-N\-D\-I\-R \-: \-On entry, the array size of the user buffer, which may be zero. \-On return from \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-F\-H\-I\-N\-D\-I\-R, the array size of the hardware indirection table. \-: \-R\-X ring/queue index for each hash value
+
+\-For \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-F\-H\-I\-N\-D\-I\-R, a  of zero means that only the size should be returned. \-For \-E\-T\-H\-T\-O\-O\-L\-\_\-\-S\-R\-X\-F\-H\-I\-N\-D\-I\-R, a  of zero means the table should be reset to default values. \-This last feature is not supported by the original implementations. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/ethtool.\-h\end{DoxyCompactItemize}

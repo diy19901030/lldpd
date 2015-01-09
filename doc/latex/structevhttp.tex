@@ -1,0 +1,58 @@
+\section{evhttp \-Struct \-Reference}
+\label{structevhttp}\index{evhttp@{evhttp}}
+
+
+\-Collaboration diagram for evhttp\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} ({\bf evhttp}) next\-\_\-vhost\label{structevhttp_ac1c8501b3b24f51ef1a6f9b16fdde6e2}
+
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (boundq, {\bf evhttp\-\_\-bound\-\_\-socket}) sockets\label{structevhttp_a5fa91f2f563a39d4a23060ebb505b2e6}
+
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (httpcbq, {\bf evhttp\-\_\-cb}) callbacks\label{structevhttp_a408e7fa8a40916bd165445f6ed68499b}
+
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (vhostsq, {\bf evhttp}) virtualhosts\label{structevhttp_aa1027e07b9d756df82bd0c293d17accc}
+
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (aliasq, {\bf evhttp\-\_\-server\-\_\-alias}) aliases\label{structevhttp_a354c990e507eacccc05935889efba766}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct evconq {\bfseries connections}\label{structevhttp_abbb65a1d20c79df1e0d3647099ed6b95}
+
+\item 
+char $\ast$ {\bfseries vhost\-\_\-pattern}\label{structevhttp_af00a8f9d16a8b501f44e08bf02ceae57}
+
+\item 
+int {\bfseries timeout}\label{structevhttp_a493b57f443cc38b3d3df9c1e584d9d82}
+
+\item 
+size\-\_\-t {\bfseries default\-\_\-max\-\_\-headers\-\_\-size}\label{structevhttp_a6c7c0e11307b5680ed73c7e823c08a71}
+
+\item 
+ev\-\_\-uint64\-\_\-t {\bfseries default\-\_\-max\-\_\-body\-\_\-size}\label{structevhttp_a3e7d1e2db48964d27c47d58a439cdb68}
+
+\item 
+ev\-\_\-uint16\-\_\-t {\bfseries allowed\-\_\-methods}\label{structevhttp_a6e2fb8b47a0034d3949ae1f6572357a0}
+
+\item 
+void($\ast$ {\bfseries gencb} )(struct {\bf evhttp\-\_\-request} $\ast$req, void $\ast$)\label{structevhttp_adc476cb642a10343be1967468a5ca254}
+
+\item 
+void $\ast$ {\bfseries gencbarg}\label{structevhttp_addfa13a7b61ca72567983a40828e5b10}
+
+\item 
+struct {\bf event\-\_\-base} $\ast$ {\bfseries base}\label{structevhttp_ab1a154f7530a81e9dd1d63fc6b98a5c7}
+
+\end{DoxyCompactItemize}
+
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/http-\/internal.\-h\end{DoxyCompactItemize}

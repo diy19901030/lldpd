@@ -1,0 +1,88 @@
+\section{evhttp\-\_\-connection \-Struct \-Reference}
+\label{structevhttp__connection}\index{evhttp\-\_\-connection@{evhttp\-\_\-connection}}
+
+
+\-Collaboration diagram for evhttp\-\_\-connection\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} ({\bf evhttp\-\_\-connection}) next\label{structevhttp__connection_ac4d64da04877dbee22601f8a91d63af6}
+
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (evcon\-\_\-requestq, {\bf evhttp\-\_\-request}) requests\label{structevhttp__connection_a71f580d3a82504ca2239dc09f1bd1ed6}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+{\bf evutil\-\_\-socket\-\_\-t} {\bfseries fd}\label{structevhttp__connection_adf76ebacdedde5572e9ba938beab2afe}
+
+\item 
+struct {\bf bufferevent} $\ast$ {\bfseries bufev}\label{structevhttp__connection_a767573fa073cd8fc1496a62d8f04e1a2}
+
+\item 
+struct {\bf event} {\bfseries retry\-\_\-ev}\label{structevhttp__connection_a2ce90a2aaa826e058b0c88f09ebba04c}
+
+\item 
+char $\ast$ {\bfseries bind\-\_\-address}\label{structevhttp__connection_ae15b37b2cdfd51bbb2719e4eb3ffb917}
+
+\item 
+u\-\_\-short {\bfseries bind\-\_\-port}\label{structevhttp__connection_af7bc7b02b844328a348cc7f44ec3c84e}
+
+\item 
+char $\ast$ {\bfseries address}\label{structevhttp__connection_a879a8cdf605d02f8af8b2e216b8764f2}
+
+\item 
+u\-\_\-short {\bfseries port}\label{structevhttp__connection_ace814d889911ace80bb2ca8d0a0a9df2}
+
+\item 
+size\-\_\-t {\bfseries max\-\_\-headers\-\_\-size}\label{structevhttp__connection_a5e13483dd759d74b020d514f39ee9211}
+
+\item 
+ev\-\_\-uint64\-\_\-t {\bfseries max\-\_\-body\-\_\-size}\label{structevhttp__connection_aadf8c915c4b0e5ca573b147d360b4079}
+
+\item 
+int {\bfseries flags}\label{structevhttp__connection_ac8bf36fe0577cba66bccda3a6f7e80a4}
+
+\item 
+int {\bfseries timeout}\label{structevhttp__connection_a493b57f443cc38b3d3df9c1e584d9d82}
+
+\item 
+int {\bfseries retry\-\_\-cnt}\label{structevhttp__connection_abdbbededb294958e8394aa631ef5ea0d}
+
+\item 
+int {\bfseries retry\-\_\-max}\label{structevhttp__connection_aeba4c70f5ccbdf7b25c20020261f7d09}
+
+\item 
+enum evhttp\-\_\-connection\-\_\-state {\bfseries state}\label{structevhttp__connection_a10516cefb6673d60b11773cc8dd87d69}
+
+\item 
+struct {\bf evhttp} $\ast$ {\bfseries http\-\_\-server}\label{structevhttp__connection_a74bda8098cf18dc3269a397b2acb0a2e}
+
+\item 
+void($\ast$ {\bfseries cb} )(struct {\bf evhttp\-\_\-connection} $\ast$, void $\ast$)\label{structevhttp__connection_ac2d47939335643151048ffea72177fb2}
+
+\item 
+void $\ast$ {\bfseries cb\-\_\-arg}\label{structevhttp__connection_aa2a0fc874870115f7d31aabcbb53ec0b}
+
+\item 
+void($\ast$ {\bfseries closecb} )(struct {\bf evhttp\-\_\-connection} $\ast$, void $\ast$)\label{structevhttp__connection_a568a224ad4803e212d164f3accdb5b49}
+
+\item 
+void $\ast$ {\bfseries closecb\-\_\-arg}\label{structevhttp__connection_a67ad9c8e13b320cfa74f2f52138ab55c}
+
+\item 
+struct {\bf deferred\-\_\-cb} {\bfseries read\-\_\-more\-\_\-deferred\-\_\-cb}\label{structevhttp__connection_aee8508461b01c2e113199275407ad7bf}
+
+\item 
+struct {\bf event\-\_\-base} $\ast$ {\bfseries base}\label{structevhttp__connection_ab1a154f7530a81e9dd1d63fc6b98a5c7}
+
+\item 
+struct {\bf evdns\-\_\-base} $\ast$ {\bfseries dns\-\_\-base}\label{structevhttp__connection_ae25945e708ff97da16b4e5e5757ae580}
+
+\end{DoxyCompactItemize}
+
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/http-\/internal.\-h\end{DoxyCompactItemize}

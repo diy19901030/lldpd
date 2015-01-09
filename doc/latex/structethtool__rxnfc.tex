@@ -1,0 +1,54 @@
+\section{ethtool\-\_\-rxnfc \-Struct \-Reference}
+\label{structethtool__rxnfc}\index{ethtool\-\_\-rxnfc@{ethtool\-\_\-rxnfc}}
+
+
+{\ttfamily \#include $<$ethtool.\-h$>$}
+
+
+
+\-Collaboration diagram for ethtool\-\_\-rxnfc\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-u32 {\bfseries cmd}\label{structethtool__rxnfc_a66d231264d5aa36fd7d347e2c967769a}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries flow\-\_\-type}\label{structethtool__rxnfc_aff9b26a6bf042403e4ace596e569d475}
+
+\item 
+\-\_\-\-\_\-u64 {\bfseries data}\label{structethtool__rxnfc_afc74fb60530ac6b663e73ff014e50ca4}
+
+\item 
+struct {\bf ethtool\-\_\-rx\-\_\-flow\-\_\-spec} {\bfseries fs}\label{structethtool__rxnfc_a0512e2d9323675adb4385e55369c722e}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries rule\-\_\-cnt}\label{structethtool__rxnfc_a10ed0470e2115a9b88dab402caf31565}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries rule\-\_\-locs} [0]\label{structethtool__rxnfc_a19fe9e3a6933f53d63b59fb1395264b6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+struct \doxyref{ethtool\-\_\-rxnfc}{p.}{structethtool__rxnfc} -\/ command to get or set \-R\-X flow classification rules \-: \-Specific command number -\/ \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-F\-H, \-E\-T\-H\-T\-O\-O\-L\-\_\-\-S\-R\-X\-F\-H, \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-R\-I\-N\-G\-S, \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-C\-L\-S\-R\-L\-C\-N\-T, \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-C\-L\-S\-R\-U\-L\-E, \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-C\-L\-S\-R\-L\-A\-L\-L, \-E\-T\-H\-T\-O\-O\-L\-\_\-\-S\-R\-X\-C\-L\-S\-R\-L\-D\-E\-L or \-E\-T\-H\-T\-O\-O\-L\-\_\-\-S\-R\-X\-C\-L\-S\-R\-L\-I\-N\-S \-: \-Type of flow to be affected, e.\-g. \-T\-C\-P\-\_\-\-V4\-\_\-\-F\-L\-O\-W \-: \-Command-\/dependent value \-: \-Flow classification rule \-: \-Number of rules to be affected \-: \-Array of used rule locations
+
+\-For \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-F\-H and \-E\-T\-H\-T\-O\-O\-L\-\_\-\-S\-R\-X\-F\-H,  is a bitmask indicating the fields included in the flow hash, e.\-g. \-R\-X\-H\-\_\-\-I\-P\-\_\-\-S\-R\-C. \-The following structure fields must not be used.
+
+\-For \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-R\-I\-N\-G\-S,  is set to the number of \-R\-X rings/queues on return.
+
+\-For \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-C\-L\-S\-R\-L\-C\-N\-T,  is set to the number of defined rules on return. \-If  is non-\/zero on return then it is the size of the rule table, plus the flag \-R\-X\-\_\-\-C\-L\-S\-\_\-\-L\-O\-C\-\_\-\-S\-P\-E\-C\-I\-A\-L if the driver supports any special location values. \-If that flag is not set in  then special location values should not be used.
+
+\-For \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-C\-L\-S\-R\-U\-L\-E, . specifies the location of an existing rule on entry and  contains the rule on return.
+
+\-For \-E\-T\-H\-T\-O\-O\-L\-\_\-\-G\-R\-X\-C\-L\-S\-R\-L\-A\-L\-L,  specifies the array size of the user buffer for  on entry. \-On return,  is the size of the rule table,  is the number of defined rules, and  contains the locations of the defined rules. \-Drivers must use the second parameter to get\-\_\-rxnfc() instead of .
+
+\-For \-E\-T\-H\-T\-O\-O\-L\-\_\-\-S\-R\-X\-C\-L\-S\-R\-L\-I\-N\-S,  specifies the rule to add or update. . either specifies the location to use or is a special location value with \-R\-X\-\_\-\-C\-L\-S\-\_\-\-L\-O\-C\-\_\-\-S\-P\-E\-C\-I\-A\-L flag set. \-On return, . is the actual rule location.
+
+\-For \-E\-T\-H\-T\-O\-O\-L\-\_\-\-S\-R\-X\-C\-L\-S\-R\-L\-D\-E\-L, . specifies the location of an existing rule on entry.
+
+\-A driver supporting the special location values for \-E\-T\-H\-T\-O\-O\-L\-\_\-\-S\-R\-X\-C\-L\-S\-R\-L\-I\-N\-S may add the rule at any suitable unused location, and may remove a rule at a later location (lower priority) that matches exactly the same set of flows. \-The special values are\-: \-R\-X\-\_\-\-C\-L\-S\-\_\-\-L\-O\-C\-\_\-\-A\-N\-Y, selecting any location; \-R\-X\-\_\-\-C\-L\-S\-\_\-\-L\-O\-C\-\_\-\-F\-I\-R\-S\-T, selecting the first suitable location (maximum priority); and \-R\-X\-\_\-\-C\-L\-S\-\_\-\-L\-O\-C\-\_\-\-L\-A\-S\-T, selecting the last suitable location (minimum priority). \-Additional special values may be defined in future and drivers must return -\/\-E\-I\-N\-V\-A\-L for any unrecognised value. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/ethtool.\-h\end{DoxyCompactItemize}

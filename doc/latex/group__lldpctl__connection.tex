@@ -1,0 +1,243 @@
+\section{\-Managing connection to lldpd}
+\label{group__lldpctl__connection}\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}}
+\-Collaboration diagram for \-Managing connection to lldpd\-:
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf lldpctl\-\_\-conn\-\_\-t} {\bf lldpctl\-\_\-conn\-\_\-t}
+\item 
+typedef ssize\-\_\-t($\ast$ {\bf lldpctl\-\_\-send\-\_\-callback} )({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn, const uint8\-\_\-t $\ast$data, size\-\_\-t length, void $\ast$user\-\_\-data)
+\item 
+typedef ssize\-\_\-t($\ast$ {\bf lldpctl\-\_\-recv\-\_\-callback} )({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn, const uint8\-\_\-t $\ast$data, size\-\_\-t length, void $\ast$user\-\_\-data)
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ {\bf lldpctl\-\_\-get\-\_\-default\-\_\-transport} (void)
+\item 
+ssize\-\_\-t {\bf lldpctl\-\_\-recv} ({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn, const uint8\-\_\-t $\ast$data, size\-\_\-t length)
+\item 
+ssize\-\_\-t {\bf lldpctl\-\_\-send} ({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn)
+\item 
+int {\bf lldpctl\-\_\-process\-\_\-conn\-\_\-buffer} ({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn)
+\item 
+{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$ {\bf lldpctl\-\_\-new} ({\bf lldpctl\-\_\-send\-\_\-callback} send, {\bf lldpctl\-\_\-recv\-\_\-callback} recv, void $\ast$user\-\_\-data)
+\item 
+{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$ {\bf lldpctl\-\_\-new\-\_\-name} (const char $\ast$ctlname, {\bf lldpctl\-\_\-send\-\_\-callback} send, {\bf lldpctl\-\_\-recv\-\_\-callback} recv, void $\ast$user\-\_\-data)
+\item 
+int {\bf lldpctl\-\_\-release} ({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Connection with lldpd.
+
+\-This library does not handle \-I\-O. \-They are delegated to a set of functions to allow a user to specify exactly how \-I\-O should be done. \-A user is expected to provide two functions\-: the first one is called when the library requests incoming data, the other one when it requests outgoing data. \-Moreover, the user is also expected to call the appropriate functions when data comes back (\doxyref{lldpctl\-\_\-recv()}{p.}{group__lldpctl__connection_ga3e25c14b8d805fc248f679befdac6c72}) or needs to be sent (\doxyref{lldpctl\-\_\-send()}{p.}{group__lldpctl__connection_ga2fc31f5af97ad70b5ea755f690501b3d}).
+
+\-Because the most common case is synchronous \-I\-O, `liblldpctl` will use classic synchronous \-I\-O with the \-Unix socket if no \-I\-O functions are provided by the user. \-For all other cases, the user must provide the appropriate functions.
+
+\-A connection should be allocated by using \doxyref{lldpctl\-\_\-new()}{p.}{group__lldpctl__connection_gabe60f85d3df83aa2154e5ddd9128ce3d}. \-It needs to be released with \doxyref{lldpctl\-\_\-release()}{p.}{group__lldpctl__connection_gaebd41c3ca7c8b6aa996198a3cea0b3a5}. 
+
+\subsection{\-Typedef \-Documentation}
+\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-conn\-\_\-t@{lldpctl\-\_\-conn\-\_\-t}}
+\index{lldpctl\-\_\-conn\-\_\-t@{lldpctl\-\_\-conn\-\_\-t}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-conn\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf lldpctl\-\_\-conn\-\_\-t} {\bf lldpctl\-\_\-conn\-\_\-t}}\label{group__lldpctl__connection_ga9df318a1e5daa143591f0931a282c103}
+\-Structure referencing a connection with lldpd.
+
+\-This structure should be handled as opaque. \-It can be allocated with {\ttfamily \doxyref{lldpctl\-\_\-new()}{p.}{group__lldpctl__connection_gabe60f85d3df83aa2154e5ddd9128ce3d}} and the associated resources will be freed with {\ttfamily \doxyref{lldpctl\-\_\-release()}{p.}{group__lldpctl__connection_gaebd41c3ca7c8b6aa996198a3cea0b3a5}}. \index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-recv\-\_\-callback@{lldpctl\-\_\-recv\-\_\-callback}}
+\index{lldpctl\-\_\-recv\-\_\-callback@{lldpctl\-\_\-recv\-\_\-callback}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-recv\-\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}typedef ssize\-\_\-t($\ast$ {\bf lldpctl\-\_\-recv\-\_\-callback})({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn, const uint8\-\_\-t $\ast$data, size\-\_\-t length, void $\ast$user\-\_\-data)}\label{group__lldpctl__connection_gab4d497fd12075fc3960a40330f7f59ed}
+\-Callback function invoked to receive data from lldpd.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em lldpctl} & \-Handle to the connection to lldpd. \\
+\hline
+{\em data} & \-Buffer for receiving data \\
+\hline
+{\em length} & \-Maximum bytes we can receive \\
+\hline
+{\em user\-\_\-data} & \-Provided user data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The number of bytes really received or either {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K} if no bytes can be received without blocking, {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-\_\-\-F\-A\-I\-L\-U\-R\-E} for other errors or {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-E\-O\-F} if end of file was reached. 
+\end{DoxyReturn}
+\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-send\-\_\-callback@{lldpctl\-\_\-send\-\_\-callback}}
+\index{lldpctl\-\_\-send\-\_\-callback@{lldpctl\-\_\-send\-\_\-callback}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-send\-\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}typedef ssize\-\_\-t($\ast$ {\bf lldpctl\-\_\-send\-\_\-callback})({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn, const uint8\-\_\-t $\ast$data, size\-\_\-t length, void $\ast$user\-\_\-data)}\label{group__lldpctl__connection_gabbeeb2e577b5fed6e3ae8f71805845b3}
+\-Callback function invoked to send data to lldpd.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em lldpctl} & \-Handle to the connection to lldpd. \\
+\hline
+{\em data} & \-Bytes to be sent. \\
+\hline
+{\em length} & \-Length of provided data. \\
+\hline
+{\em user\-\_\-data} & \-Provided user data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The number of bytes really sent or either {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K} if no bytes can be sent without blocking or {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-\_\-\-F\-A\-I\-L\-U\-R\-E} for other errors. 
+\end{DoxyReturn}
+
+
+\subsection{\-Function \-Documentation}
+\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-get\-\_\-default\-\_\-transport@{lldpctl\-\_\-get\-\_\-default\-\_\-transport}}
+\index{lldpctl\-\_\-get\-\_\-default\-\_\-transport@{lldpctl\-\_\-get\-\_\-default\-\_\-transport}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-get\-\_\-default\-\_\-transport}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf lldpctl\-\_\-get\-\_\-default\-\_\-transport} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__connection_gae1c0446ba6aa01bfa83e72985f2ab35d}
+\-Get default transport name.
+
+\-Currently, this is the default location of the \-Unix socket. 
+
+\-Here is the caller graph for this function\-:
+
+
+\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-new@{lldpctl\-\_\-new}}
+\index{lldpctl\-\_\-new@{lldpctl\-\_\-new}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-conn\-\_\-t}$\ast$ {\bf lldpctl\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-send\-\_\-callback}}]{send, }
+\item[{{\bf lldpctl\-\_\-recv\-\_\-callback}}]{recv, }
+\item[{void $\ast$}]{user\-\_\-data}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__connection_gabe60f85d3df83aa2154e5ddd9128ce3d}
+\-Allocate a new handler for connecting to lldpd.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em send} & \-Callback to be used when sending new data is requested. \\
+\hline
+{\em recv} & \-Callback to be used when receiving new data is requested. \\
+\hline
+{\em user\-\_\-data} & \-Data to pass to callbacks. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-An handler to be used to connect to lldpd or {\ttfamily \-N\-U\-L\-L} in case of error. \-In the later case, the error is probable an out of memory condition.
+\end{DoxyReturn}
+\-The allocated handler can be released with {\ttfamily \doxyref{lldpctl\-\_\-release()}{p.}{group__lldpctl__connection_gaebd41c3ca7c8b6aa996198a3cea0b3a5}}. \-If the provided parameters are both {\ttfamily \-N\-U\-L\-L}, default synchronous callbacks will be used. 
+
+\-Here is the call graph for this function\-:
+
+
+\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-new\-\_\-name@{lldpctl\-\_\-new\-\_\-name}}
+\index{lldpctl\-\_\-new\-\_\-name@{lldpctl\-\_\-new\-\_\-name}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-new\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-conn\-\_\-t}$\ast$ {\bf lldpctl\-\_\-new\-\_\-name} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ctlname, }
+\item[{{\bf lldpctl\-\_\-send\-\_\-callback}}]{send, }
+\item[{{\bf lldpctl\-\_\-recv\-\_\-callback}}]{recv, }
+\item[{void $\ast$}]{user\-\_\-data}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__connection_ga1c7b4c392a60b27909e2098209bbdca2}
+\-Allocate a new handler for connecting to lldpd.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ctlname} & the \-Unix-\/domain socket to connect to lldpd. \\
+\hline
+{\em send} & \-Callback to be used when sending new data is requested. \\
+\hline
+{\em recv} & \-Callback to be used when receiving new data is requested. \\
+\hline
+{\em user\-\_\-data} & \-Data to pass to callbacks. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-An handler to be used to connect to lldpd or {\ttfamily \-N\-U\-L\-L} in case of error. \-In the later case, the error is probable an out of memory condition.
+\end{DoxyReturn}
+\-The allocated handler can be released with {\ttfamily \doxyref{lldpctl\-\_\-release()}{p.}{group__lldpctl__connection_gaebd41c3ca7c8b6aa996198a3cea0b3a5}}. \-If the provided parameters are both {\ttfamily \-N\-U\-L\-L}, default synchronous callbacks will be used. 
+
+\-Here is the caller graph for this function\-:
+
+
+\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-process\-\_\-conn\-\_\-buffer@{lldpctl\-\_\-process\-\_\-conn\-\_\-buffer}}
+\index{lldpctl\-\_\-process\-\_\-conn\-\_\-buffer@{lldpctl\-\_\-process\-\_\-conn\-\_\-buffer}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-process\-\_\-conn\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf lldpctl\-\_\-process\-\_\-conn\-\_\-buffer} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__connection_ga4ab492b59755694bd4a040bebe2558a5}
+\-Function invoked to see if there's more data to be processed in the buffer.
+
+\-This function should be invoked to check for notifications in the data that has already been read. \-Its used typically for asynchronous connections.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Handle to the connection to lldpd. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 to indicate maybe more data is available for processing !0 to indicate no data or insufficient data for processing 
+\end{DoxyReturn}
+\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-recv@{lldpctl\-\_\-recv}}
+\index{lldpctl\-\_\-recv@{lldpctl\-\_\-recv}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-recv}]{\setlength{\rightskip}{0pt plus 5cm}ssize\-\_\-t {\bf lldpctl\-\_\-recv} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$}]{conn, }
+\item[{const uint8\-\_\-t $\ast$}]{data, }
+\item[{size\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__connection_ga3e25c14b8d805fc248f679befdac6c72}
+\-Function invoked when additional data is available from lldpd.
+
+\-This function should be invoked in case of asynchronous \-I\-O when new data is available from lldpd (expected or unexpected).
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Handle to the connection to lldpd. \\
+\hline
+{\em data} & \-Data received from lldpd. \\
+\hline
+{\em length} & \-Length of data received. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The number of bytes available or a negative integer if an error has occurred. 0 is not an error. \-It usually means that a notification has been processed. 
+\end{DoxyReturn}
+\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-release@{lldpctl\-\_\-release}}
+\index{lldpctl\-\_\-release@{lldpctl\-\_\-release}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-release}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf lldpctl\-\_\-release} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__connection_gaebd41c3ca7c8b6aa996198a3cea0b3a5}
+\-Release resources associated with a connection to lldpd.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Previously allocated handler to a connection to lldpd. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success or a negative integer
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{lldpctl\-\_\-new()}{p.}{group__lldpctl__connection_gabe60f85d3df83aa2154e5ddd9128ce3d} 
+\end{DoxySeeAlso}
+\index{\-Managing connection to lldpd@{\-Managing connection to lldpd}!lldpctl\-\_\-send@{lldpctl\-\_\-send}}
+\index{lldpctl\-\_\-send@{lldpctl\-\_\-send}!Managing connection to lldpd@{\-Managing connection to lldpd}}
+\subsubsection[{lldpctl\-\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}ssize\-\_\-t {\bf lldpctl\-\_\-send} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__connection_ga2fc31f5af97ad70b5ea755f690501b3d}
+\-Function invoked when there is an opportunity to send data to lldpd.
+
+\-This function should be invoked in case of asynchronous \-I\-O when new data can be written to lldpd.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Handle to the connection to lldpd. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The number of bytes processed or a negative integer if an error has occured. 
+\end{DoxyReturn}

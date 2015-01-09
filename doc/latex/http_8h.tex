@@ -1,0 +1,1548 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/include/event2/http.h \-File \-Reference}
+\label{http_8h}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/http.\-h@{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/http.\-h}}
+{\ttfamily \#include $<$event2/util.\-h$>$}\*
+\-Include dependency graph for http.\-h\-:
+\-This graph shows which files directly or indirectly include this file\-:
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-O\-K}~200
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-N\-O\-C\-O\-N\-T\-E\-N\-T}~204
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-P\-E\-R\-M}~301
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-T\-E\-M\-P}~302
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-N\-O\-T\-M\-O\-D\-I\-F\-I\-E\-D}~304
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-B\-A\-D\-R\-E\-Q\-U\-E\-S\-T}~400
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}~404
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-B\-A\-D\-M\-E\-T\-H\-O\-D}~405
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-E\-N\-T\-I\-T\-Y\-T\-O\-O\-L\-A\-R\-G\-E}~413
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-E\-X\-P\-E\-C\-T\-A\-T\-I\-O\-N\-F\-A\-I\-L\-E\-D}~417
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L}~500
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-N\-O\-T\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D}~501
+\item 
+\#define {\bf \-H\-T\-T\-P\-\_\-\-S\-E\-R\-V\-U\-N\-A\-V\-A\-I\-L}~503
+\item 
+\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-U\-R\-I\-\_\-\-N\-O\-N\-C\-O\-N\-F\-O\-R\-M\-A\-N\-T}~0x01
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf evhttp\-\_\-cmd\-\_\-type} \{ \*
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-G\-E\-T} =  1 $<$$<$ 0, 
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-P\-O\-S\-T} =  1 $<$$<$ 1, 
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-H\-E\-A\-D} =  1 $<$$<$ 2, 
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-P\-U\-T} =  1 $<$$<$ 3, 
+\*
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-D\-E\-L\-E\-T\-E} =  1 $<$$<$ 4, 
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-O\-P\-T\-I\-O\-N\-S} =  1 $<$$<$ 5, 
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-T\-R\-A\-C\-E} =  1 $<$$<$ 6, 
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-C\-O\-N\-N\-E\-C\-T} =  1 $<$$<$ 7, 
+\*
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-P\-A\-T\-C\-H} =  1 $<$$<$ 8
+ \}
+\item 
+enum {\bf evhttp\-\_\-request\-\_\-kind} \{ {\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-U\-E\-S\-T}, 
+{\bfseries \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-S\-P\-O\-N\-S\-E}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evhttp} $\ast$ {\bf evhttp\-\_\-new} (struct {\bf event\-\_\-base} $\ast$base)
+\item 
+int {\bf evhttp\-\_\-bind\-\_\-socket} (struct {\bf evhttp} $\ast$http, const char $\ast$address, ev\-\_\-uint16\-\_\-t port)
+\item 
+struct {\bf evhttp\-\_\-bound\-\_\-socket} $\ast$ {\bf evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle} (struct {\bf evhttp} $\ast$http, const char $\ast$address, ev\-\_\-uint16\-\_\-t port)
+\item 
+int {\bf evhttp\-\_\-accept\-\_\-socket} (struct {\bf evhttp} $\ast$http, {\bf evutil\-\_\-socket\-\_\-t} fd)
+\item 
+struct {\bf evhttp\-\_\-bound\-\_\-socket} $\ast$ {\bf evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle} (struct {\bf evhttp} $\ast$http, {\bf evutil\-\_\-socket\-\_\-t} fd)
+\item 
+struct {\bf evhttp\-\_\-bound\-\_\-socket} $\ast$ {\bf evhttp\-\_\-bind\-\_\-listener} (struct {\bf evhttp} $\ast$http, struct {\bf evconnlistener} $\ast$listener)
+\item 
+struct {\bf evconnlistener} $\ast$ {\bf evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-listener} (struct {\bf evhttp\-\_\-bound\-\_\-socket} $\ast$bound)
+\item 
+void {\bf evhttp\-\_\-del\-\_\-accept\-\_\-socket} (struct {\bf evhttp} $\ast$http, struct {\bf evhttp\-\_\-bound\-\_\-socket} $\ast$bound\-\_\-socket)
+\item 
+{\bf evutil\-\_\-socket\-\_\-t} {\bf evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-fd} (struct {\bf evhttp\-\_\-bound\-\_\-socket} $\ast$bound\-\_\-socket)
+\item 
+void {\bf evhttp\-\_\-free} (struct {\bf evhttp} $\ast$http)
+\item 
+void {\bf evhttp\-\_\-set\-\_\-max\-\_\-headers\-\_\-size} (struct {\bf evhttp} $\ast$http, ev\-\_\-ssize\-\_\-t max\-\_\-headers\-\_\-size)
+\item 
+void {\bf evhttp\-\_\-set\-\_\-max\-\_\-body\-\_\-size} (struct {\bf evhttp} $\ast$http, ev\-\_\-ssize\-\_\-t max\-\_\-body\-\_\-size)
+\item 
+void {\bf evhttp\-\_\-set\-\_\-allowed\-\_\-methods} (struct {\bf evhttp} $\ast$http, ev\-\_\-uint16\-\_\-t methods)
+\item 
+int {\bf evhttp\-\_\-set\-\_\-cb} (struct {\bf evhttp} $\ast$http, const char $\ast$path, void($\ast$cb)(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$), void $\ast$cb\-\_\-arg)
+\item 
+int {\bf evhttp\-\_\-del\-\_\-cb} (struct {\bf evhttp} $\ast$, const char $\ast$)
+\item 
+void {\bf evhttp\-\_\-set\-\_\-gencb} (struct {\bf evhttp} $\ast$http, void($\ast$cb)(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$), void $\ast$arg)
+\item 
+int {\bf evhttp\-\_\-add\-\_\-virtual\-\_\-host} (struct {\bf evhttp} $\ast$http, const char $\ast$pattern, struct {\bf evhttp} $\ast$vhost)
+\item 
+int {\bf evhttp\-\_\-remove\-\_\-virtual\-\_\-host} (struct {\bf evhttp} $\ast$http, struct {\bf evhttp} $\ast$vhost)
+\item 
+int {\bf evhttp\-\_\-add\-\_\-server\-\_\-alias} (struct {\bf evhttp} $\ast$http, const char $\ast$alias)
+\item 
+int {\bf evhttp\-\_\-remove\-\_\-server\-\_\-alias} (struct {\bf evhttp} $\ast$http, const char $\ast$alias)
+\item 
+void {\bf evhttp\-\_\-set\-\_\-timeout} (struct {\bf evhttp} $\ast$http, int timeout\-\_\-in\-\_\-secs)
+\item 
+void {\bf evhttp\-\_\-send\-\_\-error} (struct {\bf evhttp\-\_\-request} $\ast$req, int error, const char $\ast$reason)
+\item 
+void {\bf evhttp\-\_\-send\-\_\-reply} (struct {\bf evhttp\-\_\-request} $\ast$req, int code, const char $\ast$reason, struct {\bf evbuffer} $\ast$databuf)
+\item 
+void {\bf evhttp\-\_\-send\-\_\-reply\-\_\-start} (struct {\bf evhttp\-\_\-request} $\ast$req, int code, const char $\ast$reason)
+\item 
+void {\bf evhttp\-\_\-send\-\_\-reply\-\_\-chunk} (struct {\bf evhttp\-\_\-request} $\ast$req, struct {\bf evbuffer} $\ast$databuf)
+\item 
+void {\bf evhttp\-\_\-send\-\_\-reply\-\_\-end} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+struct {\bf evhttp\-\_\-request} $\ast$ {\bf evhttp\-\_\-request\-\_\-new} (void($\ast$cb)(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$), void $\ast$arg)
+\item 
+void {\bf evhttp\-\_\-request\-\_\-set\-\_\-chunked\-\_\-cb} (struct {\bf evhttp\-\_\-request} $\ast$, void($\ast$cb)(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$))
+\item 
+void {\bf evhttp\-\_\-request\-\_\-free} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+struct {\bf evhttp\-\_\-connection} $\ast$ {\bf evhttp\-\_\-connection\-\_\-base\-\_\-new} (struct {\bf event\-\_\-base} $\ast$base, struct {\bf evdns\-\_\-base} $\ast$dnsbase, const char $\ast$address, unsigned short port)
+\item 
+struct {\bf bufferevent} $\ast$ {\bf evhttp\-\_\-connection\-\_\-get\-\_\-bufferevent} (struct {\bf evhttp\-\_\-connection} $\ast$evcon)
+\item 
+void {\bf evhttp\-\_\-request\-\_\-own} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+int {\bf evhttp\-\_\-request\-\_\-is\-\_\-owned} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+struct {\bf evhttp\-\_\-connection} $\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-connection} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+struct {\bf event\-\_\-base} $\ast$ {\bf evhttp\-\_\-connection\-\_\-get\-\_\-base} (struct {\bf evhttp\-\_\-connection} $\ast$req)
+\item 
+void {\bfseries evhttp\-\_\-connection\-\_\-set\-\_\-max\-\_\-headers\-\_\-size} (struct {\bf evhttp\-\_\-connection} $\ast$evcon, ev\-\_\-ssize\-\_\-t new\-\_\-max\-\_\-headers\-\_\-size)\label{http_8h_aeea564828181bbd3879b6af92224d4f6}
+
+\item 
+void {\bfseries evhttp\-\_\-connection\-\_\-set\-\_\-max\-\_\-body\-\_\-size} (struct {\bf evhttp\-\_\-connection} $\ast$evcon, ev\-\_\-ssize\-\_\-t new\-\_\-max\-\_\-body\-\_\-size)\label{http_8h_a05e5fc3a7488c3a32f28fde45d15c6e4}
+
+\item 
+void {\bf evhttp\-\_\-connection\-\_\-free} (struct {\bf evhttp\-\_\-connection} $\ast$evcon)
+\item 
+void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-address} (struct {\bf evhttp\-\_\-connection} $\ast$evcon, const char $\ast$address)
+\item 
+void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-port} (struct {\bf evhttp\-\_\-connection} $\ast$evcon, ev\-\_\-uint16\-\_\-t port)
+\item 
+void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-timeout} (struct {\bf evhttp\-\_\-connection} $\ast$evcon, int timeout\-\_\-in\-\_\-secs)
+\item 
+void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-retries} (struct {\bf evhttp\-\_\-connection} $\ast$evcon, int retry\-\_\-max)
+\item 
+void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-closecb} (struct {\bf evhttp\-\_\-connection} $\ast$evcon, void($\ast$)(struct {\bf evhttp\-\_\-connection} $\ast$, void $\ast$), void $\ast$)
+\item 
+void {\bf evhttp\-\_\-connection\-\_\-get\-\_\-peer} (struct {\bf evhttp\-\_\-connection} $\ast$evcon, char $\ast$$\ast$address, ev\-\_\-uint16\-\_\-t $\ast$port)
+\item 
+int {\bf evhttp\-\_\-make\-\_\-request} (struct {\bf evhttp\-\_\-connection} $\ast$evcon, struct {\bf evhttp\-\_\-request} $\ast$req, enum {\bf evhttp\-\_\-cmd\-\_\-type} type, const char $\ast$uri)
+\item 
+void {\bf evhttp\-\_\-cancel\-\_\-request} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+const char $\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-uri} (const struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+struct {\bf evhttp\-\_\-uri} $\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-evhttp\-\_\-uri} (const struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+enum {\bf evhttp\-\_\-cmd\-\_\-type} {\bf evhttp\-\_\-request\-\_\-get\-\_\-command} (const struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+int {\bfseries evhttp\-\_\-request\-\_\-get\-\_\-response\-\_\-code} (const struct {\bf evhttp\-\_\-request} $\ast$req)\label{http_8h_ac1452ea8db0ddb07f52d5de739f026af}
+
+\item 
+struct evkeyvalq $\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-headers} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+struct evkeyvalq $\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-headers} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+struct {\bf evbuffer} $\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-buffer} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+struct {\bf evbuffer} $\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-buffer} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+const char $\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-host} (struct {\bf evhttp\-\_\-request} $\ast$req)
+\item 
+const char $\ast$ {\bf evhttp\-\_\-find\-\_\-header} (const struct evkeyvalq $\ast$headers, const char $\ast$key)
+\item 
+int {\bf evhttp\-\_\-remove\-\_\-header} (struct evkeyvalq $\ast$headers, const char $\ast$key)
+\item 
+int {\bf evhttp\-\_\-add\-\_\-header} (struct evkeyvalq $\ast$headers, const char $\ast$key, const char $\ast$value)
+\item 
+void {\bf evhttp\-\_\-clear\-\_\-headers} (struct evkeyvalq $\ast$headers)
+\item 
+char $\ast$ {\bf evhttp\-\_\-encode\-\_\-uri} (const char $\ast$str)
+\item 
+char $\ast$ {\bf evhttp\-\_\-uriencode} (const char $\ast$str, ev\-\_\-ssize\-\_\-t size, int space\-\_\-to\-\_\-plus)
+\item 
+char $\ast$ {\bf evhttp\-\_\-decode\-\_\-uri} (const char $\ast$uri)
+\item 
+char $\ast$ {\bf evhttp\-\_\-uridecode} (const char $\ast$uri, int decode\-\_\-plus, size\-\_\-t $\ast$size\-\_\-out)
+\item 
+int {\bf evhttp\-\_\-parse\-\_\-query} (const char $\ast$uri, struct evkeyvalq $\ast$headers)
+\item 
+int {\bf evhttp\-\_\-parse\-\_\-query\-\_\-str} (const char $\ast$uri, struct evkeyvalq $\ast$headers)
+\item 
+char $\ast$ {\bf evhttp\-\_\-htmlescape} (const char $\ast$html)
+\item 
+struct {\bf evhttp\-\_\-uri} $\ast$ {\bf evhttp\-\_\-uri\-\_\-new} (void)
+\item 
+void {\bf evhttp\-\_\-uri\-\_\-set\-\_\-flags} (struct {\bf evhttp\-\_\-uri} $\ast$uri, unsigned flags)
+\item 
+const char $\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-scheme} (const struct {\bf evhttp\-\_\-uri} $\ast$uri)
+\item 
+const char $\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-userinfo} (const struct {\bf evhttp\-\_\-uri} $\ast$uri)
+\item 
+const char $\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-host} (const struct {\bf evhttp\-\_\-uri} $\ast$uri)
+\item 
+int {\bf evhttp\-\_\-uri\-\_\-get\-\_\-port} (const struct {\bf evhttp\-\_\-uri} $\ast$uri)
+\item 
+const char $\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-path} (const struct {\bf evhttp\-\_\-uri} $\ast$uri)
+\item 
+const char $\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-query} (const struct {\bf evhttp\-\_\-uri} $\ast$uri)
+\item 
+const char $\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-fragment} (const struct {\bf evhttp\-\_\-uri} $\ast$uri)
+\item 
+int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-scheme} (struct {\bf evhttp\-\_\-uri} $\ast$uri, const char $\ast$scheme)
+\item 
+int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-userinfo} (struct {\bf evhttp\-\_\-uri} $\ast$uri, const char $\ast$userinfo)
+\item 
+int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-host} (struct {\bf evhttp\-\_\-uri} $\ast$uri, const char $\ast$host)
+\item 
+int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-port} (struct {\bf evhttp\-\_\-uri} $\ast$uri, int port)
+\item 
+int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-path} (struct {\bf evhttp\-\_\-uri} $\ast$uri, const char $\ast$path)
+\item 
+int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-query} (struct {\bf evhttp\-\_\-uri} $\ast$uri, const char $\ast$query)
+\item 
+int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-fragment} (struct {\bf evhttp\-\_\-uri} $\ast$uri, const char $\ast$fragment)
+\item 
+struct {\bf evhttp\-\_\-uri} $\ast$ {\bf evhttp\-\_\-uri\-\_\-parse\-\_\-with\-\_\-flags} (const char $\ast$source\-\_\-uri, unsigned flags)
+\item 
+struct {\bf evhttp\-\_\-uri} $\ast$ {\bf evhttp\-\_\-uri\-\_\-parse} (const char $\ast$source\-\_\-uri)
+\item 
+void {\bf evhttp\-\_\-uri\-\_\-free} (struct {\bf evhttp\-\_\-uri} $\ast$uri)
+\item 
+char $\ast$ {\bf evhttp\-\_\-uri\-\_\-join} (struct {\bf evhttp\-\_\-uri} $\ast$uri, char $\ast$buf, size\-\_\-t limit)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Basic support for \-H\-T\-T\-P serving.
+
+\-As \-Libevent is a library for dealing with event notification and most interesting applications are networked today, \-I have often found the need to write \-H\-T\-T\-P code. \-The following prototypes and definitions provide an application with a minimal interface for making \-H\-T\-T\-P requests and for creating a very simple \-H\-T\-T\-P server. 
+
+\subsection{\-Define \-Documentation}
+\index{http.\-h@{http.\-h}!\-E\-V\-H\-T\-T\-P\-\_\-\-U\-R\-I\-\_\-\-N\-O\-N\-C\-O\-N\-F\-O\-R\-M\-A\-N\-T@{\-E\-V\-H\-T\-T\-P\-\_\-\-U\-R\-I\-\_\-\-N\-O\-N\-C\-O\-N\-F\-O\-R\-M\-A\-N\-T}}
+\index{\-E\-V\-H\-T\-T\-P\-\_\-\-U\-R\-I\-\_\-\-N\-O\-N\-C\-O\-N\-F\-O\-R\-M\-A\-N\-T@{\-E\-V\-H\-T\-T\-P\-\_\-\-U\-R\-I\-\_\-\-N\-O\-N\-C\-O\-N\-F\-O\-R\-M\-A\-N\-T}!http.h@{http.\-h}}
+\subsubsection[{\-E\-V\-H\-T\-T\-P\-\_\-\-U\-R\-I\-\_\-\-N\-O\-N\-C\-O\-N\-F\-O\-R\-M\-A\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-H\-T\-T\-P\-\_\-\-U\-R\-I\-\_\-\-N\-O\-N\-C\-O\-N\-F\-O\-R\-M\-A\-N\-T}~0x01}\label{http_8h_ace576911d436a163584f4942907270a5}
+\-Tolerate \-U\-R\-Is that do not conform to \-R\-F\-C3986.
+
+\-Unfortunately, some \-H\-T\-T\-P clients generate \-U\-R\-Is that, according to \-R\-F\-C3986, are not conformant \-U\-R\-Is. \-If you need to support these \-U\-R\-Is, you can do so by passing this flag to evhttp\-\_\-uri\-\_\-parse\-\_\-with\-\_\-flags.
+
+\-Currently, these changes are\-: 
+\begin{DoxyItemize}
+\item \-Nonconformant \-U\-R\-Is are allowed to contain otherwise unreasonable characters in their path, query, and fragment components. 
+\end{DoxyItemize}\index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-B\-A\-D\-M\-E\-T\-H\-O\-D@{\-H\-T\-T\-P\-\_\-\-B\-A\-D\-M\-E\-T\-H\-O\-D}}
+\index{\-H\-T\-T\-P\-\_\-\-B\-A\-D\-M\-E\-T\-H\-O\-D@{\-H\-T\-T\-P\-\_\-\-B\-A\-D\-M\-E\-T\-H\-O\-D}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-B\-A\-D\-M\-E\-T\-H\-O\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-B\-A\-D\-M\-E\-T\-H\-O\-D}~405}\label{http_8h_a8d93bc2b08ddc194c213682c4726b0e6}
+method not allowed for this uri \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-B\-A\-D\-R\-E\-Q\-U\-E\-S\-T@{\-H\-T\-T\-P\-\_\-\-B\-A\-D\-R\-E\-Q\-U\-E\-S\-T}}
+\index{\-H\-T\-T\-P\-\_\-\-B\-A\-D\-R\-E\-Q\-U\-E\-S\-T@{\-H\-T\-T\-P\-\_\-\-B\-A\-D\-R\-E\-Q\-U\-E\-S\-T}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-B\-A\-D\-R\-E\-Q\-U\-E\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-B\-A\-D\-R\-E\-Q\-U\-E\-S\-T}~400}\label{http_8h_af9f070802de32cd2f820059fc42cbf39}
+invalid http request was made \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-E\-N\-T\-I\-T\-Y\-T\-O\-O\-L\-A\-R\-G\-E@{\-H\-T\-T\-P\-\_\-\-E\-N\-T\-I\-T\-Y\-T\-O\-O\-L\-A\-R\-G\-E}}
+\index{\-H\-T\-T\-P\-\_\-\-E\-N\-T\-I\-T\-Y\-T\-O\-O\-L\-A\-R\-G\-E@{\-H\-T\-T\-P\-\_\-\-E\-N\-T\-I\-T\-Y\-T\-O\-O\-L\-A\-R\-G\-E}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-E\-N\-T\-I\-T\-Y\-T\-O\-O\-L\-A\-R\-G\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-E\-N\-T\-I\-T\-Y\-T\-O\-O\-L\-A\-R\-G\-E}~413}\label{http_8h_a64236d9bad703199d84a08bee90e00f0}
+\index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-E\-X\-P\-E\-C\-T\-A\-T\-I\-O\-N\-F\-A\-I\-L\-E\-D@{\-H\-T\-T\-P\-\_\-\-E\-X\-P\-E\-C\-T\-A\-T\-I\-O\-N\-F\-A\-I\-L\-E\-D}}
+\index{\-H\-T\-T\-P\-\_\-\-E\-X\-P\-E\-C\-T\-A\-T\-I\-O\-N\-F\-A\-I\-L\-E\-D@{\-H\-T\-T\-P\-\_\-\-E\-X\-P\-E\-C\-T\-A\-T\-I\-O\-N\-F\-A\-I\-L\-E\-D}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-E\-X\-P\-E\-C\-T\-A\-T\-I\-O\-N\-F\-A\-I\-L\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-E\-X\-P\-E\-C\-T\-A\-T\-I\-O\-N\-F\-A\-I\-L\-E\-D}~417}\label{http_8h_a4eac9f52d3d8de9b3deadaec6ad0bee9}
+we can't handle this expectation \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L@{\-H\-T\-T\-P\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L}}
+\index{\-H\-T\-T\-P\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L@{\-H\-T\-T\-P\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L}~500}\label{http_8h_a15eac402986428a8125d364b7ae569b1}
+internal error \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-P\-E\-R\-M@{\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-P\-E\-R\-M}}
+\index{\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-P\-E\-R\-M@{\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-P\-E\-R\-M}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-P\-E\-R\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-P\-E\-R\-M}~301}\label{http_8h_ac6ffbb7b69889f1eee0d413576c609a9}
+the uri moved permanently \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-T\-E\-M\-P@{\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-T\-E\-M\-P}}
+\index{\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-T\-E\-M\-P@{\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-T\-E\-M\-P}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-T\-E\-M\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-M\-O\-V\-E\-T\-E\-M\-P}~302}\label{http_8h_a7d2a7341ba2af15babe8c25df67e563f}
+the uri moved temporarily \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-N\-O\-C\-O\-N\-T\-E\-N\-T@{\-H\-T\-T\-P\-\_\-\-N\-O\-C\-O\-N\-T\-E\-N\-T}}
+\index{\-H\-T\-T\-P\-\_\-\-N\-O\-C\-O\-N\-T\-E\-N\-T@{\-H\-T\-T\-P\-\_\-\-N\-O\-C\-O\-N\-T\-E\-N\-T}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-N\-O\-C\-O\-N\-T\-E\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-N\-O\-C\-O\-N\-T\-E\-N\-T}~204}\label{http_8h_ac5e3a483119375a05d199c30709f2b8e}
+request does not have content \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}}
+\index{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}~404}\label{http_8h_a1f5b9c02b018640c890e5f27207fa6c0}
+could not find content for uri \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-N\-O\-T\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D@{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D}}
+\index{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D@{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-N\-O\-T\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D}~501}\label{http_8h_a9759dd4ad026a688142afb7b4e4542cc}
+not implemented \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-N\-O\-T\-M\-O\-D\-I\-F\-I\-E\-D@{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-M\-O\-D\-I\-F\-I\-E\-D}}
+\index{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-M\-O\-D\-I\-F\-I\-E\-D@{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-M\-O\-D\-I\-F\-I\-E\-D}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-N\-O\-T\-M\-O\-D\-I\-F\-I\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-N\-O\-T\-M\-O\-D\-I\-F\-I\-E\-D}~304}\label{http_8h_a3112d58297965db46a04fe288bf1d0da}
+page was not modified from last \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-O\-K@{\-H\-T\-T\-P\-\_\-\-O\-K}}
+\index{\-H\-T\-T\-P\-\_\-\-O\-K@{\-H\-T\-T\-P\-\_\-\-O\-K}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-O\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-O\-K}~200}\label{http_8h_a02e6d59009dee759528ec81fc9a8eeff}
+request completed ok \index{http.\-h@{http.\-h}!\-H\-T\-T\-P\-\_\-\-S\-E\-R\-V\-U\-N\-A\-V\-A\-I\-L@{\-H\-T\-T\-P\-\_\-\-S\-E\-R\-V\-U\-N\-A\-V\-A\-I\-L}}
+\index{\-H\-T\-T\-P\-\_\-\-S\-E\-R\-V\-U\-N\-A\-V\-A\-I\-L@{\-H\-T\-T\-P\-\_\-\-S\-E\-R\-V\-U\-N\-A\-V\-A\-I\-L}!http.h@{http.\-h}}
+\subsubsection[{\-H\-T\-T\-P\-\_\-\-S\-E\-R\-V\-U\-N\-A\-V\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-H\-T\-T\-P\-\_\-\-S\-E\-R\-V\-U\-N\-A\-V\-A\-I\-L}~503}\label{http_8h_a5fd6829fe2bb38dd13288f11dcb2025f}
+the server is not available 
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-cmd\-\_\-type@{evhttp\-\_\-cmd\-\_\-type}}
+\index{evhttp\-\_\-cmd\-\_\-type@{evhttp\-\_\-cmd\-\_\-type}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-cmd\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf evhttp\-\_\-cmd\-\_\-type}}\label{http_8h_ac858319d667267f9fc848c2bb6931aa3}
+\-The different request types supported by evhttp. \-These are as specified in \-R\-F\-C2616, except for \-P\-A\-T\-C\-H which is specified by \-R\-F\-C5789.
+
+\-By default, only some of these methods are accepted and passed to user callbacks; use \doxyref{evhttp\-\_\-set\-\_\-allowed\-\_\-methods()}{p.}{http_8h_ae63a0370f59570e00753f7fb512a7f59} to change which methods are allowed. \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-kind@{evhttp\-\_\-request\-\_\-kind}}
+\index{evhttp\-\_\-request\-\_\-kind@{evhttp\-\_\-request\-\_\-kind}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-kind}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf evhttp\-\_\-request\-\_\-kind}}\label{http_8h_a47ca41a942899d019bf59cf32301ae4f}
+a request object can represent either a request or a reply 
+
+\subsection{\-Function \-Documentation}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-accept\-\_\-socket@{evhttp\-\_\-accept\-\_\-socket}}
+\index{evhttp\-\_\-accept\-\_\-socket@{evhttp\-\_\-accept\-\_\-socket}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-accept\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-accept\-\_\-socket} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{{\bf evutil\-\_\-socket\-\_\-t}}]{fd}
+\end{DoxyParamCaption}
+)}\label{http_8h_aa5719654012b143ebfc0dfc9d4a8490d}
+\-Makes an \-H\-T\-T\-P server accept connections on the specified socket.
+
+\-This may be useful to create a socket and then fork multiple instances of an http server, or when a socket has been communicated via file descriptor passing in situations where an http servers does not have permissions to bind to a low-\/numbered port.
+
+\-Can be called multiple times to have the http server listen to multiple different sockets.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & a pointer to an evhttp object \\
+\hline
+{\em fd} & a socket fd that is ready for accepting connections \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-bind\-\_\-socket()}{p.}{http_8h_a80ea2b819c0997a0ecc0d915446aeaa4} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle@{evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle}}
+\index{evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle@{evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-bound\-\_\-socket}$\ast$ {\bf evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{{\bf evutil\-\_\-socket\-\_\-t}}]{fd}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_ae0b17d7e600e87cadda2352ea2135d8f}
+\-Like \doxyref{evhttp\-\_\-accept\-\_\-socket()}{p.}{http_8h_aa5719654012b143ebfc0dfc9d4a8490d}, but returns a handle for referencing the socket.
+
+\-The returned pointer is not valid after {\itshape http\/} is freed.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & a pointer to an evhttp object \\
+\hline
+{\em fd} & a socket fd that is ready for accepting connections \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Handle for the socket on success, \-N\-U\-L\-L on failure. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-accept\-\_\-socket()}{p.}{http_8h_aa5719654012b143ebfc0dfc9d4a8490d}, \doxyref{evhttp\-\_\-del\-\_\-accept\-\_\-socket()}{p.}{http_8h_a5404c30f3b50a664f2ec1500ebb30d86} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-add\-\_\-header@{evhttp\-\_\-add\-\_\-header}}
+\index{evhttp\-\_\-add\-\_\-header@{evhttp\-\_\-add\-\_\-header}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-add\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-add\-\_\-header} (
+\begin{DoxyParamCaption}
+\item[{struct evkeyvalq $\ast$}]{headers, }
+\item[{const char $\ast$}]{key, }
+\item[{const char $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\label{http_8h_a04e3f41c14b8e0e74da13a8d308b93b7}
+\-Adds a header to a list of existing headers.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em headers} & the evkeyvalq object to which to add a header \\
+\hline
+{\em key} & the name of the header \\
+\hline
+{\em value} & the value belonging to the header \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 otherwise. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-find\-\_\-header()}{p.}{http_8h_a3a36842fd6f74977c9c0fb7aa5578832}, \doxyref{evhttp\-\_\-clear\-\_\-headers()}{p.}{http_8h_adfd33f73c8d7af63a0da05ebb32b7e72} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-add\-\_\-server\-\_\-alias@{evhttp\-\_\-add\-\_\-server\-\_\-alias}}
+\index{evhttp\-\_\-add\-\_\-server\-\_\-alias@{evhttp\-\_\-add\-\_\-server\-\_\-alias}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-add\-\_\-server\-\_\-alias}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-add\-\_\-server\-\_\-alias} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{const char $\ast$}]{alias}
+\end{DoxyParamCaption}
+)}\label{http_8h_a58fe001925e7f65d7678bf90b31fc2a5}
+\-Add a server alias to an http object. \-The http object can be a virtual host or the main server.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & the evhttp object \\
+\hline
+{\em alias} & the alias to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+evhttp\-\_\-add\-\_\-remove\-\_\-alias() 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-add\-\_\-virtual\-\_\-host@{evhttp\-\_\-add\-\_\-virtual\-\_\-host}}
+\index{evhttp\-\_\-add\-\_\-virtual\-\_\-host@{evhttp\-\_\-add\-\_\-virtual\-\_\-host}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-add\-\_\-virtual\-\_\-host}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-add\-\_\-virtual\-\_\-host} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{const char $\ast$}]{pattern, }
+\item[{struct {\bf evhttp} $\ast$}]{vhost}
+\end{DoxyParamCaption}
+)}\label{http_8h_a82d8fb72c5e8c76b787987ba5de5b141}
+\-Adds a virtual host to the http server.
+
+\-A virtual host is a newly initialized evhttp object that has request callbacks set on it via \doxyref{evhttp\-\_\-set\-\_\-cb()}{p.}{http_8h_a5b685afe43d7f4c3bfcc7dcba72d41e0} or \doxyref{evhttp\-\_\-set\-\_\-gencb()}{p.}{http_8h_ad3466287c0054d32dfd538a3bdfb0374}. \-It most not have any listing sockets associated with it.
+
+\-If the virtual host has not been removed by the time that \doxyref{evhttp\-\_\-free()}{p.}{http_8h_a849acf0f233772b486b8057fcf3aaf4a} is called on the main http server, it will be automatically freed, too.
+
+\-It is possible to have hierarchical vhosts. \-For example\-: \-A vhost with the pattern $\ast$.example.\-com may have other vhosts with patterns foo.\-example.\-com and bar.\-example.\-com associated with it.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & the evhttp object to which to add a virtual host \\
+\hline
+{\em pattern} & the glob pattern against which the hostname is matched. \-The match is case insensitive and follows otherwise regular shell matching. \\
+\hline
+{\em vhost} & the virtual host to add the regular http server. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-remove\-\_\-virtual\-\_\-host()}{p.}{http_8h_ab2eb1ac82f36e7f0180b18d4553d3994} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-bind\-\_\-listener@{evhttp\-\_\-bind\-\_\-listener}}
+\index{evhttp\-\_\-bind\-\_\-listener@{evhttp\-\_\-bind\-\_\-listener}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-bind\-\_\-listener}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-bound\-\_\-socket}$\ast$ {\bf evhttp\-\_\-bind\-\_\-listener} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{struct {\bf evconnlistener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_aa86abe883e71049f03534d984dd8c625}
+\-The most low-\/level evhttp\-\_\-bind/accept method\-: takes an evconnlistener, and returns an \doxyref{evhttp\-\_\-bound\-\_\-socket}{p.}{structevhttp__bound__socket}. \-The listener will be freed when the bound socket is freed. \index{http.\-h@{http.\-h}!evhttp\-\_\-bind\-\_\-socket@{evhttp\-\_\-bind\-\_\-socket}}
+\index{evhttp\-\_\-bind\-\_\-socket@{evhttp\-\_\-bind\-\_\-socket}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-bind\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-bind\-\_\-socket} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{const char $\ast$}]{address, }
+\item[{ev\-\_\-uint16\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}\label{http_8h_a80ea2b819c0997a0ecc0d915446aeaa4}
+\-Binds an \-H\-T\-T\-P server on the specified address and port.
+
+\-Can be called multiple times to bind the same http server to multiple different ports.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & a pointer to an evhttp object \\
+\hline
+{\em address} & a string containing the \-I\-P address to listen(2) on \\
+\hline
+{\em port} & the port number to listen on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-accept\-\_\-socket()}{p.}{http_8h_aa5719654012b143ebfc0dfc9d4a8490d} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle@{evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle}}
+\index{evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle@{evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-bound\-\_\-socket}$\ast$ {\bf evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{const char $\ast$}]{address, }
+\item[{ev\-\_\-uint16\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a7b2e494399364cfb8071e69564c33db9}
+\-Like \doxyref{evhttp\-\_\-bind\-\_\-socket()}{p.}{http_8h_a80ea2b819c0997a0ecc0d915446aeaa4}, but returns a handle for referencing the socket.
+
+\-The returned pointer is not valid after {\itshape http\/} is freed.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & a pointer to an evhttp object \\
+\hline
+{\em address} & a string containing the \-I\-P address to listen(2) on \\
+\hline
+{\em port} & the port number to listen on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Handle for the socket on success, \-N\-U\-L\-L on failure. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-bind\-\_\-socket()}{p.}{http_8h_a80ea2b819c0997a0ecc0d915446aeaa4}, \doxyref{evhttp\-\_\-del\-\_\-accept\-\_\-socket()}{p.}{http_8h_a5404c30f3b50a664f2ec1500ebb30d86} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-fd@{evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-fd}}
+\index{evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-fd@{evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-fd}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-fd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf evutil\-\_\-socket\-\_\-t} {\bf evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-fd} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-bound\-\_\-socket} $\ast$}]{bound\-\_\-socket}
+\end{DoxyParamCaption}
+)}\label{http_8h_a5b5912e3d764bbd8f4952aba0f0604fa}
+\-Get the raw file descriptor referenced by an \doxyref{evhttp\-\_\-bound\-\_\-socket}{p.}{structevhttp__bound__socket}.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bound\-\_\-socket} & a handle returned by evhttp\-\_\-\{bind,accept\}\-\_\-socket\-\_\-with\-\_\-handle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the file descriptor used by the bound socket 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle()}{p.}{http_8h_a7b2e494399364cfb8071e69564c33db9}, \doxyref{evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle()}{p.}{http_8h_ae0b17d7e600e87cadda2352ea2135d8f} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-listener@{evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-listener}}
+\index{evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-listener@{evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-listener}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-listener}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evconnlistener}$\ast$ {\bf evhttp\-\_\-bound\-\_\-socket\-\_\-get\-\_\-listener} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-bound\-\_\-socket} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a7b9ba15b143ece0f69a2b4c52ff9d788}
+\-Return the listener used to implement a bound socket. \index{http.\-h@{http.\-h}!evhttp\-\_\-cancel\-\_\-request@{evhttp\-\_\-cancel\-\_\-request}}
+\index{evhttp\-\_\-cancel\-\_\-request@{evhttp\-\_\-cancel\-\_\-request}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-cancel\-\_\-request}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-cancel\-\_\-request} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{http_8h_ab323fe297168f0f87af832f2bddc40a0}
+\-Cancels a pending \-H\-T\-T\-P request.
+
+\-Cancels an ongoing \-H\-T\-T\-P request. \-The callback associated with this request is not executed and the request object is freed. \-If the request is currently being processed, e.\-g. it is ongoing, the corresponding \doxyref{evhttp\-\_\-connection}{p.}{structevhttp__connection} object is going to get reset.
+
+\-A request cannot be canceled if its callback has executed already. \-A request may be canceled reentrantly from its chunked callback.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em req} & the \doxyref{evhttp\-\_\-request}{p.}{structevhttp__request} to cancel; req becomes invalid after this call. \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-clear\-\_\-headers@{evhttp\-\_\-clear\-\_\-headers}}
+\index{evhttp\-\_\-clear\-\_\-headers@{evhttp\-\_\-clear\-\_\-headers}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-clear\-\_\-headers}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-clear\-\_\-headers} (
+\begin{DoxyParamCaption}
+\item[{struct evkeyvalq $\ast$}]{headers}
+\end{DoxyParamCaption}
+)}\label{http_8h_adfd33f73c8d7af63a0da05ebb32b7e72}
+\-Removes all headers from the header list.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em headers} & the evkeyvalq object from which to remove all headers \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-base\-\_\-new@{evhttp\-\_\-connection\-\_\-base\-\_\-new}}
+\index{evhttp\-\_\-connection\-\_\-base\-\_\-new@{evhttp\-\_\-connection\-\_\-base\-\_\-new}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-base\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-connection}$\ast$ {\bf evhttp\-\_\-connection\-\_\-base\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base, }
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{dnsbase, }
+\item[{const char $\ast$}]{address, }
+\item[{unsigned short}]{port}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_af5913a2851880df25cf9ef43f7646074}
+\-A connection object that can be used to for making \-H\-T\-T\-P requests. \-The connection object tries to resolve address and establish the connection when it is given an http request object.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{event\-\_\-base}{p.}{structevent__base} to use for handling the connection \\
+\hline
+{\em dnsbase} & the dns\-\_\-base to use for resolving host names; if not specified host name resolution will block. \\
+\hline
+{\em address} & the address to which to connect \\
+\hline
+{\em port} & the port to connect to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an \doxyref{evhttp\-\_\-connection}{p.}{structevhttp__connection} object that can be used for making requests 
+\end{DoxyReturn}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-free@{evhttp\-\_\-connection\-\_\-free}}
+\index{evhttp\-\_\-connection\-\_\-free@{evhttp\-\_\-connection\-\_\-free}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-connection\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon}
+\end{DoxyParamCaption}
+)}\label{http_8h_ab5afe0ffd71e479a9d830ac3800ba599}
+\-Frees an http connection \index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-get\-\_\-base@{evhttp\-\_\-connection\-\_\-get\-\_\-base}}
+\index{evhttp\-\_\-connection\-\_\-get\-\_\-base@{evhttp\-\_\-connection\-\_\-get\-\_\-base}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-get\-\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event\-\_\-base}$\ast$ {\bf evhttp\-\_\-connection\-\_\-get\-\_\-base} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{req}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_aeeec8fa8b1c5836d05a0e552793b0945}
+\-Returns the underlying \doxyref{event\-\_\-base}{p.}{structevent__base} for this connection \index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-get\-\_\-bufferevent@{evhttp\-\_\-connection\-\_\-get\-\_\-bufferevent}}
+\index{evhttp\-\_\-connection\-\_\-get\-\_\-bufferevent@{evhttp\-\_\-connection\-\_\-get\-\_\-bufferevent}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-get\-\_\-bufferevent}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent}$\ast$ {\bf evhttp\-\_\-connection\-\_\-get\-\_\-bufferevent} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a39cc41e2c07c0a2042ecdd05248bd645}
+\-Return the bufferevent that an \doxyref{evhttp\-\_\-connection}{p.}{structevhttp__connection} is using. \index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-get\-\_\-peer@{evhttp\-\_\-connection\-\_\-get\-\_\-peer}}
+\index{evhttp\-\_\-connection\-\_\-get\-\_\-peer@{evhttp\-\_\-connection\-\_\-get\-\_\-peer}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-get\-\_\-peer}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-connection\-\_\-get\-\_\-peer} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon, }
+\item[{char $\ast$$\ast$}]{address, }
+\item[{ev\-\_\-uint16\-\_\-t $\ast$}]{port}
+\end{DoxyParamCaption}
+)}\label{http_8h_afa866e15c757e815a2e66cba7c8aa161}
+\-Get the remote address and port associated with this connection. \index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-set\-\_\-closecb@{evhttp\-\_\-connection\-\_\-set\-\_\-closecb}}
+\index{evhttp\-\_\-connection\-\_\-set\-\_\-closecb@{evhttp\-\_\-connection\-\_\-set\-\_\-closecb}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-set\-\_\-closecb}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-closecb} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon, }
+\item[{void($\ast$)(struct {\bf evhttp\-\_\-connection} $\ast$, void $\ast$)}]{, }
+\item[{void $\ast$}]{}
+\end{DoxyParamCaption}
+)}\label{http_8h_af62e12b843002e6eace204cc68da2277}
+\-Set a callback for connection close. \index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-address@{evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-address}}
+\index{evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-address@{evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-address}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-address}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-address} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon, }
+\item[{const char $\ast$}]{address}
+\end{DoxyParamCaption}
+)}\label{http_8h_a839b6cd03f4377fead26e8b680e9cd7e}
+sets the ip address from which http connections are made \index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-port@{evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-port}}
+\index{evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-port@{evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-port}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-local\-\_\-port} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon, }
+\item[{ev\-\_\-uint16\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}\label{http_8h_a3a325b818c5c4f48a8ba1f3cf6a49d7f}
+sets the local port from which http connections are made \index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-set\-\_\-retries@{evhttp\-\_\-connection\-\_\-set\-\_\-retries}}
+\index{evhttp\-\_\-connection\-\_\-set\-\_\-retries@{evhttp\-\_\-connection\-\_\-set\-\_\-retries}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-set\-\_\-retries}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-retries} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon, }
+\item[{int}]{retry\-\_\-max}
+\end{DoxyParamCaption}
+)}\label{http_8h_a9356b2a28a3b08bf273d027d1c40f470}
+\-Sets the retry limit for this connection -\/ -\/1 repeats indefinitely \index{http.\-h@{http.\-h}!evhttp\-\_\-connection\-\_\-set\-\_\-timeout@{evhttp\-\_\-connection\-\_\-set\-\_\-timeout}}
+\index{evhttp\-\_\-connection\-\_\-set\-\_\-timeout@{evhttp\-\_\-connection\-\_\-set\-\_\-timeout}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-connection\-\_\-set\-\_\-timeout}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-connection\-\_\-set\-\_\-timeout} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon, }
+\item[{int}]{timeout\-\_\-in\-\_\-secs}
+\end{DoxyParamCaption}
+)}\label{http_8h_aa145623b7f58efe51908c6e48060db8c}
+\-Sets the timeout for events related to this connection \index{http.\-h@{http.\-h}!evhttp\-\_\-decode\-\_\-uri@{evhttp\-\_\-decode\-\_\-uri}}
+\index{evhttp\-\_\-decode\-\_\-uri@{evhttp\-\_\-decode\-\_\-uri}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-decode\-\_\-uri}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf evhttp\-\_\-decode\-\_\-uri} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_a681a8e967dec9f73fb8e27f465fdae4b}
+\-Helper function to sort of decode a \-U\-R\-I-\/encoded string. \-Unlike evhttp\-\_\-get\-\_\-decoded\-\_\-uri, it decodes all plus characters that appear \-\_\-after\-\_\- the first question mark character, but no plusses that occur before. \-This is not a good way to decode \-U\-R\-Is in whole or in part.
+
+\-The returned string must be freed by the caller
+
+\begin{DoxyRefDesc}{\-Deprecated}
+\item[{\bf \-Deprecated}]\-This function is deprecated; you probably want to use evhttp\-\_\-get\-\_\-decoded\-\_\-uri instead.\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em uri} & an encoded \-U\-R\-I \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a newly allocated unencoded \-U\-R\-I or \-N\-U\-L\-L on failure 
+\end{DoxyReturn}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-del\-\_\-accept\-\_\-socket@{evhttp\-\_\-del\-\_\-accept\-\_\-socket}}
+\index{evhttp\-\_\-del\-\_\-accept\-\_\-socket@{evhttp\-\_\-del\-\_\-accept\-\_\-socket}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-del\-\_\-accept\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-del\-\_\-accept\-\_\-socket} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{struct {\bf evhttp\-\_\-bound\-\_\-socket} $\ast$}]{bound\-\_\-socket}
+\end{DoxyParamCaption}
+)}\label{http_8h_a5404c30f3b50a664f2ec1500ebb30d86}
+\-Makes an \-H\-T\-T\-P server stop accepting connections on the specified socket
+
+\-This may be useful when a socket has been sent via file descriptor passing and is no longer needed by the current process.
+
+\-If you created this bound socket with evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle or evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle, this function closes the fd you provided. \-If you created this bound socket with evhttp\-\_\-bind\-\_\-listener, this function frees the listener you provided.
+
+{\itshape bound\-\_\-socket\/} is an invalid pointer after this call returns.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & a pointer to an evhttp object \\
+\hline
+{\em bound\-\_\-socket} & a handle returned by evhttp\-\_\-\{bind,accept\}\-\_\-socket\-\_\-with\-\_\-handle \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-bind\-\_\-socket\-\_\-with\-\_\-handle()}{p.}{http_8h_a7b2e494399364cfb8071e69564c33db9}, \doxyref{evhttp\-\_\-accept\-\_\-socket\-\_\-with\-\_\-handle()}{p.}{http_8h_ae0b17d7e600e87cadda2352ea2135d8f} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-del\-\_\-cb@{evhttp\-\_\-del\-\_\-cb}}
+\index{evhttp\-\_\-del\-\_\-cb@{evhttp\-\_\-del\-\_\-cb}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-del\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-del\-\_\-cb} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}\label{http_8h_a26b24365ab036cbce853fedc7818bc49}
+\-Removes the callback for a specified \-U\-R\-I \index{http.\-h@{http.\-h}!evhttp\-\_\-encode\-\_\-uri@{evhttp\-\_\-encode\-\_\-uri}}
+\index{evhttp\-\_\-encode\-\_\-uri@{evhttp\-\_\-encode\-\_\-uri}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-encode\-\_\-uri}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf evhttp\-\_\-encode\-\_\-uri} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str}
+\end{DoxyParamCaption}
+)}\label{http_8h_a2b6d14272efe8d5f6bb110666a2032fd}
+\-Helper function to encode a string for inclusion in a \-U\-R\-I. \-All characters are replaced by their hex-\/escaped (\%22) equivalents, except for characters explicitly unreserved by \-R\-F\-C3986 -\/-\/ that is, \-A\-S\-C\-I\-I alphanumeric characters, hyphen, dot, underscore, and tilde.
+
+\-The returned string must be freed by the caller.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em str} & an unencoded string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a newly allocated \-U\-R\-I-\/encoded string or \-N\-U\-L\-L on failure 
+\end{DoxyReturn}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-find\-\_\-header@{evhttp\-\_\-find\-\_\-header}}
+\index{evhttp\-\_\-find\-\_\-header@{evhttp\-\_\-find\-\_\-header}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-find\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evhttp\-\_\-find\-\_\-header} (
+\begin{DoxyParamCaption}
+\item[{const struct evkeyvalq $\ast$}]{headers, }
+\item[{const char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\label{http_8h_a3a36842fd6f74977c9c0fb7aa5578832}
+\-Finds the value belonging to a header.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em headers} & the evkeyvalq object in which to find the header \\
+\hline
+{\em key} & the name of the header to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to the value for the header or \-N\-U\-L\-L if the header count not be found. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-add\-\_\-header()}{p.}{http_8h_a04e3f41c14b8e0e74da13a8d308b93b7}, \doxyref{evhttp\-\_\-remove\-\_\-header()}{p.}{http_8h_ab87600f14a6f8c36beedbeed8267b856} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-free@{evhttp\-\_\-free}}
+\index{evhttp\-\_\-free@{evhttp\-\_\-free}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http}
+\end{DoxyParamCaption}
+)}\label{http_8h_a849acf0f233772b486b8057fcf3aaf4a}
+\-Free the previously created \-H\-T\-T\-P server.
+
+\-Works only if no requests are currently being served.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & the evhttp server object to be freed \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-start()}{p.}{http__compat_8h_aff4e96ef72ca014740878e3e5f02befc} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-htmlescape@{evhttp\-\_\-htmlescape}}
+\index{evhttp\-\_\-htmlescape@{evhttp\-\_\-htmlescape}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-htmlescape}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf evhttp\-\_\-htmlescape} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{html}
+\end{DoxyParamCaption}
+)}\label{http_8h_ac9318bd77cb5f4030b434bea99b3828e}
+\-Escape \-H\-T\-M\-L character entities in a string.
+
+\-Replaces $<$, $>$, ", ' and \& with $<$, $>$, ", \&\#039; and \& correspondingly.
+
+\-The returned string needs to be freed by the caller.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em html} & an unescaped \-H\-T\-M\-L string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an escaped \-H\-T\-M\-L string or \-N\-U\-L\-L on error 
+\end{DoxyReturn}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-make\-\_\-request@{evhttp\-\_\-make\-\_\-request}}
+\index{evhttp\-\_\-make\-\_\-request@{evhttp\-\_\-make\-\_\-request}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-make\-\_\-request}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-make\-\_\-request} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon, }
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req, }
+\item[{enum {\bf evhttp\-\_\-cmd\-\_\-type}}]{type, }
+\item[{const char $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_a70af2a5e67da78782e06c640b9f85d4e}
+\-Make an \-H\-T\-T\-P request over the specified connection.
+
+\-The connection gets ownership of the request. \-On failure, the request object is no longer valid as it has been freed.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em evcon} & the \doxyref{evhttp\-\_\-connection}{p.}{structevhttp__connection} object over which to send the request \\
+\hline
+{\em req} & the previously created and configured request object \\
+\hline
+{\em type} & the request type \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-G\-E\-T, \-E\-V\-H\-T\-T\-P\-\_\-\-R\-E\-Q\-\_\-\-P\-O\-S\-T, etc. \\
+\hline
+{\em uri} & the \-U\-R\-I associated with the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-cancel\-\_\-request()}{p.}{http_8h_ab323fe297168f0f87af832f2bddc40a0} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-new@{evhttp\-\_\-new}}
+\index{evhttp\-\_\-new@{evhttp\-\_\-new}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp}$\ast$ {\bf evhttp\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_ab8c84271a97fd85957cf72b1161b8216}
+\-Create a new \-H\-T\-T\-P server.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & (optional) the event base to receive the \-H\-T\-T\-P events \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to a newly initialized evhttp server structure 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-free()}{p.}{http_8h_a849acf0f233772b486b8057fcf3aaf4a} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-parse\-\_\-query@{evhttp\-\_\-parse\-\_\-query}}
+\index{evhttp\-\_\-parse\-\_\-query@{evhttp\-\_\-parse\-\_\-query}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-parse\-\_\-query}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-parse\-\_\-query} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{uri, }
+\item[{struct evkeyvalq $\ast$}]{headers}
+\end{DoxyParamCaption}
+)}\label{http_8h_a12d3940d23fb53c38106f8ac0d3dfff6}
+\-Helper function to parse out arguments in a query.
+
+\-Parsing a \-U\-R\-I like
+
+{\tt http\-://foo.\-com/?q=test\&s=some+thing}
+
+will result in two entries in the key value queue.
+
+\-The first entry is\-: key=\char`\"{}q\char`\"{}, value=\char`\"{}test\char`\"{} \-The second entry is\-: key=\char`\"{}s\char`\"{}, value=\char`\"{}some thing\char`\"{}
+
+\begin{DoxyRefDesc}{\-Deprecated}
+\item[{\bf \-Deprecated}]\-This function is deprecated as of \-Libevent 2.\-0.\-9. \-Use evhttp\-\_\-uri\-\_\-parse and evhttp\-\_\-parse\-\_\-query\-\_\-str instead.\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em uri} & the request \-U\-R\-I \\
+\hline
+{\em headers} & the head of the evkeyval queue \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure 
+\end{DoxyReturn}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-parse\-\_\-query\-\_\-str@{evhttp\-\_\-parse\-\_\-query\-\_\-str}}
+\index{evhttp\-\_\-parse\-\_\-query\-\_\-str@{evhttp\-\_\-parse\-\_\-query\-\_\-str}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-parse\-\_\-query\-\_\-str}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-parse\-\_\-query\-\_\-str} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{uri, }
+\item[{struct evkeyvalq $\ast$}]{headers}
+\end{DoxyParamCaption}
+)}\label{http_8h_a1598fb5757f39dde6dc43dee9a2e7fca}
+\-Helper function to parse out arguments from the query portion of an \-H\-T\-T\-P \-U\-R\-I.
+
+\-Parsing a query string like
+
+q=test\&s=some+thing
+
+will result in two entries in the key value queue.
+
+\-The first entry is\-: key=\char`\"{}q\char`\"{}, value=\char`\"{}test\char`\"{} \-The second entry is\-: key=\char`\"{}s\char`\"{}, value=\char`\"{}some thing\char`\"{}
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em query\-\_\-parse} & the query portion of the \-U\-R\-I \\
+\hline
+{\em headers} & the head of the evkeyval queue \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure 
+\end{DoxyReturn}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-remove\-\_\-header@{evhttp\-\_\-remove\-\_\-header}}
+\index{evhttp\-\_\-remove\-\_\-header@{evhttp\-\_\-remove\-\_\-header}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-remove\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-remove\-\_\-header} (
+\begin{DoxyParamCaption}
+\item[{struct evkeyvalq $\ast$}]{headers, }
+\item[{const char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\label{http_8h_ab87600f14a6f8c36beedbeed8267b856}
+\-Removes a header from a list of existing headers.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em headers} & the evkeyvalq object from which to remove a header \\
+\hline
+{\em key} & the name of the header to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if the header was removed, -\/1 otherwise. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-find\-\_\-header()}{p.}{http_8h_a3a36842fd6f74977c9c0fb7aa5578832}, \doxyref{evhttp\-\_\-add\-\_\-header()}{p.}{http_8h_a04e3f41c14b8e0e74da13a8d308b93b7} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-remove\-\_\-server\-\_\-alias@{evhttp\-\_\-remove\-\_\-server\-\_\-alias}}
+\index{evhttp\-\_\-remove\-\_\-server\-\_\-alias@{evhttp\-\_\-remove\-\_\-server\-\_\-alias}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-remove\-\_\-server\-\_\-alias}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-remove\-\_\-server\-\_\-alias} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{const char $\ast$}]{alias}
+\end{DoxyParamCaption}
+)}\label{http_8h_a88fe4c5507e88c4db284ea30a0478e5d}
+\-Remove a server alias from an http object.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & the evhttp object \\
+\hline
+{\em alias} & the alias to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-add\-\_\-server\-\_\-alias()}{p.}{http_8h_a58fe001925e7f65d7678bf90b31fc2a5} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-remove\-\_\-virtual\-\_\-host@{evhttp\-\_\-remove\-\_\-virtual\-\_\-host}}
+\index{evhttp\-\_\-remove\-\_\-virtual\-\_\-host@{evhttp\-\_\-remove\-\_\-virtual\-\_\-host}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-remove\-\_\-virtual\-\_\-host}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-remove\-\_\-virtual\-\_\-host} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{struct {\bf evhttp} $\ast$}]{vhost}
+\end{DoxyParamCaption}
+)}\label{http_8h_ab2eb1ac82f36e7f0180b18d4553d3994}
+\-Removes a virtual host from the http server.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & the evhttp object from which to remove the virtual host \\
+\hline
+{\em vhost} & the virtual host to remove from the regular http server. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-add\-\_\-virtual\-\_\-host()}{p.}{http_8h_a82d8fb72c5e8c76b787987ba5de5b141} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-free@{evhttp\-\_\-request\-\_\-free}}
+\index{evhttp\-\_\-request\-\_\-free@{evhttp\-\_\-request\-\_\-free}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-request\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{http_8h_aad0392c873fa034be3ff09d4f8b68aba}
+\-Frees the request object and removes associated events. \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-get\-\_\-command@{evhttp\-\_\-request\-\_\-get\-\_\-command}}
+\index{evhttp\-\_\-request\-\_\-get\-\_\-command@{evhttp\-\_\-request\-\_\-get\-\_\-command}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-get\-\_\-command}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf evhttp\-\_\-cmd\-\_\-type} {\bf evhttp\-\_\-request\-\_\-get\-\_\-command} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{http_8h_a552bcfe23acec6858742e44a1b932dad}
+\-Returns the request command \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-get\-\_\-connection@{evhttp\-\_\-request\-\_\-get\-\_\-connection}}
+\index{evhttp\-\_\-request\-\_\-get\-\_\-connection@{evhttp\-\_\-request\-\_\-get\-\_\-connection}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-get\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-connection}$\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-connection} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a92a534f00172fa452c45c9f3fc42d6f5}
+\-Returns the connection object associated with the request or \-N\-U\-L\-L
+
+\-The user needs to either free the request explicitly or call \doxyref{evhttp\-\_\-send\-\_\-reply\-\_\-end()}{p.}{http_8h_a77024706313626c5857089b08ec5e0ae}. \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-get\-\_\-evhttp\-\_\-uri@{evhttp\-\_\-request\-\_\-get\-\_\-evhttp\-\_\-uri}}
+\index{evhttp\-\_\-request\-\_\-get\-\_\-evhttp\-\_\-uri@{evhttp\-\_\-request\-\_\-get\-\_\-evhttp\-\_\-uri}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-get\-\_\-evhttp\-\_\-uri}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-uri}$\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-evhttp\-\_\-uri} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a4cc0812787263e4473b2bd25fcade9c2}
+\-Returns the request \-U\-R\-I (parsed) \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-get\-\_\-host@{evhttp\-\_\-request\-\_\-get\-\_\-host}}
+\index{evhttp\-\_\-request\-\_\-get\-\_\-host@{evhttp\-\_\-request\-\_\-get\-\_\-host}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-get\-\_\-host}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-host} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{http_8h_aac84865e4848b8d9089e4182e12d185e}
+\-Returns the host associated with the request. \-If a client sends an absolute \-U\-R\-I, the host part of that is preferred. \-Otherwise, the input headers are searched for a \-Host\-: header. \-N\-U\-L\-L is returned if no absolute \-U\-R\-I or \-Host\-: header is provided. \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-buffer@{evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-buffer}}
+\index{evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-buffer@{evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-buffer}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer}$\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-buffer} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_aa939f28c8da2a8122097de23c7670321}
+\-Returns the input buffer \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-headers@{evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-headers}}
+\index{evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-headers@{evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-headers}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-headers}]{\setlength{\rightskip}{0pt plus 5cm}struct evkeyvalq$\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-input\-\_\-headers} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a034fca99ce0cc5ff3b7f56744915a8be}
+\-Returns the input headers \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-buffer@{evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-buffer}}
+\index{evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-buffer@{evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-buffer}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer}$\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-buffer} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a8dc23de32b242457db98ab566c53f71f}
+\-Returns the output buffer \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-headers@{evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-headers}}
+\index{evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-headers@{evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-headers}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-headers}]{\setlength{\rightskip}{0pt plus 5cm}struct evkeyvalq$\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-output\-\_\-headers} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_ae1321a89525b6336fce624e28de41b49}
+\-Returns the output headers \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-get\-\_\-uri@{evhttp\-\_\-request\-\_\-get\-\_\-uri}}
+\index{evhttp\-\_\-request\-\_\-get\-\_\-uri@{evhttp\-\_\-request\-\_\-get\-\_\-uri}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-get\-\_\-uri}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evhttp\-\_\-request\-\_\-get\-\_\-uri} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{http_8h_a78ce0bb30083afddb525cb9fa0b30ae0}
+\-Returns the request \-U\-R\-I \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-is\-\_\-owned@{evhttp\-\_\-request\-\_\-is\-\_\-owned}}
+\index{evhttp\-\_\-request\-\_\-is\-\_\-owned@{evhttp\-\_\-request\-\_\-is\-\_\-owned}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-is\-\_\-owned}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-request\-\_\-is\-\_\-owned} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{http_8h_a25516c0fb1b0ef47c81f623da3782bd1}
+\-Returns 1 if the request is owned by the user \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-new@{evhttp\-\_\-request\-\_\-new}}
+\index{evhttp\-\_\-request\-\_\-new@{evhttp\-\_\-request\-\_\-new}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-request}$\ast$ {\bf evhttp\-\_\-request\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$)}]{cb, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a2f40f147e37f9a40f8ef684fb8f2d6b0}
+\-Creates a new request object that needs to be filled in with the request parameters. \-The callback is executed when the request completed or an error occurred. \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-own@{evhttp\-\_\-request\-\_\-own}}
+\index{evhttp\-\_\-request\-\_\-own@{evhttp\-\_\-request\-\_\-own}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-own}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-request\-\_\-own} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{http_8h_a93a13d12f579bf22af35e2f1a6d82f4c}
+\-Takes ownership of the request object
+
+\-Can be used in a request callback to keep onto the request until \doxyref{evhttp\-\_\-request\-\_\-free()}{p.}{http_8h_aad0392c873fa034be3ff09d4f8b68aba} is explicitly called by the user. \index{http.\-h@{http.\-h}!evhttp\-\_\-request\-\_\-set\-\_\-chunked\-\_\-cb@{evhttp\-\_\-request\-\_\-set\-\_\-chunked\-\_\-cb}}
+\index{evhttp\-\_\-request\-\_\-set\-\_\-chunked\-\_\-cb@{evhttp\-\_\-request\-\_\-set\-\_\-chunked\-\_\-cb}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-request\-\_\-set\-\_\-chunked\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-request\-\_\-set\-\_\-chunked\-\_\-cb} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{, }
+\item[{void($\ast$)(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$)}]{cb}
+\end{DoxyParamCaption}
+)}\label{http_8h_a3dd375d81eac9baabc53749ed025ec12}
+\-Enable delivery of chunks to requestor. 
+\begin{DoxyParams}{\-Parameters}
+{\em cb} & will be called after every read of data with the same argument as the completion callback. \-Will never be called on an empty response. \-May drain the input buffer; it will be drained automatically on return. \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-send\-\_\-error@{evhttp\-\_\-send\-\_\-error}}
+\index{evhttp\-\_\-send\-\_\-error@{evhttp\-\_\-send\-\_\-error}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-send\-\_\-error}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-send\-\_\-error} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req, }
+\item[{int}]{error, }
+\item[{const char $\ast$}]{reason}
+\end{DoxyParamCaption}
+)}\label{http_8h_a629ef7f70ed916e162dee3bd12e397c9}
+\-Send an \-H\-T\-M\-L error message to the client.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em req} & a request object \\
+\hline
+{\em error} & the \-H\-T\-T\-P error code \\
+\hline
+{\em reason} & a brief explanation of the error. \-If this is \-N\-U\-L\-L, we'll just use the standard meaning of the error code. \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-send\-\_\-reply@{evhttp\-\_\-send\-\_\-reply}}
+\index{evhttp\-\_\-send\-\_\-reply@{evhttp\-\_\-send\-\_\-reply}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-send\-\_\-reply}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-send\-\_\-reply} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req, }
+\item[{int}]{code, }
+\item[{const char $\ast$}]{reason, }
+\item[{struct {\bf evbuffer} $\ast$}]{databuf}
+\end{DoxyParamCaption}
+)}\label{http_8h_a9df5ec9adc9bc664db5d6b161a293525}
+\-Send an \-H\-T\-M\-L reply to the client.
+
+\-The body of the reply consists of the data in databuf. \-After calling \doxyref{evhttp\-\_\-send\-\_\-reply()}{p.}{http_8h_a9df5ec9adc9bc664db5d6b161a293525} databuf will be empty, but the buffer is still owned by the caller and needs to be deallocated by the caller if necessary.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em req} & a request object \\
+\hline
+{\em code} & the \-H\-T\-T\-P response code to send \\
+\hline
+{\em reason} & a brief message to send with the response code \\
+\hline
+{\em databuf} & the body of the response \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-send\-\_\-reply\-\_\-chunk@{evhttp\-\_\-send\-\_\-reply\-\_\-chunk}}
+\index{evhttp\-\_\-send\-\_\-reply\-\_\-chunk@{evhttp\-\_\-send\-\_\-reply\-\_\-chunk}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-send\-\_\-reply\-\_\-chunk}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-send\-\_\-reply\-\_\-chunk} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req, }
+\item[{struct {\bf evbuffer} $\ast$}]{databuf}
+\end{DoxyParamCaption}
+)}\label{http_8h_a7950f70e66678fda56fdf8288811639c}
+\-Send another data chunk as part of an ongoing chunked reply.
+
+\-The reply chunk consists of the data in databuf. \-After calling \doxyref{evhttp\-\_\-send\-\_\-reply\-\_\-chunk()}{p.}{http_8h_a7950f70e66678fda56fdf8288811639c} databuf will be empty, but the buffer is still owned by the caller and needs to be deallocated by the caller if necessary.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em req} & a request object \\
+\hline
+{\em databuf} & the data chunk to send as part of the reply. \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-send\-\_\-reply\-\_\-end@{evhttp\-\_\-send\-\_\-reply\-\_\-end}}
+\index{evhttp\-\_\-send\-\_\-reply\-\_\-end@{evhttp\-\_\-send\-\_\-reply\-\_\-end}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-send\-\_\-reply\-\_\-end}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-send\-\_\-reply\-\_\-end} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{http_8h_a77024706313626c5857089b08ec5e0ae}
+\-Complete a chunked reply, freeing the request as appropriate.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em req} & a request object \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-send\-\_\-reply\-\_\-start@{evhttp\-\_\-send\-\_\-reply\-\_\-start}}
+\index{evhttp\-\_\-send\-\_\-reply\-\_\-start@{evhttp\-\_\-send\-\_\-reply\-\_\-start}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-send\-\_\-reply\-\_\-start}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-send\-\_\-reply\-\_\-start} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-request} $\ast$}]{req, }
+\item[{int}]{code, }
+\item[{const char $\ast$}]{reason}
+\end{DoxyParamCaption}
+)}\label{http_8h_a69c93aab46133521997cdfb8c2e07195}
+\-Initiate a reply that uses \-Transfer-\/\-Encoding chunked.
+
+\-This allows the caller to stream the reply back to the client and is useful when either not all of the reply data is immediately available or when sending very large replies.
+
+\-The caller needs to supply data chunks with \doxyref{evhttp\-\_\-send\-\_\-reply\-\_\-chunk()}{p.}{http_8h_a7950f70e66678fda56fdf8288811639c} and complete the reply by calling \doxyref{evhttp\-\_\-send\-\_\-reply\-\_\-end()}{p.}{http_8h_a77024706313626c5857089b08ec5e0ae}.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em req} & a request object \\
+\hline
+{\em code} & the \-H\-T\-T\-P response code to send \\
+\hline
+{\em reason} & a brief message to send with the response code \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-set\-\_\-allowed\-\_\-methods@{evhttp\-\_\-set\-\_\-allowed\-\_\-methods}}
+\index{evhttp\-\_\-set\-\_\-allowed\-\_\-methods@{evhttp\-\_\-set\-\_\-allowed\-\_\-methods}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-set\-\_\-allowed\-\_\-methods}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-set\-\_\-allowed\-\_\-methods} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{ev\-\_\-uint16\-\_\-t}]{methods}
+\end{DoxyParamCaption}
+)}\label{http_8h_ae63a0370f59570e00753f7fb512a7f59}
+\-Sets the what \-H\-T\-T\-P methods are supported in requests accepted by this server, and passed to user callbacks.
+
+\-If not supported they will generate a \char`\"{}405 Method not allowed\char`\"{} response.
+
+\-By default this includes the following methods\-: \-G\-E\-T, \-P\-O\-S\-T, \-H\-E\-A\-D, \-P\-U\-T, \-D\-E\-L\-E\-T\-E
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & the http server on which to set the methods \\
+\hline
+{\em methods} & bit mask constructed from evhttp\-\_\-cmd\-\_\-type values \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-set\-\_\-cb@{evhttp\-\_\-set\-\_\-cb}}
+\index{evhttp\-\_\-set\-\_\-cb@{evhttp\-\_\-set\-\_\-cb}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-set\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-set\-\_\-cb} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{const char $\ast$}]{path, }
+\item[{void($\ast$)(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$)}]{cb, }
+\item[{void $\ast$}]{cb\-\_\-arg}
+\end{DoxyParamCaption}
+)}\label{http_8h_a5b685afe43d7f4c3bfcc7dcba72d41e0}
+\-Set a callback for a specified \-U\-R\-I
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & the http sever on which to set the callback \\
+\hline
+{\em path} & the path for which to invoke the callback \\
+\hline
+{\em cb} & the callback function that gets invoked on requesting path \\
+\hline
+{\em cb\-\_\-arg} & an additional context argument for the callback \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 if the callback existed already, -\/2 on failure 
+\end{DoxyReturn}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-set\-\_\-gencb@{evhttp\-\_\-set\-\_\-gencb}}
+\index{evhttp\-\_\-set\-\_\-gencb@{evhttp\-\_\-set\-\_\-gencb}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-set\-\_\-gencb}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-set\-\_\-gencb} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{void($\ast$)(struct {\bf evhttp\-\_\-request} $\ast$, void $\ast$)}]{cb, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{http_8h_ad3466287c0054d32dfd538a3bdfb0374}
+\-Set a callback for all requests that are not caught by specific callbacks
+
+\-Invokes the specified callback for all requests that do not match any of the previously specified request paths. \-This is catchall for requests not specifically configured with \doxyref{evhttp\-\_\-set\-\_\-cb()}{p.}{http_8h_a5b685afe43d7f4c3bfcc7dcba72d41e0}.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & the evhttp server object for which to set the callback \\
+\hline
+{\em cb} & the callback to invoke for any unmatched requests \\
+\hline
+{\em arg} & an context argument for the callback \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-set\-\_\-max\-\_\-body\-\_\-size@{evhttp\-\_\-set\-\_\-max\-\_\-body\-\_\-size}}
+\index{evhttp\-\_\-set\-\_\-max\-\_\-body\-\_\-size@{evhttp\-\_\-set\-\_\-max\-\_\-body\-\_\-size}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-set\-\_\-max\-\_\-body\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-set\-\_\-max\-\_\-body\-\_\-size} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{ev\-\_\-ssize\-\_\-t}]{max\-\_\-body\-\_\-size}
+\end{DoxyParamCaption}
+)}\label{http_8h_a8406065dcb34f9a058b2a7a6988ac351}
+\-X\-X\-X \-Document. \index{http.\-h@{http.\-h}!evhttp\-\_\-set\-\_\-max\-\_\-headers\-\_\-size@{evhttp\-\_\-set\-\_\-max\-\_\-headers\-\_\-size}}
+\index{evhttp\-\_\-set\-\_\-max\-\_\-headers\-\_\-size@{evhttp\-\_\-set\-\_\-max\-\_\-headers\-\_\-size}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-set\-\_\-max\-\_\-headers\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-set\-\_\-max\-\_\-headers\-\_\-size} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{ev\-\_\-ssize\-\_\-t}]{max\-\_\-headers\-\_\-size}
+\end{DoxyParamCaption}
+)}\label{http_8h_ae936aa6e7b0cb9617d0548a952db93cf}
+\-X\-X\-X \-Document. \index{http.\-h@{http.\-h}!evhttp\-\_\-set\-\_\-timeout@{evhttp\-\_\-set\-\_\-timeout}}
+\index{evhttp\-\_\-set\-\_\-timeout@{evhttp\-\_\-set\-\_\-timeout}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-set\-\_\-timeout}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-set\-\_\-timeout} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{http, }
+\item[{int}]{timeout\-\_\-in\-\_\-secs}
+\end{DoxyParamCaption}
+)}\label{http_8h_acc8bb4d9e196f957510b5db9f6a02e44}
+\-Set the timeout for an \-H\-T\-T\-P request.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em http} & an evhttp object \\
+\hline
+{\em timeout\-\_\-in\-\_\-secs} & the timeout, in seconds \\
+\hline
+\end{DoxyParams}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-free@{evhttp\-\_\-uri\-\_\-free}}
+\index{evhttp\-\_\-uri\-\_\-free@{evhttp\-\_\-uri\-\_\-free}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-uri\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_a5ee82311278b8fda3ed93a8e358683bb}
+\-Free all memory allocated for a parsed uri. \-Only use this for \-U\-R\-Is generated by evhttp\-\_\-uri\-\_\-parse.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em uri} & container with parsed data \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-uri\-\_\-parse()}{p.}{http_8h_a47bc072177c8e839083c511a618a422c} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-get\-\_\-fragment@{evhttp\-\_\-uri\-\_\-get\-\_\-fragment}}
+\index{evhttp\-\_\-uri\-\_\-get\-\_\-fragment@{evhttp\-\_\-uri\-\_\-get\-\_\-fragment}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-get\-\_\-fragment}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-fragment} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-uri} $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_ad7fcd64c02bb074bc9c754e8107550c1}
+\-Return the fragment part of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri} (excluding the leading \char`\"{}\#\char`\"{}), or \-N\-U\-L\-L if it has no fragment set \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-get\-\_\-host@{evhttp\-\_\-uri\-\_\-get\-\_\-host}}
+\index{evhttp\-\_\-uri\-\_\-get\-\_\-host@{evhttp\-\_\-uri\-\_\-get\-\_\-host}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-get\-\_\-host}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-host} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-uri} $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_a2d45134ab552432fbe25eb2ff646f906}
+\-Return the host part of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or \-N\-U\-L\-L if it has no host set. \-The host may either be a regular hostname (conforming to the \-R\-F\-C 3986 \char`\"{}regname\char`\"{} production), or an \-I\-Pv4 address, or the empty string, or a bracketed \-I\-Pv6 address, or a bracketed '\-I\-P-\/\-Future' address.
+
+\-Note that having a \-N\-U\-L\-L host means that the \-U\-R\-I has no authority section, but having an empty-\/string host means that the \-U\-R\-I has an authority section with no host part. \-For example, \char`\"{}mailto\-:user@example.\-com\char`\"{} has a host of \-N\-U\-L\-L, but \char`\"{}file\-:///etc/motd\char`\"{} has a host of \char`\"{}\char`\"{}. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-get\-\_\-path@{evhttp\-\_\-uri\-\_\-get\-\_\-path}}
+\index{evhttp\-\_\-uri\-\_\-get\-\_\-path@{evhttp\-\_\-uri\-\_\-get\-\_\-path}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-get\-\_\-path}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-path} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-uri} $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_a49e685022515780b3dfb4d944b4cce4d}
+\-Return the path part of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or \-N\-U\-L\-L if it has no path set \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-get\-\_\-port@{evhttp\-\_\-uri\-\_\-get\-\_\-port}}
+\index{evhttp\-\_\-uri\-\_\-get\-\_\-port@{evhttp\-\_\-uri\-\_\-get\-\_\-port}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-get\-\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-uri\-\_\-get\-\_\-port} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-uri} $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_a60d456504f4f93f61384eb0b526f5a4c}
+\-Return the port part of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or -\/1 if there is no port set. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-get\-\_\-query@{evhttp\-\_\-uri\-\_\-get\-\_\-query}}
+\index{evhttp\-\_\-uri\-\_\-get\-\_\-query@{evhttp\-\_\-uri\-\_\-get\-\_\-query}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-get\-\_\-query}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-query} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-uri} $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_a9a8c53b664a23dbdebd99d768a17590e}
+\-Return the query part of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri} (excluding the leading \char`\"{}?\char`\"{}), or \-N\-U\-L\-L if it has no query set \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-get\-\_\-scheme@{evhttp\-\_\-uri\-\_\-get\-\_\-scheme}}
+\index{evhttp\-\_\-uri\-\_\-get\-\_\-scheme@{evhttp\-\_\-uri\-\_\-get\-\_\-scheme}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-get\-\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-scheme} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-uri} $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_a6f49cc20f421d2f66907c613d24ad3dc}
+\-Return the scheme of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or \-N\-U\-L\-L if there is no scheme has been set and the \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri} contains a \-Relative-\/\-Ref. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-get\-\_\-userinfo@{evhttp\-\_\-uri\-\_\-get\-\_\-userinfo}}
+\index{evhttp\-\_\-uri\-\_\-get\-\_\-userinfo@{evhttp\-\_\-uri\-\_\-get\-\_\-userinfo}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-get\-\_\-userinfo}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf evhttp\-\_\-uri\-\_\-get\-\_\-userinfo} (
+\begin{DoxyParamCaption}
+\item[{const struct {\bf evhttp\-\_\-uri} $\ast$}]{uri}
+\end{DoxyParamCaption}
+)}\label{http_8h_adfc9eeca8691a9f55dad523e60f1a467}
+\-Return the userinfo part of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or \-N\-U\-L\-L if it has no userinfo set. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-join@{evhttp\-\_\-uri\-\_\-join}}
+\index{evhttp\-\_\-uri\-\_\-join@{evhttp\-\_\-uri\-\_\-join}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-join}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf evhttp\-\_\-uri\-\_\-join} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri, }
+\item[{char $\ast$}]{buf, }
+\item[{size\-\_\-t}]{limit}
+\end{DoxyParamCaption}
+)}\label{http_8h_a60f7217fccc2bdfb9cb6abeb1c4ad102}
+\-Join together the uri parts from parsed data to form a \-U\-R\-I-\/\-Reference.
+
+\-Note that no escaping of reserved characters is done on the members of the \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, so the generated string might not be a valid \-U\-R\-I unless the members of \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri} are themselves valid.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em uri} & container with parsed data \\
+\hline
+{\em buf} & destination buffer \\
+\hline
+{\em limit} & destination buffer size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an joined uri as string or \-N\-U\-L\-L on error 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-uri\-\_\-parse()}{p.}{http_8h_a47bc072177c8e839083c511a618a422c} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-new@{evhttp\-\_\-uri\-\_\-new}}
+\index{evhttp\-\_\-uri\-\_\-new@{evhttp\-\_\-uri\-\_\-new}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-uri}$\ast$ {\bf evhttp\-\_\-uri\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a2847be10a24befd3c65d412690475110}
+\-Return a new empty \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri} with no fields set. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-parse@{evhttp\-\_\-uri\-\_\-parse}}
+\index{evhttp\-\_\-uri\-\_\-parse@{evhttp\-\_\-uri\-\_\-parse}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-parse}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-uri}$\ast$ {\bf evhttp\-\_\-uri\-\_\-parse} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{source\-\_\-uri}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_a47bc072177c8e839083c511a618a422c}
+\-Alias for evhttp\-\_\-uri\-\_\-parse\-\_\-with\-\_\-flags(source\-\_\-uri, 0) \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-parse\-\_\-with\-\_\-flags@{evhttp\-\_\-uri\-\_\-parse\-\_\-with\-\_\-flags}}
+\index{evhttp\-\_\-uri\-\_\-parse\-\_\-with\-\_\-flags@{evhttp\-\_\-uri\-\_\-parse\-\_\-with\-\_\-flags}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-parse\-\_\-with\-\_\-flags}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-uri}$\ast$ {\bf evhttp\-\_\-uri\-\_\-parse\-\_\-with\-\_\-flags} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{source\-\_\-uri, }
+\item[{unsigned}]{flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{http_8h_ad9f9447cb1c3c92e40478b98ff30db60}
+\-Helper function to parse a \-U\-R\-I-\/\-Reference as specified by \-R\-F\-C3986.
+
+\-This function matches the \-U\-R\-I-\/\-Reference production from \-R\-F\-C3986, which includes both \-U\-R\-Is like
+
+scheme\-://[[userinfo]@]foo.\-com[\-:port]]/[path][?query][\#fragment]
+
+and relative-\/refs like
+
+[path][?query][\#fragment]
+
+\-Any optional elements portions not present in the original \-U\-R\-I are left set to \-N\-U\-L\-L in the resulting \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}. \-If no port is specified, the port is set to -\/1.
+
+\-Note that no decoding is performed on percent-\/escaped characters in the string; if you want to parse them, use evhttp\-\_\-uridecode or evhttp\-\_\-parse\-\_\-query\-\_\-str as appropriate.
+
+\-Note also that most \-U\-R\-I schemes will have additional constraints that this function does not know about, and cannot check. \-For example, mailto\-://www.example.\-com/cgi-\/bin/fortune.pl is not a reasonable mailto url, {\tt http\-://www.\-example.\-com\-:99999/} is not a reasonable \-H\-T\-T\-P \-U\-R\-L, and {\tt ftp\-:username@example.\-com} is not a reasonable \-F\-T\-P \-U\-R\-L. \-Nevertheless, all of these \-U\-R\-Ls conform to \-R\-F\-C3986, and this function accepts all of them as valid.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em source\-\_\-uri} & the request \-U\-R\-I \\
+\hline
+{\em flags} & \-Zero or more \-E\-V\-H\-T\-T\-P\-\_\-\-U\-R\-I\-\_\-$\ast$ flags to affect the behavior of the parser. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+uri container to hold parsed data, or \-N\-U\-L\-L if there is error 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evhttp\-\_\-uri\-\_\-free()}{p.}{http_8h_a5ee82311278b8fda3ed93a8e358683bb} 
+\end{DoxySeeAlso}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-set\-\_\-flags@{evhttp\-\_\-uri\-\_\-set\-\_\-flags}}
+\index{evhttp\-\_\-uri\-\_\-set\-\_\-flags@{evhttp\-\_\-uri\-\_\-set\-\_\-flags}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-set\-\_\-flags}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evhttp\-\_\-uri\-\_\-set\-\_\-flags} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri, }
+\item[{unsigned}]{flags}
+\end{DoxyParamCaption}
+)}\label{http_8h_aea0b990f1ca5ba71feffa96c8f6bd06b}
+\-Changes the flags set on a given \-U\-R\-I. \-See \-E\-V\-H\-T\-T\-P\-\_\-\-U\-R\-I\-\_\-$\ast$ for a list of flags. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-set\-\_\-fragment@{evhttp\-\_\-uri\-\_\-set\-\_\-fragment}}
+\index{evhttp\-\_\-uri\-\_\-set\-\_\-fragment@{evhttp\-\_\-uri\-\_\-set\-\_\-fragment}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-set\-\_\-fragment}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-fragment} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri, }
+\item[{const char $\ast$}]{fragment}
+\end{DoxyParamCaption}
+)}\label{http_8h_a36b844028058c82b6709d1e0fe7e1cf9}
+\-Set the fragment of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or clear the fragment if fragment==\-N\-U\-L\-L. \-The fragment should not include a leading \char`\"{}\#\char`\"{}. \-Returns 0 on success, -\/1 if fragment is not well-\/formed. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-set\-\_\-host@{evhttp\-\_\-uri\-\_\-set\-\_\-host}}
+\index{evhttp\-\_\-uri\-\_\-set\-\_\-host@{evhttp\-\_\-uri\-\_\-set\-\_\-host}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-set\-\_\-host}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-host} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri, }
+\item[{const char $\ast$}]{host}
+\end{DoxyParamCaption}
+)}\label{http_8h_a103c447efb9f41a5897b3aa130424734}
+\-Set the host of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or clear the host if host==\-N\-U\-L\-L. \-Returns 0 on success, -\/1 if host is not well-\/formed. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-set\-\_\-path@{evhttp\-\_\-uri\-\_\-set\-\_\-path}}
+\index{evhttp\-\_\-uri\-\_\-set\-\_\-path@{evhttp\-\_\-uri\-\_\-set\-\_\-path}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-set\-\_\-path}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-path} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri, }
+\item[{const char $\ast$}]{path}
+\end{DoxyParamCaption}
+)}\label{http_8h_ae6bbfc5cf62df674ba72800ea46c5828}
+\-Set the path of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or clear the path if path==\-N\-U\-L\-L. \-Returns 0 on success, -\/1 if path is not well-\/formed. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-set\-\_\-port@{evhttp\-\_\-uri\-\_\-set\-\_\-port}}
+\index{evhttp\-\_\-uri\-\_\-set\-\_\-port@{evhttp\-\_\-uri\-\_\-set\-\_\-port}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-set\-\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-port} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri, }
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)}\label{http_8h_a8cc430f9b8fb4c6aa11692d5ef0b383c}
+\-Set the port of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or clear the port if port==-\/1. \-Returns 0 on success, -\/1 if port is not well-\/formed. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-set\-\_\-query@{evhttp\-\_\-uri\-\_\-set\-\_\-query}}
+\index{evhttp\-\_\-uri\-\_\-set\-\_\-query@{evhttp\-\_\-uri\-\_\-set\-\_\-query}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-set\-\_\-query}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-query} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri, }
+\item[{const char $\ast$}]{query}
+\end{DoxyParamCaption}
+)}\label{http_8h_aaf999637136bc1785e5d75c191c671ba}
+\-Set the query of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or clear the query if query==\-N\-U\-L\-L. \-The query should not include a leading \char`\"{}?\char`\"{}. \-Returns 0 on success, -\/1 if query is not well-\/formed. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-set\-\_\-scheme@{evhttp\-\_\-uri\-\_\-set\-\_\-scheme}}
+\index{evhttp\-\_\-uri\-\_\-set\-\_\-scheme@{evhttp\-\_\-uri\-\_\-set\-\_\-scheme}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-set\-\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-scheme} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri, }
+\item[{const char $\ast$}]{scheme}
+\end{DoxyParamCaption}
+)}\label{http_8h_abf5f82fb9c8f8df0b1b4c73691791dd5}
+\-Set the scheme of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or clear the scheme if scheme==\-N\-U\-L\-L. \-Returns 0 on success, -\/1 if scheme is not well-\/formed. \index{http.\-h@{http.\-h}!evhttp\-\_\-uri\-\_\-set\-\_\-userinfo@{evhttp\-\_\-uri\-\_\-set\-\_\-userinfo}}
+\index{evhttp\-\_\-uri\-\_\-set\-\_\-userinfo@{evhttp\-\_\-uri\-\_\-set\-\_\-userinfo}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uri\-\_\-set\-\_\-userinfo}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evhttp\-\_\-uri\-\_\-set\-\_\-userinfo} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp\-\_\-uri} $\ast$}]{uri, }
+\item[{const char $\ast$}]{userinfo}
+\end{DoxyParamCaption}
+)}\label{http_8h_ac7b10b8ef8ee94d14674f9329486d355}
+\-Set the userinfo of an \doxyref{evhttp\-\_\-uri}{p.}{structevhttp__uri}, or clear the userinfo if userinfo==\-N\-U\-L\-L. \-Returns 0 on success, -\/1 if userinfo is not well-\/formed. \index{http.\-h@{http.\-h}!evhttp\-\_\-uridecode@{evhttp\-\_\-uridecode}}
+\index{evhttp\-\_\-uridecode@{evhttp\-\_\-uridecode}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uridecode}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf evhttp\-\_\-uridecode} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{uri, }
+\item[{int}]{decode\-\_\-plus, }
+\item[{size\-\_\-t $\ast$}]{size\-\_\-out}
+\end{DoxyParamCaption}
+)}\label{http_8h_ac2914389616f04199aded10444fd8e42}
+\-Helper function to decode a \-U\-R\-I-\/escaped string or \-H\-T\-T\-P parameter.
+
+\-If 'decode\-\_\-plus' is 1, then we decode the string as an \-H\-T\-T\-P parameter value, and convert all plus ('+') characters to spaces. \-If 'decode\-\_\-plus' is 0, we leave all plus characters unchanged.
+
+\-The returned string must be freed by the caller.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em uri} & a \-U\-R\-I-\/encode encoded \-U\-R\-I \\
+\hline
+{\em decode\-\_\-plus} & determines whether we convert '+' to sapce. \\
+\hline
+{\em size\-\_\-out} & if size\-\_\-out is not \-N\-U\-L\-L, $\ast$size\-\_\-out is set to the size of the returned string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a newly allocated unencoded \-U\-R\-I or \-N\-U\-L\-L on failure 
+\end{DoxyReturn}
+\index{http.\-h@{http.\-h}!evhttp\-\_\-uriencode@{evhttp\-\_\-uriencode}}
+\index{evhttp\-\_\-uriencode@{evhttp\-\_\-uriencode}!http.h@{http.\-h}}
+\subsubsection[{evhttp\-\_\-uriencode}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf evhttp\-\_\-uriencode} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str, }
+\item[{ev\-\_\-ssize\-\_\-t}]{size, }
+\item[{int}]{space\-\_\-to\-\_\-plus}
+\end{DoxyParamCaption}
+)}\label{http_8h_ab64229249a981ccfea09161a199972da}
+\-As evhttp\-\_\-encode\-\_\-uri, but if 'size' is nonnegative, treat the string as being 'size' bytes long. \-This allows you to encode strings that may contain 0-\/valued bytes.
+
+\-The returned string must be freed by the caller.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em str} & an unencoded string \\
+\hline
+{\em size} & the length of the string to encode, or -\/1 if the string is \-N\-U\-L-\/terminated \\
+\hline
+{\em space\-\_\-to\-\_\-plus} & if true, space characters in 'str' are encoded as +, not \%20. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a newly allocate \-U\-R\-I-\/encoded string, or \-N\-U\-L\-L on failure. 
+\end{DoxyReturn}

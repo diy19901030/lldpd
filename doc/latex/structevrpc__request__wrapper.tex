@@ -1,0 +1,58 @@
+\section{evrpc\-\_\-request\-\_\-wrapper \-Struct \-Reference}
+\label{structevrpc__request__wrapper}\index{evrpc\-\_\-request\-\_\-wrapper@{evrpc\-\_\-request\-\_\-wrapper}}
+
+
+\-Collaboration diagram for evrpc\-\_\-request\-\_\-wrapper\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} ({\bf evrpc\-\_\-request\-\_\-wrapper}) next\label{structevrpc__request__wrapper_a122191199283f943751bcec392357646}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evrpc\-\_\-hook\-\_\-meta} $\ast$ {\bfseries hook\-\_\-meta}\label{structevrpc__request__wrapper_a2c900a2f27e1f4361e788f3599bbf99b}
+
+\item 
+struct {\bf evrpc\-\_\-pool} $\ast$ {\bfseries pool}\label{structevrpc__request__wrapper_a3519c39d58669fecd3334338e189508b}
+
+\item 
+struct {\bf evhttp\-\_\-connection} $\ast$ {\bfseries evcon}\label{structevrpc__request__wrapper_a507c84afa3bb93e17efc8aecd1bf18d2}
+
+\item 
+struct {\bf evhttp\-\_\-request} $\ast$ {\bfseries req}\label{structevrpc__request__wrapper_a27a6cc58bd947852de09feaa5a40f768}
+
+\item 
+struct {\bf event} {\bfseries ev\-\_\-timeout}\label{structevrpc__request__wrapper_af408d3914fac9f7e3eac3f35e7c18b5b}
+
+\item 
+char $\ast$ {\bfseries name}\label{structevrpc__request__wrapper_a5ac083a645d964373f022d03df4849c8}
+
+\item 
+void($\ast$ {\bfseries cb} )(struct {\bf evrpc\-\_\-status} $\ast$, void $\ast${\bf request}, void $\ast${\bf reply}, void $\ast$arg)\label{structevrpc__request__wrapper_a65342a98144393d6402f024af6dbbed4}
+
+\item 
+void $\ast$ {\bfseries cb\-\_\-arg}\label{structevrpc__request__wrapper_aa2a0fc874870115f7d31aabcbb53ec0b}
+
+\item 
+void $\ast$ {\bfseries request}\label{structevrpc__request__wrapper_a754b843e227c83c4fcbbd570c0828af5}
+
+\item 
+void $\ast$ {\bfseries reply}\label{structevrpc__request__wrapper_a3054b93eacc586713f60fe72fc620146}
+
+\item 
+void($\ast$ {\bfseries request\-\_\-marshal} )(struct {\bf evbuffer} $\ast$, void $\ast$)\label{structevrpc__request__wrapper_aca9ef157bef90129107d29baa7d4da4b}
+
+\item 
+void($\ast$ {\bfseries reply\-\_\-clear} )(void $\ast$)\label{structevrpc__request__wrapper_a36799ff300b3ebb4eafa8f380f0f39b4}
+
+\item 
+int($\ast$ {\bfseries reply\-\_\-unmarshal} )(void $\ast$, struct {\bf evbuffer} $\ast$)\label{structevrpc__request__wrapper_a513170785516440cf1d32cf0a5ea0961}
+
+\end{DoxyCompactItemize}
+
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/evrpc-\/internal.\-h\end{DoxyCompactItemize}

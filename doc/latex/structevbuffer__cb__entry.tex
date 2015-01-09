@@ -1,0 +1,59 @@
+\section{evbuffer\-\_\-cb\-\_\-entry \-Struct \-Reference}
+\label{structevbuffer__cb__entry}\index{evbuffer\-\_\-cb\-\_\-entry@{evbuffer\-\_\-cb\-\_\-entry}}
+
+
+{\ttfamily \#include $<$evbuffer-\/internal.\-h$>$}
+
+
+
+\-Collaboration diagram for evbuffer\-\_\-cb\-\_\-entry\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} ({\bf evbuffer\-\_\-cb\-\_\-entry}) next
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>{\bf evbuffer\_cb\_func} {\bfseries cb\_func}\\
+\>{\bf evbuffer\_cb} {\bfseries cb\_obsolete}\\
+\} {\bf cb}\\
+
+\end{tabbing}\item 
+void $\ast$ {\bf cbarg}
+\item 
+ev\-\_\-uint32\-\_\-t {\bf flags}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A single evbuffer callback for an evbuffer. \-This function will be invoked when bytes are added to or removed from the evbuffer. 
+
+\subsection{\-Member \-Function \-Documentation}
+\index{evbuffer\-\_\-cb\-\_\-entry@{evbuffer\-\_\-cb\-\_\-entry}!\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}}
+\index{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}!evbuffer_cb_entry@{evbuffer\-\_\-cb\-\_\-entry}}
+\subsubsection[{\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} (
+\begin{DoxyParamCaption}
+\item[{{\bf evbuffer\-\_\-cb\-\_\-entry}}]{}
+\end{DoxyParamCaption}
+)}\label{structevbuffer__cb__entry_afea9027864f627c6216f6fb2145d786f}
+\-Structures to implement a doubly-\/linked queue of callbacks 
+
+\subsection{\-Field \-Documentation}
+\index{evbuffer\-\_\-cb\-\_\-entry@{evbuffer\-\_\-cb\-\_\-entry}!cb@{cb}}
+\index{cb@{cb}!evbuffer_cb_entry@{evbuffer\-\_\-cb\-\_\-entry}}
+\subsubsection[{cb}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \}   {\bf cb}}\label{structevbuffer__cb__entry_ab0092556c7b5a9c75126e4ae79bd0f84}
+\-The callback function to invoke when this callback is called. \-If \-E\-V\-B\-U\-F\-F\-E\-R\-\_\-\-C\-B\-\_\-\-O\-B\-S\-O\-L\-E\-T\-E is set in flags, the cb\-\_\-obsolete field is valid; otherwise, cb\-\_\-func is valid. \index{evbuffer\-\_\-cb\-\_\-entry@{evbuffer\-\_\-cb\-\_\-entry}!cbarg@{cbarg}}
+\index{cbarg@{cbarg}!evbuffer_cb_entry@{evbuffer\-\_\-cb\-\_\-entry}}
+\subsubsection[{cbarg}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf cbarg}}\label{structevbuffer__cb__entry_aafd3d1a6343925cb274875556a6faa0e}
+\-Argument to pass to cb. \index{evbuffer\-\_\-cb\-\_\-entry@{evbuffer\-\_\-cb\-\_\-entry}!flags@{flags}}
+\index{flags@{flags}!evbuffer_cb_entry@{evbuffer\-\_\-cb\-\_\-entry}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}ev\-\_\-uint32\-\_\-t {\bf flags}}\label{structevbuffer__cb__entry_a46fb11e4f55160a35cb5e6113300d864}
+\-Currently set flags on this callback. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/evbuffer-\/internal.\-h\end{DoxyCompactItemize}

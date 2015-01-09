@@ -1,0 +1,32 @@
+\section{vlan\-\_\-ioctl\-\_\-args \-Struct \-Reference}
+\label{structvlan__ioctl__args}\index{vlan\-\_\-ioctl\-\_\-args@{vlan\-\_\-ioctl\-\_\-args}}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries cmd}\label{structvlan__ioctl__args_a85092d82ab6ea85dad51ba78cbda36a0}
+
+\item 
+char {\bfseries device1} [24]\label{structvlan__ioctl__args_aa42d405674afcea4249b560f7b7a60d4}
+
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>char {\bfseries device2} [24]\\
+\>int {\bfseries VID}\\
+\>unsigned int {\bfseries skb\_priority}\\
+\>unsigned int {\bfseries name\_type}\\
+\>unsigned int {\bfseries bind\_type}\\
+\>unsigned int {\bfseries flag}\\
+\} {\bfseries u}\label{structvlan__ioctl__args_ad9631c37cfa4348db38723c896a82ecf}
+\\
+
+\end{tabbing}\item 
+short {\bfseries vlan\-\_\-qos}\label{structvlan__ioctl__args_acff6d7fca0c611222b485a46a9da28fe}
+
+\end{DoxyCompactItemize}
+
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/if\-\_\-vlan.\-h\end{DoxyCompactItemize}

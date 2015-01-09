@@ -1,0 +1,41 @@
+\section{ethtool\-\_\-rx\-\_\-flow\-\_\-spec \-Struct \-Reference}
+\label{structethtool__rx__flow__spec}\index{ethtool\-\_\-rx\-\_\-flow\-\_\-spec@{ethtool\-\_\-rx\-\_\-flow\-\_\-spec}}
+
+
+{\ttfamily \#include $<$ethtool.\-h$>$}
+
+
+
+\-Collaboration diagram for ethtool\-\_\-rx\-\_\-flow\-\_\-spec\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-u32 {\bfseries flow\-\_\-type}\label{structethtool__rx__flow__spec_aff9b26a6bf042403e4ace596e569d475}
+
+\item 
+union {\bf ethtool\-\_\-flow\-\_\-union} {\bfseries h\-\_\-u}\label{structethtool__rx__flow__spec_a0c47997f95e02b6efdab633d7a8d7658}
+
+\item 
+struct {\bf ethtool\-\_\-flow\-\_\-ext} {\bfseries h\-\_\-ext}\label{structethtool__rx__flow__spec_a2da99fbf8ba33051987c31f3b9fdc438}
+
+\item 
+union {\bf ethtool\-\_\-flow\-\_\-union} {\bfseries m\-\_\-u}\label{structethtool__rx__flow__spec_acfabd14dd784d675b325927204fd1ce3}
+
+\item 
+struct {\bf ethtool\-\_\-flow\-\_\-ext} {\bfseries m\-\_\-ext}\label{structethtool__rx__flow__spec_a31ebdab131fb73aebeb47d4075a92ac7}
+
+\item 
+\-\_\-\-\_\-u64 {\bfseries ring\-\_\-cookie}\label{structethtool__rx__flow__spec_a8d4ed94ed2fe631cd54135e56fb13e3d}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries location}\label{structethtool__rx__flow__spec_a13aaf221e2c69ebabd7ed719d6a3f2f1}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+struct \doxyref{ethtool\-\_\-rx\-\_\-flow\-\_\-spec}{p.}{structethtool__rx__flow__spec} -\/ classification rule for \-R\-X flows \-: \-Type of match to perform, e.\-g. \-T\-C\-P\-\_\-\-V4\-\_\-\-F\-L\-O\-W \-: \-Flow fields to match (dependent on ) \-: \-Additional fields to match \-: \-Masks for flow field bits to be matched \-: \-Masks for additional field bits to be matched \-Note, all additional fields must be ignored unless  includes the \-F\-L\-O\-W\-\_\-\-E\-X\-T flag. \-: \-R\-X ring/queue index to deliver to, or \-R\-X\-\_\-\-C\-L\-S\-\_\-\-F\-L\-O\-W\-\_\-\-D\-I\-S\-C if packets should be discarded \-: \-Location of rule in the table. \-Locations must be numbered such that a flow matching multiple rules will be classified according to the first (lowest numbered) rule. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/ethtool.\-h\end{DoxyCompactItemize}

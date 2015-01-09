@@ -1,0 +1,1018 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/include/event2/rpc.h \-File \-Reference}
+\label{rpc_8h}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/rpc.\-h@{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/rpc.\-h}}
+\-This graph shows which files directly or indirectly include this file\-:
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-H\-A\-S}({\bf msg}, member)~(({\bf msg})-\/$>$member\#\#\-\_\-set == 1)
+\item 
+\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N}({\bf msg}, member, value)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-assign)(({\bf msg}), (value))
+\item 
+\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}({\bf msg}, member, value, len)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-assign)(({\bf msg}), (value), (len))
+\item 
+\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-G\-E\-T}({\bf msg}, member, pvalue)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-get)(({\bf msg}), (pvalue))
+\item 
+\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-G\-E\-T\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}({\bf msg}, member, pvalue, plen)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-get)(({\bf msg}), (pvalue), (plen))
+\item 
+\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D\-\_\-\-V\-A\-L\-U\-E}({\bf msg}, member, value)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-add)(({\bf msg}), (value))
+\item 
+\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D}({\bf msg}, member)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-add)({\bf msg})
+\item 
+\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-G\-E\-T}({\bf msg}, member, offset, pvalue)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-get)(({\bf msg}), (offset), (pvalue))
+\item 
+\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-L\-E\-N}({\bf msg}, member)~(({\bf msg})-\/$>$member\#\#\-\_\-length)
+\item 
+\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-S\-T\-R\-U\-C\-T}(rpcname)~struct evrpc\-\_\-req\-\_\-\-\_\-\#\#rpcname
+\item 
+\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R}(rpcname, reqstruct, rplystruct)
+\item 
+\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X}(rpcname, reqstruct, rplystruct, pool, {\bf request}, {\bf reply}, cb, cbarg)
+\item 
+\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E}(rpcname, reqstruct, rplystruct)
+\item 
+\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-H\-T\-T\-P}(rpc\-\_\-req)~(rpc\-\_\-req)-\/$>$http\-\_\-req
+\item 
+\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-D\-O\-N\-E}(rpc\-\_\-req)
+\item 
+\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R}(base, name, {\bf request}, {\bf reply}, callback, cbarg)
+\item 
+\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-U\-N\-R\-E\-G\-I\-S\-T\-E\-R}(base, name)~evrpc\-\_\-unregister\-\_\-rpc((base), \#name)
+\item 
+\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}(name, pool, {\bf request}, {\bf reply}, cb, cbarg)~evrpc\-\_\-send\-\_\-request\-\_\-\#\#name((pool), ({\bf request}), ({\bf reply}), (cb), (cbarg))
+\item 
+\#define {\bf \-I\-N\-P\-U\-T}~{\bf \-E\-V\-R\-P\-C\-\_\-\-I\-N\-P\-U\-T}
+\item 
+\#define {\bf \-O\-U\-T\-P\-U\-T}~{\bf \-E\-V\-R\-P\-C\-\_\-\-O\-U\-T\-P\-U\-T}
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E} \{ {\bf \-E\-V\-R\-P\-C\-\_\-\-I\-N\-P\-U\-T}, 
+{\bf \-E\-V\-R\-P\-C\-\_\-\-O\-U\-T\-P\-U\-T}
+ \}
+\item 
+enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-R\-E\-S\-U\-L\-T} \{ {\bf \-E\-V\-R\-P\-C\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E} =  -\/1, 
+{\bf \-E\-V\-R\-P\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-E} =  0, 
+{\bf \-E\-V\-R\-P\-C\-\_\-\-P\-A\-U\-S\-E} =  1
+ \}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evrpc\-\_\-request\-\_\-wrapper} $\ast$ {\bf evrpc\-\_\-make\-\_\-request\-\_\-ctx} (struct {\bf evrpc\-\_\-pool} $\ast$pool, void $\ast${\bf request}, void $\ast${\bf reply}, const char $\ast$rpcname, void($\ast$req\-\_\-marshal)(struct {\bf evbuffer} $\ast$, void $\ast$), void($\ast$rpl\-\_\-clear)(void $\ast$), int($\ast$rpl\-\_\-unmarshal)(void $\ast$, struct {\bf evbuffer} $\ast$), void($\ast$cb)(struct {\bf evrpc\-\_\-status} $\ast$, void $\ast$, void $\ast$, void $\ast$), void $\ast$cbarg)
+\item 
+void {\bf evrpc\-\_\-request\-\_\-done} (struct {\bf evrpc\-\_\-req\-\_\-generic} $\ast$req)
+\item 
+void $\ast$ {\bf evrpc\-\_\-get\-\_\-request} (struct {\bf evrpc\-\_\-req\-\_\-generic} $\ast$req)
+\item 
+void $\ast$ {\bfseries evrpc\-\_\-get\-\_\-reply} (struct {\bf evrpc\-\_\-req\-\_\-generic} $\ast$req)\label{rpc_8h_a16119a6f8afcf3f3283e1a88bfa42262}
+
+\item 
+struct {\bf evrpc\-\_\-base} $\ast$ {\bf evrpc\-\_\-init} (struct {\bf evhttp} $\ast$server)
+\item 
+void {\bf evrpc\-\_\-free} (struct {\bf evrpc\-\_\-base} $\ast$base)
+\item 
+int {\bf evrpc\-\_\-register\-\_\-rpc} (struct {\bf evrpc\-\_\-base} $\ast$, struct {\bf evrpc} $\ast$, void($\ast$)(struct {\bf evrpc\-\_\-req\-\_\-generic} $\ast$, void $\ast$), void $\ast$)
+\item 
+int {\bfseries evrpc\-\_\-unregister\-\_\-rpc} (struct {\bf evrpc\-\_\-base} $\ast$base, const char $\ast$name)\label{rpc_8h_a6b44b5ae7bad525a830eddfed03f561e}
+
+\item 
+int {\bf evrpc\-\_\-make\-\_\-request} (struct {\bf evrpc\-\_\-request\-\_\-wrapper} $\ast$ctx)
+\item 
+struct {\bf evrpc\-\_\-pool} $\ast$ {\bf evrpc\-\_\-pool\-\_\-new} (struct {\bf event\-\_\-base} $\ast$base)
+\item 
+void {\bf evrpc\-\_\-pool\-\_\-free} (struct {\bf evrpc\-\_\-pool} $\ast$pool)
+\item 
+void {\bf evrpc\-\_\-pool\-\_\-add\-\_\-connection} (struct {\bf evrpc\-\_\-pool} $\ast$pool, struct {\bf evhttp\-\_\-connection} $\ast$evcon)
+\item 
+void {\bf evrpc\-\_\-pool\-\_\-remove\-\_\-connection} (struct {\bf evrpc\-\_\-pool} $\ast$pool, struct {\bf evhttp\-\_\-connection} $\ast$evcon)
+\item 
+void {\bf evrpc\-\_\-pool\-\_\-set\-\_\-timeout} (struct {\bf evrpc\-\_\-pool} $\ast$pool, int timeout\-\_\-in\-\_\-secs)
+\item 
+void $\ast$ {\bf evrpc\-\_\-add\-\_\-hook} (void $\ast$vbase, enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E} hook\-\_\-type, int($\ast$cb)(void $\ast$, struct {\bf evhttp\-\_\-request} $\ast$, struct {\bf evbuffer} $\ast$, void $\ast$), void $\ast$cb\-\_\-arg)
+\item 
+int {\bf evrpc\-\_\-remove\-\_\-hook} (void $\ast$vbase, enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E} hook\-\_\-type, void $\ast$handle)
+\item 
+int {\bf evrpc\-\_\-resume\-\_\-request} (void $\ast$vbase, void $\ast$ctx, enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-R\-E\-S\-U\-L\-T} res)
+\item 
+void {\bf evrpc\-\_\-hook\-\_\-add\-\_\-meta} (void $\ast$ctx, const char $\ast$key, const void $\ast$data, size\-\_\-t data\-\_\-size)
+\item 
+int {\bf evrpc\-\_\-hook\-\_\-find\-\_\-meta} (void $\ast$ctx, const char $\ast$key, void $\ast$$\ast$data, size\-\_\-t $\ast$data\-\_\-size)
+\item 
+struct {\bf evhttp\-\_\-connection} $\ast$ {\bf evrpc\-\_\-hook\-\_\-get\-\_\-connection} (void $\ast$ctx)
+\item 
+int {\bf evrpc\-\_\-send\-\_\-request\-\_\-generic} (struct {\bf evrpc\-\_\-pool} $\ast$pool, void $\ast${\bf request}, void $\ast${\bf reply}, void($\ast$cb)(struct {\bf evrpc\-\_\-status} $\ast$, void $\ast$, void $\ast$, void $\ast$), void $\ast$cb\-\_\-arg, const char $\ast$rpcname, void($\ast$req\-\_\-marshal)(struct {\bf evbuffer} $\ast$, void $\ast$), void($\ast$rpl\-\_\-clear)(void $\ast$), int($\ast$rpl\-\_\-unmarshal)(void $\ast$, struct {\bf evbuffer} $\ast$))
+\item 
+int {\bf evrpc\-\_\-register\-\_\-generic} (struct {\bf evrpc\-\_\-base} $\ast$base, const char $\ast$name, void($\ast$callback)(struct {\bf evrpc\-\_\-req\-\_\-generic} $\ast$, void $\ast$), void $\ast$cbarg, void $\ast$($\ast$req\-\_\-new)(void $\ast$), void $\ast$req\-\_\-new\-\_\-arg, void($\ast$req\-\_\-free)(void $\ast$), int($\ast$req\-\_\-unmarshal)(void $\ast$, struct {\bf evbuffer} $\ast$), void $\ast$($\ast$rpl\-\_\-new)(void $\ast$), void $\ast$rpl\-\_\-new\-\_\-arg, void($\ast$rpl\-\_\-free)(void $\ast$), int($\ast$rpl\-\_\-complete)(void $\ast$), void($\ast$rpl\-\_\-marshal)(struct {\bf evbuffer} $\ast$, void $\ast$))
+\item 
+struct {\bf evrpc\-\_\-pool} $\ast$ {\bf evrpc\-\_\-request\-\_\-get\-\_\-pool} (struct {\bf evrpc\-\_\-request\-\_\-wrapper} $\ast$ctx)
+\item 
+void {\bfseries evrpc\-\_\-request\-\_\-set\-\_\-pool} (struct {\bf evrpc\-\_\-request\-\_\-wrapper} $\ast$ctx, struct {\bf evrpc\-\_\-pool} $\ast$pool)\label{rpc_8h_a21f7067fdc8d9328b28badb5c1c4016d}
+
+\item 
+void {\bfseries evrpc\-\_\-request\-\_\-set\-\_\-cb} (struct {\bf evrpc\-\_\-request\-\_\-wrapper} $\ast$ctx, void($\ast$cb)(struct {\bf evrpc\-\_\-status} $\ast$, void $\ast${\bf request}, void $\ast${\bf reply}, void $\ast$arg), void $\ast$cb\-\_\-arg)\label{rpc_8h_a53cb59f6f7da1781221ac1aed2ddc38d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This header files provides basic support for an \-R\-P\-C server and client.
+
+\-To support \-R\-P\-Cs in a server, every supported \-R\-P\-C command needs to be defined and registered.
+
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R(\-Send\-Command, Request, Reply)}{p.}{rpc_8h_aa526799df545537b2dc67358b0dfaa15};
+
+\-Send\-Command is the name of the \-R\-P\-C command. \-Request is the name of a structure generated by event\-\_\-rpcgen.\-py. \-It contains all parameters relating to the \-Send\-Command \-R\-P\-C. \-The server needs to fill in the \-Reply structure. \-Reply is the name of a structure generated by event\-\_\-rpcgen.\-py. \-It contains the answer to the \-R\-P\-C.
+
+\-To register an \-R\-P\-C with an \-H\-T\-T\-P server, you need to first create an \-R\-P\-C base with\-:
+
+struct \doxyref{evrpc\-\_\-base}{p.}{structevrpc__base} $\ast$base = evrpc\-\_\-init(http);
+
+\-A specific \-R\-P\-C can then be registered with
+
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R(base, Send\-Command, Request, Reply,  Function\-C\-B, arg)}{p.}{rpc_8h_abb204281e2555a1e91ff3885747d0533};
+
+when the server receives an appropriately formatted \-R\-P\-C, the user callback is invoked. \-The callback needs to fill in the reply structure.
+
+void \-Function\-C\-B(\doxyref{\-E\-V\-R\-P\-C\-\_\-\-S\-T\-R\-U\-C\-T(\-Send\-Command)}{p.}{rpc_8h_ae9eff66229e154543551a936c59dd8fa}$\ast$ rpc, void $\ast$arg);
+
+\-To send the reply, call \doxyref{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-D\-O\-N\-E(rpc)}{p.}{rpc_8h_a36d6ba276baf3c95df69db35a2ef1527};
+
+\-See the regression test for an example. 
+
+\subsection{\-Define \-Documentation}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E@{\-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E@{\-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E}(
+\begin{DoxyParamCaption}
+\item[{}]{rpcname, }
+\item[{}]{reqstruct, }
+\item[{}]{rplystruct}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_af7abcafae087e3c4dce6a4cd85346114}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+int evrpc_send_request_##rpcname(struct evrpc_pool *pool,       \
+            struct reqstruct *request, struct rplystruct *reply,        \
+            void (*cb)(struct evrpc_status *,                           \
+                struct reqstruct *, struct rplystruct *, void *cbarg),  \
+            void *cbarg) {                                              \
+        return evrpc_send_request_generic(pool, request, reply, \
+            (void (*)(struct evrpc_status *, void *, void *, void *))cb, \
+            cbarg,                                                      \
+            #rpcname,                                                   \
+            (void (*)(struct evbuffer *, void *))reqstruct##_marshal,   \
+            (void (*)(void *))rplystruct##_clear,                       \
+            (int (*)(void *, struct evbuffer *))rplystruct##_unmarshal); \
+}
+\end{DoxyCode}
+\-Generates the code for receiving and sending an \-R\-P\-C message
+
+\-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E is used to create the code corresponding to sending and receiving a particular \-R\-P\-C message
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em rpcname} & the name of the \-R\-P\-C \\
+\hline
+{\em reqstruct} & the name of the \-R\-P\-C request structure \\
+\hline
+{\em replystruct} & the name of the \-R\-P\-C reply structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R()}{p.}{rpc_8h_aa526799df545537b2dc67358b0dfaa15} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R@{\-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R@{\-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R}(
+\begin{DoxyParamCaption}
+\item[{}]{rpcname, }
+\item[{}]{reqstruct, }
+\item[{}]{rplystruct}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_aa526799df545537b2dc67358b0dfaa15}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+EVRPC_STRUCT(rpcname) { \
+        struct evrpc_hook_meta *hook_meta; \
+        struct reqstruct* request; \
+        struct rplystruct* reply; \
+        struct evrpc* rpc; \
+        struct evhttp_request* http_req; \
+        struct evbuffer* rpc_data; \
+};                                                                   \
+int evrpc_send_request_##rpcname(struct evrpc_pool *, \
+    struct reqstruct *, struct rplystruct *, \
+    void (*)(struct evrpc_status *, \
+        struct reqstruct *, struct rplystruct *, void *cbarg),  \
+    void *);
+\end{DoxyCode}
+\-Creates the definitions and prototypes for an \-R\-P\-C
+
+\-You need to use \-E\-V\-R\-P\-C\-\_\-\-H\-E\-A\-D\-E\-R to create structures and function prototypes needed by the server and client implementation. \-The structures have to be defined in an .rpc file and converted to source code via event\-\_\-rpcgen.\-py
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em rpcname} & the name of the \-R\-P\-C \\
+\hline
+{\em reqstruct} & the name of the \-R\-P\-C request structure \\
+\hline
+{\em replystruct} & the name of the \-R\-P\-C reply structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E()}{p.}{rpc_8h_af7abcafae087e3c4dce6a4cd85346114} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X@{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X@{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X}(
+\begin{DoxyParamCaption}
+\item[{}]{rpcname, }
+\item[{}]{reqstruct, }
+\item[{}]{rplystruct, }
+\item[{}]{pool, }
+\item[{}]{{\bf request}, }
+\item[{}]{{\bf reply}, }
+\item[{}]{cb, }
+\item[{}]{cbarg}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_ad7694fa8f1b5995a9d43bef1da170fad}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+evrpc_make_request_ctx(pool, request, reply,                    \
+            #rpcname,                                                   \
+            (void (*)(struct evbuffer *, void *))reqstruct##_marshal,   \
+            (void (*)(void *))rplystruct##_clear,                       \
+            (int (*)(void *, struct evbuffer *))rplystruct##_unmarshal, \
+            (void (*)(struct evrpc_status *, void *, void *, void *))cb, \
+            cbarg)
+\end{DoxyCode}
+\-Creates a context structure that contains rpc specific information.
+
+\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X is used to populate a \-R\-P\-C specific context that contains information about marshaling the \-R\-P\-C data types.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em rpcname} & the name of the \-R\-P\-C \\
+\hline
+{\em reqstruct} & the name of the \-R\-P\-C request structure \\
+\hline
+{\em replystruct} & the name of the \-R\-P\-C reply structure \\
+\hline
+{\em pool} & the \doxyref{evrpc\-\_\-pool}{p.}{structevrpc__pool} over which to make the request \\
+\hline
+{\em request} & a pointer to the \-R\-P\-C request structure object \\
+\hline
+{\em reply} & a pointer to the \-R\-P\-C reply structure object \\
+\hline
+{\em cb} & the callback function to call when the \-R\-P\-C has completed \\
+\hline
+{\em cbarg} & the argument to supply to the callback \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T}(
+\begin{DoxyParamCaption}
+\item[{}]{name, }
+\item[{}]{pool, }
+\item[{}]{{\bf request}, }
+\item[{}]{{\bf reply}, }
+\item[{}]{cb, }
+\item[{}]{cbarg}
+\end{DoxyParamCaption}
+)~evrpc\-\_\-send\-\_\-request\-\_\-\#\#name((pool), ({\bf request}), ({\bf reply}), (cb), (cbarg))}\label{rpc_8h_aff0efcd7cb8b966256b5127960bd2c81}
+launches an \-R\-P\-C and sends it to the server
+
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T()}{p.}{rpc_8h_aff0efcd7cb8b966256b5127960bd2c81} is used by the client to send an \-R\-P\-C to the server.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & the name of the \-R\-P\-C \\
+\hline
+{\em pool} & the \doxyref{evrpc\-\_\-pool}{p.}{structevrpc__pool} that contains the connection objects over which the request should be sent. \\
+\hline
+{\em request} & a pointer to the \-R\-P\-C request structure -\/ it contains the data to be sent to the server. \\
+\hline
+{\em reply} & a pointer to the \-R\-P\-C reply structure. \-It is going to be filled if the request was answered successfully \\
+\hline
+{\em cb} & the callback to invoke when the \-R\-P\-C request has been answered \\
+\hline
+{\em cbarg} & an additional argument to be passed to the client \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure 
+\end{DoxyReturn}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R@{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R@{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R}(
+\begin{DoxyParamCaption}
+\item[{}]{base, }
+\item[{}]{name, }
+\item[{}]{{\bf request}, }
+\item[{}]{{\bf reply}, }
+\item[{}]{callback, }
+\item[{}]{cbarg}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_abb204281e2555a1e91ff3885747d0533}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+evrpc_register_generic(base, #name,                             \
+            (void (*)(struct evrpc_req_generic *, void *))callback, cbarg, \
+            (void *(*)(void *))request##_new, NULL,                     \
+            (void (*)(void *))request##_free,                           \
+            (int (*)(void *, struct evbuffer *))request##_unmarshal,    \
+            (void *(*)(void *))reply##_new, NULL,                       \
+            (void (*)(void *))reply##_free, \
+            (int (*)(void *))reply##_complete, \
+            (void (*)(struct evbuffer *, void *))reply##_marshal)
+\end{DoxyCode}
+register \-R\-P\-Cs with the \-H\-T\-T\-P \-Server
+
+registers a new \-R\-P\-C with the \-H\-T\-T\-P server, each \-R\-P\-C needs to have a unique name under which it can be identified.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evrpc\-\_\-base}{p.}{structevrpc__base} structure in which the \-R\-P\-C should be registered. \\
+\hline
+{\em name} & the name of the \-R\-P\-C \\
+\hline
+{\em request} & the name of the \-R\-P\-C request structure \\
+\hline
+{\em reply} & the name of the \-R\-P\-C reply structure \\
+\hline
+{\em callback} & the callback that should be invoked when the \-R\-P\-C is received. \-The callback has the following prototype void ($\ast$callback)(\doxyref{\-E\-V\-R\-P\-C\-\_\-\-S\-T\-R\-U\-C\-T(\-Message)}{p.}{rpc_8h_ae9eff66229e154543551a936c59dd8fa}$\ast$ rpc, void $\ast$arg) \\
+\hline
+{\em cbarg} & an additional parameter that can be passed to the callback. \-The parameter can be used to carry around state. \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-D\-O\-N\-E@{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-D\-O\-N\-E}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-D\-O\-N\-E@{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-D\-O\-N\-E}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-D\-O\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-D\-O\-N\-E}(
+\begin{DoxyParamCaption}
+\item[{}]{rpc\-\_\-req}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a36d6ba276baf3c95df69db35a2ef1527}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+do { \
+  struct evrpc_req_generic *_req = (struct evrpc_req_generic *)(rpc_req); \
+  evrpc_request_done(_req);                                     \
+} while (0)
+\end{DoxyCode}
+\-Creates the reply to an \-R\-P\-C request
+
+\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-D\-O\-N\-E is used to answer a request; the reply is expected to have been filled in. \-The request and reply pointers become invalid after this call has finished.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em rpc\-\_\-req} & the rpc request structure provided to the server callback \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-H\-T\-T\-P@{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-H\-T\-T\-P}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-H\-T\-T\-P@{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-H\-T\-T\-P}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-H\-T\-T\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-H\-T\-T\-P}(
+\begin{DoxyParamCaption}
+\item[{}]{rpc\-\_\-req}
+\end{DoxyParamCaption}
+)~(rpc\-\_\-req)-\/$>$http\-\_\-req}\label{rpc_8h_af78e1869994ee9597a9a0785d25fbf0b}
+\-Provides access to the \-H\-T\-T\-P request object underlying an \-R\-P\-C
+
+\-Access to the underlying http object; can be used to look at headers or for getting the remote ip address
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em rpc\-\_\-req} & the rpc request structure provided to the server callback \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an struct \doxyref{evhttp\-\_\-request}{p.}{structevhttp__request} object that can be inspected for \-H\-T\-T\-P headers or sender information. 
+\end{DoxyReturn}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-S\-T\-R\-U\-C\-T@{\-E\-V\-R\-P\-C\-\_\-\-S\-T\-R\-U\-C\-T}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-S\-T\-R\-U\-C\-T@{\-E\-V\-R\-P\-C\-\_\-\-S\-T\-R\-U\-C\-T}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-S\-T\-R\-U\-C\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-S\-T\-R\-U\-C\-T}(
+\begin{DoxyParamCaption}
+\item[{}]{rpcname}
+\end{DoxyParamCaption}
+)~struct evrpc\-\_\-req\-\_\-\-\_\-\#\#rpcname}\label{rpc_8h_ae9eff66229e154543551a936c59dd8fa}
+\-The type of a specific \-R\-P\-C \-Message
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em rpcname} & the name of the \-R\-P\-C message \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-U\-N\-R\-E\-G\-I\-S\-T\-E\-R@{\-E\-V\-R\-P\-C\-\_\-\-U\-N\-R\-E\-G\-I\-S\-T\-E\-R}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-U\-N\-R\-E\-G\-I\-S\-T\-E\-R@{\-E\-V\-R\-P\-C\-\_\-\-U\-N\-R\-E\-G\-I\-S\-T\-E\-R}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-U\-N\-R\-E\-G\-I\-S\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-R\-P\-C\-\_\-\-U\-N\-R\-E\-G\-I\-S\-T\-E\-R}(
+\begin{DoxyParamCaption}
+\item[{}]{base, }
+\item[{}]{name}
+\end{DoxyParamCaption}
+)~evrpc\-\_\-unregister\-\_\-rpc((base), \#name)}\label{rpc_8h_ab646cdf50e026accddcd9fe23b35837b}
+\-Unregisters an already registered \-R\-P\-C
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evrpc\-\_\-base}{p.}{structevrpc__base} object from which to unregister an \-R\-P\-C \\
+\hline
+{\em name} & the name of the rpc to unregister \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+-\/1 on error or 0 when successful. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R()}{p.}{rpc_8h_abb204281e2555a1e91ff3885747d0533} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D@{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D}}
+\index{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D@{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D}(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf msg}, }
+\item[{}]{member}
+\end{DoxyParamCaption}
+)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-add)({\bf msg})}\label{rpc_8h_a8bd4b0f338823bffee3ead3885ea6791}
+\-Allocates a new entry in the array and returns it. \index{rpc.\-h@{rpc.\-h}!\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D\-\_\-\-V\-A\-L\-U\-E@{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D\-\_\-\-V\-A\-L\-U\-E}}
+\index{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D\-\_\-\-V\-A\-L\-U\-E@{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D\-\_\-\-V\-A\-L\-U\-E}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D\-\_\-\-V\-A\-L\-U\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-A\-D\-D\-\_\-\-V\-A\-L\-U\-E}(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf msg}, }
+\item[{}]{member, }
+\item[{}]{value}
+\end{DoxyParamCaption}
+)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-add)(({\bf msg}), (value))}\label{rpc_8h_a796d8c44ee666b13ecbae36b0897820b}
+\-Adds a value to an array. \index{rpc.\-h@{rpc.\-h}!\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-G\-E\-T@{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-G\-E\-T}}
+\index{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-G\-E\-T@{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-G\-E\-T}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-G\-E\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-G\-E\-T}(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf msg}, }
+\item[{}]{member, }
+\item[{}]{offset, }
+\item[{}]{pvalue}
+\end{DoxyParamCaption}
+)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-get)(({\bf msg}), (offset), (pvalue))}\label{rpc_8h_a1b955ffe442d49fdfe17c76a6e758880}
+\-Gets a variable at the specified offset from the array. \index{rpc.\-h@{rpc.\-h}!\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-L\-E\-N@{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-L\-E\-N}}
+\index{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-L\-E\-N@{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-L\-E\-N}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-R\-R\-A\-Y\-\_\-\-L\-E\-N}(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf msg}, }
+\item[{}]{member}
+\end{DoxyParamCaption}
+)~(({\bf msg})-\/$>$member\#\#\-\_\-length)}\label{rpc_8h_ab4a0a6a9f8fbe20ced71eaebd297168b}
+\-Returns the number of entries in the array. \index{rpc.\-h@{rpc.\-h}!\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N@{\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N}}
+\index{\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N@{\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N}(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf msg}, }
+\item[{}]{member, }
+\item[{}]{value}
+\end{DoxyParamCaption}
+)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-assign)(({\bf msg}), (value))}\label{rpc_8h_a8063c9f0927da79cc9e53600a77eecc6}
+\-Assigns a value to the member in the message.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em msg} & the message to which to assign a value \\
+\hline
+{\em member} & the name of the member variable \\
+\hline
+{\em value} & the value to assign \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N@{\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}}
+\index{\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N@{\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf msg}, }
+\item[{}]{member, }
+\item[{}]{value, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-assign)(({\bf msg}), (value), (len))}\label{rpc_8h_af420133e56a545bef6cba6f878d403d7}
+\-Assigns a value to the member in the message.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em msg} & the message to which to assign a value \\
+\hline
+{\em member} & the name of the member variable \\
+\hline
+{\em value} & the value to assign \\
+\hline
+{\em len} & the length of the value \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T@{\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T}}
+\index{\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T@{\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-G\-E\-T}(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf msg}, }
+\item[{}]{member, }
+\item[{}]{pvalue}
+\end{DoxyParamCaption}
+)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-get)(({\bf msg}), (pvalue))}\label{rpc_8h_aef6e54053208c090c43d05c9b2259fb9}
+\-Returns the value for a member.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em msg} & the message from which to get the value \\
+\hline
+{\em member} & the name of the member variable \\
+\hline
+{\em pvalue} & a pointer to the variable to hold the value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 otherwise. 
+\end{DoxyReturn}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N@{\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}}
+\index{\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N@{\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-T\-A\-G\-\_\-\-G\-E\-T\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-G\-E\-T\-\_\-\-W\-I\-T\-H\-\_\-\-L\-E\-N}(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf msg}, }
+\item[{}]{member, }
+\item[{}]{pvalue, }
+\item[{}]{plen}
+\end{DoxyParamCaption}
+)~($\ast$({\bf msg})-\/$>$base-\/$>$member\#\#\-\_\-get)(({\bf msg}), (pvalue), (plen))}\label{rpc_8h_ae0b73ea41cb7f06976fd69a8f1be6219}
+\-Returns the value for a member.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em msg} & the message from which to get the value \\
+\hline
+{\em member} & the name of the member variable \\
+\hline
+{\em pvalue} & a pointer to the variable to hold the value \\
+\hline
+{\em plen} & a pointer to the length of the value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 otherwise. 
+\end{DoxyReturn}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-T\-A\-G\-\_\-\-H\-A\-S@{\-E\-V\-T\-A\-G\-\_\-\-H\-A\-S}}
+\index{\-E\-V\-T\-A\-G\-\_\-\-H\-A\-S@{\-E\-V\-T\-A\-G\-\_\-\-H\-A\-S}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-T\-A\-G\-\_\-\-H\-A\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-T\-A\-G\-\_\-\-H\-A\-S}(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf msg}, }
+\item[{}]{member}
+\end{DoxyParamCaption}
+)~(({\bf msg})-\/$>$member\#\#\-\_\-set == 1)}\label{rpc_8h_a1a924e89c7a0c5eddc63cf9bf569fae6}
+\-Determines if the member has been set in the message
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em msg} & the message to inspect \\
+\hline
+{\em member} & the member variable to test for presences \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+1 if it's present or 0 otherwise. 
+\end{DoxyReturn}
+\index{rpc.\-h@{rpc.\-h}!\-I\-N\-P\-U\-T@{\-I\-N\-P\-U\-T}}
+\index{\-I\-N\-P\-U\-T@{\-I\-N\-P\-U\-T}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-I\-N\-P\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-I\-N\-P\-U\-T}~{\bf \-E\-V\-R\-P\-C\-\_\-\-I\-N\-P\-U\-T}}\label{rpc_8h_a1bb283bd7893b9855e2f23013891fc82}
+\-Deprecated alias for \-E\-V\-R\-P\-C\-\_\-\-I\-N\-P\-U\-T. \-Not available on windows, where it conflicts with platform headers. \index{rpc.\-h@{rpc.\-h}!\-O\-U\-T\-P\-U\-T@{\-O\-U\-T\-P\-U\-T}}
+\index{\-O\-U\-T\-P\-U\-T@{\-O\-U\-T\-P\-U\-T}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-O\-U\-T\-P\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-O\-U\-T\-P\-U\-T}~{\bf \-E\-V\-R\-P\-C\-\_\-\-O\-U\-T\-P\-U\-T}}\label{rpc_8h_a61a3c9a18380aafb6e430e79bf596557}
+\-Deprecated alias for \-E\-V\-R\-P\-C\-\_\-\-O\-U\-T\-P\-U\-T. \-Not available on windows, where it conflicts with platform headers. 
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-R\-E\-S\-U\-L\-T@{\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-R\-E\-S\-U\-L\-T}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-R\-E\-S\-U\-L\-T@{\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-R\-E\-S\-U\-L\-T}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-R\-E\-S\-U\-L\-T}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-R\-E\-S\-U\-L\-T}}\label{rpc_8h_a9c37f133ebc96b2bd66c472079b1338b}
+\-Return value from hook processing functions \begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-E\-V\-R\-P\-C\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E@{\-E\-V\-R\-P\-C\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E}!rpc.\-h@{rpc.\-h}}\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E@{\-E\-V\-R\-P\-C\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E}}\item[{\em 
+\-E\-V\-R\-P\-C\-\_\-\-T\-E\-R\-M\-I\-N\-A\-T\-E\label{rpc_8h_a9c37f133ebc96b2bd66c472079b1338ba61de2cad490f408aa9ecc3427cfb6233}
+}]indicates the rpc should be terminated \index{\-E\-V\-R\-P\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-E@{\-E\-V\-R\-P\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-E}!rpc.\-h@{rpc.\-h}}\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-E@{\-E\-V\-R\-P\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-E}}\item[{\em 
+\-E\-V\-R\-P\-C\-\_\-\-C\-O\-N\-T\-I\-N\-U\-E\label{rpc_8h_a9c37f133ebc96b2bd66c472079b1338ba4f92aee79d3413c4940eeb578ee33643}
+}]continue processing the rpc \index{\-E\-V\-R\-P\-C\-\_\-\-P\-A\-U\-S\-E@{\-E\-V\-R\-P\-C\-\_\-\-P\-A\-U\-S\-E}!rpc.\-h@{rpc.\-h}}\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-P\-A\-U\-S\-E@{\-E\-V\-R\-P\-C\-\_\-\-P\-A\-U\-S\-E}}\item[{\em 
+\-E\-V\-R\-P\-C\-\_\-\-P\-A\-U\-S\-E\label{rpc_8h_a9c37f133ebc96b2bd66c472079b1338baff86ced7cf446eec75868ba64d956b9c}
+}]pause processing request until resumed \end{description}
+\end{Desc}
+
+\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E@{\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E}}
+\index{\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E@{\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E}!rpc.h@{rpc.\-h}}
+\subsubsection[{\-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E}}\label{rpc_8h_a66eff7ea6bdd17e53fde6c4d9dc1835b}
+\-Hooks for changing the input and output of \-R\-P\-Cs; this can be used to implement compression, authentication, encryption, ... \begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-E\-V\-R\-P\-C\-\_\-\-I\-N\-P\-U\-T@{\-E\-V\-R\-P\-C\-\_\-\-I\-N\-P\-U\-T}!rpc.\-h@{rpc.\-h}}\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-I\-N\-P\-U\-T@{\-E\-V\-R\-P\-C\-\_\-\-I\-N\-P\-U\-T}}\item[{\em 
+\-E\-V\-R\-P\-C\-\_\-\-I\-N\-P\-U\-T\label{rpc_8h_a66eff7ea6bdd17e53fde6c4d9dc1835ba2a62d2e1147edb5b460c1abb17be9734}
+}]apply the function to an input hook \index{\-E\-V\-R\-P\-C\-\_\-\-O\-U\-T\-P\-U\-T@{\-E\-V\-R\-P\-C\-\_\-\-O\-U\-T\-P\-U\-T}!rpc.\-h@{rpc.\-h}}\index{rpc.\-h@{rpc.\-h}!\-E\-V\-R\-P\-C\-\_\-\-O\-U\-T\-P\-U\-T@{\-E\-V\-R\-P\-C\-\_\-\-O\-U\-T\-P\-U\-T}}\item[{\em 
+\-E\-V\-R\-P\-C\-\_\-\-O\-U\-T\-P\-U\-T\label{rpc_8h_a66eff7ea6bdd17e53fde6c4d9dc1835bad63587ff3a66808e422f1ca48c9db85e}
+}]apply the function to an output hook \end{description}
+\end{Desc}
+
+
+
+\subsection{\-Function \-Documentation}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-add\-\_\-hook@{evrpc\-\_\-add\-\_\-hook}}
+\index{evrpc\-\_\-add\-\_\-hook@{evrpc\-\_\-add\-\_\-hook}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-add\-\_\-hook}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf evrpc\-\_\-add\-\_\-hook} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{vbase, }
+\item[{enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E}}]{hook\-\_\-type, }
+\item[{int($\ast$)(void $\ast$, struct {\bf evhttp\-\_\-request} $\ast$, struct {\bf evbuffer} $\ast$, void $\ast$)}]{cb, }
+\item[{void $\ast$}]{cb\-\_\-arg}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_adb188728ddbaf5c85ac9e98d9d11a4a4}
+adds a processing hook to either an rpc base or rpc pool
+
+\-If a hook returns \-T\-E\-R\-M\-I\-N\-A\-T\-E, the processing is aborted. \-On \-C\-O\-N\-T\-I\-N\-U\-E, the request is immediately processed after the hook returns. \-If the hook returns \-P\-A\-U\-S\-E, request processing stops until \doxyref{evrpc\-\_\-resume\-\_\-request()}{p.}{rpc_8h_a2724d98b6fc56d46cbfc9fe7ad9e6cf1} has been called.
+
+\-The add functions return handles that can be used for removing hooks.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em vbase} & a pointer to either struct \doxyref{evrpc\-\_\-base}{p.}{structevrpc__base} or struct \doxyref{evrpc\-\_\-pool}{p.}{structevrpc__pool} \\
+\hline
+{\em hook\-\_\-type} & either \-I\-N\-P\-U\-T or \-O\-U\-T\-P\-U\-T \\
+\hline
+{\em cb} & the callback to call when the hook is activated \\
+\hline
+{\em cb\-\_\-arg} & an additional argument for the callback \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a handle to the hook so it can be removed later 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evrpc\-\_\-remove\-\_\-hook()}{p.}{rpc_8h_a3969ea92840d165cab55a3228efcdbc6} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-free@{evrpc\-\_\-free}}
+\index{evrpc\-\_\-free@{evrpc\-\_\-free}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evrpc\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-base} $\ast$}]{base}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a64a8951f0d52f698a96808f276b32f39}
+\-Frees the evrpc base
+
+\-For now, you are responsible for making sure that no rpcs are ongoing.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the \doxyref{evrpc\-\_\-base}{p.}{structevrpc__base} object to be freed \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evrpc\-\_\-init}{p.}{rpc_8h_aca904025a4a1cb8d22164da3afe32b5a} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-get\-\_\-request@{evrpc\-\_\-get\-\_\-request}}
+\index{evrpc\-\_\-get\-\_\-request@{evrpc\-\_\-get\-\_\-request}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-get\-\_\-request}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf evrpc\-\_\-get\-\_\-request} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-req\-\_\-generic} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_afa6dddd447a86803d27a7b069503576c}
+accessors for request and reply \index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-hook\-\_\-add\-\_\-meta@{evrpc\-\_\-hook\-\_\-add\-\_\-meta}}
+\index{evrpc\-\_\-hook\-\_\-add\-\_\-meta@{evrpc\-\_\-hook\-\_\-add\-\_\-meta}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-hook\-\_\-add\-\_\-meta}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evrpc\-\_\-hook\-\_\-add\-\_\-meta} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ctx, }
+\item[{const char $\ast$}]{key, }
+\item[{const void $\ast$}]{data, }
+\item[{size\-\_\-t}]{data\-\_\-size}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a1e6e536a5c57a2d87ffe778746906626}
+adds meta data to request
+
+\doxyref{evrpc\-\_\-hook\-\_\-add\-\_\-meta()}{p.}{rpc_8h_a1e6e536a5c57a2d87ffe778746906626} allows hooks to add meta data to a request. for a client request, the meta data can be inserted by an outgoing request hook and retrieved by the incoming request hook.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ctx} & the context provided to the hook call \\
+\hline
+{\em key} & a \-N\-U\-L-\/terminated c-\/string \\
+\hline
+{\em data} & the data to be associated with the key \\
+\hline
+{\em data\-\_\-size} & the size of the data \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-hook\-\_\-find\-\_\-meta@{evrpc\-\_\-hook\-\_\-find\-\_\-meta}}
+\index{evrpc\-\_\-hook\-\_\-find\-\_\-meta@{evrpc\-\_\-hook\-\_\-find\-\_\-meta}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-hook\-\_\-find\-\_\-meta}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evrpc\-\_\-hook\-\_\-find\-\_\-meta} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ctx, }
+\item[{const char $\ast$}]{key, }
+\item[{void $\ast$$\ast$}]{data, }
+\item[{size\-\_\-t $\ast$}]{data\-\_\-size}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_aad4ec382ca6789ac5bdc672420d98fc5}
+retrieves meta data previously associated
+
+\doxyref{evrpc\-\_\-hook\-\_\-find\-\_\-meta()}{p.}{rpc_8h_aad4ec382ca6789ac5bdc672420d98fc5} can be used to retrieve meta data associated to a request by a previous hook. 
+\begin{DoxyParams}{\-Parameters}
+{\em ctx} & the context provided to the hook call \\
+\hline
+{\em key} & a \-N\-U\-L-\/terminated c-\/string \\
+\hline
+{\em data} & pointer to a data pointer that will contain the retrieved data \\
+\hline
+{\em data\-\_\-size} & pointer to the size of the data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success or -\/1 on failure 
+\end{DoxyReturn}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-hook\-\_\-get\-\_\-connection@{evrpc\-\_\-hook\-\_\-get\-\_\-connection}}
+\index{evrpc\-\_\-hook\-\_\-get\-\_\-connection@{evrpc\-\_\-hook\-\_\-get\-\_\-connection}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-hook\-\_\-get\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evhttp\-\_\-connection}$\ast$ {\bf evrpc\-\_\-hook\-\_\-get\-\_\-connection} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{rpc_8h_a3aef04ab91e1af62675cd7d76fd06e94}
+returns the connection object associated with the request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ctx} & the context provided to the hook call \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to the \doxyref{evhttp\-\_\-connection}{p.}{structevhttp__connection} object 
+\end{DoxyReturn}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-init@{evrpc\-\_\-init}}
+\index{evrpc\-\_\-init@{evrpc\-\_\-init}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evrpc\-\_\-base}$\ast$ {\bf evrpc\-\_\-init} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evhttp} $\ast$}]{server}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{rpc_8h_aca904025a4a1cb8d22164da3afe32b5a}
+\-Creates a new rpc base from which \-R\-P\-C requests can be received
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em server} & a pointer to an existing \-H\-T\-T\-P server \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a newly allocated \doxyref{evrpc\-\_\-base}{p.}{structevrpc__base} struct 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evrpc\-\_\-free()}{p.}{rpc_8h_a64a8951f0d52f698a96808f276b32f39} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-make\-\_\-request@{evrpc\-\_\-make\-\_\-request}}
+\index{evrpc\-\_\-make\-\_\-request@{evrpc\-\_\-make\-\_\-request}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-make\-\_\-request}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evrpc\-\_\-make\-\_\-request} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-request\-\_\-wrapper} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a1bc336c8cb4b87e77fd35c697420b3c5}
+\-Makes an \-R\-P\-C request based on the provided context.
+
+\-This is a low-\/level function and should not be used directly unless a custom context object is provided. \-Use \doxyref{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T()}{p.}{rpc_8h_aff0efcd7cb8b966256b5127960bd2c81} instead.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ctx} & a context from \doxyref{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X()}{p.}{rpc_8h_ad7694fa8f1b5995a9d43bef1da170fad} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 otherwise. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T()}{p.}{rpc_8h_aff0efcd7cb8b966256b5127960bd2c81}, \doxyref{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-C\-T\-X()}{p.}{rpc_8h_ad7694fa8f1b5995a9d43bef1da170fad} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-make\-\_\-request\-\_\-ctx@{evrpc\-\_\-make\-\_\-request\-\_\-ctx}}
+\index{evrpc\-\_\-make\-\_\-request\-\_\-ctx@{evrpc\-\_\-make\-\_\-request\-\_\-ctx}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-make\-\_\-request\-\_\-ctx}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evrpc\-\_\-request\-\_\-wrapper}$\ast$ {\bf evrpc\-\_\-make\-\_\-request\-\_\-ctx} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-pool} $\ast$}]{pool, }
+\item[{void $\ast$}]{request, }
+\item[{void $\ast$}]{reply, }
+\item[{const char $\ast$}]{rpcname, }
+\item[{void($\ast$)(struct {\bf evbuffer} $\ast$, void $\ast$)}]{req\-\_\-marshal, }
+\item[{void($\ast$)(void $\ast$)}]{rpl\-\_\-clear, }
+\item[{int($\ast$)(void $\ast$, struct {\bf evbuffer} $\ast$)}]{rpl\-\_\-unmarshal, }
+\item[{void($\ast$)(struct {\bf evrpc\-\_\-status} $\ast$, void $\ast$, void $\ast$, void $\ast$)}]{cb, }
+\item[{void $\ast$}]{cbarg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{rpc_8h_a83b3d3ddadb971e808f5e37bc4eb61bc}
+use \-E\-V\-R\-P\-C\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E instead \index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-pool\-\_\-add\-\_\-connection@{evrpc\-\_\-pool\-\_\-add\-\_\-connection}}
+\index{evrpc\-\_\-pool\-\_\-add\-\_\-connection@{evrpc\-\_\-pool\-\_\-add\-\_\-connection}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-pool\-\_\-add\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evrpc\-\_\-pool\-\_\-add\-\_\-connection} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-pool} $\ast$}]{pool, }
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a063d8c73017ee732c8930e9c6fa00026}
+\-Adds a connection over which rpc can be dispatched to the pool.
+
+\-The connection object must have been newly created.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em pool} & the pool to which to add the connection \\
+\hline
+{\em evcon} & the connection to add to the pool. \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-pool\-\_\-free@{evrpc\-\_\-pool\-\_\-free}}
+\index{evrpc\-\_\-pool\-\_\-free@{evrpc\-\_\-pool\-\_\-free}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-pool\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evrpc\-\_\-pool\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-pool} $\ast$}]{pool}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a8d3e64475898ca58fd93b7f8919b3a01}
+frees an rpc connection pool
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em pool} & a pointer to an \doxyref{evrpc\-\_\-pool}{p.}{structevrpc__pool} allocated via \doxyref{evrpc\-\_\-pool\-\_\-new()}{p.}{rpc_8h_a8e87434603994a71d26676ddfb1e2033} \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evrpc\-\_\-pool\-\_\-new()}{p.}{rpc_8h_a8e87434603994a71d26676ddfb1e2033} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-pool\-\_\-new@{evrpc\-\_\-pool\-\_\-new}}
+\index{evrpc\-\_\-pool\-\_\-new@{evrpc\-\_\-pool\-\_\-new}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-pool\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evrpc\-\_\-pool}$\ast$ {\bf evrpc\-\_\-pool\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{rpc_8h_a8e87434603994a71d26676ddfb1e2033}
+creates an rpc connection pool
+
+a pool has a number of connections associated with it. rpc requests are always made via a pool.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & a pointer to an struct event\-\_\-based object; can be left \-N\-U\-L\-L in singled-\/threaded applications \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a newly allocated struct \doxyref{evrpc\-\_\-pool}{p.}{structevrpc__pool} object 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evrpc\-\_\-pool\-\_\-free()}{p.}{rpc_8h_a8d3e64475898ca58fd93b7f8919b3a01} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-pool\-\_\-remove\-\_\-connection@{evrpc\-\_\-pool\-\_\-remove\-\_\-connection}}
+\index{evrpc\-\_\-pool\-\_\-remove\-\_\-connection@{evrpc\-\_\-pool\-\_\-remove\-\_\-connection}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-pool\-\_\-remove\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evrpc\-\_\-pool\-\_\-remove\-\_\-connection} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-pool} $\ast$}]{pool, }
+\item[{struct {\bf evhttp\-\_\-connection} $\ast$}]{evcon}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a707034fc4c7ba1021dd081863797e6e7}
+\-Removes a connection from the pool.
+
+\-The connection object must have been newly created.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em pool} & the pool from which to remove the connection \\
+\hline
+{\em evcon} & the connection to remove from the pool. \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-pool\-\_\-set\-\_\-timeout@{evrpc\-\_\-pool\-\_\-set\-\_\-timeout}}
+\index{evrpc\-\_\-pool\-\_\-set\-\_\-timeout@{evrpc\-\_\-pool\-\_\-set\-\_\-timeout}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-pool\-\_\-set\-\_\-timeout}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evrpc\-\_\-pool\-\_\-set\-\_\-timeout} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-pool} $\ast$}]{pool, }
+\item[{int}]{timeout\-\_\-in\-\_\-secs}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a17dae9e4a25a500e521baf5a2c1c5c0a}
+\-Sets the timeout in secs after which a request has to complete. \-The \-R\-P\-C is completely aborted if it does not complete by then. \-Setting the timeout to 0 means that it never timeouts and can be used to implement callback type \-R\-P\-Cs.
+
+\-Any connection already in the pool will be updated with the new timeout. \-Connections added to the pool after set\-\_\-timeout has be called receive the pool timeout only if no timeout has been set for the connection itself.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em pool} & a pointer to a struct \doxyref{evrpc\-\_\-pool}{p.}{structevrpc__pool} object \\
+\hline
+{\em timeout\-\_\-in\-\_\-secs} & the number of seconds after which a request should timeout and a failure be returned to the callback. \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-register\-\_\-generic@{evrpc\-\_\-register\-\_\-generic}}
+\index{evrpc\-\_\-register\-\_\-generic@{evrpc\-\_\-register\-\_\-generic}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-register\-\_\-generic}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evrpc\-\_\-register\-\_\-generic} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-base} $\ast$}]{base, }
+\item[{const char $\ast$}]{name, }
+\item[{void($\ast$)(struct {\bf evrpc\-\_\-req\-\_\-generic} $\ast$, void $\ast$)}]{callback, }
+\item[{void $\ast$}]{cbarg, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{req\-\_\-new, }
+\item[{void $\ast$}]{req\-\_\-new\-\_\-arg, }
+\item[{void($\ast$)(void $\ast$)}]{req\-\_\-free, }
+\item[{int($\ast$)(void $\ast$, struct {\bf evbuffer} $\ast$)}]{req\-\_\-unmarshal, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{rpl\-\_\-new, }
+\item[{void $\ast$}]{rpl\-\_\-new\-\_\-arg, }
+\item[{void($\ast$)(void $\ast$)}]{rpl\-\_\-free, }
+\item[{int($\ast$)(void $\ast$)}]{rpl\-\_\-complete, }
+\item[{void($\ast$)(struct {\bf evbuffer} $\ast$, void $\ast$)}]{rpl\-\_\-marshal}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a5987c57760de0cfb2639e36406ae99d8}
+\-Function for registering a generic \-R\-P\-C with the \-R\-P\-C base.
+
+\-Do not call this function directly, use \doxyref{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R()}{p.}{rpc_8h_abb204281e2555a1e91ff3885747d0533} instead.
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R()}{p.}{rpc_8h_abb204281e2555a1e91ff3885747d0533} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-register\-\_\-rpc@{evrpc\-\_\-register\-\_\-rpc}}
+\index{evrpc\-\_\-register\-\_\-rpc@{evrpc\-\_\-register\-\_\-rpc}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-register\-\_\-rpc}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evrpc\-\_\-register\-\_\-rpc} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-base} $\ast$}]{, }
+\item[{struct {\bf evrpc} $\ast$}]{, }
+\item[{void($\ast$)(struct {\bf evrpc\-\_\-req\-\_\-generic} $\ast$, void $\ast$)}]{, }
+\item[{void $\ast$}]{}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_abaa7d70da1d9fdcb767279b55944be65}
+\-Low level function for registering an \-R\-P\-C with a server.
+
+\-Use \doxyref{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R()}{p.}{rpc_8h_abb204281e2555a1e91ff3885747d0533} instead.
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-R\-E\-G\-I\-S\-T\-E\-R()}{p.}{rpc_8h_abb204281e2555a1e91ff3885747d0533} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-remove\-\_\-hook@{evrpc\-\_\-remove\-\_\-hook}}
+\index{evrpc\-\_\-remove\-\_\-hook@{evrpc\-\_\-remove\-\_\-hook}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-remove\-\_\-hook}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evrpc\-\_\-remove\-\_\-hook} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{vbase, }
+\item[{enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-T\-Y\-P\-E}}]{hook\-\_\-type, }
+\item[{void $\ast$}]{handle}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a3969ea92840d165cab55a3228efcdbc6}
+removes a previously added hook
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em vbase} & a pointer to either struct \doxyref{evrpc\-\_\-base}{p.}{structevrpc__base} or struct \doxyref{evrpc\-\_\-pool}{p.}{structevrpc__pool} \\
+\hline
+{\em hook\-\_\-type} & either \-I\-N\-P\-U\-T or \-O\-U\-T\-P\-U\-T \\
+\hline
+{\em handle} & a handle returned by \doxyref{evrpc\-\_\-add\-\_\-hook()}{p.}{rpc_8h_adb188728ddbaf5c85ac9e98d9d11a4a4} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+1 on success or 0 on failure 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{evrpc\-\_\-add\-\_\-hook()}{p.}{rpc_8h_adb188728ddbaf5c85ac9e98d9d11a4a4} 
+\end{DoxySeeAlso}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-request\-\_\-done@{evrpc\-\_\-request\-\_\-done}}
+\index{evrpc\-\_\-request\-\_\-done@{evrpc\-\_\-request\-\_\-done}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-request\-\_\-done}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evrpc\-\_\-request\-\_\-done} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-req\-\_\-generic} $\ast$}]{req}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_aa8538456a93ddcbdf55755b88994d09a}
+completes the server response to an rpc request \index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-request\-\_\-get\-\_\-pool@{evrpc\-\_\-request\-\_\-get\-\_\-pool}}
+\index{evrpc\-\_\-request\-\_\-get\-\_\-pool@{evrpc\-\_\-request\-\_\-get\-\_\-pool}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-request\-\_\-get\-\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evrpc\-\_\-pool}$\ast$ {\bf evrpc\-\_\-request\-\_\-get\-\_\-pool} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-request\-\_\-wrapper} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{rpc_8h_ab61cc3e97056faa013c3ad612e4ae763}
+accessors for obscure and undocumented functionality \index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-resume\-\_\-request@{evrpc\-\_\-resume\-\_\-request}}
+\index{evrpc\-\_\-resume\-\_\-request@{evrpc\-\_\-resume\-\_\-request}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-resume\-\_\-request}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evrpc\-\_\-resume\-\_\-request} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{vbase, }
+\item[{void $\ast$}]{ctx, }
+\item[{enum {\bf \-E\-V\-R\-P\-C\-\_\-\-H\-O\-O\-K\-\_\-\-R\-E\-S\-U\-L\-T}}]{res}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a2724d98b6fc56d46cbfc9fe7ad9e6cf1}
+resume a paused request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em vbase} & a pointer to either struct \doxyref{evrpc\-\_\-base}{p.}{structevrpc__base} or struct \doxyref{evrpc\-\_\-pool}{p.}{structevrpc__pool} \\
+\hline
+{\em ctx} & the context pointer provided to the original hook call \\
+\hline
+\end{DoxyParams}
+\index{rpc.\-h@{rpc.\-h}!evrpc\-\_\-send\-\_\-request\-\_\-generic@{evrpc\-\_\-send\-\_\-request\-\_\-generic}}
+\index{evrpc\-\_\-send\-\_\-request\-\_\-generic@{evrpc\-\_\-send\-\_\-request\-\_\-generic}!rpc.h@{rpc.\-h}}
+\subsubsection[{evrpc\-\_\-send\-\_\-request\-\_\-generic}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evrpc\-\_\-send\-\_\-request\-\_\-generic} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evrpc\-\_\-pool} $\ast$}]{pool, }
+\item[{void $\ast$}]{request, }
+\item[{void $\ast$}]{reply, }
+\item[{void($\ast$)(struct {\bf evrpc\-\_\-status} $\ast$, void $\ast$, void $\ast$, void $\ast$)}]{cb, }
+\item[{void $\ast$}]{cb\-\_\-arg, }
+\item[{const char $\ast$}]{rpcname, }
+\item[{void($\ast$)(struct {\bf evbuffer} $\ast$, void $\ast$)}]{req\-\_\-marshal, }
+\item[{void($\ast$)(void $\ast$)}]{rpl\-\_\-clear, }
+\item[{int($\ast$)(void $\ast$, struct {\bf evbuffer} $\ast$)}]{rpl\-\_\-unmarshal}
+\end{DoxyParamCaption}
+)}\label{rpc_8h_a3d0c80cbf69003059bcdef4bfdbb321f}
+\-Function for sending a generic \-R\-P\-C request.
+
+\-Do not call this function directly, use \doxyref{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T()}{p.}{rpc_8h_aff0efcd7cb8b966256b5127960bd2c81} instead.
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-E\-V\-R\-P\-C\-\_\-\-M\-A\-K\-E\-\_\-\-R\-E\-Q\-U\-E\-S\-T()}{p.}{rpc_8h_aff0efcd7cb8b966256b5127960bd2c81} 
+\end{DoxySeeAlso}

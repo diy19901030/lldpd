@@ -1,0 +1,95 @@
+\section{bufferevent\-\_\-rate\-\_\-limit\-\_\-group \-Struct \-Reference}
+\label{structbufferevent__rate__limit__group}\index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+
+
+\-Collaboration diagram for bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (rlim\-\_\-group\-\_\-member\-\_\-list, {\bf bufferevent\-\_\-private}) members
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf ev\-\_\-token\-\_\-bucket} {\bf rate\-\_\-limit}
+\item 
+struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} {\bfseries rate\-\_\-limit\-\_\-cfg}\label{structbufferevent__rate__limit__group_ab743572cd44a4c8c60b31897088c3116}
+
+\item 
+unsigned {\bf read\-\_\-suspended}\-: 1
+\item 
+unsigned {\bf write\-\_\-suspended}\-: 1
+\item 
+unsigned {\bf pending\-\_\-unsuspend\-\_\-read}\-: 1
+\item 
+unsigned {\bf pending\-\_\-unsuspend\-\_\-write}\-: 1
+\item 
+int {\bf n\-\_\-members}
+\item 
+ev\-\_\-ssize\-\_\-t {\bf min\-\_\-share}
+\item 
+ev\-\_\-ssize\-\_\-t {\bfseries configured\-\_\-min\-\_\-share}\label{structbufferevent__rate__limit__group_aaba3dc0f03df075bf7883648b17a95f6}
+
+\item 
+struct {\bf event} {\bf master\-\_\-refill\-\_\-event}
+\item 
+void $\ast$ {\bf lock}
+\end{DoxyCompactItemize}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+ev\-\_\-uint64\-\_\-t {\bf total\-\_\-read}
+\item 
+ev\-\_\-uint64\-\_\-t {\bfseries total\-\_\-written}\label{structbufferevent__rate__limit__group_a1e4ec1b59d457cc7389c0cc209516a99}
+
+\end{DoxyCompactItemize}
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}}
+\index{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (
+\begin{DoxyParamCaption}
+\item[{rlim\-\_\-group\-\_\-member\-\_\-list}]{, }
+\item[{{\bf bufferevent\-\_\-private}}]{}
+\end{DoxyParamCaption}
+)}\label{structbufferevent__rate__limit__group_a8192f55cc52163d20d6df0930ed88ba8}
+\-List of all members in the group 
+
+\subsection{\-Field \-Documentation}
+\index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!lock@{lock}}
+\index{lock@{lock}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf lock}}\label{structbufferevent__rate__limit__group_a100fdaedb8eb0d56fd262e7ea2930930}
+\-Lock to protect the members of this group. \-This lock should nest within every bufferevent lock\-: if you are holding this lock, do not assume you can lock another bufferevent. \index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!master\-\_\-refill\-\_\-event@{master\-\_\-refill\-\_\-event}}
+\index{master\-\_\-refill\-\_\-event@{master\-\_\-refill\-\_\-event}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{master\-\_\-refill\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event} {\bf master\-\_\-refill\-\_\-event}}\label{structbufferevent__rate__limit__group_a46446a7828e3b197452c95a01a5ff41b}
+\-Timeout event that goes off once a tick, when the bucket is ready to refill. \index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!min\-\_\-share@{min\-\_\-share}}
+\index{min\-\_\-share@{min\-\_\-share}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{min\-\_\-share}]{\setlength{\rightskip}{0pt plus 5cm}ev\-\_\-ssize\-\_\-t {\bf min\-\_\-share}}\label{structbufferevent__rate__limit__group_a7afef3fc05fbe799a894dd8a329b518e}
+\-The smallest number of bytes that any member of the group should be limited to read or write at a time. \index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!n\-\_\-members@{n\-\_\-members}}
+\index{n\-\_\-members@{n\-\_\-members}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{n\-\_\-members}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf n\-\_\-members}}\label{structbufferevent__rate__limit__group_a8c0da5b43ac7cda16ab9dace78f583b2}
+\-The number of bufferevents in the group. \index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!pending\-\_\-unsuspend\-\_\-read@{pending\-\_\-unsuspend\-\_\-read}}
+\index{pending\-\_\-unsuspend\-\_\-read@{pending\-\_\-unsuspend\-\_\-read}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{pending\-\_\-unsuspend\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf pending\-\_\-unsuspend\-\_\-read}}\label{structbufferevent__rate__limit__group_a0aee09727fa69751bd5cae1e4886b1ff}
+\-True iff we were unable to suspend one of the bufferevents in the group for reading the last time we tried, and we should try again. \index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!pending\-\_\-unsuspend\-\_\-write@{pending\-\_\-unsuspend\-\_\-write}}
+\index{pending\-\_\-unsuspend\-\_\-write@{pending\-\_\-unsuspend\-\_\-write}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{pending\-\_\-unsuspend\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf pending\-\_\-unsuspend\-\_\-write}}\label{structbufferevent__rate__limit__group_ab03e481c3295ac10de4d52248f441f2e}
+\-True iff we were unable to suspend one of the bufferevents in the group for writing the last time we tried, and we should try again. \index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!rate\-\_\-limit@{rate\-\_\-limit}}
+\index{rate\-\_\-limit@{rate\-\_\-limit}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{rate\-\_\-limit}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf ev\-\_\-token\-\_\-bucket} {\bf rate\-\_\-limit}}\label{structbufferevent__rate__limit__group_a24ecd366a043b9d0c297a4d4ca47d6ee}
+\-Current limits for the group. \index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!read\-\_\-suspended@{read\-\_\-suspended}}
+\index{read\-\_\-suspended@{read\-\_\-suspended}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{read\-\_\-suspended}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf read\-\_\-suspended}}\label{structbufferevent__rate__limit__group_ab2aa6f5e3f289343beff8ed9c08868f9}
+\-True iff we don't want to read from any member of the group.\-until the token bucket refills. \index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!total\-\_\-read@{total\-\_\-read}}
+\index{total\-\_\-read@{total\-\_\-read}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{total\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}ev\-\_\-uint64\-\_\-t {\bf total\-\_\-read}}\label{structbufferevent__rate__limit__group_a1e0dbde40112bb1504f9d101489ebeab}
+\-Total number of bytes read or written in this group since last reset. \index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}!write\-\_\-suspended@{write\-\_\-suspended}}
+\index{write\-\_\-suspended@{write\-\_\-suspended}!bufferevent_rate_limit_group@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group}}
+\subsubsection[{write\-\_\-suspended}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf write\-\_\-suspended}}\label{structbufferevent__rate__limit__group_a537b07d29e11938359ca12f1862e92e7}
+\-True iff we don't want to write from any member of the group.\-until the token bucket refills. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/bufferevent-\/internal.\-h\end{DoxyCompactItemize}

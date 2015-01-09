@@ -1,0 +1,1074 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/include/event2/bufferevent.h \-File \-Reference}
+\label{bufferevent_8h}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/bufferevent.\-h@{/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/bufferevent.\-h}}
+{\ttfamily \#include $<$event2/event-\/config.\-h$>$}\*
+{\ttfamily \#include $<$event2/util.\-h$>$}\*
+\-Include dependency graph for bufferevent.\-h\-:
+\-This graph shows which files directly or indirectly include this file\-:
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf \-E\-V\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T\-\_\-\-M\-A\-X}~\-E\-V\-\_\-\-S\-S\-I\-Z\-E\-\_\-\-M\-A\-X
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf \-Bufferevent event codes}\par
+{\em \-These flags are passed as arguments to a bufferevent's event callback. }\begin{DoxyCompactItemize}
+\item 
+\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-R\-E\-A\-D\-I\-N\-G}~0x01
+\item 
+\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-W\-R\-I\-T\-I\-N\-G}~0x02
+\item 
+\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-O\-F}~0x10
+\item 
+\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-R\-R\-O\-R}~0x20
+\item 
+\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}~0x40
+\item 
+\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}~0x80
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ {\bf bufferevent\-\_\-data\-\_\-cb} )(struct {\bf bufferevent} $\ast$bev, void $\ast$ctx)
+\item 
+typedef void($\ast$ {\bf bufferevent\-\_\-event\-\_\-cb} )(struct {\bf bufferevent} $\ast$bev, short what, void $\ast$ctx)
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf bufferevent\-\_\-options} \{ {\bf \-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-C\-L\-O\-S\-E\-\_\-\-O\-N\-\_\-\-F\-R\-E\-E} =  (1$<$$<$0), 
+{\bf \-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-T\-H\-R\-E\-A\-D\-S\-A\-F\-E} =  (1$<$$<$1), 
+{\bf \-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-D\-E\-F\-E\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S} =  (1$<$$<$2), 
+{\bf \-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-U\-N\-L\-O\-C\-K\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S} =  (1$<$$<$3)
+ \}
+\item 
+enum {\bf bufferevent\-\_\-flush\-\_\-mode} \{ {\bf \-B\-E\-V\-\_\-\-N\-O\-R\-M\-A\-L} =  0, 
+{\bf \-B\-E\-V\-\_\-\-F\-L\-U\-S\-H} =  1, 
+{\bf \-B\-E\-V\-\_\-\-F\-I\-N\-I\-S\-H\-E\-D} =  2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf bufferevent} $\ast$ {\bf bufferevent\-\_\-socket\-\_\-new} (struct {\bf event\-\_\-base} $\ast$base, {\bf evutil\-\_\-socket\-\_\-t} fd, int options)
+\item 
+int {\bf bufferevent\-\_\-socket\-\_\-connect} (struct {\bf bufferevent} $\ast$, struct sockaddr $\ast$, int)
+\item 
+int {\bf bufferevent\-\_\-socket\-\_\-connect\-\_\-hostname} (struct {\bf bufferevent} $\ast$, struct {\bf evdns\-\_\-base} $\ast$, int, const char $\ast$, int)
+\item 
+int {\bf bufferevent\-\_\-socket\-\_\-get\-\_\-dns\-\_\-error} (struct {\bf bufferevent} $\ast$bev)
+\item 
+int {\bf bufferevent\-\_\-base\-\_\-set} (struct {\bf event\-\_\-base} $\ast$base, struct {\bf bufferevent} $\ast$bufev)
+\item 
+struct {\bf event\-\_\-base} $\ast$ {\bf bufferevent\-\_\-get\-\_\-base} (struct {\bf bufferevent} $\ast$bev)
+\item 
+int {\bf bufferevent\-\_\-priority\-\_\-set} (struct {\bf bufferevent} $\ast$bufev, int pri)
+\item 
+void {\bf bufferevent\-\_\-free} (struct {\bf bufferevent} $\ast$bufev)
+\item 
+void {\bf bufferevent\-\_\-setcb} (struct {\bf bufferevent} $\ast$bufev, {\bf bufferevent\-\_\-data\-\_\-cb} readcb, {\bf bufferevent\-\_\-data\-\_\-cb} writecb, {\bf bufferevent\-\_\-event\-\_\-cb} eventcb, void $\ast$cbarg)
+\item 
+int {\bf bufferevent\-\_\-setfd} (struct {\bf bufferevent} $\ast$bufev, {\bf evutil\-\_\-socket\-\_\-t} fd)
+\item 
+{\bf evutil\-\_\-socket\-\_\-t} {\bf bufferevent\-\_\-getfd} (struct {\bf bufferevent} $\ast$bufev)
+\item 
+struct {\bf bufferevent} $\ast$ {\bf bufferevent\-\_\-get\-\_\-underlying} (struct {\bf bufferevent} $\ast$bufev)
+\item 
+int {\bf bufferevent\-\_\-write} (struct {\bf bufferevent} $\ast$bufev, const void $\ast$data, size\-\_\-t size)
+\item 
+int {\bf bufferevent\-\_\-write\-\_\-buffer} (struct {\bf bufferevent} $\ast$bufev, struct {\bf evbuffer} $\ast$buf)
+\item 
+size\-\_\-t {\bf bufferevent\-\_\-read} (struct {\bf bufferevent} $\ast$bufev, void $\ast$data, size\-\_\-t size)
+\item 
+int {\bf bufferevent\-\_\-read\-\_\-buffer} (struct {\bf bufferevent} $\ast$bufev, struct {\bf evbuffer} $\ast$buf)
+\item 
+struct {\bf evbuffer} $\ast$ {\bf bufferevent\-\_\-get\-\_\-input} (struct {\bf bufferevent} $\ast$bufev)
+\item 
+struct {\bf evbuffer} $\ast$ {\bf bufferevent\-\_\-get\-\_\-output} (struct {\bf bufferevent} $\ast$bufev)
+\item 
+int {\bf bufferevent\-\_\-enable} (struct {\bf bufferevent} $\ast$bufev, short {\bf event})
+\item 
+int {\bf bufferevent\-\_\-disable} (struct {\bf bufferevent} $\ast$bufev, short {\bf event})
+\item 
+short {\bf bufferevent\-\_\-get\-\_\-enabled} (struct {\bf bufferevent} $\ast$bufev)
+\item 
+int {\bf bufferevent\-\_\-set\-\_\-timeouts} (struct {\bf bufferevent} $\ast$bufev, const struct timeval $\ast$timeout\-\_\-read, const struct timeval $\ast$timeout\-\_\-write)
+\item 
+void {\bf bufferevent\-\_\-setwatermark} (struct {\bf bufferevent} $\ast$bufev, short events, size\-\_\-t lowmark, size\-\_\-t highmark)
+\item 
+void {\bf bufferevent\-\_\-lock} (struct {\bf bufferevent} $\ast$bufev)
+\item 
+void {\bf bufferevent\-\_\-unlock} (struct {\bf bufferevent} $\ast$bufev)
+\item 
+int {\bf bufferevent\-\_\-flush} (struct {\bf bufferevent} $\ast$bufev, short iotype, enum {\bf bufferevent\-\_\-flush\-\_\-mode} mode)
+\item 
+int {\bf bufferevent\-\_\-pair\-\_\-new} (struct {\bf event\-\_\-base} $\ast$base, int options, struct {\bf bufferevent} $\ast$pair[2])
+\item 
+struct {\bf bufferevent} $\ast$ {\bf bufferevent\-\_\-pair\-\_\-get\-\_\-partner} (struct {\bf bufferevent} $\ast$bev)
+\item 
+struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$ {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-new} (size\-\_\-t read\-\_\-rate, size\-\_\-t read\-\_\-burst, size\-\_\-t write\-\_\-rate, size\-\_\-t write\-\_\-burst, const struct timeval $\ast$tick\-\_\-len)
+\item 
+void {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-free} (struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$cfg)
+\item 
+int {\bf bufferevent\-\_\-set\-\_\-rate\-\_\-limit} (struct {\bf bufferevent} $\ast$bev, struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$cfg)
+\item 
+struct \*
+{\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$ {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-new} (struct {\bf event\-\_\-base} $\ast$base, const struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$cfg)
+\item 
+int {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-cfg} (struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$, const struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$)
+\item 
+int {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-min\-\_\-share} (struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$, size\-\_\-t)
+\item 
+void {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-free} (struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$)
+\item 
+int {\bf bufferevent\-\_\-add\-\_\-to\-\_\-rate\-\_\-limit\-\_\-group} (struct {\bf bufferevent} $\ast$bev, struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$g)
+\item 
+int {\bf bufferevent\-\_\-remove\-\_\-from\-\_\-rate\-\_\-limit\-\_\-group} (struct {\bf bufferevent} $\ast$bev)
+\item 
+ev\-\_\-ssize\-\_\-t {\bfseries bufferevent\-\_\-get\-\_\-max\-\_\-to\-\_\-read} (struct {\bf bufferevent} $\ast$bev)\label{bufferevent_8h_ab2a8edb561655b13b013363726188f0c}
+
+\item 
+ev\-\_\-ssize\-\_\-t {\bfseries bufferevent\-\_\-get\-\_\-max\-\_\-to\-\_\-write} (struct {\bf bufferevent} $\ast$bev)\label{bufferevent_8h_a97487188a8ace977c3a74e330d2f224d}
+
+\item 
+void {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-get\-\_\-totals} (struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$grp, ev\-\_\-uint64\-\_\-t $\ast$total\-\_\-read\-\_\-out, ev\-\_\-uint64\-\_\-t $\ast$total\-\_\-written\-\_\-out)
+\item 
+void {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-reset\-\_\-totals} (struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$grp)
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf \-Rate limit inspection}\par
+{\em \-Return the current read or write bucket size for a bufferevent. \-If it is not configured with a per-\/bufferevent ratelimit, return \-E\-V\-\_\-\-S\-S\-I\-Z\-E\-\_\-\-M\-A\-X. \-This function does not inspect the group limit, if any. \-Note that it can return a negative value if the bufferevent has been made to read or write more than its limit. }\begin{DoxyCompactItemize}
+\item 
+ev\-\_\-ssize\-\_\-t {\bfseries bufferevent\-\_\-get\-\_\-read\-\_\-limit} (struct {\bf bufferevent} $\ast$bev)\label{bufferevent_8h_a73312a98fb1823be7936833a83b46a9d}
+
+\item 
+ev\-\_\-ssize\-\_\-t {\bfseries bufferevent\-\_\-get\-\_\-write\-\_\-limit} (struct {\bf bufferevent} $\ast$bev)\label{bufferevent_8h_a90ee89498a9bd8777267fbca7947827d}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \-Group \-Rate limit inspection}\par
+{\em \-Return the read or write bucket size for a bufferevent rate limit group. \-Note that it can return a negative value if bufferevents in the group have been made to read or write more than their limits. }\begin{DoxyCompactItemize}
+\item 
+ev\-\_\-ssize\-\_\-t {\bfseries bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-get\-\_\-read\-\_\-limit} (struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$)\label{bufferevent_8h_aa72d92d5179e24cd73a910fd353c927a}
+
+\item 
+ev\-\_\-ssize\-\_\-t {\bfseries bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-get\-\_\-write\-\_\-limit} (struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$)\label{bufferevent_8h_ad1f35e47760c34deaf1baede3fd0425a}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \-Rate limit manipulation}\par
+{\em \-Subtract a number of bytes from a bufferevent's read or write bucket. \-The decrement value can be negative, if you want to manually refill the bucket. \-If the change puts the bucket above or below zero, the bufferevent will resume or suspend reading writing as appropriate. \-These functions make no change in the buckets for the bufferevent's group, if any.
+
+\-Returns 0 on success, -\/1 on internal error. }\begin{DoxyCompactItemize}
+\item 
+int {\bfseries bufferevent\-\_\-decrement\-\_\-read\-\_\-limit} (struct {\bf bufferevent} $\ast$bev, ev\-\_\-ssize\-\_\-t decr)\label{bufferevent_8h_ae22e5c618f1f93afcd6c2adb1b9ca165}
+
+\item 
+int {\bfseries bufferevent\-\_\-decrement\-\_\-write\-\_\-limit} (struct {\bf bufferevent} $\ast$bev, ev\-\_\-ssize\-\_\-t decr)\label{bufferevent_8h_afedbe4264b84e4e8c65bdeba1bd42b6a}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \-Group rate limit manipulation}\par
+{\em \-Subtract a number of bytes from a bufferevent rate-\/limiting group's read or write bucket. \-The decrement value can be negative, if you want to manually refill the bucket. \-If the change puts the bucket above or below zero, the bufferevents in the group will resume or suspend reading writing as appropriate.
+
+\-Returns 0 on success, -\/1 on internal error. }\begin{DoxyCompactItemize}
+\item 
+int {\bfseries bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-decrement\-\_\-read} (struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$, ev\-\_\-ssize\-\_\-t)\label{bufferevent_8h_aa5f603c05b36373b532db68aca645ed8}
+
+\item 
+int {\bfseries bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-decrement\-\_\-write} (struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$, ev\-\_\-ssize\-\_\-t)\label{bufferevent_8h_aec8e489e3c2705105d85064340018847}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{\-Filtering support}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf bufferevent\-\_\-filter\-\_\-result} \{ {\bf \-B\-E\-V\-\_\-\-O\-K} =  0, 
+{\bf \-B\-E\-V\-\_\-\-N\-E\-E\-D\-\_\-\-M\-O\-R\-E} =  1, 
+{\bf \-B\-E\-V\-\_\-\-E\-R\-R\-O\-R} =  2
+ \}
+\item 
+typedef enum \*
+{\bf bufferevent\-\_\-filter\-\_\-result}($\ast$ {\bf bufferevent\-\_\-filter\-\_\-cb} )(struct {\bf evbuffer} $\ast$src, struct {\bf evbuffer} $\ast$dst, ev\-\_\-ssize\-\_\-t dst\-\_\-limit, enum {\bf bufferevent\-\_\-flush\-\_\-mode} mode, void $\ast$ctx)
+\item 
+struct {\bf bufferevent} $\ast$ {\bf bufferevent\-\_\-filter\-\_\-new} (struct {\bf bufferevent} $\ast$underlying, {\bf bufferevent\-\_\-filter\-\_\-cb} input\-\_\-filter, {\bf bufferevent\-\_\-filter\-\_\-cb} output\-\_\-filter, int options, void($\ast$free\-\_\-context)(void $\ast$), void $\ast$ctx)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Functions for buffering data for network sending or receiving. \-Bufferevents are higher level than evbuffers\-: each has an underlying evbuffer for reading and one for writing, and callbacks that are invoked under certain circumstances.
+
+\-A bufferevent provides input and output buffers that get filled and drained automatically. \-The user of a bufferevent no longer deals directly with the \-I/\-O, but instead is reading from input and writing to output buffers.
+
+\-Once initialized, the bufferevent structure can be used repeatedly with \doxyref{bufferevent\-\_\-enable()}{p.}{bufferevent_8h_a1b9a3412e8c8e122c745b33d46b9643e} and \doxyref{bufferevent\-\_\-disable()}{p.}{bufferevent_8h_aa15582fe250247aa98d4897527215727}.
+
+\-When reading is enabled, the bufferevent will try to read from the file descriptor onto its input buffer, and and call the read callback. \-When writing is enabled, the bufferevent will try to write data onto its file descriptor when writing is enabled, and call the write callback when the output buffer is sufficiently drained.
+
+\-Bufferevents come in several flavors, including\-:
+
+
+\begin{DoxyDescription}
+\item[\-Socket-\/based bufferevents ]\-A bufferevent that reads and writes data onto a network socket. \-Created with \doxyref{bufferevent\-\_\-socket\-\_\-new()}{p.}{bufferevent_8h_a501557193aa56c9f4923583d9d734395}.
+
+
+\item[\-Paired bufferevents ]\-A pair of bufferevents that send and receive data to one another without touching the network. \-Created with \doxyref{bufferevent\-\_\-pair\-\_\-new()}{p.}{bufferevent_8h_af8932010b0a590ddf9848026e8a99059}.
+
+
+\item[\-Filtering bufferevents ]\-A bufferevent that transforms data, and sends or receives it over another underlying bufferevent. \-Created with \doxyref{bufferevent\-\_\-filter\-\_\-new()}{p.}{bufferevent_8h_ab6dea1351561f1866b0526fc1207bb69}.
+
+
+\item[\-S\-S\-L-\/backed bufferevents ]\-A bufferevent that uses the openssl library to send and receive data over an encrypted connection. \-Created with bufferevent\-\_\-openssl\-\_\-socket\-\_\-new() or bufferevent\-\_\-openssl\-\_\-filter\-\_\-new(). 
+\end{DoxyDescription}
+
+\subsection{\-Define \-Documentation}
+\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}}
+\index{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D}~0x80}\label{bufferevent_8h_affb7a7e5e21e1541ba6f43f950d92993}
+connect operation finished. \index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-O\-F@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-O\-F}}
+\index{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-O\-F@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-O\-F}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-O\-F}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-O\-F}~0x10}\label{bufferevent_8h_a4d7d8c93cf62e6f3d37c0cbac75aebcc}
+eof file reached \index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-R\-R\-O\-R@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-R\-R\-O\-R}}
+\index{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-R\-R\-O\-R@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-R\-R\-O\-R}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-R\-R\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-R\-R\-O\-R}~0x20}\label{bufferevent_8h_a5f112d7a064258bdabf8d5182a3bf5e4}
+unrecoverable error encountered \index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-R\-E\-A\-D\-I\-N\-G@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-R\-E\-A\-D\-I\-N\-G}}
+\index{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-R\-E\-A\-D\-I\-N\-G@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-R\-E\-A\-D\-I\-N\-G}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-R\-E\-A\-D\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-R\-E\-A\-D\-I\-N\-G}~0x01}\label{bufferevent_8h_a504816ca8678e4f3d0bee2700fda524d}
+error encountered while reading \index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}~0x40}\label{bufferevent_8h_aa537428e3ac2c8d2dbb4ec041f09347f}
+user-\/specified timeout reached \index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-W\-R\-I\-T\-I\-N\-G@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-W\-R\-I\-T\-I\-N\-G}}
+\index{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-W\-R\-I\-T\-I\-N\-G@{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-W\-R\-I\-T\-I\-N\-G}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-W\-R\-I\-T\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-W\-R\-I\-T\-I\-N\-G}~0x02}\label{bufferevent_8h_a557afaa0ce75e6bbb71fdcd68c35d077}
+error encountered while writing \index{bufferevent.\-h@{bufferevent.\-h}!\-E\-V\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T\-\_\-\-M\-A\-X@{\-E\-V\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T\-\_\-\-M\-A\-X}}
+\index{\-E\-V\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T\-\_\-\-M\-A\-X@{\-E\-V\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T\-\_\-\-M\-A\-X}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{\-E\-V\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T\-\_\-\-M\-A\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-E\-V\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T\-\_\-\-M\-A\-X}~\-E\-V\-\_\-\-S\-S\-I\-Z\-E\-\_\-\-M\-A\-X}\label{bufferevent_8h_a78fc86349f408552be0fdf249db673ec}
+\-Maximum configurable rate-\/ or burst-\/limit. 
+
+\subsection{\-Typedef \-Documentation}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-data\-\_\-cb@{bufferevent\-\_\-data\-\_\-cb}}
+\index{bufferevent\-\_\-data\-\_\-cb@{bufferevent\-\_\-data\-\_\-cb}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-data\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf bufferevent\-\_\-data\-\_\-cb})(struct {\bf bufferevent} $\ast$bev, void $\ast$ctx)}\label{bufferevent_8h_a75e8fa059136e13c04c237e9c03cdbe8}
+\-A read or write callback for a bufferevent.
+
+\-The read callback is triggered when new data arrives in the input buffer and the amount of readable data exceed the low watermark which is 0 by default.
+
+\-The write callback is triggered if the write buffer has been exhausted or fell below its low watermark.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bev} & the bufferevent that triggered the callback \\
+\hline
+{\em ctx} & the user-\/specified context for this bufferevent \\
+\hline
+\end{DoxyParams}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-event\-\_\-cb@{bufferevent\-\_\-event\-\_\-cb}}
+\index{bufferevent\-\_\-event\-\_\-cb@{bufferevent\-\_\-event\-\_\-cb}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-event\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf bufferevent\-\_\-event\-\_\-cb})(struct {\bf bufferevent} $\ast$bev, short what, void $\ast$ctx)}\label{bufferevent_8h_a79b5f4b983f8e67005416738c6494ac6}
+\-An event/error callback for a bufferevent.
+
+\-The event callback is triggered if either an \-E\-O\-F condition or another unrecoverable error was encountered.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bev} & the bufferevent for which the error condition was reached \\
+\hline
+{\em what} & a conjunction of flags\-: \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-R\-E\-A\-D\-I\-N\-G or \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-W\-R\-I\-T\-I\-N\-G to indicate if the error was encountered on the read or write path, and one of the following flags\-: \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-O\-F, \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-E\-R\-R\-O\-R, \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T, \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D.\\
+\hline
+{\em ctx} & the user-\/specified context for this bufferevent \\
+\hline
+\end{DoxyParams}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-filter\-\_\-cb@{bufferevent\-\_\-filter\-\_\-cb}}
+\index{bufferevent\-\_\-filter\-\_\-cb@{bufferevent\-\_\-filter\-\_\-cb}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-filter\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf bufferevent\-\_\-filter\-\_\-result}($\ast$ {\bf bufferevent\-\_\-filter\-\_\-cb})(struct {\bf evbuffer} $\ast$src, struct {\bf evbuffer} $\ast$dst, ev\-\_\-ssize\-\_\-t dst\-\_\-limit, enum {\bf bufferevent\-\_\-flush\-\_\-mode} mode, void $\ast$ctx)}\label{bufferevent_8h_a08a36463d040d1533ba3a06a5c776a99}
+\-A callback function to implement a filter for a bufferevent.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em src} & \-An evbuffer to drain data from. \\
+\hline
+{\em dst} & \-An evbuffer to add data to. \\
+\hline
+{\em limit} & \-A suggested upper bound of bytes to write to dst. \-The filter may ignore this value, but doing so means that it will overflow the high-\/water mark associated with dst. -\/1 means \char`\"{}no limit\char`\"{}. \\
+\hline
+{\em mode} & \-Whether we should write data as may be convenient (\-B\-E\-V\-\_\-\-N\-O\-R\-M\-A\-L), or flush as much data as we can (\-B\-E\-V\-\_\-\-F\-L\-U\-S\-H), or flush as much as we can, possibly including an end-\/of-\/stream marker (\-B\-E\-V\-\_\-\-F\-I\-N\-I\-S\-H). \\
+\hline
+{\em ctx} & \-A user-\/supplied pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-B\-E\-V\-\_\-\-O\-K if we wrote some data; \-B\-E\-V\-\_\-\-N\-E\-E\-D\-\_\-\-M\-O\-R\-E if we can't produce any more output until we get some input; and \-B\-E\-V\-\_\-\-E\-R\-R\-O\-R on an error. 
+\end{DoxyReturn}
+
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-filter\-\_\-result@{bufferevent\-\_\-filter\-\_\-result}}
+\index{bufferevent\-\_\-filter\-\_\-result@{bufferevent\-\_\-filter\-\_\-result}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-filter\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bufferevent\-\_\-filter\-\_\-result}}\label{bufferevent_8h_a19e499f7bfa831b802fd3575d141b4e1}
+\-Values that filters can return. \begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-B\-E\-V\-\_\-\-O\-K@{\-B\-E\-V\-\_\-\-O\-K}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-O\-K@{\-B\-E\-V\-\_\-\-O\-K}}\item[{\em 
+\-B\-E\-V\-\_\-\-O\-K\label{bufferevent_8h_a19e499f7bfa831b802fd3575d141b4e1a794bf8211eaafdbeb382991dc5874e4d}
+}]everything is okay \index{\-B\-E\-V\-\_\-\-N\-E\-E\-D\-\_\-\-M\-O\-R\-E@{\-B\-E\-V\-\_\-\-N\-E\-E\-D\-\_\-\-M\-O\-R\-E}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-N\-E\-E\-D\-\_\-\-M\-O\-R\-E@{\-B\-E\-V\-\_\-\-N\-E\-E\-D\-\_\-\-M\-O\-R\-E}}\item[{\em 
+\-B\-E\-V\-\_\-\-N\-E\-E\-D\-\_\-\-M\-O\-R\-E\label{bufferevent_8h_a19e499f7bfa831b802fd3575d141b4e1a78c4f864aee50d333d74e3b46e12b8a4}
+}]the filter needs to read more data before output \index{\-B\-E\-V\-\_\-\-E\-R\-R\-O\-R@{\-B\-E\-V\-\_\-\-E\-R\-R\-O\-R}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-E\-R\-R\-O\-R@{\-B\-E\-V\-\_\-\-E\-R\-R\-O\-R}}\item[{\em 
+\-B\-E\-V\-\_\-\-E\-R\-R\-O\-R\label{bufferevent_8h_a19e499f7bfa831b802fd3575d141b4e1a4e51550811d3dad92400c27d69277032}
+}]the filter encountered a critical error, no further data can be processed. \end{description}
+\end{Desc}
+
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-flush\-\_\-mode@{bufferevent\-\_\-flush\-\_\-mode}}
+\index{bufferevent\-\_\-flush\-\_\-mode@{bufferevent\-\_\-flush\-\_\-mode}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-flush\-\_\-mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bufferevent\-\_\-flush\-\_\-mode}}\label{bufferevent_8h_ac35edc760057a2e48b4e8ba9ecf2ad25}
+\-Flags that can be passed into filters to let them know how to deal with the incoming data. \begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-B\-E\-V\-\_\-\-N\-O\-R\-M\-A\-L@{\-B\-E\-V\-\_\-\-N\-O\-R\-M\-A\-L}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-N\-O\-R\-M\-A\-L@{\-B\-E\-V\-\_\-\-N\-O\-R\-M\-A\-L}}\item[{\em 
+\-B\-E\-V\-\_\-\-N\-O\-R\-M\-A\-L\label{bufferevent_8h_ac35edc760057a2e48b4e8ba9ecf2ad25a81903ce04ca68ac1680dd0b7a28a7fce}
+}]usually set when processing data \index{\-B\-E\-V\-\_\-\-F\-L\-U\-S\-H@{\-B\-E\-V\-\_\-\-F\-L\-U\-S\-H}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-F\-L\-U\-S\-H@{\-B\-E\-V\-\_\-\-F\-L\-U\-S\-H}}\item[{\em 
+\-B\-E\-V\-\_\-\-F\-L\-U\-S\-H\label{bufferevent_8h_ac35edc760057a2e48b4e8ba9ecf2ad25a77e7f15a95815dcaaef27fdabb0e6164}
+}]want to checkpoint all data sent. \index{\-B\-E\-V\-\_\-\-F\-I\-N\-I\-S\-H\-E\-D@{\-B\-E\-V\-\_\-\-F\-I\-N\-I\-S\-H\-E\-D}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-F\-I\-N\-I\-S\-H\-E\-D@{\-B\-E\-V\-\_\-\-F\-I\-N\-I\-S\-H\-E\-D}}\item[{\em 
+\-B\-E\-V\-\_\-\-F\-I\-N\-I\-S\-H\-E\-D\label{bufferevent_8h_ac35edc760057a2e48b4e8ba9ecf2ad25acb248a91854bbebd773061df7f4bbc94}
+}]encountered \-E\-O\-F on read or done sending data \end{description}
+\end{Desc}
+
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-options@{bufferevent\-\_\-options}}
+\index{bufferevent\-\_\-options@{bufferevent\-\_\-options}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-options}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bufferevent\-\_\-options}}\label{bufferevent_8h_aa4919449c62c6483e2d135509190dc65}
+\-Options that can be specified when creating a bufferevent \begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-C\-L\-O\-S\-E\-\_\-\-O\-N\-\_\-\-F\-R\-E\-E@{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-C\-L\-O\-S\-E\-\_\-\-O\-N\-\_\-\-F\-R\-E\-E}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-C\-L\-O\-S\-E\-\_\-\-O\-N\-\_\-\-F\-R\-E\-E@{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-C\-L\-O\-S\-E\-\_\-\-O\-N\-\_\-\-F\-R\-E\-E}}\item[{\em 
+\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-C\-L\-O\-S\-E\-\_\-\-O\-N\-\_\-\-F\-R\-E\-E\label{bufferevent_8h_aa4919449c62c6483e2d135509190dc65a5dc89d74ef445da33295d00c8f6adc90}
+}]\-If set, we close the underlying file descriptor/bufferevent/whatever when this bufferevent is freed. \index{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-T\-H\-R\-E\-A\-D\-S\-A\-F\-E@{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-T\-H\-R\-E\-A\-D\-S\-A\-F\-E}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-T\-H\-R\-E\-A\-D\-S\-A\-F\-E@{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-T\-H\-R\-E\-A\-D\-S\-A\-F\-E}}\item[{\em 
+\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-T\-H\-R\-E\-A\-D\-S\-A\-F\-E\label{bufferevent_8h_aa4919449c62c6483e2d135509190dc65adfb637881b739eff1441ad848a5e3a2d}
+}]\-If set, and threading is enabled, operations on this bufferevent are protected by a lock \index{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-D\-E\-F\-E\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S@{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-D\-E\-F\-E\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-D\-E\-F\-E\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S@{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-D\-E\-F\-E\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S}}\item[{\em 
+\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-D\-E\-F\-E\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S\label{bufferevent_8h_aa4919449c62c6483e2d135509190dc65a2fbeb24d0156aa2492c23aaace73f1d3}
+}]\-If set, callbacks are run deferred in the event loop. \index{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-U\-N\-L\-O\-C\-K\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S@{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-U\-N\-L\-O\-C\-K\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S}!bufferevent.\-h@{bufferevent.\-h}}\index{bufferevent.\-h@{bufferevent.\-h}!\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-U\-N\-L\-O\-C\-K\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S@{\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-U\-N\-L\-O\-C\-K\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S}}\item[{\em 
+\-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-U\-N\-L\-O\-C\-K\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S\label{bufferevent_8h_aa4919449c62c6483e2d135509190dc65acb8ca6f6422fb8f9a748521cf8c4caf5}
+}]\-If set, callbacks are executed without locks being held on the bufferevent. \-This option currently requires that \-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-D\-E\-F\-E\-R\-\_\-\-C\-A\-L\-L\-B\-A\-C\-K\-S also be set; a future version of \-Libevent might remove the requirement. \end{description}
+\end{Desc}
+
+
+
+\subsection{\-Function \-Documentation}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-add\-\_\-to\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-add\-\_\-to\-\_\-rate\-\_\-limit\-\_\-group}}
+\index{bufferevent\-\_\-add\-\_\-to\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-add\-\_\-to\-\_\-rate\-\_\-limit\-\_\-group}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-add\-\_\-to\-\_\-rate\-\_\-limit\-\_\-group}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-add\-\_\-to\-\_\-rate\-\_\-limit\-\_\-group} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bev, }
+\item[{struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_aadb00f5d5c054bb705db78db327ef261}
+\-Add 'bev' to the list of bufferevents whose aggregate reading and writing is restricted by 'g'. \-If 'g' is \-N\-U\-L\-L, remove 'bev' from its current group.
+
+\-A bufferevent may belong to no more than one rate-\/limit group at a time. \-If 'bev' is already a member of a group, it will be removed from its old group before being added to 'g'.
+
+\-Return 0 on success and -\/1 on failure. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-base\-\_\-set@{bufferevent\-\_\-base\-\_\-set}}
+\index{bufferevent\-\_\-base\-\_\-set@{bufferevent\-\_\-base\-\_\-set}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-base\-\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-base\-\_\-set} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base, }
+\item[{struct {\bf bufferevent} $\ast$}]{bufev}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a0697dabdb9b4057ae71b40a2f0e45fed}
+\-Assign a bufferevent to a specific \doxyref{event\-\_\-base}{p.}{structevent__base}.
+
+\-N\-O\-T\-E that only socket bufferevents support this function.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & an \doxyref{event\-\_\-base}{p.}{structevent__base} returned by \doxyref{event\-\_\-init()}{p.}{event__compat_8h_a1bf74386dd3725e1538fed2d70c1c113} \\
+\hline
+{\em bufev} & a bufferevent struct returned by bufferevent\-\_\-new() or \doxyref{bufferevent\-\_\-socket\-\_\-new()}{p.}{bufferevent_8h_a501557193aa56c9f4923583d9d734395} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+bufferevent\-\_\-new() 
+\end{DoxySeeAlso}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-disable@{bufferevent\-\_\-disable}}
+\index{bufferevent\-\_\-disable@{bufferevent\-\_\-disable}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-disable}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-disable} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{short}]{event}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_aa15582fe250247aa98d4897527215727}
+\-Disable a bufferevent.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent to be disabled \\
+\hline
+{\em event} & any combination of \-E\-V\-\_\-\-R\-E\-A\-D $|$ \-E\-V\-\_\-\-W\-R\-I\-T\-E. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{bufferevent\-\_\-enable()}{p.}{bufferevent_8h_a1b9a3412e8c8e122c745b33d46b9643e} 
+\end{DoxySeeAlso}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-enable@{bufferevent\-\_\-enable}}
+\index{bufferevent\-\_\-enable@{bufferevent\-\_\-enable}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-enable}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-enable} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{short}]{event}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a1b9a3412e8c8e122c745b33d46b9643e}
+\-Enable a bufferevent.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent to be enabled \\
+\hline
+{\em event} & any combination of \-E\-V\-\_\-\-R\-E\-A\-D $|$ \-E\-V\-\_\-\-W\-R\-I\-T\-E. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{bufferevent\-\_\-disable()}{p.}{bufferevent_8h_aa15582fe250247aa98d4897527215727} 
+\end{DoxySeeAlso}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-filter\-\_\-new@{bufferevent\-\_\-filter\-\_\-new}}
+\index{bufferevent\-\_\-filter\-\_\-new@{bufferevent\-\_\-filter\-\_\-new}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-filter\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent}$\ast$ {\bf bufferevent\-\_\-filter\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{underlying, }
+\item[{{\bf bufferevent\-\_\-filter\-\_\-cb}}]{input\-\_\-filter, }
+\item[{{\bf bufferevent\-\_\-filter\-\_\-cb}}]{output\-\_\-filter, }
+\item[{int}]{options, }
+\item[{void($\ast$)(void $\ast$)}]{free\-\_\-context, }
+\item[{void $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{bufferevent_8h_ab6dea1351561f1866b0526fc1207bb69}
+\-Allocate a new filtering bufferevent on top of an existing bufferevent.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em underlying} & the underlying bufferevent. \\
+\hline
+{\em input\-\_\-filter} & \-The filter to apply to data we read from the underlying bufferevent \\
+\hline
+{\em output\-\_\-filter} & \-The filer to apply to data we write to the underlying bufferevent \\
+\hline
+{\em options} & \-A bitfield of bufferevent options. \\
+\hline
+{\em free\-\_\-context} & \-A function to use to free the filter context when this bufferevent is freed. \\
+\hline
+{\em ctx} & \-A context pointer to pass to the filter functions. \\
+\hline
+\end{DoxyParams}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-flush@{bufferevent\-\_\-flush}}
+\index{bufferevent\-\_\-flush@{bufferevent\-\_\-flush}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-flush}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-flush} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{short}]{iotype, }
+\item[{enum {\bf bufferevent\-\_\-flush\-\_\-mode}}]{mode}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a03376a35668ff9b6dc905cce0d89876d}
+\-Triggers the bufferevent to produce more data if possible.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent object \\
+\hline
+{\em iotype} & either \-E\-V\-\_\-\-R\-E\-A\-D or \-E\-V\-\_\-\-W\-R\-I\-T\-E or both. \\
+\hline
+{\em mode} & either \-B\-E\-V\-\_\-\-N\-O\-R\-M\-A\-L or \-B\-E\-V\-\_\-\-F\-L\-U\-S\-H or \-B\-E\-V\-\_\-\-F\-I\-N\-I\-S\-H\-E\-D \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+-\/1 on failure, 0 if no data was produces, 1 if data was produced 
+\end{DoxyReturn}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-free@{bufferevent\-\_\-free}}
+\index{bufferevent\-\_\-free@{bufferevent\-\_\-free}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bufferevent\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a474a4cef8fd80bea09a636b5f3055bec}
+\-Deallocate the storage associated with a bufferevent structure.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent structure to be freed. \\
+\hline
+\end{DoxyParams}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-get\-\_\-base@{bufferevent\-\_\-get\-\_\-base}}
+\index{bufferevent\-\_\-get\-\_\-base@{bufferevent\-\_\-get\-\_\-base}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-get\-\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf event\-\_\-base}$\ast$ {\bf bufferevent\-\_\-get\-\_\-base} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bev}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{bufferevent_8h_a5cabb56040b43ba1a92efd21c4a89890}
+\-Return the \doxyref{event\-\_\-base}{p.}{structevent__base} used by a bufferevent \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-get\-\_\-enabled@{bufferevent\-\_\-get\-\_\-enabled}}
+\index{bufferevent\-\_\-get\-\_\-enabled@{bufferevent\-\_\-get\-\_\-enabled}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-get\-\_\-enabled}]{\setlength{\rightskip}{0pt plus 5cm}short {\bf bufferevent\-\_\-get\-\_\-enabled} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_afbb4adabeb188cc9000bdee4ba23bdb2}
+\-Return the events that are enabled on a given bufferevent.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent to inspect \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A combination of \-E\-V\-\_\-\-R\-E\-A\-D $|$ \-E\-V\-\_\-\-W\-R\-I\-T\-E 
+\end{DoxyReturn}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-get\-\_\-input@{bufferevent\-\_\-get\-\_\-input}}
+\index{bufferevent\-\_\-get\-\_\-input@{bufferevent\-\_\-get\-\_\-input}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-get\-\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer}$\ast$ {\bf bufferevent\-\_\-get\-\_\-input} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{bufferevent_8h_a7bc716ede3a5fc1e9107ae522e545e0c}
+\-Returns the input buffer.
+
+\-The user \-M\-U\-S\-T \-N\-O\-T set the callback on this buffer.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent from which to get the evbuffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the evbuffer object for the input buffer 
+\end{DoxyReturn}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-get\-\_\-output@{bufferevent\-\_\-get\-\_\-output}}
+\index{bufferevent\-\_\-get\-\_\-output@{bufferevent\-\_\-get\-\_\-output}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-get\-\_\-output}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer}$\ast$ {\bf bufferevent\-\_\-get\-\_\-output} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{bufferevent_8h_af3dea057c5a276461dd94a1601682be1}
+\-Returns the output buffer.
+
+\-The user \-M\-U\-S\-T \-N\-O\-T set the callback on this buffer.
+
+\-When filters are being used, the filters need to be manually triggered if the output buffer was manipulated.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent from which to get the evbuffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the evbuffer object for the output buffer 
+\end{DoxyReturn}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-get\-\_\-underlying@{bufferevent\-\_\-get\-\_\-underlying}}
+\index{bufferevent\-\_\-get\-\_\-underlying@{bufferevent\-\_\-get\-\_\-underlying}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-get\-\_\-underlying}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent}$\ast$ {\bf bufferevent\-\_\-get\-\_\-underlying} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{bufferevent_8h_a8d40fb7aea3c48e25d616bbe4b0fda65}
+\-Returns the underlying bufferevent associated with a bufferevent (if the bufferevent is a wrapper), or \-N\-U\-L\-L if there is no underlying bufferevent. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-getfd@{bufferevent\-\_\-getfd}}
+\index{bufferevent\-\_\-getfd@{bufferevent\-\_\-getfd}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-getfd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf evutil\-\_\-socket\-\_\-t} {\bf bufferevent\-\_\-getfd} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_aa959659c8ba1c56c3444b5c147762a91}
+\-Returns the file descriptor associated with a bufferevent, or -\/1 if no file descriptor is associated with the bufferevent. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-lock@{bufferevent\-\_\-lock}}
+\index{bufferevent\-\_\-lock@{bufferevent\-\_\-lock}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-lock}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bufferevent\-\_\-lock} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a56a61802037478591048b4967fa15599}
+\-Acquire the lock on a bufferevent. \-Has no effect if locking was not enabled with \-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-T\-H\-R\-E\-A\-D\-S\-A\-F\-E. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-pair\-\_\-get\-\_\-partner@{bufferevent\-\_\-pair\-\_\-get\-\_\-partner}}
+\index{bufferevent\-\_\-pair\-\_\-get\-\_\-partner@{bufferevent\-\_\-pair\-\_\-get\-\_\-partner}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-pair\-\_\-get\-\_\-partner}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent}$\ast$ {\bf bufferevent\-\_\-pair\-\_\-get\-\_\-partner} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bev}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{bufferevent_8h_a3ebd2a56a2ef87106bf76630eb0926b6}
+\-Given one bufferevent returned by \doxyref{bufferevent\-\_\-pair\-\_\-new()}{p.}{bufferevent_8h_af8932010b0a590ddf9848026e8a99059}, returns the other one if it still exists. \-Otherwise returns \-N\-U\-L\-L. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-pair\-\_\-new@{bufferevent\-\_\-pair\-\_\-new}}
+\index{bufferevent\-\_\-pair\-\_\-new@{bufferevent\-\_\-pair\-\_\-new}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-pair\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-pair\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base, }
+\item[{int}]{options, }
+\item[{struct {\bf bufferevent} $\ast$}]{pair[2]}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_af8932010b0a590ddf9848026e8a99059}
+\-Allocate a pair of linked bufferevents. \-The bufferevents behave as would two bufferevent\-\_\-sock instances connected to opposite ends of a socketpair(), except that no internal socketpair is allocated.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & \-The event base to associate with the socketpair. \\
+\hline
+{\em options} & \-A set of options for this bufferevent \\
+\hline
+{\em pair} & \-A pointer to an array to hold the two new bufferevent objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-priority\-\_\-set@{bufferevent\-\_\-priority\-\_\-set}}
+\index{bufferevent\-\_\-priority\-\_\-set@{bufferevent\-\_\-priority\-\_\-set}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-priority\-\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-priority\-\_\-set} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{int}]{pri}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a73e1daaa7c4d52c95b16c9944fa62e90}
+\-Assign a priority to a bufferevent.
+
+\-Only supported for socket bufferevents.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & a bufferevent struct \\
+\hline
+{\em pri} & the priority to be assigned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-free@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-free}}
+\index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-free@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-free}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_adf4304c0c47fedb8122700ce1f0def8b}
+\-Free a rate-\/limiting group. \-The group must have no members when this function is called. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-get\-\_\-totals@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-get\-\_\-totals}}
+\index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-get\-\_\-totals@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-get\-\_\-totals}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-get\-\_\-totals}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-get\-\_\-totals} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$}]{grp, }
+\item[{ev\-\_\-uint64\-\_\-t $\ast$}]{total\-\_\-read\-\_\-out, }
+\item[{ev\-\_\-uint64\-\_\-t $\ast$}]{total\-\_\-written\-\_\-out}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a4fec52eebbe5f925dfc2eaa60100124d}
+\-Inspect the total bytes read/written on a group.
+
+\-Set the variable pointed to by total\-\_\-read\-\_\-out to the total number of bytes ever read on grp, and the variable pointed to by total\-\_\-written\-\_\-out to the total number of bytes ever written on grp. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-new@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-new}}
+\index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-new@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-new}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group}$\ast$ {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base, }
+\item[{const struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$}]{cfg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{bufferevent_8h_acf75d7e04a54e7fe4543f7efd596e7f7}
+\-Create a new rate-\/limit group for bufferevents. \-A rate-\/limit group constrains the maximum number of bytes sent and received, in toto, by all of its bufferevents.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & \-An \doxyref{event\-\_\-base}{p.}{structevent__base} to run any necessary timeouts for the group. \-Note that all bufferevents in the group do not necessarily need to share this \doxyref{event\-\_\-base}{p.}{structevent__base}. \\
+\hline
+{\em cfg} & \-The rate-\/limit for this group.\\
+\hline
+\end{DoxyParams}
+\-Note that all rate-\/limits hare are currently best-\/effort\-: future versions of \-Libevent may implement them more tightly.
+
+\-Note also that only some bufferevent types currently respect rate-\/limiting. \-They are\-: socket-\/based bufferevents (normal and \-I\-O\-C\-P-\/based), and \-S\-S\-L-\/based bufferevents. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-reset\-\_\-totals@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-reset\-\_\-totals}}
+\index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-reset\-\_\-totals@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-reset\-\_\-totals}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-reset\-\_\-totals}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-reset\-\_\-totals} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$}]{grp}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a38c81c84dc02318bd34f41d84f468a98}
+\-Reset the total bytes read/written on a group.
+
+\-Reset the number of bytes read or written on grp as given by \doxyref{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-reset\-\_\-totals()}{p.}{bufferevent_8h_a38c81c84dc02318bd34f41d84f468a98}. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-cfg@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-cfg}}
+\index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-cfg@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-cfg}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-cfg}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-cfg} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$}]{, }
+\item[{const struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a9b766efb61af2cb92d24f6e4caa38a53}
+\-Change the rate-\/limiting settings for a given rate-\/limiting group.
+
+\-Return 0 on success, -\/1 on failure. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-min\-\_\-share@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-min\-\_\-share}}
+\index{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-min\-\_\-share@{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-min\-\_\-share}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-min\-\_\-share}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group\-\_\-set\-\_\-min\-\_\-share} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent\-\_\-rate\-\_\-limit\-\_\-group} $\ast$}]{, }
+\item[{size\-\_\-t}]{}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_aa2499cfb56976dcf3c6b846801043214}
+\-Change the smallest quantum we're willing to allocate to any single bufferevent in a group for reading or writing at a time.
+
+\-The rationale is that, because of \-T\-C\-P/\-I\-P protocol overheads and kernel behavior, if a rate-\/limiting group is so tight on bandwidth that you're only willing to send 1 byte per tick per bufferevent, you might instead want to batch up the reads and writes so that you send \-N bytes per 1/\-N of the bufferevents (chosen at random) each tick, so you still wind up send 1 byte per tick per bufferevent on average, but you don't send so many tiny packets.
+
+\-The default min-\/share is currently 64 bytes.
+
+\-Returns 0 on success, -\/1 on faulre. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-read@{bufferevent\-\_\-read}}
+\index{bufferevent\-\_\-read@{bufferevent\-\_\-read}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf bufferevent\-\_\-read} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{void $\ast$}]{data, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a6bd435529e20a39b24fead9ddcd966ba}
+\-Read data from a bufferevent buffer.
+
+\-The \doxyref{bufferevent\-\_\-read()}{p.}{bufferevent_8h_a6bd435529e20a39b24fead9ddcd966ba} function is used to read data from the input buffer.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent to be read from \\
+\hline
+{\em data} & pointer to a buffer that will store the data \\
+\hline
+{\em size} & the size of the data buffer, in bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the amount of data read, in bytes. 
+\end{DoxyReturn}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-read\-\_\-buffer@{bufferevent\-\_\-read\-\_\-buffer}}
+\index{bufferevent\-\_\-read\-\_\-buffer@{bufferevent\-\_\-read\-\_\-buffer}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-read\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-read\-\_\-buffer} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{struct {\bf evbuffer} $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_ab2246fd48085c1acc9e98747a83af041}
+\-Read data from a bufferevent buffer into an evbuffer. \-This avoids memory copies.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent to be read from \\
+\hline
+{\em buf} & the evbuffer to which to add data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred. 
+\end{DoxyReturn}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-remove\-\_\-from\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-remove\-\_\-from\-\_\-rate\-\_\-limit\-\_\-group}}
+\index{bufferevent\-\_\-remove\-\_\-from\-\_\-rate\-\_\-limit\-\_\-group@{bufferevent\-\_\-remove\-\_\-from\-\_\-rate\-\_\-limit\-\_\-group}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-remove\-\_\-from\-\_\-rate\-\_\-limit\-\_\-group}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-remove\-\_\-from\-\_\-rate\-\_\-limit\-\_\-group} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bev}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_abdbf64b4203fe6b65b263661ef18c6f2}
+\-Remove 'bev' from its current rate-\/limit group (if any). \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-set\-\_\-rate\-\_\-limit@{bufferevent\-\_\-set\-\_\-rate\-\_\-limit}}
+\index{bufferevent\-\_\-set\-\_\-rate\-\_\-limit@{bufferevent\-\_\-set\-\_\-rate\-\_\-limit}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-set\-\_\-rate\-\_\-limit}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-set\-\_\-rate\-\_\-limit} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bev, }
+\item[{struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$}]{cfg}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_aeb7bc9d8af4dd74b3de8dcd2941e6e02}
+\-Set the rate-\/limit of a the bufferevent 'bev' to the one specified in 'cfg'. \-If 'cfg' is \-N\-U\-L\-L, disable any per-\/bufferevent rate-\/limiting on 'bev'.
+
+\-Note that only some bufferevent types currently respect rate-\/limiting. \-They are\-: socket-\/based bufferevents (normal and \-I\-O\-C\-P-\/based), and \-S\-S\-L-\/based bufferevents.
+
+\-Return 0 on sucess, -\/1 on failure. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-set\-\_\-timeouts@{bufferevent\-\_\-set\-\_\-timeouts}}
+\index{bufferevent\-\_\-set\-\_\-timeouts@{bufferevent\-\_\-set\-\_\-timeouts}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-set\-\_\-timeouts}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-set\-\_\-timeouts} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{const struct timeval $\ast$}]{timeout\-\_\-read, }
+\item[{const struct timeval $\ast$}]{timeout\-\_\-write}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a3686d744e67e9a530ebf8ab888ade2cf}
+\-Set the read and write timeout for a bufferevent.
+
+\-A bufferevent's timeout will fire the first time that the indicated amount of time has elapsed since a successful read or write operation, during which the bufferevent was trying to read or write.
+
+(\-In other words, if reading or writing is disabled, or if the bufferevent's read or write operation has been suspended because there's no data to write, or not enough banwidth, or so on, the timeout isn't active. \-The timeout only becomes active when we we're willing to actually read or write.)
+
+\-Calling bufferevent\-\_\-enable or setting a timeout for a bufferevent whose timeout is already pending resets its timeout.
+
+\-If the timeout elapses, the corresponding operation (\-E\-V\-\_\-\-R\-E\-A\-D or \-E\-V\-\_\-\-W\-R\-I\-T\-E) becomes disabled until you re-\/enable it again. \-The bufferevent's event callback is called with the \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T$|$\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-R\-E\-A\-D\-I\-N\-G or \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T$|$\-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-W\-R\-I\-T\-I\-N\-G.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent to be modified \\
+\hline
+{\em timeout\-\_\-read} & the read timeout, or \-N\-U\-L\-L \\
+\hline
+{\em timeout\-\_\-write} & the write timeout, or \-N\-U\-L\-L \\
+\hline
+\end{DoxyParams}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-setcb@{bufferevent\-\_\-setcb}}
+\index{bufferevent\-\_\-setcb@{bufferevent\-\_\-setcb}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-setcb}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bufferevent\-\_\-setcb} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{{\bf bufferevent\-\_\-data\-\_\-cb}}]{readcb, }
+\item[{{\bf bufferevent\-\_\-data\-\_\-cb}}]{writecb, }
+\item[{{\bf bufferevent\-\_\-event\-\_\-cb}}]{eventcb, }
+\item[{void $\ast$}]{cbarg}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a63792519cb94a38beccb5e1390cd6198}
+\-Changes the callbacks for a bufferevent.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent object for which to change callbacks \\
+\hline
+{\em readcb} & callback to invoke when there is data to be read, or \-N\-U\-L\-L if no callback is desired \\
+\hline
+{\em writecb} & callback to invoke when the file descriptor is ready for writing, or \-N\-U\-L\-L if no callback is desired \\
+\hline
+{\em eventcb} & callback to invoke when there is an event on the file descriptor \\
+\hline
+{\em cbarg} & an argument that will be supplied to each of the callbacks (readcb, writecb, and errorcb) \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+bufferevent\-\_\-new() 
+\end{DoxySeeAlso}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-setfd@{bufferevent\-\_\-setfd}}
+\index{bufferevent\-\_\-setfd@{bufferevent\-\_\-setfd}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-setfd}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-setfd} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{{\bf evutil\-\_\-socket\-\_\-t}}]{fd}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a0a367e404942c11265bfcd0b693aa120}
+\-Changes the file descriptor on which the bufferevent operates. \-Not supported for all bufferevent types.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent object for which to change the file descriptor \\
+\hline
+{\em fd} & the file descriptor to operate on \\
+\hline
+\end{DoxyParams}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-setwatermark@{bufferevent\-\_\-setwatermark}}
+\index{bufferevent\-\_\-setwatermark@{bufferevent\-\_\-setwatermark}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-setwatermark}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bufferevent\-\_\-setwatermark} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{short}]{events, }
+\item[{size\-\_\-t}]{lowmark, }
+\item[{size\-\_\-t}]{highmark}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a74e3835e99f8eb73bb1cd7afa7427049}
+\-Sets the watermarks for read and write events.
+
+\-On input, a bufferevent does not invoke the user read callback unless there is at least low watermark data in the buffer. \-If the read buffer is beyond the high watermark, the bufferevent stops reading from the network.
+
+\-On output, the user write callback is invoked whenever the buffered data falls below the low watermark. \-Filters that write to this bufev will try not to write more bytes to this buffer than the high watermark would allow, except when flushing.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent to be modified \\
+\hline
+{\em events} & \-E\-V\-\_\-\-R\-E\-A\-D, \-E\-V\-\_\-\-W\-R\-I\-T\-E or both \\
+\hline
+{\em lowmark} & the lower watermark to set \\
+\hline
+{\em highmark} & the high watermark to set \\
+\hline
+\end{DoxyParams}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-socket\-\_\-connect@{bufferevent\-\_\-socket\-\_\-connect}}
+\index{bufferevent\-\_\-socket\-\_\-connect@{bufferevent\-\_\-socket\-\_\-connect}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-socket\-\_\-connect}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-socket\-\_\-connect} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{, }
+\item[{struct sockaddr $\ast$}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_ac2ecbb906883ea848f7bca767d479a2a}
+\-Launch a connect() attempt with a socket-\/based bufferevent.
+
+\-When the connect succeeds, the eventcb will be invoked with \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D set.
+
+\-If the bufferevent does not already have a socket set, we allocate a new socket here and make it nonblocking before we begin.
+
+\-If no address is provided, we assume that the socket is already connecting, and configure the bufferevent so that a \-B\-E\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-C\-O\-N\-N\-E\-C\-T\-E\-D event will be yielded when it is done connecting.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & an existing bufferevent allocated with \doxyref{bufferevent\-\_\-socket\-\_\-new()}{p.}{bufferevent_8h_a501557193aa56c9f4923583d9d734395}. \\
+\hline
+{\em addr} & the address we should connect to \\
+\hline
+{\em socklen} & \-The length of the address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-socket\-\_\-connect\-\_\-hostname@{bufferevent\-\_\-socket\-\_\-connect\-\_\-hostname}}
+\index{bufferevent\-\_\-socket\-\_\-connect\-\_\-hostname@{bufferevent\-\_\-socket\-\_\-connect\-\_\-hostname}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-socket\-\_\-connect\-\_\-hostname}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-socket\-\_\-connect\-\_\-hostname} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{, }
+\item[{struct {\bf evdns\-\_\-base} $\ast$}]{, }
+\item[{int}]{, }
+\item[{const char $\ast$}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a797686b522045aefb217c6b87ea7ae4a}
+\-Resolve the hostname 'hostname' and connect to it as with \doxyref{bufferevent\-\_\-socket\-\_\-connect()}{p.}{bufferevent_8h_ac2ecbb906883ea848f7bca767d479a2a}.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & \-An existing bufferevent allocated with \doxyref{bufferevent\-\_\-socket\-\_\-new()}{p.}{bufferevent_8h_a501557193aa56c9f4923583d9d734395} \\
+\hline
+{\em \doxyref{evdns\-\_\-base}{p.}{structevdns__base}} & \-Optionally, an \doxyref{evdns\-\_\-base}{p.}{structevdns__base} to use for resolving hostnames asynchronously. \-May be set to \-N\-U\-L\-L for a blocking resolve. \\
+\hline
+{\em family} & \-A preferred address family to resolve addresses to, or \-A\-F\-\_\-\-U\-N\-S\-P\-E\-C for no preference. \-Only \-A\-F\-\_\-\-I\-N\-E\-T, \-A\-F\-\_\-\-I\-N\-E\-T6, and \-A\-F\-\_\-\-U\-N\-S\-P\-E\-C are supported. \\
+\hline
+{\em hostname} & \-The hostname to resolve; see below for notes on recognized formats \\
+\hline
+{\em port} & \-The port to connect to on the resolved address. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, -\/1 on failure.
+\end{DoxyReturn}
+\-Recognized hostname formats are\-:
+
+www.\-example.\-com (hostname) 1.\-2.\-3.\-4 (ipv4address) \-:\-:1 (ipv6address) [\-:\-:1] ([ipv6address])
+
+\-Performance note\-: \-If you do not provide an \doxyref{evdns\-\_\-base}{p.}{structevdns__base}, this function may block while it waits for a \-D\-N\-S response. \-This is probably not what you want. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-socket\-\_\-get\-\_\-dns\-\_\-error@{bufferevent\-\_\-socket\-\_\-get\-\_\-dns\-\_\-error}}
+\index{bufferevent\-\_\-socket\-\_\-get\-\_\-dns\-\_\-error@{bufferevent\-\_\-socket\-\_\-get\-\_\-dns\-\_\-error}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-socket\-\_\-get\-\_\-dns\-\_\-error}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-socket\-\_\-get\-\_\-dns\-\_\-error} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bev}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a9a66b02bce652cdbcc7d26636ce26d67}
+\-Return the error code for the last failed \-D\-N\-S lookup attempt made by \doxyref{bufferevent\-\_\-socket\-\_\-connect\-\_\-hostname()}{p.}{bufferevent_8h_a797686b522045aefb217c6b87ea7ae4a}.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bev} & \-The bufferevent object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-D\-N\-S error code. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+evutil\-\_\-gai\-\_\-strerror() 
+\end{DoxySeeAlso}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-socket\-\_\-new@{bufferevent\-\_\-socket\-\_\-new}}
+\index{bufferevent\-\_\-socket\-\_\-new@{bufferevent\-\_\-socket\-\_\-new}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-socket\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bufferevent}$\ast$ {\bf bufferevent\-\_\-socket\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf event\-\_\-base} $\ast$}]{base, }
+\item[{{\bf evutil\-\_\-socket\-\_\-t}}]{fd, }
+\item[{int}]{options}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{bufferevent_8h_a501557193aa56c9f4923583d9d734395}
+\-Create a new socket bufferevent over an existing socket.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base} & the event base to associate with the new bufferevent. \\
+\hline
+{\em fd} & the file descriptor from which data is read and written to. \-This file descriptor is not allowed to be a pipe(2). \-It is safe to set the fd to -\/1, so long as you later set it with bufferevent\-\_\-setfd or \doxyref{bufferevent\-\_\-socket\-\_\-connect()}{p.}{bufferevent_8h_ac2ecbb906883ea848f7bca767d479a2a}. \\
+\hline
+{\em options} & \-Zero or more \-B\-E\-V\-\_\-\-O\-P\-T\-\_\-$\ast$ flags \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to a newly allocated bufferevent struct, or \-N\-U\-L\-L if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{bufferevent\-\_\-free()}{p.}{bufferevent_8h_a474a4cef8fd80bea09a636b5f3055bec} 
+\end{DoxySeeAlso}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-unlock@{bufferevent\-\_\-unlock}}
+\index{bufferevent\-\_\-unlock@{bufferevent\-\_\-unlock}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-unlock}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bufferevent\-\_\-unlock} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a53fd135567d95cab72b8bad473c97510}
+\-Release the lock on a bufferevent. \-Has no effect if locking was not enabled with \-B\-E\-V\-\_\-\-O\-P\-T\-\_\-\-T\-H\-R\-E\-A\-D\-S\-A\-F\-E. \index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-write@{bufferevent\-\_\-write}}
+\index{bufferevent\-\_\-write@{bufferevent\-\_\-write}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-write} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{const void $\ast$}]{data, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_abc606695cd6bb2e3f25c4330d0c9e3ab}
+\-Write data to a bufferevent buffer.
+
+\-The \doxyref{bufferevent\-\_\-write()}{p.}{bufferevent_8h_abc606695cd6bb2e3f25c4330d0c9e3ab} function can be used to write data to the file descriptor. \-The data is appended to the output buffer and written to the descriptor automatically as it becomes available for writing.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent to be written to \\
+\hline
+{\em data} & a pointer to the data to be written \\
+\hline
+{\em size} & the length of the data, in bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{bufferevent\-\_\-write\-\_\-buffer()}{p.}{bufferevent_8h_a3b140a32a4d16c402433130dc8c3bde4} 
+\end{DoxySeeAlso}
+\index{bufferevent.\-h@{bufferevent.\-h}!bufferevent\-\_\-write\-\_\-buffer@{bufferevent\-\_\-write\-\_\-buffer}}
+\index{bufferevent\-\_\-write\-\_\-buffer@{bufferevent\-\_\-write\-\_\-buffer}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{bufferevent\-\_\-write\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bufferevent\-\_\-write\-\_\-buffer} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf bufferevent} $\ast$}]{bufev, }
+\item[{struct {\bf evbuffer} $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_a3b140a32a4d16c402433130dc8c3bde4}
+\-Write data from an evbuffer to a bufferevent buffer. \-The evbuffer is being drained as a result.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bufev} & the bufferevent to be written to \\
+\hline
+{\em buf} & the evbuffer to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 if successful, or -\/1 if an error occurred 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{bufferevent\-\_\-write()}{p.}{bufferevent_8h_abc606695cd6bb2e3f25c4330d0c9e3ab} 
+\end{DoxySeeAlso}
+\index{bufferevent.\-h@{bufferevent.\-h}!ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-free@{ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-free}}
+\index{ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-free@{ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-free}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-free} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg} $\ast$}]{cfg}
+\end{DoxyParamCaption}
+)}\label{bufferevent_8h_ad918ea1e7f7967e5db895c7dde5b78ae}
+\-Free all storage held in 'cfg'.
+
+\-Note\-: 'cfg' is not currently reference-\/counted; it is not safe to free it until no bufferevent is using it. \index{bufferevent.\-h@{bufferevent.\-h}!ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-new@{ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-new}}
+\index{ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-new@{ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-new}!bufferevent.h@{bufferevent.\-h}}
+\subsubsection[{ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg}$\ast$ {\bf ev\-\_\-token\-\_\-bucket\-\_\-cfg\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{read\-\_\-rate, }
+\item[{size\-\_\-t}]{read\-\_\-burst, }
+\item[{size\-\_\-t}]{write\-\_\-rate, }
+\item[{size\-\_\-t}]{write\-\_\-burst, }
+\item[{const struct timeval $\ast$}]{tick\-\_\-len}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{bufferevent_8h_a60dd9d6469537b9099d2f6299c114ae6}
+\-Initialize and return a new object to configure the rate-\/limiting behavior of bufferevents.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em read\-\_\-rate} & \-The maximum number of bytes to read per tick on average. \\
+\hline
+{\em read\-\_\-burst} & \-The maximum number of bytes to read in any single tick. \\
+\hline
+{\em write\-\_\-rate} & \-The maximum number of bytes to write per tick on average. \\
+\hline
+{\em write\-\_\-burst} & \-The maximum number of bytes to write in any single tick. \\
+\hline
+{\em tick\-\_\-len} & \-The length of a single tick. \-Defaults to one second. \-Any fractions of a millisecond are ignored.\\
+\hline
+\end{DoxyParams}
+\-Note that all rate-\/limits hare are currently best-\/effort\-: future versions of \-Libevent may implement them more tightly. 

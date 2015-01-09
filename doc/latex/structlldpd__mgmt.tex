@@ -1,0 +1,38 @@
+\section{lldpd\-\_\-mgmt \-Struct \-Reference}
+\label{structlldpd__mgmt}\index{lldpd\-\_\-mgmt@{lldpd\-\_\-mgmt}}
+
+
+\-Collaboration diagram for lldpd\-\_\-mgmt\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} ({\bf lldpd\-\_\-mgmt}) m\-\_\-entries\label{structlldpd__mgmt_a703a2545cb79c98dd39da6ff903a5496}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries m\-\_\-family}\label{structlldpd__mgmt_a34ed71464a11b910577cf86bff9f7193}
+
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct in\_addr {\bfseries inet}\\
+\>struct {\bf in6\_addr} {\bfseries inet6}\\
+\>u\_int8\_t {\bfseries octets} [LLDPD\_MGMT\_MAXADDRSIZE]\\
+\} {\bfseries m\_addr}\label{structlldpd__mgmt_a556524b64ec1fd69761ac4582d1ee0c6}
+\\
+
+\end{tabbing}\item 
+size\-\_\-t {\bfseries m\-\_\-addrsize}\label{structlldpd__mgmt_a934f656502584f072a5fa026886631d4}
+
+\item 
+u\-\_\-int32\-\_\-t {\bfseries m\-\_\-iface}\label{structlldpd__mgmt_af867cee8d22e105cd3bf9aadf97a2792}
+
+\end{DoxyCompactItemize}
+
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/src/lldpd-\/structs.\-h\end{DoxyCompactItemize}

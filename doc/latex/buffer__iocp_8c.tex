@@ -1,0 +1,125 @@
+\section{/home/evan/lldpd-\/0.7.11/libevent/buffer\-\_\-iocp.c \-File \-Reference}
+\label{buffer__iocp_8c}\index{/home/evan/lldpd-\/0.\-7.\-11/libevent/buffer\-\_\-iocp.\-c@{/home/evan/lldpd-\/0.\-7.\-11/libevent/buffer\-\_\-iocp.\-c}}
+{\ttfamily \#include \char`\"{}event2/buffer.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}event2/buffer\-\_\-compat.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}event2/util.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}event2/thread.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}event2/event-\/config.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}util-\/internal.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}evthread-\/internal.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}evbuffer-\/internal.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}iocp-\/internal.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}mm-\/internal.\-h\char`\"{}}\*
+{\ttfamily \#include $<$winsock2.\-h$>$}\*
+{\ttfamily \#include $<$windows.\-h$>$}\*
+{\ttfamily \#include $<$stdio.\-h$>$}\*
+\-Include dependency graph for buffer\-\_\-iocp.\-c\-:
+\subsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf evbuffer\-\_\-overlapped}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries \-M\-A\-X\-\_\-\-W\-S\-A\-B\-U\-F\-S}~16\label{buffer__iocp_8c_a6ccfc8e6c4a3c3e1b42d0d0ff5d507fe}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf evbuffer\-\_\-commit\-\_\-read} (struct {\bf evbuffer} $\ast$evbuf, ev\-\_\-ssize\-\_\-t n\-Bytes)
+\item 
+void {\bfseries evbuffer\-\_\-commit\-\_\-write} (struct {\bf evbuffer} $\ast$evbuf, ev\-\_\-ssize\-\_\-t n\-Bytes)\label{buffer__iocp_8c_ac2116176c43b9c594cf1c05bfb35562b}
+
+\item 
+struct {\bf evbuffer} $\ast$ {\bf evbuffer\-\_\-overlapped\-\_\-new} ({\bf evutil\-\_\-socket\-\_\-t} fd)
+\item 
+int {\bf evbuffer\-\_\-launch\-\_\-write} (struct {\bf evbuffer} $\ast$buf, ev\-\_\-ssize\-\_\-t at\-\_\-most, struct {\bf event\-\_\-overlapped} $\ast$ol)
+\item 
+int {\bf evbuffer\-\_\-launch\-\_\-read} (struct {\bf evbuffer} $\ast$buf, size\-\_\-t at\-\_\-most, struct {\bf event\-\_\-overlapped} $\ast$ol)
+\item 
+{\bf evutil\-\_\-socket\-\_\-t} {\bf \-\_\-evbuffer\-\_\-overlapped\-\_\-get\-\_\-fd} (struct {\bf evbuffer} $\ast$buf)
+\item 
+void {\bfseries \-\_\-evbuffer\-\_\-overlapped\-\_\-set\-\_\-fd} (struct {\bf evbuffer} $\ast$buf, {\bf evutil\-\_\-socket\-\_\-t} fd)\label{buffer__iocp_8c_a2530839e215dc5d1b1d42a552231eb9a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This module implements overlapped read and write functions for evbuffer objects on \-Windows. 
+
+\subsection{\-Function \-Documentation}
+\index{buffer\-\_\-iocp.\-c@{buffer\-\_\-iocp.\-c}!\-\_\-evbuffer\-\_\-overlapped\-\_\-get\-\_\-fd@{\-\_\-evbuffer\-\_\-overlapped\-\_\-get\-\_\-fd}}
+\index{\-\_\-evbuffer\-\_\-overlapped\-\_\-get\-\_\-fd@{\-\_\-evbuffer\-\_\-overlapped\-\_\-get\-\_\-fd}!buffer_iocp.c@{buffer\-\_\-iocp.\-c}}
+\subsubsection[{\-\_\-evbuffer\-\_\-overlapped\-\_\-get\-\_\-fd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf evutil\-\_\-socket\-\_\-t} {\bf \-\_\-evbuffer\-\_\-overlapped\-\_\-get\-\_\-fd} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evbuffer} $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}\label{buffer__iocp_8c_a3176515d01bc77525e60d5fd70205282}
+\-X\-X\-X\-X \-Document (nickm) \index{buffer\-\_\-iocp.\-c@{buffer\-\_\-iocp.\-c}!evbuffer\-\_\-commit\-\_\-read@{evbuffer\-\_\-commit\-\_\-read}}
+\index{evbuffer\-\_\-commit\-\_\-read@{evbuffer\-\_\-commit\-\_\-read}!buffer_iocp.c@{buffer\-\_\-iocp.\-c}}
+\subsubsection[{evbuffer\-\_\-commit\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf evbuffer\-\_\-commit\-\_\-read} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evbuffer} $\ast$}]{, }
+\item[{ev\-\_\-ssize\-\_\-t}]{}
+\end{DoxyParamCaption}
+)}\label{buffer__iocp_8c_ade3b26966f9603f38227f5bd0cb694d4}
+\-X\-X\-X document \index{buffer\-\_\-iocp.\-c@{buffer\-\_\-iocp.\-c}!evbuffer\-\_\-launch\-\_\-read@{evbuffer\-\_\-launch\-\_\-read}}
+\index{evbuffer\-\_\-launch\-\_\-read@{evbuffer\-\_\-launch\-\_\-read}!buffer_iocp.c@{buffer\-\_\-iocp.\-c}}
+\subsubsection[{evbuffer\-\_\-launch\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evbuffer\-\_\-launch\-\_\-read} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evbuffer} $\ast$}]{buf, }
+\item[{size\-\_\-t}]{n, }
+\item[{struct {\bf event\-\_\-overlapped} $\ast$}]{ol}
+\end{DoxyParamCaption}
+)}\label{buffer__iocp_8c_a10b95d3f897e473712d0c567fa0f44b3}
+\-Start reading data onto the end of an overlapped evbuffer.
+
+\-An evbuffer can only have one read pending at a time. \-While the read is in progress, no other data may be added to the end of the buffer. \-The buffer must be created with event\-\_\-overlapped\-\_\-init(). \doxyref{evbuffer\-\_\-commit\-\_\-read()}{p.}{buffer__iocp_8c_ade3b26966f9603f38227f5bd0cb694d4} must be called in the completion callback.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em buf} & \-The buffer to read onto \\
+\hline
+{\em n} & \-The number of bytes to try to read. \\
+\hline
+{\em ol} & \-Overlapped object with associated completion callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on error. 
+\end{DoxyReturn}
+\index{buffer\-\_\-iocp.\-c@{buffer\-\_\-iocp.\-c}!evbuffer\-\_\-launch\-\_\-write@{evbuffer\-\_\-launch\-\_\-write}}
+\index{evbuffer\-\_\-launch\-\_\-write@{evbuffer\-\_\-launch\-\_\-write}!buffer_iocp.c@{buffer\-\_\-iocp.\-c}}
+\subsubsection[{evbuffer\-\_\-launch\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf evbuffer\-\_\-launch\-\_\-write} (
+\begin{DoxyParamCaption}
+\item[{struct {\bf evbuffer} $\ast$}]{buf, }
+\item[{ev\-\_\-ssize\-\_\-t}]{n, }
+\item[{struct {\bf event\-\_\-overlapped} $\ast$}]{ol}
+\end{DoxyParamCaption}
+)}\label{buffer__iocp_8c_aca3437ff47cafbaa6917899a1a2a9b85}
+\-Start writing data from the start of an evbuffer.
+
+\-An evbuffer can only have one write pending at a time. \-While the write is in progress, no other data may be removed from the front of the buffer. \-The buffer must be created with event\-\_\-overlapped\-\_\-init(). evbuffer\-\_\-commit\-\_\-write() must be called in the completion callback.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em buf} & \-The buffer to read onto \\
+\hline
+{\em n} & \-The number of bytes to try to read. \\
+\hline
+{\em ol} & \-Overlapped object with associated completion callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success, -\/1 on error. 
+\end{DoxyReturn}
+\index{buffer\-\_\-iocp.\-c@{buffer\-\_\-iocp.\-c}!evbuffer\-\_\-overlapped\-\_\-new@{evbuffer\-\_\-overlapped\-\_\-new}}
+\index{evbuffer\-\_\-overlapped\-\_\-new@{evbuffer\-\_\-overlapped\-\_\-new}!buffer_iocp.c@{buffer\-\_\-iocp.\-c}}
+\subsubsection[{evbuffer\-\_\-overlapped\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf evbuffer}$\ast$ {\bf evbuffer\-\_\-overlapped\-\_\-new} (
+\begin{DoxyParamCaption}
+\item[{{\bf evutil\-\_\-socket\-\_\-t}}]{fd}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{buffer__iocp_8c_a14037a8a368373cd65f37e9c3bc08e71}
+\-Allocate and return a new evbuffer that supports overlapped \-I\-O on a given socket. \-The socket must be associated with an \-I\-O completion port using event\-\_\-iocp\-\_\-port\-\_\-associate. 

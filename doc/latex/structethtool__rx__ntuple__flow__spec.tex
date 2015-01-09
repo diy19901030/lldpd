@@ -1,0 +1,70 @@
+\section{ethtool\-\_\-rx\-\_\-ntuple\-\_\-flow\-\_\-spec \-Struct \-Reference}
+\label{structethtool__rx__ntuple__flow__spec}\index{ethtool\-\_\-rx\-\_\-ntuple\-\_\-flow\-\_\-spec@{ethtool\-\_\-rx\-\_\-ntuple\-\_\-flow\-\_\-spec}}
+
+
+{\ttfamily \#include $<$ethtool.\-h$>$}
+
+
+
+\-Collaboration diagram for ethtool\-\_\-rx\-\_\-ntuple\-\_\-flow\-\_\-spec\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-u32 {\bfseries flow\-\_\-type}\label{structethtool__rx__ntuple__flow__spec_aff9b26a6bf042403e4ace596e569d475}
+
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct {\bf ethtool\_tcpip4\_spec} {\bfseries tcp\_ip4\_spec}\\
+\>struct {\bf ethtool\_tcpip4\_spec} {\bfseries udp\_ip4\_spec}\\
+\>struct {\bf ethtool\_tcpip4\_spec} {\bfseries sctp\_ip4\_spec}\\
+\>struct {\bf ethtool\_ah\_espip4\_spec} {\bfseries ah\_ip4\_spec}\\
+\>struct {\bf ethtool\_ah\_espip4\_spec} {\bfseries esp\_ip4\_spec}\\
+\>struct {\bf ethtool\_usrip4\_spec} {\bfseries usr\_ip4\_spec}\\
+\>struct {\bf ethhdr} {\bfseries ether\_spec}\\
+\>\_\_u8 {\bfseries hdata} [72]\\
+\} {\bfseries h\_u}\label{structethtool__rx__ntuple__flow__spec_a2ff69cce2ea714448ec691eb495f79a0}
+\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct {\bf ethtool\_tcpip4\_spec} {\bfseries tcp\_ip4\_spec}\\
+\>struct {\bf ethtool\_tcpip4\_spec} {\bfseries udp\_ip4\_spec}\\
+\>struct {\bf ethtool\_tcpip4\_spec} {\bfseries sctp\_ip4\_spec}\\
+\>struct {\bf ethtool\_ah\_espip4\_spec} {\bfseries ah\_ip4\_spec}\\
+\>struct {\bf ethtool\_ah\_espip4\_spec} {\bfseries esp\_ip4\_spec}\\
+\>struct {\bf ethtool\_usrip4\_spec} {\bfseries usr\_ip4\_spec}\\
+\>struct {\bf ethhdr} {\bfseries ether\_spec}\\
+\>\_\_u8 {\bfseries hdata} [72]\\
+\} {\bfseries m\_u}\label{structethtool__rx__ntuple__flow__spec_a8a87e38c6fb3c51a9621cd3bee8c286b}
+\\
+
+\end{tabbing}\item 
+\-\_\-\-\_\-u16 {\bfseries vlan\-\_\-tag}\label{structethtool__rx__ntuple__flow__spec_a01b67ddf62fa69d2d2996fc61ebc61be}
+
+\item 
+\-\_\-\-\_\-u16 {\bfseries vlan\-\_\-tag\-\_\-mask}\label{structethtool__rx__ntuple__flow__spec_a3670dac4a1b3e34f245bd91d22e28c46}
+
+\item 
+\-\_\-\-\_\-u64 {\bfseries data}\label{structethtool__rx__ntuple__flow__spec_afc74fb60530ac6b663e73ff014e50ca4}
+
+\item 
+\-\_\-\-\_\-u64 {\bfseries data\-\_\-mask}\label{structethtool__rx__ntuple__flow__spec_af9fe9ad4ebb44bd2dacc198ebaa49f15}
+
+\item 
+\-\_\-\-\_\-s32 {\bfseries action}\label{structethtool__rx__ntuple__flow__spec_aa7bda0d0835857b0789585cfdda1f705}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+struct \doxyref{ethtool\-\_\-rx\-\_\-ntuple\-\_\-flow\-\_\-spec}{p.}{structethtool__rx__ntuple__flow__spec} -\/ specification for \-R\-X flow filter \-: \-Type of match to perform, e.\-g. \-T\-C\-P\-\_\-\-V4\-\_\-\-F\-L\-O\-W \-: \-Flow field values to match (dependent on ) \-: \-Masks for flow field value bits to be ignored \-: \-V\-L\-A\-N tag to match \-: \-Mask for \-V\-L\-A\-N tag bits to be ignored \-: \-Driver-\/dependent data to match \-: \-Mask for driver-\/dependent data bits to be ignored \-: \-R\-X ring/queue index to deliver to (non-\/negative) or other action (negative, e.\-g. \-E\-T\-H\-T\-O\-O\-L\-\_\-\-R\-X\-N\-T\-U\-P\-L\-E\-\_\-\-A\-C\-T\-I\-O\-N\-\_\-\-D\-R\-O\-P)
+
+\-For flow types \-T\-C\-P\-\_\-\-V4\-\_\-\-F\-L\-O\-W, \-U\-D\-P\-\_\-\-V4\-\_\-\-F\-L\-O\-W and \-S\-C\-T\-P\-\_\-\-V4\-\_\-\-F\-L\-O\-W, where a field value and mask are both zero this is treated as if all mask bits are set i.\-e. the field is ignored. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/ethtool.\-h\end{DoxyCompactItemize}

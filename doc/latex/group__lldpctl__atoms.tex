@@ -1,0 +1,798 @@
+\section{\-Extracting information\-: atoms}
+\label{group__lldpctl__atoms}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}
+\-Collaboration diagram for \-Extracting information\-: atoms\-:
+\subsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf lldpctl\-\_\-map\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{\-Modules}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Retrieving atoms from lldpd}
+\item 
+{\bf \-Iterating over atoms}
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf lldpctl\-\_\-atom\-\_\-t} {\bf lldpctl\-\_\-atom\-\_\-t}
+\item 
+typedef void($\ast$ {\bf lldpctl\-\_\-change\-\_\-callback} )({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn, {\bf lldpctl\-\_\-change\-\_\-t} type, {\bf lldpctl\-\_\-atom\-\_\-t} $\ast$interface, {\bf lldpctl\-\_\-atom\-\_\-t} $\ast$neighbor, void $\ast$data)
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf lldpctl\-\_\-change\-\_\-t} \{ {\bf lldpctl\-\_\-c\-\_\-deleted}, 
+{\bf lldpctl\-\_\-c\-\_\-updated}, 
+{\bf lldpctl\-\_\-c\-\_\-added}
+ \}
+\item 
+enum {\bf lldpctl\-\_\-key\-\_\-t} \{ \*
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-interval}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-receiveonly}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-mgmt\-\_\-pattern}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-pattern}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-cid\-\_\-pattern}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-description}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-platform}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-hostname}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-advertise\-\_\-version}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-lldpmed\-\_\-noinventory}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-paused}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-enabled}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-interval}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-ifdescr\-\_\-update}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-promisc}, 
+{\bf lldpctl\-\_\-k\-\_\-interface\-\_\-name} =  1000, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-name} =  1100, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-index}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-neighbors} =  1200, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-protocol}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-age}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-id\-\_\-subtype}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-id}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-descr}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-hidden}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mfs} =  1300, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-aggregid}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-support}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-enabled}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-advertised}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mautype}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-power} =  1400, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-devicetype}, 
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-supported}, 
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-enabled}, 
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-paircontrol}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-pairs}, 
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-class}, 
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-type}, 
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-source}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-priority}, 
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-allocated}, 
+{\bf lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-requested}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-vlan\-\_\-pvid} =  1500, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-vlans}, 
+{\bf lldpctl\-\_\-k\-\_\-vlan\-\_\-id}, 
+{\bf lldpctl\-\_\-k\-\_\-vlan\-\_\-name}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-ppvids} =  1600, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-ppvid\-\_\-status}, 
+{\bf lldpctl\-\_\-k\-\_\-ppvid\-\_\-id}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-pis} =  1700, 
+{\bf lldpctl\-\_\-k\-\_\-pi\-\_\-id}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-index} =  1800, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-id\-\_\-subtype}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-id}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-name}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-descr}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-available}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-enabled}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-mgmt}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-type} =  1900, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-cap}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-hw}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sw}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-fw}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sn}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-manuf}, 
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-model}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-asset}, 
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-policies} =  2000, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-type}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-unknown}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-tagged}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-vid}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-priority}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-dscp}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-locations} =  2100, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-format}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-geoid}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-latitude}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-longitude}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude\-\_\-unit}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-country} =  2200, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-elin}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-ca\-\_\-elements} =  2300, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-type}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-value}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-power} =  2400, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-type}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-source}, 
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-priority}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-val}, 
+{\bf lldpctl\-\_\-k\-\_\-mgmt\-\_\-ip} =  3000, 
+{\bf lldpctl\-\_\-k\-\_\-tx\-\_\-cnt} =  4000, 
+{\bf lldpctl\-\_\-k\-\_\-rx\-\_\-cnt}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-rx\-\_\-discarded\-\_\-cnt}, 
+{\bf lldpctl\-\_\-k\-\_\-rx\-\_\-unrecognized\-\_\-cnt}, 
+{\bf lldpctl\-\_\-k\-\_\-ageout\-\_\-cnt}, 
+{\bf lldpctl\-\_\-k\-\_\-insert\-\_\-cnt}, 
+\*
+{\bf lldpctl\-\_\-k\-\_\-delete\-\_\-cnt}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-hold}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-bond\-\_\-slave\-\_\-src\-\_\-mac\-\_\-type}, 
+{\bf lldpctl\-\_\-k\-\_\-config\-\_\-lldp\-\_\-portid\-\_\-type}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-get\-\_\-connection} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom)
+\item 
+void {\bf lldpctl\-\_\-atom\-\_\-inc\-\_\-ref} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom)
+\item 
+void {\bf lldpctl\-\_\-atom\-\_\-dec\-\_\-ref} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom)
+\item 
+int {\bf lldpctl\-\_\-watch\-\_\-callback} ({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn, {\bf lldpctl\-\_\-change\-\_\-callback} cb, void $\ast$data)
+\item 
+int {\bf lldpctl\-\_\-watch} ({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn)
+\item 
+{\bf lldpctl\-\_\-map\-\_\-t} $\ast$ {\bf lldpctl\-\_\-key\-\_\-get\-\_\-map} ({\bf lldpctl\-\_\-key\-\_\-t} key)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-get} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-key\-\_\-t} key)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-set} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-key\-\_\-t} key, {\bf lldpctl\-\_\-atom\-\_\-t} $\ast$value)
+\item 
+const char $\ast$ {\bf lldpctl\-\_\-atom\-\_\-get\-\_\-str} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-key\-\_\-t} key)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-set\-\_\-str} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-key\-\_\-t} key, const char $\ast$value)
+\item 
+const uint8\-\_\-t $\ast$ {\bf lldpctl\-\_\-atom\-\_\-get\-\_\-buffer} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-key\-\_\-t} key, size\-\_\-t $\ast$length)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-set\-\_\-buffer} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-key\-\_\-t} key, const uint8\-\_\-t $\ast$value, size\-\_\-t length)
+\item 
+long int {\bf lldpctl\-\_\-atom\-\_\-get\-\_\-int} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-key\-\_\-t} key)
+\item 
+{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$ {\bf lldpctl\-\_\-atom\-\_\-set\-\_\-int} ({\bf lldpctl\-\_\-atom\-\_\-t} $\ast$atom, {\bf lldpctl\-\_\-key\-\_\-t} key, long int value)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Information retrieved from lldpd is represented as an atom.
+
+\-This is an opaque structure that can be passed along some functions to transmit chassis, ports, \-V\-L\-A\-N and other information related to \-L\-L\-D\-P. \-Most information are extracted using {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-get()}{p.}{group__lldpctl__atoms_ga6e0a236d507b07293ca65eb8d229c0c4}}, {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-get\-\_\-str()}{p.}{group__lldpctl__atoms_ga986160896cdfc930e4e5cf99e0fafc13}}, {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-get\-\_\-buffer()}{p.}{group__lldpctl__atoms_ga42008b960c35ec941f888ec090f4c086}} or {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-get\-\_\-int()}{p.}{group__lldpctl__atoms_gaef010e71841ae2fa831b066265d5c06c}}, unless some \-I\-O with lldpd is needed to retrieve the requested information. \-In this case, there exists an appropriate function to convert the \char`\"{}deferred\char`\"{} atom into a normal one (like {\ttfamily \doxyref{lldpctl\-\_\-get\-\_\-port()}{p.}{group__liblldpctl__atom__get__special_ga3ef245c50f8c728a106129f48c4ade00}}).
+
+\-For some information, setters are also available\-: {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-set()}{p.}{group__lldpctl__atoms_ga1552a4cadffaa6cae6e88b67520e33ff}}, {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-set\-\_\-str()}{p.}{group__lldpctl__atoms_gaeeae695b8353665ec02ce8793ea7c83e}}, {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-set\-\_\-buffer()}{p.}{group__lldpctl__atoms_gaed63a7ae0ef4de4683f3441bc249b737}} or {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-set\-\_\-int()}{p.}{group__lldpctl__atoms_ga9efc1cc574b013af68b3ae1e0c4bfff6}}. \-Unlike getters, some of those may require \-I\-O to achieve their goal.
+
+\-An atom is reference counted. \-Unless documented otherwise, a function returning an atom will return a new reference that should be decremented if not used anymore. \-It is quite important to use the reference counting functions correctly. \-Segfaults or memory leaks may occur otherwise. 
+
+\subsection{\-Typedef \-Documentation}
+\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-t@{lldpctl\-\_\-atom\-\_\-t}}
+\index{lldpctl\-\_\-atom\-\_\-t@{lldpctl\-\_\-atom\-\_\-t}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf lldpctl\-\_\-atom\-\_\-t} {\bf lldpctl\-\_\-atom\-\_\-t}}\label{group__lldpctl__atoms_gadbacb2965018a924c05174f52f42fb2b}
+\-Structure representing an element (chassis, port, \-V\-L\-A\-N, ...)
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{lldpctl\-\_\-atom\-\_\-inc\-\_\-ref()}{p.}{group__lldpctl__atoms_ga605603227d905b134f8a23febc1a59b0}, \doxyref{lldpctl\-\_\-atom\-\_\-dec\-\_\-ref()}{p.}{group__lldpctl__atoms_ga6c0c12575960ee6c5d624ebdd752ab80}. 
+\end{DoxySeeAlso}
+\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-change\-\_\-callback@{lldpctl\-\_\-change\-\_\-callback}}
+\index{lldpctl\-\_\-change\-\_\-callback@{lldpctl\-\_\-change\-\_\-callback}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-change\-\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf lldpctl\-\_\-change\-\_\-callback})({\bf lldpctl\-\_\-conn\-\_\-t} $\ast$conn, {\bf lldpctl\-\_\-change\-\_\-t} type, {\bf lldpctl\-\_\-atom\-\_\-t} $\ast$interface, {\bf lldpctl\-\_\-atom\-\_\-t} $\ast$neighbor, void $\ast$data)}\label{group__lldpctl__atoms_ga264486d71b7334f038cfac7d42490388}
+\-Callback function invoked when a change is detected.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Connection with lldpd. \\
+\hline
+{\em type} & \-Type of change detected. \\
+\hline
+{\em interface} & \-Physical interface on which the change has happened. \\
+\hline
+{\em neighbor} & \-Changed neighbor. \\
+\hline
+{\em data} & \-Data provided when registering the callback.\\
+\hline
+\end{DoxyParams}
+\-The provided interface and neighbor atoms will have their reference count decremented when the callback ends. \-If you want to keep a reference to it, be sure to increment the reference count in the callback.
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{lldpctl\-\_\-watch\-\_\-callback}{p.}{group__lldpctl__atoms_ga06f1b202d3368d48fe6bf4425135988b} 
+\end{DoxySeeAlso}
+
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-change\-\_\-t@{lldpctl\-\_\-change\-\_\-t}}
+\index{lldpctl\-\_\-change\-\_\-t@{lldpctl\-\_\-change\-\_\-t}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-change\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf lldpctl\-\_\-change\-\_\-t}}\label{group__lldpctl__atoms_ga6817e324b0b03f3d3fda2c8d743f13d1}
+\-Possible events for a change (notification).
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{lldpctl\-\_\-watch\-\_\-callback}{p.}{group__lldpctl__atoms_ga06f1b202d3368d48fe6bf4425135988b} 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{lldpctl\-\_\-c\-\_\-deleted@{lldpctl\-\_\-c\-\_\-deleted}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-c\-\_\-deleted@{lldpctl\-\_\-c\-\_\-deleted}}\item[{\em 
+lldpctl\-\_\-c\-\_\-deleted\label{group__lldpctl__atoms_gga6817e324b0b03f3d3fda2c8d743f13d1a9dce1a98682ffda2d9d3aee8c290e5c7}
+}]\-The neighbor has been deleted \index{lldpctl\-\_\-c\-\_\-updated@{lldpctl\-\_\-c\-\_\-updated}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-c\-\_\-updated@{lldpctl\-\_\-c\-\_\-updated}}\item[{\em 
+lldpctl\-\_\-c\-\_\-updated\label{group__lldpctl__atoms_gga6817e324b0b03f3d3fda2c8d743f13d1ab3da3d83717fb8b8c9fb735c2c31d9a6}
+}]\-The neighbor has been updated \index{lldpctl\-\_\-c\-\_\-added@{lldpctl\-\_\-c\-\_\-added}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-c\-\_\-added@{lldpctl\-\_\-c\-\_\-added}}\item[{\em 
+lldpctl\-\_\-c\-\_\-added\label{group__lldpctl__atoms_gga6817e324b0b03f3d3fda2c8d743f13d1a61be79a8782c82ec99d5726d3774e9e8}
+}]\-This is a new neighbor \end{description}
+\end{Desc}
+
+\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-key\-\_\-t@{lldpctl\-\_\-key\-\_\-t}}
+\index{lldpctl\-\_\-key\-\_\-t@{lldpctl\-\_\-key\-\_\-t}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-key\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf lldpctl\-\_\-key\-\_\-t}}\label{group__lldpctl__atoms_ga9838ac53910b8aa7829e45117396eede}
+\-Piece of information that can be retrieved from/written to an atom.
+
+\-Each piece of information can potentially be retrieved as an atom (\-A), a string (\-S), a buffer (\-B) or an integer (\-I). \-Additionaly, when an information can be retrieved as an atom, it is usually iterable (\-L). \-When an atom can be retrieved as a string and as an additional type, the string is expected to be formatted. \-For example, the \-M\-A\-C address of a local port can be retrieved as a buffer and a string. \-As a string, you'll get something like \char`\"{}00\-:11\-:22\-:33\-:44\-:55\char`\"{}. \-Also, all values that can be get as an integer or a buffer can be get as a string too. \-There is no special formatting in this case. \char`\"{}(\-B\-S)\char`\"{} means that the string get a special appropriate format.
+
+\-The name of a key is an indication on the type of atom that information can be extracted from. \-For example, {\ttfamily lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-type} can be extracted from an atom you got by iterating on {\ttfamily lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-policies}. \-On the other hand, {\ttfamily lldpctl\-\_\-k\-\_\-port\-\_\-descr} and {\ttfamily lldpctl\-\_\-k\-\_\-chassis} can be retrieved from an atom retrieved either by iterating {\ttfamily lldpctl\-\_\-k\-\_\-port\-\_\-neighbors} or with {\ttfamily \doxyref{lldpctl\-\_\-get\-\_\-port()}{p.}{group__liblldpctl__atom__get__special_ga3ef245c50f8c728a106129f48c4ade00}}.
+
+\-Some values may be written. \-They are marked with (\-W). \-Such a change may or may not be transmitted immediatly. \-If they are not transmitted immediatly, this means that the resulting atom should be written to another atom. \-For example, when writting {\ttfamily lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-tagged}, you need to write the resulting atom to {\ttfamily lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-policies}. \-If the change is transmitted immediatly, you need to check the error status of the connection to know if it has been transmitted correctly. \-Notably, if you get {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}, you need to try again later. \-Usually, changes are transmitted immediatly. \-The exception are changes that need to be grouped to be consistent, like a \-L\-L\-D\-P \-M\-E\-D location. \-When a change is transmitted immediatly, it is marked with (\-O).
+
+\-Some values may also be created. \-They are flagged with (\-C). \-This only applies to elements that can be iterated (\-L) and written (\-W). \-The element created still needs to be appended to the list by being written to it. \-The creation is done with {\ttfamily \doxyref{lldpctl\-\_\-atom\-\_\-create()}{p.}{group__liblldpctl__atom__iter_gaa4bb165d009a4650542faa0369f86829}}.
+
+\-An atom marked with (\-S) can be retrieved as a string only. \-It cannot be written. \-An atom marked with (\-I\-S) can be retrieved as an integer and features an appropriate representation as a string (usually, the name of a constant) which is more meaningful than just the integer. \-An atom marked as (\-I) can be retrieved and as a string. \-In the later case, this is just a string representation of the integer. \-An atom marked with (\-A\-L) can be retrieved as an atom only and can be iterated over. \-This is usually a list of things. \-An atom marked (\-I,\-W) can be read as an integer or a string and can be written as an integer. \-The change would not be commited until the atom is written to the nearest atom supporting (\-A,\-W\-O) operation (eventually with an indirection, i.\-e first write to a (\-A,\-W), then to a (\-A,\-W\-O)). \begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-interval@{lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-interval}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-interval@{lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-interval}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-interval\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea9b1822f8bb18f33949b075ee4a7deb28}
+}]`(\-I,\-W\-O)` \-Transmit interval. \-When set to -\/1, it is meant to transmit now. \index{lldpctl\-\_\-k\-\_\-config\-\_\-receiveonly@{lldpctl\-\_\-k\-\_\-config\-\_\-receiveonly}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-receiveonly@{lldpctl\-\_\-k\-\_\-config\-\_\-receiveonly}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-receiveonly\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea953bcc67e2575edfe85d3dd335931240}
+}]`(\-I)` \-Receive only mode \index{lldpctl\-\_\-k\-\_\-config\-\_\-mgmt\-\_\-pattern@{lldpctl\-\_\-k\-\_\-config\-\_\-mgmt\-\_\-pattern}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-mgmt\-\_\-pattern@{lldpctl\-\_\-k\-\_\-config\-\_\-mgmt\-\_\-pattern}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-mgmt\-\_\-pattern\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea0bfc74a6431728d21b5f6864bd789068}
+}]`(\-S)` \-Pattern to choose the management address \index{lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-pattern@{lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-pattern}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-pattern@{lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-pattern}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-pattern\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea6a10f2700a309bb97ce41da07d9046d6}
+}]`(\-S,\-W\-O)` \-Pattern of enabled interfaces \index{lldpctl\-\_\-k\-\_\-config\-\_\-cid\-\_\-pattern@{lldpctl\-\_\-k\-\_\-config\-\_\-cid\-\_\-pattern}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-cid\-\_\-pattern@{lldpctl\-\_\-k\-\_\-config\-\_\-cid\-\_\-pattern}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-cid\-\_\-pattern\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea7a557824490390c321759f6787919bf2}
+}]`(\-S)` \-Interface pattern to choose the chassis \-I\-D \index{lldpctl\-\_\-k\-\_\-config\-\_\-description@{lldpctl\-\_\-k\-\_\-config\-\_\-description}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-description@{lldpctl\-\_\-k\-\_\-config\-\_\-description}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-description\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea30fb9f8472b6481d03ad33e2c9a14358}
+}]`(\-S,\-W\-O)` \-Chassis description overridden \index{lldpctl\-\_\-k\-\_\-config\-\_\-platform@{lldpctl\-\_\-k\-\_\-config\-\_\-platform}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-platform@{lldpctl\-\_\-k\-\_\-config\-\_\-platform}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-platform\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaf47546498f63a6643a867b972b6038d0}
+}]`(\-S,\-W\-O)` \-Platform description overridden (\-C\-D\-P) \index{lldpctl\-\_\-k\-\_\-config\-\_\-hostname@{lldpctl\-\_\-k\-\_\-config\-\_\-hostname}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-hostname@{lldpctl\-\_\-k\-\_\-config\-\_\-hostname}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-hostname\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea18e6828bdd47af13ac502518f40294fa}
+}]`(\-S,\-W\-O)` \-System name overridden \index{lldpctl\-\_\-k\-\_\-config\-\_\-advertise\-\_\-version@{lldpctl\-\_\-k\-\_\-config\-\_\-advertise\-\_\-version}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-advertise\-\_\-version@{lldpctl\-\_\-k\-\_\-config\-\_\-advertise\-\_\-version}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-advertise\-\_\-version\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeac1b46b52e3dc68e52651a6f2e367ba8c}
+}]`(\-I)` \-Advertise version \index{lldpctl\-\_\-k\-\_\-config\-\_\-lldpmed\-\_\-noinventory@{lldpctl\-\_\-k\-\_\-config\-\_\-lldpmed\-\_\-noinventory}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-lldpmed\-\_\-noinventory@{lldpctl\-\_\-k\-\_\-config\-\_\-lldpmed\-\_\-noinventory}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-lldpmed\-\_\-noinventory\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea9be82f7b32fe5144245f8bc58c9ab9cf}
+}]`(\-I)` \-Disable \-L\-L\-D\-P-\/\-M\-E\-D inventory \index{lldpctl\-\_\-k\-\_\-config\-\_\-paused@{lldpctl\-\_\-k\-\_\-config\-\_\-paused}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-paused@{lldpctl\-\_\-k\-\_\-config\-\_\-paused}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-paused\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea7c426928e040e4c76e160bf1dbf280fd}
+}]`(\-I)` lldpd is paused \index{lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-enabled@{lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-enabled}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-enabled@{lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-enabled}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-enabled\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea84d8483dc977fc84648c0f7eb381050a}
+}]`(\-I,\-W\-O)` \-Is fast start enabled \index{lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-interval@{lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-interval}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-interval@{lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-interval}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-fast\-\_\-start\-\_\-interval\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaa857b11997b315939117a5eceeebd336}
+}]`(\-I,\-W\-O)` \-Start fast transmit interval \index{lldpctl\-\_\-k\-\_\-config\-\_\-ifdescr\-\_\-update@{lldpctl\-\_\-k\-\_\-config\-\_\-ifdescr\-\_\-update}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-ifdescr\-\_\-update@{lldpctl\-\_\-k\-\_\-config\-\_\-ifdescr\-\_\-update}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-ifdescr\-\_\-update\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea52e22f0db4589f721fc6a2bf4ce65585}
+}]`(\-I,\-W\-O)` \-Enable or disable setting interface description \index{lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-promisc@{lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-promisc}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-promisc@{lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-promisc}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-iface\-\_\-promisc\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea85931f4ea1c8b26b3813d3970e13e172}
+}]`(\-I,\-W\-O)` \-Enable or disable promiscuous mode on interfaces \index{lldpctl\-\_\-k\-\_\-interface\-\_\-name@{lldpctl\-\_\-k\-\_\-interface\-\_\-name}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-interface\-\_\-name@{lldpctl\-\_\-k\-\_\-interface\-\_\-name}}\item[{\em 
+lldpctl\-\_\-k\-\_\-interface\-\_\-name\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea65d27e3c77e011451a2a3b3f259bd8af}
+}]`(\-S)` \-The interface name. \index{lldpctl\-\_\-k\-\_\-port\-\_\-name@{lldpctl\-\_\-k\-\_\-port\-\_\-name}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-name@{lldpctl\-\_\-k\-\_\-port\-\_\-name}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-name\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea02628bb911e2d128247a3e25e15ea008}
+}]`(\-S)` \-The port name. \-Only works for a local port. \index{lldpctl\-\_\-k\-\_\-port\-\_\-index@{lldpctl\-\_\-k\-\_\-port\-\_\-index}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-index@{lldpctl\-\_\-k\-\_\-port\-\_\-index}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-index\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea0122303ffeffec628a1e74d48d86ebaa}
+}]`(\-I)` \-The port index. \-Only works for a local port. \index{lldpctl\-\_\-k\-\_\-port\-\_\-neighbors@{lldpctl\-\_\-k\-\_\-port\-\_\-neighbors}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-neighbors@{lldpctl\-\_\-k\-\_\-port\-\_\-neighbors}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-neighbors\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaf1db88449ebbeec59d2dbf044bb64649}
+}]`(\-A\-L)` \-The list of known neighbors for this port.
+
+\-A neighbor is in fact a remote port. \index{lldpctl\-\_\-k\-\_\-port\-\_\-protocol@{lldpctl\-\_\-k\-\_\-port\-\_\-protocol}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-protocol@{lldpctl\-\_\-k\-\_\-port\-\_\-protocol}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-protocol\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea89d1a24a2fffc549da5f3afa7203d4e6}
+}]`(\-I\-S)` \-The protocol that was used to retrieve this information. \index{lldpctl\-\_\-k\-\_\-port\-\_\-age@{lldpctl\-\_\-k\-\_\-port\-\_\-age}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-age@{lldpctl\-\_\-k\-\_\-port\-\_\-age}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-age\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea160e2feff415c5a0193a6ff5397fbc25}
+}]`(\-I)` \-Age of information, seconds from epoch. \index{lldpctl\-\_\-k\-\_\-port\-\_\-id\-\_\-subtype@{lldpctl\-\_\-k\-\_\-port\-\_\-id\-\_\-subtype}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-id\-\_\-subtype@{lldpctl\-\_\-k\-\_\-port\-\_\-id\-\_\-subtype}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-id\-\_\-subtype\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea44e957de6818bd75633206c5b92dfd62}
+}]`(\-I\-S)` \-The subtype \-I\-D of this port. \index{lldpctl\-\_\-k\-\_\-port\-\_\-id@{lldpctl\-\_\-k\-\_\-port\-\_\-id}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-id@{lldpctl\-\_\-k\-\_\-port\-\_\-id}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-id\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea96955beed1c283a62dd02bbc4aa59700}
+}]`(\-B\-S)` \-The \-I\-D of this port. \index{lldpctl\-\_\-k\-\_\-port\-\_\-descr@{lldpctl\-\_\-k\-\_\-port\-\_\-descr}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-descr@{lldpctl\-\_\-k\-\_\-port\-\_\-descr}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-descr\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea216261be7e41dca6e3b3333db4b885fa}
+}]`(\-S)` \-The description of this port. \index{lldpctl\-\_\-k\-\_\-port\-\_\-hidden@{lldpctl\-\_\-k\-\_\-port\-\_\-hidden}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-hidden@{lldpctl\-\_\-k\-\_\-port\-\_\-hidden}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-hidden\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea721eae82537b55f5f71dd5322ded63a1}
+}]`(\-I)` \-Is this port hidden (or should it be displayed?)? \index{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mfs@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mfs}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mfs@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mfs}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mfs\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea1abbe4bcfcfdd4cb3ddb2f7f56588fd2}
+}]`(\-I)` \-M\-F\-S \index{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-aggregid@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-aggregid}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-aggregid@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-aggregid}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-aggregid\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaa9f6822af862bfd631e387461caefe8c}
+}]`(\-I)` \-Port aggregation \-I\-D \index{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-support@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-support}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-support@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-support}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-support\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea18711f848cb96c84712bb6101780171c}
+}]`(\-I)` \-Autonegotiation support. \index{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-enabled@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-enabled}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-enabled@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-enabled}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-enabled\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea8cf1019cc34a436981526fb8625ee01f}
+}]`(\-I)` \-Autonegotiation enabled. \index{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-advertised@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-advertised}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-advertised@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-advertised}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-autoneg\-\_\-advertised\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea58494d58eab8e603ce6a71fb7fd21260}
+}]`(\-I)` \-Advertised protocols. \-See `\-L\-L\-D\-P\-\_\-\-D\-O\-T3\-\_\-\-L\-I\-N\-K\-\_\-\-A\-U\-T\-O\-N\-E\-G\-\_\-$\ast$` \index{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mautype@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mautype}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mautype@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mautype}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-mautype\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaf3545058671718a4aa0162dea68c7446}
+}]`(\-I\-S)` \-Current \-M\-A\-U type. \-See `\-L\-L\-D\-P\-\_\-\-D\-O\-T3\-\_\-\-M\-A\-U\-\_\-$\ast$` \index{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-power@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-power}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-power@{lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-power}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-dot3\-\_\-power\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea6d47ab38ad95664cccd1b8ddbec6af09}
+}]`(\-A,\-W\-O)` \-Dot3 power related stuff. \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-devicetype@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-devicetype}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-devicetype@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-devicetype}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-devicetype\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea3d5f8e1fe50b58d7e88d0399240c461e}
+}]`(\-I\-S,\-W)` \-Device type. \-See `\-L\-L\-D\-P\-\_\-\-D\-O\-T3\-\_\-\-P\-O\-W\-E\-R\-\_\-\-P\-S\-E/\-P\-D` \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-supported@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-supported}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-supported@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-supported}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-supported\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea56427b657f420ee03a682d0a3e5abafa}
+}]`(\-I,\-W)` \-Is \-M\-D\-I power supported. \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-enabled@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-enabled}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-enabled@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-enabled}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-enabled\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea89e570fdf8af254c33b32314989d649f}
+}]`(\-I,\-W)` \-Is \-M\-D\-I power enabled. \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-paircontrol@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-paircontrol}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-paircontrol@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-paircontrol}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-paircontrol\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeafeb7128e515c22959e0557af5a9166f5}
+}]`(\-I,\-W)` \-Pair-\/control enabled? \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-pairs@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-pairs}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-pairs@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-pairs}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-pairs\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea2333c84e233b1dd7c903361b5cc66160}
+}]`(\-I\-S,\-W)` \-See `\-L\-L\-D\-P\-\_\-\-D\-O\-T3\-\_\-\-P\-O\-W\-E\-R\-P\-A\-I\-R\-S\-\_\-$\ast$` \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-class@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-class}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-class@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-class}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-class\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea21cb0afe011179a89d1320bf06261835}
+}]`(\-I\-S,\-W)` \-Power class. \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-type@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-type}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-type@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-type}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-type\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea32c5e6f16aea901c6d27203ec0e08f73}
+}]`(\-I,\-W)` 802.\-3\-A\-T power type \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-source@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-source}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-source@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-source}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-source\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea3b1c548b1b47c39d3e8b438e35d78b6f}
+}]`(\-I\-S,\-W)` 802.\-3\-A\-T power source \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-priority@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-priority}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-priority@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-priority}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-priority\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaa0805c1ed75e873a40faabe3d17c8074}
+}]`(\-I\-S,\-W)` 802.\-3\-A\-T power priority \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-allocated@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-allocated}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-allocated@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-allocated}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-allocated\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea6508542345cf1b5a4d88060e6bb3a188}
+}]`(\-I,\-W)` 802.\-3\-A\-T power allocated \index{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-requested@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-requested}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-requested@{lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-requested}}\item[{\em 
+lldpctl\-\_\-k\-\_\-dot3\-\_\-power\-\_\-requested\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaf0f5c57feecfb8125cc551ee5bcea8cf}
+}]`(\-I,\-W)` 802.\-3\-A\-T power requested \index{lldpctl\-\_\-k\-\_\-port\-\_\-vlan\-\_\-pvid@{lldpctl\-\_\-k\-\_\-port\-\_\-vlan\-\_\-pvid}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-vlan\-\_\-pvid@{lldpctl\-\_\-k\-\_\-port\-\_\-vlan\-\_\-pvid}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-vlan\-\_\-pvid\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea7e74ecc1e2c39c509115d7902a57528b}
+}]`(\-I)` \-Primary \-V\-L\-A\-N \-I\-D \index{lldpctl\-\_\-k\-\_\-port\-\_\-vlans@{lldpctl\-\_\-k\-\_\-port\-\_\-vlans}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-vlans@{lldpctl\-\_\-k\-\_\-port\-\_\-vlans}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-vlans\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeae009c72e00ccd7d3d6926098ec5c8478}
+}]`(\-A\-L)` \-List of \-V\-L\-A\-N \index{lldpctl\-\_\-k\-\_\-vlan\-\_\-id@{lldpctl\-\_\-k\-\_\-vlan\-\_\-id}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-vlan\-\_\-id@{lldpctl\-\_\-k\-\_\-vlan\-\_\-id}}\item[{\em 
+lldpctl\-\_\-k\-\_\-vlan\-\_\-id\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea866a43e5508b10ef33b4e485d26d81db}
+}]`(\-I)` \-V\-L\-A\-N \-I\-D \index{lldpctl\-\_\-k\-\_\-vlan\-\_\-name@{lldpctl\-\_\-k\-\_\-vlan\-\_\-name}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-vlan\-\_\-name@{lldpctl\-\_\-k\-\_\-vlan\-\_\-name}}\item[{\em 
+lldpctl\-\_\-k\-\_\-vlan\-\_\-name\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea98d8d395207eaf386fced2845d9482d3}
+}]`(\-S)` \-V\-L\-A\-N name \index{lldpctl\-\_\-k\-\_\-port\-\_\-ppvids@{lldpctl\-\_\-k\-\_\-port\-\_\-ppvids}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-ppvids@{lldpctl\-\_\-k\-\_\-port\-\_\-ppvids}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-ppvids\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaf861ecba1a07d1a9a334f90480f72aea}
+}]`(\-A\-L)` \-List of \-P\-P\-V\-I\-Ds \index{lldpctl\-\_\-k\-\_\-ppvid\-\_\-status@{lldpctl\-\_\-k\-\_\-ppvid\-\_\-status}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-ppvid\-\_\-status@{lldpctl\-\_\-k\-\_\-ppvid\-\_\-status}}\item[{\em 
+lldpctl\-\_\-k\-\_\-ppvid\-\_\-status\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea22754678c1b1006d96c9b76a12670b70}
+}]`(\-I)` \-Status of \-P\-P\-V\-I\-D (see `\-L\-L\-D\-P\-\_\-\-P\-P\-V\-I\-D\-\_\-\-C\-A\-P\-\_\-$\ast$`) \index{lldpctl\-\_\-k\-\_\-ppvid\-\_\-id@{lldpctl\-\_\-k\-\_\-ppvid\-\_\-id}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-ppvid\-\_\-id@{lldpctl\-\_\-k\-\_\-ppvid\-\_\-id}}\item[{\em 
+lldpctl\-\_\-k\-\_\-ppvid\-\_\-id\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea51d7fde49775b16bfed53e87aadaa628}
+}]`(\-I)` \-I\-D of \-P\-P\-V\-I\-D \index{lldpctl\-\_\-k\-\_\-port\-\_\-pis@{lldpctl\-\_\-k\-\_\-port\-\_\-pis}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-pis@{lldpctl\-\_\-k\-\_\-port\-\_\-pis}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-pis\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedead6c57dfbf892acc669cfdf7f253c41af}
+}]`(\-A\-L)` \-List of \-P\-I\-Ds \index{lldpctl\-\_\-k\-\_\-pi\-\_\-id@{lldpctl\-\_\-k\-\_\-pi\-\_\-id}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-pi\-\_\-id@{lldpctl\-\_\-k\-\_\-pi\-\_\-id}}\item[{\em 
+lldpctl\-\_\-k\-\_\-pi\-\_\-id\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea9a0c29d37a52ede09833d4a3657b6463}
+}]`(\-B)` \-P\-I\-D value \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-index@{lldpctl\-\_\-k\-\_\-chassis\-\_\-index}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-index@{lldpctl\-\_\-k\-\_\-chassis\-\_\-index}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-index\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea473ddc53867691a8ab15880fd3aa4254}
+}]`(\-I)` \-The chassis index. \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-id\-\_\-subtype@{lldpctl\-\_\-k\-\_\-chassis\-\_\-id\-\_\-subtype}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-id\-\_\-subtype@{lldpctl\-\_\-k\-\_\-chassis\-\_\-id\-\_\-subtype}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-id\-\_\-subtype\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea59f7108aad56580a43b9ba43cf0496b2}
+}]`(\-I\-S)` \-The subtype \-I\-D of this chassis. \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-id@{lldpctl\-\_\-k\-\_\-chassis\-\_\-id}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-id@{lldpctl\-\_\-k\-\_\-chassis\-\_\-id}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-id\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaa0305cac7884ce567a368709a4cfab97}
+}]`(\-B\-S)` \-The \-I\-D of this chassis. \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-name@{lldpctl\-\_\-k\-\_\-chassis\-\_\-name}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-name@{lldpctl\-\_\-k\-\_\-chassis\-\_\-name}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-name\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea689f068ae1a082722a69b76bda238753}
+}]`(\-S)` \-The name of this chassis. \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-descr@{lldpctl\-\_\-k\-\_\-chassis\-\_\-descr}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-descr@{lldpctl\-\_\-k\-\_\-chassis\-\_\-descr}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-descr\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea598c167798f13f0e346f11b93944ba8d}
+}]`(\-S)` \-The description of this chassis. \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-available@{lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-available}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-available@{lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-available}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-available\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea55992e09d50a21bbe83053ca077c67e7}
+}]`(\-I)` \-Available capabalities (see `\-L\-L\-D\-P\-\_\-\-C\-A\-P\-\_\-$\ast$`) \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-enabled@{lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-enabled}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-enabled@{lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-enabled}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-cap\-\_\-enabled\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea41f2dcf1159feab85af6d985aa48e8be}
+}]`(\-I)` \-Enabled capabilities (see `\-L\-L\-D\-P\-\_\-\-C\-A\-P\-\_\-$\ast$`) \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-mgmt@{lldpctl\-\_\-k\-\_\-chassis\-\_\-mgmt}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-mgmt@{lldpctl\-\_\-k\-\_\-chassis\-\_\-mgmt}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-mgmt\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedead8daf550ee0ea54466409a3cd07ea73b}
+}]`(\-A\-L)` \-List of management addresses \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-type@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-type}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-type@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-type}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-type\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaaa16e96071b87a6abcc7cca705fb7e7a}
+}]`(\-I\-S)` \-Chassis \-M\-E\-D type. \-See `\-L\-L\-D\-P\-\_\-\-M\-E\-D\-\_\-\-C\-L\-A\-S\-S\-\_\-$\ast$` \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-cap@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-cap}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-cap@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-cap}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-cap\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaf5fc5437f19bcdb90ea7af6cdccce2e1}
+}]`(\-I)` \-Available \-M\-E\-D capabilitied. \-See `\-L\-L\-D\-P\-\_\-\-M\-E\-D\-\_\-\-C\-A\-P\-\_\-$\ast$` \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-hw@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-hw}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-hw@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-hw}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-hw\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea75365de87758ee0d22ef437cecd322dc}
+}]`(\-S)` \-L\-L\-D\-P \-M\-E\-D inventory \char`\"{}\-Hardware Revision\char`\"{} \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sw@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sw}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sw@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sw}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sw\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea85ec62a414d34c1b0f8aab1abcdf8ad4}
+}]`(\-S)` \-L\-L\-D\-P \-M\-E\-D inventory \char`\"{}\-Software Revision\char`\"{} \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-fw@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-fw}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-fw@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-fw}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-fw\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeab6e95961f0a2e66f48ada50b99d541ce}
+}]`(\-S)` \-L\-L\-D\-P \-M\-E\-D inventory \char`\"{}\-Firmware Revision\char`\"{} \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sn@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sn}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sn@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sn}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-sn\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeafe2854ee47e5a127b4a66cf46648516c}
+}]`(\-S)` \-L\-L\-D\-P \-M\-E\-D inventory \char`\"{}\-Serial Number\char`\"{} \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-manuf@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-manuf}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-manuf@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-manuf}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-manuf\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeacbdcd73cedd51d0cd97dad953824d293}
+}]`(\-S)` \-L\-L\-D\-P \-M\-E\-D inventory \char`\"{}\-Manufacturer\char`\"{} \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-model@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-model}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-model@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-model}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-model\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeac17caaab8bc333b6ecaf5b328559a9c3}
+}]`(\-S)` \-L\-L\-D\-P \-M\-E\-D inventory \char`\"{}\-Model\char`\"{} \index{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-asset@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-asset}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-asset@{lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-asset}}\item[{\em 
+lldpctl\-\_\-k\-\_\-chassis\-\_\-med\-\_\-inventory\-\_\-asset\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeac50df68392ede17e3452316233b2d19b}
+}]`(\-S)` \-L\-L\-D\-P \-M\-E\-D inventory \char`\"{}\-Asset I\-D\char`\"{} \index{lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-policies@{lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-policies}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-policies@{lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-policies}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-policies\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea9cc4b6f9efea09632765f9d7bd1ca261}
+}]`(\-A\-L,\-W\-O)` \-M\-E\-D policies attached to a port. \index{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-type@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-type}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-type@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-type}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-type\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaf677456f723c8b17dd50cd3872ad7995}
+}]`(\-I\-S,\-W)` \-M\-E\-D policy app type. \-See `\-L\-L\-D\-P\-\_\-\-M\-E\-D\-\_\-\-A\-P\-P\-T\-Y\-P\-E\-\_\-$\ast$`. 0 if a policy is not defined. \index{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-unknown@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-unknown}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-unknown@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-unknown}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-unknown\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea561dcf9a910b48559c328264748e6e60}
+}]`(\-I,\-W)` \-Is \-M\-E\-D policy defined? \index{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-tagged@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-tagged}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-tagged@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-tagged}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-tagged\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea91902246f4905c76332df5d39cb4b0c3}
+}]`(\-I,\-W)` \-M\-E\-D policy tagging \index{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-vid@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-vid}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-vid@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-vid}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-vid\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea4a4b9ee06f7ca62f6758e5a0734b306a}
+}]`(\-I,\-W)` \-M\-E\-D policy \-V\-I\-D \index{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-priority@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-priority}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-priority@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-priority}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-priority\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaff0f8b5810d51abb0ca92b4f40563e63}
+}]`(\-I,\-W)` \-M\-E\-D policy priority \index{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-dscp@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-dscp}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-dscp@{lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-dscp}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-policy\-\_\-dscp\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea193579dcf33476aa7aebb0a5b05e0c17}
+}]`(\-I,\-W)` \-M\-E\-D policy \-D\-S\-C\-P \index{lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-locations@{lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-locations}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-locations@{lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-locations}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-locations\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaa5dd8952734dec92648a9a8892305b60}
+}]`(\-A\-L,\-W\-O)` \-M\-E\-D locations attached to a port. \index{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-format@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-format}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-format@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-format}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-format\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea94405183cf8be66653a201e86adebcef}
+}]`(\-I\-S,\-W)` \-M\-E\-D location format. \-See `\-L\-L\-D\-P\-\_\-\-M\-E\-D\-\_\-\-L\-O\-C\-F\-O\-R\-M\-A\-T\-\_\-$\ast$`. 0 if this location is not defined. \-When written, the following fields will be zeroed out. \index{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-geoid@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-geoid}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-geoid@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-geoid}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-geoid\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea4811ae7e42243ab9ecb6d838c4ee6ace}
+}]`(\-I\-S,\-W)` \-M\-E\-D geoid. \-See `\-L\-L\-D\-P\-\_\-\-M\-E\-D\-\_\-\-L\-O\-C\-A\-T\-I\-O\-N\-\_\-\-G\-E\-O\-I\-D\-\_\-$\ast$`. \-Only if format is \-C\-O\-O\-R\-D. \index{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-latitude@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-latitude}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-latitude@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-latitude}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-latitude\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea6a7a79bf83b7989f1a6c7acf8052eeff}
+}]`(\-S,\-W)` \-M\-E\-D latitude. \-Only if format is \-C\-O\-O\-R\-D. \index{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-longitude@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-longitude}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-longitude@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-longitude}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-longitude\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea1e1534d255075fb27fb6738e60b362ec}
+}]`(\-S,\-W)` \-M\-E\-D longitude. \-Only if format is \-C\-O\-O\-R\-D. \index{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaba75e9fe46ca8201c9b75aed1465e058}
+}]`(\-S,\-W)` \-M\-E\-D altitude. \-Only if format is \-C\-O\-O\-R\-D. \index{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude\-\_\-unit@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude\-\_\-unit}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude\-\_\-unit@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude\-\_\-unit}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-altitude\-\_\-unit\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea8cdcd1c6fc2341a89fe737caa79046d2}
+}]`(\-S,\-W)` \-M\-E\-D altitude unit. \-See `\-L\-L\-D\-P\-\_\-\-M\-E\-D\-\_\-\-L\-O\-C\-A\-T\-I\-O\-N\-\_\-\-A\-L\-T\-I\-T\-U\-D\-E\-\_\-\-U\-N\-I\-T\-\_\-$\ast$`. \-Only if format is \-C\-O\-O\-R\-D. \index{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-country@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-country}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-country@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-country}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-country\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea9042772fb6bb3c14a9544c5c887b9a55}
+}]`(\-S,\-W)` \-M\-E\-D country. \-Only if format is \-C\-I\-V\-I\-C. \index{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-elin@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-elin}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-elin@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-elin}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-elin\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea279aeb6751a88951746eb853110b6e9e}
+}]`(\-S,\-W)` \-M\-E\-D \-E\-L\-I\-N. \-Only if format is \-E\-L\-I\-N. \index{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-ca\-\_\-elements@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-ca\-\_\-elements}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-ca\-\_\-elements@{lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-ca\-\_\-elements}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-location\-\_\-ca\-\_\-elements\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea24f059971614e764fc29e359fe7002a8}
+}]`(\-A\-L,\-W\-C)` \-M\-E\-D civic address elements. \-Only if format is \-C\-I\-V\-I\-C \index{lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-type@{lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-type}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-type@{lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-type}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-type\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea82594529a2d494251aa03a1b7bae9dc7}
+}]`(\-I\-S,\-W)` \-M\-E\-D civic address type. \index{lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-value@{lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-value}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-value@{lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-value}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-value\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaefda724091aaa90837842937109ee811}
+}]`(\-S,\-W)` \-M\-E\-D civic address value. \index{lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-power@{lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-power}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-power@{lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-power}}\item[{\em 
+lldpctl\-\_\-k\-\_\-port\-\_\-med\-\_\-power\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeae365b4b16bdb8203cede82b4d0718400}
+}]`(\-A,\-W\-O)` \-L\-L\-D\-P-\/\-M\-E\-D power related stuff. \index{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-type@{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-type}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-type@{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-type}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-type\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea88b35c5303e742349404314dd38a5082}
+}]`(\-I\-S,\-W)` \-L\-L\-D\-P \-M\-E\-D power device type. \-See `\-L\-L\-D\-P\-\_\-\-M\-E\-D\-\_\-\-P\-O\-W\-\_\-\-T\-Y\-P\-E\-\_\-$\ast$` \index{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-source@{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-source}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-source@{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-source}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-source\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea4f507ba04936a8fc9e48ecb7fa72eee0}
+}]`(\-I\-S,\-W)` \-L\-L\-D\-P \-M\-E\-D power source. \-See `\-L\-L\-D\-P\-\_\-\-M\-E\-D\-\_\-\-P\-O\-W\-\_\-\-S\-O\-U\-R\-C\-E\-\_\-$\ast$` \index{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-priority@{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-priority}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-priority@{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-priority}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-priority\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeab5009ca7adf13471f0625087bbb9a016}
+}]`(\-I\-S,\-W)` \-L\-L\-D\-P \-M\-E\-D power priority. \-See `\-L\-L\-D\-P\-\_\-\-M\-E\-D\-\_\-\-P\-O\-W\-\_\-\-P\-R\-I\-O\-\_\-$\ast$` \index{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-val@{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-val}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-val@{lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-val}}\item[{\em 
+lldpctl\-\_\-k\-\_\-med\-\_\-power\-\_\-val\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeab7d876497967bbf5a19c4c4c7d28a02b}
+}]`(\-I,\-W)` \-L\-L\-D\-P \-M\-E\-D power value \index{lldpctl\-\_\-k\-\_\-mgmt\-\_\-ip@{lldpctl\-\_\-k\-\_\-mgmt\-\_\-ip}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-mgmt\-\_\-ip@{lldpctl\-\_\-k\-\_\-mgmt\-\_\-ip}}\item[{\em 
+lldpctl\-\_\-k\-\_\-mgmt\-\_\-ip\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea8b97337047fdbe1144490b5e469d83ee}
+}]`(\-S)` \-I\-P address \index{lldpctl\-\_\-k\-\_\-tx\-\_\-cnt@{lldpctl\-\_\-k\-\_\-tx\-\_\-cnt}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-tx\-\_\-cnt@{lldpctl\-\_\-k\-\_\-tx\-\_\-cnt}}\item[{\em 
+lldpctl\-\_\-k\-\_\-tx\-\_\-cnt\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea93ac2c1d8e27c09b5fea8bb7e5e374a3}
+}]`(\-I)` tx cnt. \-Only works for a local port. \index{lldpctl\-\_\-k\-\_\-rx\-\_\-cnt@{lldpctl\-\_\-k\-\_\-rx\-\_\-cnt}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-rx\-\_\-cnt@{lldpctl\-\_\-k\-\_\-rx\-\_\-cnt}}\item[{\em 
+lldpctl\-\_\-k\-\_\-rx\-\_\-cnt\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaec20b5438a2599f6c974be0d6759461b}
+}]`(\-I)` rx cnt. \-Only works for a local port. \index{lldpctl\-\_\-k\-\_\-rx\-\_\-discarded\-\_\-cnt@{lldpctl\-\_\-k\-\_\-rx\-\_\-discarded\-\_\-cnt}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-rx\-\_\-discarded\-\_\-cnt@{lldpctl\-\_\-k\-\_\-rx\-\_\-discarded\-\_\-cnt}}\item[{\em 
+lldpctl\-\_\-k\-\_\-rx\-\_\-discarded\-\_\-cnt\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeafb23174c5f6ca4d77d76e8bc81d39cc4}
+}]`(\-I)` discarded cnt. \-Only works for a local port. \index{lldpctl\-\_\-k\-\_\-rx\-\_\-unrecognized\-\_\-cnt@{lldpctl\-\_\-k\-\_\-rx\-\_\-unrecognized\-\_\-cnt}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-rx\-\_\-unrecognized\-\_\-cnt@{lldpctl\-\_\-k\-\_\-rx\-\_\-unrecognized\-\_\-cnt}}\item[{\em 
+lldpctl\-\_\-k\-\_\-rx\-\_\-unrecognized\-\_\-cnt\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea86b9b0570e6fc497d83083656998c8cb}
+}]`(\-I)` unrecognized cnt. \-Only works for a local port. \index{lldpctl\-\_\-k\-\_\-ageout\-\_\-cnt@{lldpctl\-\_\-k\-\_\-ageout\-\_\-cnt}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-ageout\-\_\-cnt@{lldpctl\-\_\-k\-\_\-ageout\-\_\-cnt}}\item[{\em 
+lldpctl\-\_\-k\-\_\-ageout\-\_\-cnt\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea8af6061ccee1096acdd9889d46c54a7f}
+}]`(\-I)` ageout cnt. \-Only works for a local port. \index{lldpctl\-\_\-k\-\_\-insert\-\_\-cnt@{lldpctl\-\_\-k\-\_\-insert\-\_\-cnt}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-insert\-\_\-cnt@{lldpctl\-\_\-k\-\_\-insert\-\_\-cnt}}\item[{\em 
+lldpctl\-\_\-k\-\_\-insert\-\_\-cnt\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea7d8cd6a8867a8bcce36f1c3bdbc10249}
+}]`(\-I)` insert cnt. \-Only works for a local port. \index{lldpctl\-\_\-k\-\_\-delete\-\_\-cnt@{lldpctl\-\_\-k\-\_\-delete\-\_\-cnt}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-delete\-\_\-cnt@{lldpctl\-\_\-k\-\_\-delete\-\_\-cnt}}\item[{\em 
+lldpctl\-\_\-k\-\_\-delete\-\_\-cnt\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea91232688b321c7e85776543be979e30a}
+}]`(\-I)` delete cnt. \-Only works for a local port. \index{lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-hold@{lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-hold}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-hold@{lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-hold}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-tx\-\_\-hold\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaf2caef3faaf7b8e880ce9903a51c4d4a}
+}]`(\-I,\-W\-O)` \-Transmit hold interval. \index{lldpctl\-\_\-k\-\_\-config\-\_\-bond\-\_\-slave\-\_\-src\-\_\-mac\-\_\-type@{lldpctl\-\_\-k\-\_\-config\-\_\-bond\-\_\-slave\-\_\-src\-\_\-mac\-\_\-type}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-bond\-\_\-slave\-\_\-src\-\_\-mac\-\_\-type@{lldpctl\-\_\-k\-\_\-config\-\_\-bond\-\_\-slave\-\_\-src\-\_\-mac\-\_\-type}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-bond\-\_\-slave\-\_\-src\-\_\-mac\-\_\-type\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedea2c57123e19ccb8b203312a781df95472}
+}]`(\-I,\-W\-O)` bond slave src mac type. \index{lldpctl\-\_\-k\-\_\-config\-\_\-lldp\-\_\-portid\-\_\-type@{lldpctl\-\_\-k\-\_\-config\-\_\-lldp\-\_\-portid\-\_\-type}!\-Extracting information\-: atoms@{\-Extracting information\-: atoms}}\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-k\-\_\-config\-\_\-lldp\-\_\-portid\-\_\-type@{lldpctl\-\_\-k\-\_\-config\-\_\-lldp\-\_\-portid\-\_\-type}}\item[{\em 
+lldpctl\-\_\-k\-\_\-config\-\_\-lldp\-\_\-portid\-\_\-type\label{group__lldpctl__atoms_gga9838ac53910b8aa7829e45117396eedeaaae00613144b6ebed261b24c1f361204}
+}]`(\-I,\-W\-O)` \-L\-L\-D\-P \-Port\-I\-D \-T\-L\-V \-Subtype \end{description}
+\end{Desc}
+
+
+
+\subsection{\-Function \-Documentation}
+\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-dec\-\_\-ref@{lldpctl\-\_\-atom\-\_\-dec\-\_\-ref}}
+\index{lldpctl\-\_\-atom\-\_\-dec\-\_\-ref@{lldpctl\-\_\-atom\-\_\-dec\-\_\-ref}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-dec\-\_\-ref}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf lldpctl\-\_\-atom\-\_\-dec\-\_\-ref} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga6c0c12575960ee6c5d624ebdd752ab80}
+\-Decrement reference count for an atom.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-Atom we want to decrease reference count. \-Can be {\ttfamily \-N\-U\-L\-L}. \-In this case, nothing happens.\\
+\hline
+\end{DoxyParams}
+\-When the reference count becomes 0, the atom is freed. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-get@{lldpctl\-\_\-atom\-\_\-get}}
+\index{lldpctl\-\_\-atom\-\_\-get@{lldpctl\-\_\-atom\-\_\-get}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-get} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-key\-\_\-t}}]{key}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga6e0a236d507b07293ca65eb8d229c0c4}
+\-Retrieve a bit of information as an atom.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want to query. \\
+\hline
+{\em key} & \-The information we want from the atom. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The atom representing the requested information or {\ttfamily \-N\-U\-L\-L} if the information is not available.
+\end{DoxyReturn}
+\-Not every value of {\ttfamily info} will be available as an atom. \-See the documentation of {\ttfamily lldpctl\-\_\-key\-\_\-t} for values accepting to be extracted as an atom. \-Usually, this is only iterable values or values representing a complex object.
+
+\-The provided atom is not a \-\_\-borrowed\-\_\- reference. \-You need to decrement the reference count when you don't need it anymore.
+
+\-As a convenience, this function will return {\ttfamily \-N\-U\-L\-L} if the first parameter is {\ttfamily \-N\-U\-L\-L} and no error will be raised. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-get\-\_\-buffer@{lldpctl\-\_\-atom\-\_\-get\-\_\-buffer}}
+\index{lldpctl\-\_\-atom\-\_\-get\-\_\-buffer@{lldpctl\-\_\-atom\-\_\-get\-\_\-buffer}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-get\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}const uint8\-\_\-t$\ast$ {\bf lldpctl\-\_\-atom\-\_\-get\-\_\-buffer} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-key\-\_\-t}}]{key, }
+\item[{size\-\_\-t $\ast$}]{length}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga42008b960c35ec941f888ec090f4c086}
+\-Retrieve a bit of information as a buffer.
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+ & {\em atom} & \-The atom we want to query. \\
+\hline
+ & {\em key} & \-The information we want from the atom. \\
+\hline
+\mbox{\tt out}  & {\em length} & \-The size of the returned buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The requested buffer or {\ttfamily \-N\-U\-L\-L} if the information is not available.
+\end{DoxyReturn}
+\-Not every value of {\ttfamily info} will be available as a buffer. \-See the documentation of {\ttfamily lldpctl\-\_\-key\-\_\-t} for values accepting to be extracted as a string. \-Usually, only piece of information stored as buffer are available in this form.
+
+\-As a convenience, this function will return {\ttfamily \-N\-U\-L\-L} if the first parameter is {\ttfamily \-N\-U\-L\-L} and no error will be raised. \-If this function returns {\ttfamily \-N\-U\-L\-L}, the third parameter is set to 0.
+
+\-The provided buffer may live inside the atom providing it. \-If you need it longer, duplicate it. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-get\-\_\-connection@{lldpctl\-\_\-atom\-\_\-get\-\_\-connection}}
+\index{lldpctl\-\_\-atom\-\_\-get\-\_\-connection@{lldpctl\-\_\-atom\-\_\-get\-\_\-connection}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-get\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-conn\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-get\-\_\-connection} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga334affdf0d559a1850613567d98de490}
+\-Return the reference to connection with lldpd.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want reference from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The reference to the connection to lldpd.
+\end{DoxyReturn}
+\-Each atom contains an internal reference to the corresponding connection to lldpd. \-Use this function to get it. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-get\-\_\-int@{lldpctl\-\_\-atom\-\_\-get\-\_\-int}}
+\index{lldpctl\-\_\-atom\-\_\-get\-\_\-int@{lldpctl\-\_\-atom\-\_\-get\-\_\-int}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-get\-\_\-int}]{\setlength{\rightskip}{0pt plus 5cm}long int {\bf lldpctl\-\_\-atom\-\_\-get\-\_\-int} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-key\-\_\-t}}]{key}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_gaef010e71841ae2fa831b066265d5c06c}
+\-Retrieve a bit of information as an integer.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want to query. \\
+\hline
+{\em key} & \-The information we want from the atom. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The requested integer or -\/1 if the information is not available
+\end{DoxyReturn}
+\-Not every value of {\ttfamily info} will be available as an integer. \-See the documentation of {\ttfamily lldpctl\-\_\-key\-\_\-t} for values accepting to be extracted as a string. \-Usually, only piece of information stored as an integer are available in this form.
+
+\-Only {\ttfamily \doxyref{lldpctl\-\_\-last\-\_\-error()}{p.}{group__lldpctl__errors__logs_ga591c61c3e5c5dc5ab87ec238bece4571}} can tell if the returned value is an error or not. \-However, most values extracted from lldpd cannot be negative. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-get\-\_\-str@{lldpctl\-\_\-atom\-\_\-get\-\_\-str}}
+\index{lldpctl\-\_\-atom\-\_\-get\-\_\-str@{lldpctl\-\_\-atom\-\_\-get\-\_\-str}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-get\-\_\-str}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf lldpctl\-\_\-atom\-\_\-get\-\_\-str} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-key\-\_\-t}}]{key}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga986160896cdfc930e4e5cf99e0fafc13}
+\-Retrieve a bit of information as a null-\/terminated string.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want to query. \\
+\hline
+{\em key} & \-The information we want from the atom. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The requested string or {\ttfamily \-N\-U\-L\-L} if the information is not available.
+\end{DoxyReturn}
+\-Not every value of {\ttfamily info} will be available as a string. \-See the documentation of {\ttfamily lldpctl\-\_\-key\-\_\-t} for values accepting to be extracted as a string. \-Usually, only piece of information stored as string are available in this form but sometimes, you can get a nice formatted string instead of an integer with this function.
+
+\-As a convenience, this function will return {\ttfamily \-N\-U\-L\-L} if the first parameter is {\ttfamily \-N\-U\-L\-L} and no error will be raised.
+
+\-The provided string may live inside the atom providing it. \-If you need it longer, duplicate it. 
+
+\-Here is the call graph for this function\-:
+
+
+\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-inc\-\_\-ref@{lldpctl\-\_\-atom\-\_\-inc\-\_\-ref}}
+\index{lldpctl\-\_\-atom\-\_\-inc\-\_\-ref@{lldpctl\-\_\-atom\-\_\-inc\-\_\-ref}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-inc\-\_\-ref}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf lldpctl\-\_\-atom\-\_\-inc\-\_\-ref} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga605603227d905b134f8a23febc1a59b0}
+\-Increment reference count for an atom.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-Atom we which to increase reference count. \\
+\hline
+\end{DoxyParams}
+\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-set@{lldpctl\-\_\-atom\-\_\-set}}
+\index{lldpctl\-\_\-atom\-\_\-set@{lldpctl\-\_\-atom\-\_\-set}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-set} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-key\-\_\-t}}]{key, }
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga1552a4cadffaa6cae6e88b67520e33ff}
+\-Set a bit of information with an atom.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want to write to. \\
+\hline
+{\em key} & \-The key information we want to write. \\
+\hline
+{\em value} & \-The value of the information we want to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The updated atom with the appropriate information.
+\end{DoxyReturn}
+\-This function will return {\ttfamily \-N\-U\-L\-L} in case of error. \-If the last error is {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}, the write should be retried later with the exact same parameters. \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E is raised when the provided atom is not correct. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-set\-\_\-buffer@{lldpctl\-\_\-atom\-\_\-set\-\_\-buffer}}
+\index{lldpctl\-\_\-atom\-\_\-set\-\_\-buffer@{lldpctl\-\_\-atom\-\_\-set\-\_\-buffer}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-set\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-set\-\_\-buffer} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-key\-\_\-t}}]{key, }
+\item[{const uint8\-\_\-t $\ast$}]{value, }
+\item[{size\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_gaed63a7ae0ef4de4683f3441bc249b737}
+\-Set a bit of information using a buffer
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want to write to. \\
+\hline
+{\em key} & \-The key information we want to write. \\
+\hline
+{\em value} & \-The value of the information we want to write. \\
+\hline
+{\em length} & \-The length of the provided buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The updated atom with the appropriate information.
+\end{DoxyReturn}
+\-This function will return {\ttfamily \-N\-U\-L\-L} in case of error. \-If the last error is {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}, the write should be retried later with the exact same parameters. \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E is raised when the provided atom is not correct. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-set\-\_\-int@{lldpctl\-\_\-atom\-\_\-set\-\_\-int}}
+\index{lldpctl\-\_\-atom\-\_\-set\-\_\-int@{lldpctl\-\_\-atom\-\_\-set\-\_\-int}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-set\-\_\-int}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-set\-\_\-int} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-key\-\_\-t}}]{key, }
+\item[{long int}]{value}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga9efc1cc574b013af68b3ae1e0c4bfff6}
+\-Set a bit of information using an integer
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want to write to. \\
+\hline
+{\em key} & \-The key information we want to write. \\
+\hline
+{\em value} & \-The value of the information we want to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The updated atom with the appropriate information.
+\end{DoxyReturn}
+\-This function will return {\ttfamily \-N\-U\-L\-L} in case of error. \-If the last error is {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}, the write should be retried later with the exact same parameters. \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E is raised when the provided atom is not correct. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-atom\-\_\-set\-\_\-str@{lldpctl\-\_\-atom\-\_\-set\-\_\-str}}
+\index{lldpctl\-\_\-atom\-\_\-set\-\_\-str@{lldpctl\-\_\-atom\-\_\-set\-\_\-str}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-atom\-\_\-set\-\_\-str}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-atom\-\_\-t}$\ast$ {\bf lldpctl\-\_\-atom\-\_\-set\-\_\-str} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-atom\-\_\-t} $\ast$}]{atom, }
+\item[{{\bf lldpctl\-\_\-key\-\_\-t}}]{key, }
+\item[{const char $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_gaeeae695b8353665ec02ce8793ea7c83e}
+\-Set a bit of information using a null-\/terminated string.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em atom} & \-The atom we want to write to. \\
+\hline
+{\em key} & \-The key information we want to write. \\
+\hline
+{\em value} & \-The value of the information we want to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The updated atom with the appropriate information.
+\end{DoxyReturn}
+\-This function will return {\ttfamily \-N\-U\-L\-L} in case of error. \-If the last error is {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}, the write should be retried later with the exact same parameters. \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-B\-A\-D\-\_\-\-V\-A\-L\-U\-E is raised when the provided atom is not correct. 
+
+\-Here is the call graph for this function\-:
+
+
+\index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-key\-\_\-get\-\_\-map@{lldpctl\-\_\-key\-\_\-get\-\_\-map}}
+\index{lldpctl\-\_\-key\-\_\-get\-\_\-map@{lldpctl\-\_\-key\-\_\-get\-\_\-map}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-key\-\_\-get\-\_\-map}]{\setlength{\rightskip}{0pt plus 5cm}{\bf lldpctl\-\_\-map\-\_\-t}$\ast$ {\bf lldpctl\-\_\-key\-\_\-get\-\_\-map} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-key\-\_\-t}}]{key}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_gae2f4c960c54b06432de39c19acf58cc7}
+\-Get a map related to a key.
+
+\-Many keys expect to be written with a discrete number of values. \-Take for example {\ttfamily lldpctl\-\_\-k\-\_\-med\-\_\-civicaddress\-\_\-type}, it can take any integer between 1 and 128. \-However, each integer can be named. \-It can be useful for an application to get a translation between the integer that can be provided and a more human-\/readable name. \-This function allows to retrieve the corresponding map.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em key} & \-The piece of information we want a map from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The map or {\ttfamily \-N\-U\-L\-L} if no map is available.
+\end{DoxyReturn}
+\-The returned map has its last element set to 0. \-It is also expected that the string value can be used with a set operation. \-It will be translated to the integer value. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-watch@{lldpctl\-\_\-watch}}
+\index{lldpctl\-\_\-watch@{lldpctl\-\_\-watch}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-watch}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf lldpctl\-\_\-watch} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga29fe66f0d500bf598ed09a69a0e83891}
+\-Wait for the next change.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Connection with lldpd. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 on success or a negative integer in case of error.
+\end{DoxyReturn}
+\-This function will return once a change has been detected. \-It is only useful as a main loop when using the builtin blocking \-I\-O mechanism. \index{\-Extracting information\-: atoms@{\-Extracting information\-: atoms}!lldpctl\-\_\-watch\-\_\-callback@{lldpctl\-\_\-watch\-\_\-callback}}
+\index{lldpctl\-\_\-watch\-\_\-callback@{lldpctl\-\_\-watch\-\_\-callback}!Extracting information: atoms@{\-Extracting information\-: atoms}}
+\subsubsection[{lldpctl\-\_\-watch\-\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf lldpctl\-\_\-watch\-\_\-callback} (
+\begin{DoxyParamCaption}
+\item[{{\bf lldpctl\-\_\-conn\-\_\-t} $\ast$}]{conn, }
+\item[{{\bf lldpctl\-\_\-change\-\_\-callback}}]{cb, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\label{group__lldpctl__atoms_ga06f1b202d3368d48fe6bf4425135988b}
+\-Register a callback to be called on changes.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em conn} & \-Connection with lldpd. \\
+\hline
+{\em cb} & \-Replace the current callback with the provided one. \\
+\hline
+{\em data} & \-Data that will be passed to the callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+0 in case of success or -\/1 in case of errors.
+\end{DoxyReturn}
+\-This function will register the necessity to push neighbor changes to lldpd and therefore will issue \-I\-O operations. \-The error code could then be {\ttfamily \-L\-L\-D\-P\-C\-T\-L\-\_\-\-E\-R\-R\-\_\-\-W\-O\-U\-L\-D\-B\-L\-O\-C\-K}. 

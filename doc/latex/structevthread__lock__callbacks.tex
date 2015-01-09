@@ -1,0 +1,52 @@
+\section{evthread\-\_\-lock\-\_\-callbacks \-Struct \-Reference}
+\label{structevthread__lock__callbacks}\index{evthread\-\_\-lock\-\_\-callbacks@{evthread\-\_\-lock\-\_\-callbacks}}
+
+
+{\ttfamily \#include $<$thread.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf lock\-\_\-api\-\_\-version}
+\item 
+unsigned {\bf supported\-\_\-locktypes}
+\item 
+void $\ast$($\ast$ {\bf alloc} )(unsigned locktype)
+\item 
+void($\ast$ {\bf free} )(void $\ast${\bf lock}, unsigned locktype)
+\item 
+int($\ast$ {\bf lock} )(unsigned mode, void $\ast${\bf lock})
+\item 
+int($\ast$ {\bf unlock} )(unsigned mode, void $\ast${\bf lock})
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This structure describes the interface a threading library uses for locking. \-It's used to tell \doxyref{evthread\-\_\-set\-\_\-lock\-\_\-callbacks()}{p.}{thread_8h_a89fd5de575d5f0fba24d0e8e0a25c641} how to use locking on this platform. 
+
+\subsection{\-Field \-Documentation}
+\index{evthread\-\_\-lock\-\_\-callbacks@{evthread\-\_\-lock\-\_\-callbacks}!alloc@{alloc}}
+\index{alloc@{alloc}!evthread_lock_callbacks@{evthread\-\_\-lock\-\_\-callbacks}}
+\subsubsection[{alloc}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$($\ast$ {\bf alloc})(unsigned locktype)}\label{structevthread__lock__callbacks_a031f06bd21754ba4b6979b8c2b7f4733}
+\-Function to allocate and initialize new lock of type 'locktype'. \-Returns \-N\-U\-L\-L on failure. \index{evthread\-\_\-lock\-\_\-callbacks@{evthread\-\_\-lock\-\_\-callbacks}!free@{free}}
+\index{free@{free}!evthread_lock_callbacks@{evthread\-\_\-lock\-\_\-callbacks}}
+\subsubsection[{free}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ {\bf free})(void $\ast${\bf lock}, unsigned locktype)}\label{structevthread__lock__callbacks_a0317f5fdd5f4557323f2488ec56b3a8e}
+\-Funtion to release all storage held in 'lock', which was created with type 'locktype'. \index{evthread\-\_\-lock\-\_\-callbacks@{evthread\-\_\-lock\-\_\-callbacks}!lock@{lock}}
+\index{lock@{lock}!evthread_lock_callbacks@{evthread\-\_\-lock\-\_\-callbacks}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf lock})(unsigned mode, void $\ast${\bf lock})}\label{structevthread__lock__callbacks_a6312704511e49e22cf02167726275ce6}
+\-Acquire an already-\/allocated lock at 'lock' with mode 'mode'. \-Returns 0 on success, and nonzero on failure. \index{evthread\-\_\-lock\-\_\-callbacks@{evthread\-\_\-lock\-\_\-callbacks}!lock\-\_\-api\-\_\-version@{lock\-\_\-api\-\_\-version}}
+\index{lock\-\_\-api\-\_\-version@{lock\-\_\-api\-\_\-version}!evthread_lock_callbacks@{evthread\-\_\-lock\-\_\-callbacks}}
+\subsubsection[{lock\-\_\-api\-\_\-version}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf lock\-\_\-api\-\_\-version}}\label{structevthread__lock__callbacks_a3ab76d981e08c06fd0125546b68900da}
+\-The current version of the locking \-A\-P\-I. \-Set this to \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-\_\-\-A\-P\-I\-\_\-\-V\-E\-R\-S\-I\-O\-N \index{evthread\-\_\-lock\-\_\-callbacks@{evthread\-\_\-lock\-\_\-callbacks}!supported\-\_\-locktypes@{supported\-\_\-locktypes}}
+\index{supported\-\_\-locktypes@{supported\-\_\-locktypes}!evthread_lock_callbacks@{evthread\-\_\-lock\-\_\-callbacks}}
+\subsubsection[{supported\-\_\-locktypes}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf supported\-\_\-locktypes}}\label{structevthread__lock__callbacks_acf9e6ae8999ade13e01e00bb48ed4e8f}
+\-Which kinds of locks does this version of the locking \-A\-P\-I support? \-A bitfield of \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-C\-U\-R\-S\-I\-V\-E and \-E\-V\-T\-H\-R\-E\-A\-D\-\_\-\-L\-O\-C\-K\-T\-Y\-P\-E\-\_\-\-R\-E\-A\-D\-W\-R\-I\-T\-E.
+
+(\-Note that \-R\-E\-C\-U\-R\-S\-I\-V\-E locks are currently mandatory, and \-R\-E\-A\-D\-W\-R\-I\-T\-E locks are not currently used.) \index{evthread\-\_\-lock\-\_\-callbacks@{evthread\-\_\-lock\-\_\-callbacks}!unlock@{unlock}}
+\index{unlock@{unlock}!evthread_lock_callbacks@{evthread\-\_\-lock\-\_\-callbacks}}
+\subsubsection[{unlock}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf unlock})(unsigned mode, void $\ast${\bf lock})}\label{structevthread__lock__callbacks_a8bc4e49feb2044ce07679aa5e21425e8}
+\-Release a lock at 'lock' using mode 'mode'. \-Returns 0 on success, and nonzero on failure. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/include/event2/{\bf thread.\-h}\end{DoxyCompactItemize}

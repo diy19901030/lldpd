@@ -1,0 +1,44 @@
+\section{ethtool\-\_\-eee \-Struct \-Reference}
+\label{structethtool__eee}\index{ethtool\-\_\-eee@{ethtool\-\_\-eee}}
+
+
+{\ttfamily \#include $<$ethtool.\-h$>$}
+
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-u32 {\bfseries cmd}\label{structethtool__eee_a66d231264d5aa36fd7d347e2c967769a}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries supported}\label{structethtool__eee_a6e0c59f26af213bfbbdc2fb63651f5c6}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries advertised}\label{structethtool__eee_a341e535185932e84dd8743b74acea73c}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries lp\-\_\-advertised}\label{structethtool__eee_a3d1f0916e4c07c5a61382a6ca77e8072}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries eee\-\_\-active}\label{structethtool__eee_a00be9a1261f9bf61e115bd535e70cc01}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries eee\-\_\-enabled}\label{structethtool__eee_a2cb2eb7c2a705f4b55622fe24a6a1e7e}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries tx\-\_\-lpi\-\_\-enabled}\label{structethtool__eee_a7fe9be7f494b845aa78575519b092207}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries tx\-\_\-lpi\-\_\-timer}\label{structethtool__eee_a64406dabdae1952c4f28b58016e29e1b}
+
+\item 
+\-\_\-\-\_\-u32 {\bfseries reserved} [2]\label{structethtool__eee_a8c6bf34164baa7a5d6553b1834ddea52}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+struct \doxyref{ethtool\-\_\-eee}{p.}{structethtool__eee} -\/ \-Energy \-Efficient \-Ethernet information \-: \-E\-T\-H\-T\-O\-O\-L\-\_\-\{\-G,\-S\}\-E\-E\-E \-: \-Mask of \-S\-U\-P\-P\-O\-R\-T\-E\-D\-\_\-$\ast$ flags for the speed/duplex combinations for which there is \-E\-E\-E support. \-: \-Mask of \-A\-D\-V\-E\-R\-T\-I\-S\-E\-D\-\_\-$\ast$ flags for the speed/duplex combinations advertised as eee capable. \-: \-Mask of \-A\-D\-V\-E\-R\-T\-I\-S\-E\-D\-\_\-$\ast$ flags for the speed/duplex combinations advertised by the link partner as eee capable. \-: \-Result of the eee auto negotiation. \-: \-E\-E\-E configured mode (enabled/disabled). \-: \-Whether the interface should assert its tx lpi, given that eee was negotiated. \-: \-Time in microseconds the interface delays prior to asserting its tx lpi (after reaching 'idle' state). \-Effective only when eee was negotiated and tx\-\_\-lpi\-\_\-enabled was set. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/include/linux/ethtool.\-h\end{DoxyCompactItemize}

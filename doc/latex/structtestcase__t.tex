@@ -1,0 +1,48 @@
+\section{testcase\-\_\-t \-Struct \-Reference}
+\label{structtestcase__t}\index{testcase\-\_\-t@{testcase\-\_\-t}}
+
+
+{\ttfamily \#include $<$tinytest.\-h$>$}
+
+
+
+\-Collaboration diagram for testcase\-\_\-t\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ {\bf name}
+\item 
+testcase\-\_\-fn {\bf fn}
+\item 
+unsigned long {\bf flags}
+\item 
+struct {\bf testcase\-\_\-setup\-\_\-t} $\ast$ {\bf setup}
+\item 
+void $\ast$ {\bf setup\-\_\-data}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A single test-\/case that you can run. 
+
+\subsection{\-Field \-Documentation}
+\index{testcase\-\_\-t@{testcase\-\_\-t}!flags@{flags}}
+\index{flags@{flags}!testcase_t@{testcase\-\_\-t}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf flags}}\label{structtestcase__t_a9e339c2784bd040b26a5112866700bff}
+\-Bitfield of \-T\-T\-\_\-$\ast$ flags. \index{testcase\-\_\-t@{testcase\-\_\-t}!fn@{fn}}
+\index{fn@{fn}!testcase_t@{testcase\-\_\-t}}
+\subsubsection[{fn}]{\setlength{\rightskip}{0pt plus 5cm}testcase\-\_\-fn {\bf fn}}\label{structtestcase__t_a23f9705b5a9d2b6967a7af3d7f419dd6}
+\-The function to run to implement this case. \index{testcase\-\_\-t@{testcase\-\_\-t}!name@{name}}
+\index{name@{name}!testcase_t@{testcase\-\_\-t}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf name}}\label{structtestcase__t_a8f8f80d37794cde9472343e4487ba3eb}
+\-An identifier for this case. \index{testcase\-\_\-t@{testcase\-\_\-t}!setup@{setup}}
+\index{setup@{setup}!testcase_t@{testcase\-\_\-t}}
+\subsubsection[{setup}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf testcase\-\_\-setup\-\_\-t}$\ast$ {\bf setup}}\label{structtestcase__t_a590006194548bb6cf9aa8b4f3a098d57}
+\-Optional setup/cleanup fns \index{testcase\-\_\-t@{testcase\-\_\-t}!setup\-\_\-data@{setup\-\_\-data}}
+\index{setup\-\_\-data@{setup\-\_\-data}!testcase_t@{testcase\-\_\-t}}
+\subsubsection[{setup\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf setup\-\_\-data}}\label{structtestcase__t_a8582fb63aecd1164735afff1366a6c3c}
+\-Extra data usable by setup function 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/test/tinytest.\-h\end{DoxyCompactItemize}

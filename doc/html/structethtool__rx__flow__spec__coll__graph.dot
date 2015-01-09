@@ -1,0 +1,18 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="ethtool_rx_flow_spec",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" h_ext\nm_ext" ,fontname="Helvetica"];
+  Node2 [label="ethtool_flow_ext",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structethtool__flow__ext.html"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" h_u\nm_u" ,fontname="Helvetica"];
+  Node3 [label="ethtool_flow_union",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unionethtool__flow__union.html"];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" esp_ip4_spec\nah_ip4_spec" ,fontname="Helvetica"];
+  Node4 [label="ethtool_ah_espip4_spec",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structethtool__ah__espip4__spec.html"];
+  Node5 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" tcp_ip4_spec\nudp_ip4_spec\nsctp_ip4_spec" ,fontname="Helvetica"];
+  Node5 [label="ethtool_tcpip4_spec",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structethtool__tcpip4__spec.html"];
+  Node6 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ether_spec" ,fontname="Helvetica"];
+  Node6 [label="ethhdr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structethhdr.html"];
+  Node7 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" usr_ip4_spec" ,fontname="Helvetica"];
+  Node7 [label="ethtool_usrip4_spec",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structethtool__usrip4__spec.html"];
+}

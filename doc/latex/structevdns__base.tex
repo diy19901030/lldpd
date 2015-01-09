@@ -1,0 +1,89 @@
+\section{evdns\-\_\-base \-Struct \-Reference}
+\label{structevdns__base}\index{evdns\-\_\-base@{evdns\-\_\-base}}
+
+
+\-Collaboration diagram for evdns\-\_\-base\-:
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf request} $\ast$$\ast$ {\bfseries req\-\_\-heads}\label{structevdns__base_a346219f57344018a7d4c3364cd47fd04}
+
+\item 
+struct {\bf request} $\ast$ {\bfseries req\-\_\-waiting\-\_\-head}\label{structevdns__base_acc93b195bd8704c1e13c8f2f7785ad0e}
+
+\item 
+struct {\bf nameserver} $\ast$ {\bfseries server\-\_\-head}\label{structevdns__base_abce33d9e0dba60766332c701af8c7a9f}
+
+\item 
+int {\bfseries n\-\_\-req\-\_\-heads}\label{structevdns__base_ac76cdaa1c35241e412a1c8d8d7661229}
+
+\item 
+struct {\bf event\-\_\-base} $\ast$ {\bfseries event\-\_\-base}\label{structevdns__base_ac1c1d71aa37cb71608f4f802bb85b200}
+
+\item 
+int {\bfseries global\-\_\-good\-\_\-nameservers}\label{structevdns__base_ad4dee3132b0efd37b89c8b27fe6f4596}
+
+\item 
+int {\bfseries global\-\_\-requests\-\_\-inflight}\label{structevdns__base_aac7a85997a48c47cb5055849b41edb67}
+
+\item 
+int {\bfseries global\-\_\-requests\-\_\-waiting}\label{structevdns__base_a7e4a52ab1b18f935d4d8e45b9414d37d}
+
+\item 
+int {\bfseries global\-\_\-max\-\_\-requests\-\_\-inflight}\label{structevdns__base_ac35209ad9d0ea4d0b6f04f236ad72d2a}
+
+\item 
+struct timeval {\bfseries global\-\_\-timeout}\label{structevdns__base_a27b245e2dc1df06773716dca8a3cc331}
+
+\item 
+int {\bfseries global\-\_\-max\-\_\-reissues}\label{structevdns__base_a7ec1fc4be6adc7f6bf5d0554c855813f}
+
+\item 
+int {\bfseries global\-\_\-max\-\_\-retransmits}\label{structevdns__base_a9e43a32f2b78a9661bf25ec377e81150}
+
+\item 
+int {\bfseries global\-\_\-max\-\_\-nameserver\-\_\-timeout}\label{structevdns__base_a63bc5f91b26f4dc33d9f7476a04342b3}
+
+\item 
+int {\bfseries global\-\_\-randomize\-\_\-case}\label{structevdns__base_ab03dcd0b6a96d1c9f463ffe073c04993}
+
+\item 
+struct timeval {\bfseries global\-\_\-nameserver\-\_\-probe\-\_\-initial\-\_\-timeout}\label{structevdns__base_a145de962a6eafb9ce56752af88eea05b}
+
+\item 
+struct {\bf sockaddr\-\_\-storage} {\bf global\-\_\-outgoing\-\_\-address}
+\item 
+ev\-\_\-socklen\-\_\-t {\bf global\-\_\-outgoing\-\_\-addrlen}
+\item 
+struct timeval {\bfseries global\-\_\-getaddrinfo\-\_\-allow\-\_\-skew}\label{structevdns__base_a41073cdb788ce23e25c711ad104d3c77}
+
+\item 
+int {\bfseries getaddrinfo\-\_\-ipv4\-\_\-timeouts}\label{structevdns__base_a6be911cb2ebcd7b46750fca85be9df6b}
+
+\item 
+int {\bfseries getaddrinfo\-\_\-ipv6\-\_\-timeouts}\label{structevdns__base_a71a08e742b90785d2043dcc0d6e1a98d}
+
+\item 
+int {\bfseries getaddrinfo\-\_\-ipv4\-\_\-answered}\label{structevdns__base_aecb262b62d5f8c7d7f7a2605ead26946}
+
+\item 
+int {\bfseries getaddrinfo\-\_\-ipv6\-\_\-answered}\label{structevdns__base_af0f0b518d1722937fd2fc2e25e872e49}
+
+\item 
+struct {\bf search\-\_\-state} $\ast$ {\bfseries global\-\_\-search\-\_\-state}\label{structevdns__base_a8a4347dfded727159ed7ee0ed98f6e3c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Field \-Documentation}
+\index{evdns\-\_\-base@{evdns\-\_\-base}!global\-\_\-outgoing\-\_\-address@{global\-\_\-outgoing\-\_\-address}}
+\index{global\-\_\-outgoing\-\_\-address@{global\-\_\-outgoing\-\_\-address}!evdns_base@{evdns\-\_\-base}}
+\subsubsection[{global\-\_\-outgoing\-\_\-address}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf sockaddr\-\_\-storage} {\bf global\-\_\-outgoing\-\_\-address}}\label{structevdns__base_a1d435110e3bac893c65293eabe67c191}
+\-Port to bind to for outgoing \-D\-N\-S packets. \index{evdns\-\_\-base@{evdns\-\_\-base}!global\-\_\-outgoing\-\_\-addrlen@{global\-\_\-outgoing\-\_\-addrlen}}
+\index{global\-\_\-outgoing\-\_\-addrlen@{global\-\_\-outgoing\-\_\-addrlen}!evdns_base@{evdns\-\_\-base}}
+\subsubsection[{global\-\_\-outgoing\-\_\-addrlen}]{\setlength{\rightskip}{0pt plus 5cm}ev\-\_\-socklen\-\_\-t {\bf global\-\_\-outgoing\-\_\-addrlen}}\label{structevdns__base_a905537424a35b71fc4d04c1db8871e78}
+ev\-\_\-socklen\-\_\-t for global\-\_\-outgoing\-\_\-address. 0 if it isn't set. 
+
+\-The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/evan/lldpd-\/0.\-7.\-11/libevent/evdns.\-c\end{DoxyCompactItemize}
