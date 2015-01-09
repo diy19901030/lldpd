@@ -38,7 +38,7 @@
 #include <netinet/if_ether.h>
 #include <pwd.h>
 #include <grp.h>
-
+ //edit by chenyanming
 static void		 usage(void);
 
 static struct protocol protos[] =

@@ -153,20 +153,20 @@ am__installdirs = "$(DESTDIR)$(launchddaemonsdir)"
 DATA = $(launchddaemons_DATA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/evan/workspace/lldpd/missing aclocal-1.14
+ACLOCAL = ${SHELL} /home/evan/workspace/lldp/missing aclocal-1.14
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
-AUTOCONF = ${SHELL} /home/evan/workspace/lldpd/missing autoconf
-AUTOHEADER = ${SHELL} /home/evan/workspace/lldpd/missing autoheader
-AUTOMAKE = ${SHELL} /home/evan/workspace/lldpd/missing automake-1.14
+AUTOCONF = ${SHELL} /home/evan/workspace/lldp/missing autoconf
+AUTOHEADER = ${SHELL} /home/evan/workspace/lldp/missing autoheader
+AUTOMAKE = ${SHELL} /home/evan/workspace/lldp/missing automake-1.14
 AWK = mawk
 CC = gcc -std=gnu99
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2 -fdiagnostics-show-option -pipe -Wall -W -Wextra -Wformat -Wformat-security -Wfatal-errors -Wcast-align -Winline -fstack-protector -fno-omit-frame-pointer -D_FORTIFY_SOURCE=2 -Wno-unused-parameter -Wno-missing-field-initializers -Wno-sign-compare -D_GNU_SOURCE
 CHECK_CFLAGS =  
 CHECK_LIBS = -lcheck_pic  
-CONFIGURE_ARGS = 
+CONFIGURE_ARGS =  '--disable-libevent-regress' '--disable-thread-support' '--disable-openssl' '--disable-malloc-replacement' '--disable-debug-mode' '--enable-function-sections' '--disable-shared' '--enable-static'
 CPP = gcc -E
 CPPFLAGS = 
 CXX = g++
@@ -235,7 +235,7 @@ LLDPD_PID_FILE = /usr/local/var/run/lldpd.pid
 LN_S = ln -s
 LTLIBOBJS =  ${LIBOBJDIR}setproctitle$U.lo ${LIBOBJDIR}strlcpy$U.lo ${LIBOBJDIR}fgetln$U.lo
 MAINT = #
-MAKEINFO = ${SHELL} /home/evan/workspace/lldpd/missing makeinfo
+MAKEINFO = ${SHELL} /home/evan/workspace/lldp/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NETSNMP_CFLAGS = 
@@ -275,10 +275,10 @@ VERSION = 0.7.11
 XML2_CFLAGS = 
 XML2_CONFIG = 
 XML2_LIBS = 
-abs_builddir = /home/evan/workspace/lldpd/build/osx
-abs_srcdir = /home/evan/workspace/lldpd/build/../osx
-abs_top_builddir = /home/evan/workspace/lldpd/build
-abs_top_srcdir = /home/evan/workspace/lldpd/build/..
+abs_builddir = /home/evan/workspace/lldp/build/osx
+abs_srcdir = /home/evan/workspace/lldp/build/../osx
+abs_top_builddir = /home/evan/workspace/lldp/build
+abs_top_srcdir = /home/evan/workspace/lldp/build/..
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = 
@@ -308,7 +308,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/evan/workspace/lldpd/install-sh
+install_sh = ${SHELL} /home/evan/workspace/lldp/install-sh
 launchddaemonsdir = /Library/LaunchDaemons
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
@@ -618,7 +618,7 @@ uninstall-am: uninstall-launchddaemonsDATA
 #$(ARCHS:%=stamp-%): stamp-%: im.bernat.lldpd.plist
 #	[ -d $(pkg_curarch) ] || mkdir -p $(pkg_curarch)
 #	(cd $(pkg_curarch) && \
-#		$(abs_top_srcdir)/configure  \
+#		$(abs_top_srcdir)/configure  '--disable-libevent-regress' '--disable-thread-support' '--disable-openssl' '--disable-malloc-replacement' '--disable-debug-mode' '--enable-function-sections' '--disable-shared' '--enable-static' \
 #			CC="gcc -std=gnu99 -arch $(pkg_curarch)" \
 #			CPP="gcc -E")
 #	(cd $(pkg_curarch) && \
