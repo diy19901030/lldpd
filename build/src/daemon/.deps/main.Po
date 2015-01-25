@@ -39,15 +39,16 @@ main.o: ../../../src/daemon/main.c ../../../src/daemon/lldpd.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/socket2.h \
  /usr/include/x86_64-linux-gnu/bits/in.h \
- /usr/include/x86_64-linux-gnu/sys/un.h ../../../src/daemon/lldp-tlv.h \
- ../../../src/daemon/cdp.h ../../../src/daemon/sonmp.h \
- ../../../src/daemon/edp.h ../../../src/daemon/../compat/compat.h \
+ /usr/include/x86_64-linux-gnu/sys/un.h /usr/include/jansson.h \
  /usr/include/stdio.h /usr/include/libio.h /usr/include/_G_config.h \
  /usr/include/wchar.h /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
  /usr/include/x86_64-linux-gnu/bits/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
+ /usr/include/jansson_config.h ../../../src/daemon/lldp-tlv.h \
+ ../../../src/daemon/cdp.h ../../../src/daemon/sonmp.h \
+ ../../../src/daemon/edp.h ../../../src/daemon/../compat/compat.h \
  ../../../src/daemon/../marshal.h ../../../src/daemon/../log.h \
  ../../../src/daemon/../ctl.h ../../../src/daemon/../marshal.h \
  ../../../src/daemon/../lldpd-structs.h ../../../include/linux/if.h \
@@ -164,15 +165,7 @@ main.o: ../../../src/daemon/main.c ../../../src/daemon/lldpd.h \
 
 /usr/include/x86_64-linux-gnu/sys/un.h:
 
-../../../src/daemon/lldp-tlv.h:
-
-../../../src/daemon/cdp.h:
-
-../../../src/daemon/sonmp.h:
-
-../../../src/daemon/edp.h:
-
-../../../src/daemon/../compat/compat.h:
+/usr/include/jansson.h:
 
 /usr/include/stdio.h:
 
@@ -191,6 +184,18 @@ main.o: ../../../src/daemon/main.c ../../../src/daemon/lldpd.h \
 /usr/include/x86_64-linux-gnu/bits/stdio.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/include/jansson_config.h:
+
+../../../src/daemon/lldp-tlv.h:
+
+../../../src/daemon/cdp.h:
+
+../../../src/daemon/sonmp.h:
+
+../../../src/daemon/edp.h:
+
+../../../src/daemon/../compat/compat.h:
 
 ../../../src/daemon/../marshal.h:
 

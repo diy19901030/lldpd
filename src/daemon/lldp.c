@@ -156,7 +156,7 @@ lldp_send(struct lldpd *global,
 				  POKE_START_LLDP_TLV(LLDP_TLV_VNMAC) &&
 				  POKE_UINT32(vnmac->v_ID)&&
 				  /* Size of the address, including its type */
-				  POKE_BYTES(&vnmac->v_lladdr, ETHER_ADDR_LEN)&&
+				  POKE_BYTES(vnmac->v_mac, ETHER_ADDR_LEN*vnmac->v_macsize)&&
 				  POKE_END_LLDP_TLV))
 				goto toobig;
 		}
@@ -521,7 +521,10 @@ lldp_decode(struct lldpd *cfg, char *frame, int s,
 		log_warn("lldp", "failed to allocate remote chassis");
 		return -1;
 	}
+
 	TAILQ_INIT(&chassis->c_mgmt);
+//	TAILQ_INIT(&chassis->c_vnmac);
+
 	if ((port = calloc(1, sizeof(struct lldpd_port))) == NULL) {
 		log_warn("lldp", "failed to allocate remote port");
 		free(chassis);
@@ -636,6 +639,9 @@ lldp_decode(struct lldpd *cfg, char *frame, int s,
 			chassis->c_cap_available = PEEK_UINT16;
 			chassis->c_cap_enabled = PEEK_UINT16;
 			break;
+		//case LLDP_TLV_VNMAC:
+		//	CHECK_TLV_SIZE(4, "VN-MAC Info");
+
 		case LLDP_TLV_MGMT_ADDR:
 			CHECK_TLV_SIZE(1, "Management address");
 			addr_str_length = PEEK_UINT8;

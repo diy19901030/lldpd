@@ -36,6 +36,8 @@
 #include <netinet/if_ether.h>
 #include <netinet/in.h>
 #include <sys/un.h>
+//#include <retrive_json.h>
+#include <jansson.h>
 
 #if HAVE_VFORK_H
 # include <vfork.h>
@@ -60,6 +62,7 @@
 #include "../log.h"
 #include "../ctl.h"
 #include "../lldpd-structs.h"
+//#include "retrive_json.h"
 
 /* We don't want to import event2/event.h. We only need those as
    opaque structs. */
@@ -88,14 +91,14 @@ struct event_base;
 
 
 /*convert a string,which is 18, to a mac address data type.*/
-#define COPY_STR2MAC(mac,str) \
-	int i; \
-	do { \
-		for(i=0;i < ETHER_ADDR_LEN; i++){ \
-			mac[i] = (a2x(str[i*3])<< 4) + a2x(str[i*3+1]); \
-		}\
-	}while(0)
-
+//#define COPY_STR2MAC(mac,str) \
+//	int i; \
+//	do { \
+//		for(i=0;i < ETHER_ADDR_LEN; i++){ \
+//			mac[i] = (a2x(str[i*3])<< 4) + a2x(str[i*3+1]); \
+//		}\
+//	}while(0)
+//
 
 struct protocol {
 	int		 mode;		/* > 0 mode identifier (unique per protocol) */
@@ -137,19 +140,56 @@ struct lldpd {
 	struct event		*g_iface_timer_event; /* Triggered one second after last interface change */
 
 	char			*g_lsb_release;
+	char            *jsonfile;
 
 #define LOCAL_CHASSIS(cfg) ((struct lldpd_chassis *)(TAILQ_FIRST(&cfg->g_chassis)))
 	TAILQ_HEAD(, lldpd_chassis) g_chassis;
 	TAILQ_HEAD(, lldpd_hardware) g_hardware;
 };
-
+/************************retrive_json.c*************/
+///*
+// * the number of the key
+// */
+//#define COUNTMAX 256
+///*
+// * the largest length of the key
+// */
+//#define LENMAX 256
+//#define MAXNUM 48
+//#define LEN sizeof(struct policymsg)
+//#define LEN1 sizeof(struct policyarray)
+////#define NULL ((void*)0)
+//#define NULL 0
+//struct policymsg
+//{
+//	int size ;
+//	char keyword[LENMAX];
+//	char keycount[MAXNUM][LENMAX];
+//	struct policymsg *next;
+//	struct policyarray *parray;
+//}msg,*pmsg;
+//
+//struct policyarray
+//{
+//	int size ;
+//	char keyword[LENMAX];
+//	char keycount[MAXNUM][LENMAX];
+//	struct policyarray *next;
+//};
 /* lldpd.c */
+//void print_array(struct policyarray *head);
+//int my_json_type(json_t *value);
+//char * get_array_json(json_t * object,struct policyarray *msg);
+//struct policyarray *  get_child_json(json_t * object);
+//struct policymsg * get_policy_json(char *jsonfile);
+//int print(struct policymsg *head);
+
 struct lldpd_hardware	*lldpd_get_hardware(struct lldpd *,
     char *, int, struct lldpd_ops *);
 struct lldpd_hardware	*lldpd_alloc_hardware(struct lldpd *, char *, int);
 void	 lldpd_hardware_cleanup(struct lldpd*, struct lldpd_hardware *);
 struct lldpd_mgmt *lldpd_alloc_mgmt(int family, void *addr, size_t addrsize, u_int32_t iface);
-struct lldpd_vnmac *lldpd_alloc_vnmac(struct lldpd*);
+struct lldpd_vnmac *lldpd_alloc_vnmac(uint32_t vnID,char *macptr,size_t macsize);
 void	 lldpd_recv(struct lldpd *, struct lldpd_hardware *, int);
 void	 lldpd_send(struct lldpd_hardware *);
 void	 lldpd_loop(struct lldpd *);
@@ -426,5 +466,43 @@ int ifbpf_phys_init(struct lldpd *, struct lldpd_hardware *);
 
 /* pattern.c */
 int pattern_match(char *, char *, int);
+/*retrive_json.c*/
+
+/*
+ * the number of the key
+ */
+#define COUNTMAX 256
+/*
+ * the largest length of the key
+ */
+#define LENMAX 256
+#define MAXNUM 48
+#define LEN sizeof(struct policymsg)
+#define LEN1 sizeof(struct policyarray)
+//#define NULL ((void*)0)
+#define NULL 0
+struct policymsg
+{
+	int size ;
+	char keyword[LENMAX];
+	char keycount[MAXNUM][LENMAX];
+	struct policymsg *next;
+	struct policyarray *parray;
+}msg,*pmsg;
+
+struct policyarray
+{
+	int size ;
+	char keyword[LENMAX];
+	char keycount[MAXNUM][LENMAX];
+	struct policyarray *next;
+};
+void print_array(struct policyarray *head);
+int my_json_type(json_t *value);
+char* get_array_json(json_t * object,struct policyarray *msg);
+struct policyarray *  get_child_json(json_t * object,struct lldpd *cfg);
+struct policymsg * get_policy_json(struct lldpd *cfg);
+int print(struct policymsg *head);
+void COPY_STR2MAC(char *mac,char *str,int n);
 
 #endif /* _LLDPD_H */

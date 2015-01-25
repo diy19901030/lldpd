@@ -38,7 +38,10 @@
 #include <netinet/if_ether.h>
 #include <pwd.h>
 #include <grp.h>
- //edit by chenyanming
+#include <jansson.h>
+#include<assert.h>
+//#include <retrive_json.h>
+
 static void		 usage(void);
 
 static struct protocol protos[] =
@@ -143,6 +146,439 @@ unsigned char a2x(const char c)
 		exit(0);
 }
 
+/*
+ * transfer the mac-str to mac-ox
+ */
+void COPY_STR2MAC(char *mac,char *str,int n)
+{
+	int i;
+	for(i=0;i < ETHER_ADDR_LEN*n; i++){
+		mac[i] = (a2x(str[i*3])<< 4) + a2x(str[i*3+1]);
+	}
+}
+
+void print_array(struct policyarray *head)
+{
+	struct policyarray *p;
+	p = head;
+	int i = 0;
+	if(head !=NULL)
+	{
+		do
+		{
+			printf("The array keyword is:%s\n",p->keyword);
+			for(i=0;i<p->size;i++)
+				printf("\tthe %d MAC is :%s\n",i+1,p->keycount[i]);
+			p= p->next;
+		}while(p!=NULL);
+	}
+}
+
+int dele_json_array(struct policyarray *head)
+{
+	assert(head);
+
+	struct policyarray *p,*q;
+	q = head;
+	while(q!=NULL)
+	{
+		p = q->next;
+//		printf("\t VN is :\t%s\n",q->keyword);
+		printf("\tthe adress is:%o\t\n",q);
+//		printf("\tthe adress is:%o\t\n",q->next);
+		free(q);
+		q = p;
+	}
+	free(q);
+	head = NULL;
+	return 1;
+}
+
+int dele_json(struct policymsg *head)
+{
+	struct policymsg *p,*q;
+//	printf("\nTDelete json information.\n");
+	q = head;
+	assert(head);
+//	if(head->next==NULL)
+//		return -1;
+	while(q)
+	{
+		p = q->next;
+		if(head->parray!=NULL)
+			dele_json_array(head->parray);
+
+		free(q);
+		q = p;
+	}
+	free(q);
+	head = NULL;
+	return 1;
+
+}
+
+int my_json_type(json_t *value)
+{
+	if(json_is_object(value))
+	{
+		printf("json_is_object\n");
+		return JSON_OBJECT;
+	}
+	if(json_is_array(value))
+	{
+		printf("json_is_array\n");
+		return JSON_ARRAY;
+	}
+	if(json_is_string(value))
+	{
+		printf("json_is_string\n");
+		return JSON_STRING;
+	}
+	if(json_is_integer(value))
+	{
+		printf("json_is_integer\n");
+		return JSON_INTEGER;
+	}
+	if(json_is_real(value))
+	{
+		printf("json_is_real\n");
+		return JSON_REAL;
+	}
+	if(json_is_number(value))
+	{
+		printf("json_is_number\n");
+
+	}
+	if(json_is_false(value))
+	{
+		printf("json_is_false\n");
+		return JSON_FALSE;
+	}
+	if(json_is_true(value))
+	{
+		printf("json_is_true\n");
+		return JSON_TRUE;
+	}
+	if(json_is_boolean(value))
+	{
+		printf("json_is_boolean\n");
+	}
+	if(json_is_null(value))
+	{
+		printf("json_is_null\n");
+		return JSON_NULL;
+	}
+}
+
+char * get_array_json(json_t * object,struct policyarray *msg)
+{
+	const char *value;
+	json_t * array_tem;
+	json_t *array_values;
+	json_error_t error;
+	size_t num,i;
+
+	array_tem = my_json_type(object);
+
+//	printf("\t========start get the array ======\n ");
+
+	i = 0;
+	if(array_tem == JSON_ARRAY)
+	{
+		num = json_array_size(object);
+		msg->size = num;
+		while(num)
+		{
+			array_values = json_array_get(object,num-1);
+			value = json_string_value(array_values);
+//			strcat(str,value);
+//			printf("\tarray_value is:\t%s\n",value);
+			strcpy(msg->keycount[i],value);
+			printf("\tarray_value is:\t%s\n",msg->keycount[i]);
+			num--;
+			i++;
+		}
+//		printf("\t*****stop get the array ******\n ");
+		json_decref(object);
+//		printf("\tstring str  is:\t%s\n",str);
+//		free(str);
+//		return str;
+
+	}
+	else{
+		printf("There is no arrary\n");
+		return "Error";
+
+	}
+
+}
+
+struct policyarray *  get_child_json(json_t * object,struct lldpd *cfg)
+{
+	int i,size;
+	void *iter;
+	json_t * object_tem;
+	const char *iter_keys;
+	json_t *iter_values;
+	json_error_t error;
+	struct policyarray *head,*p1,*p2;
+
+	char pmac[1024]={0};
+	char *mac;
+	struct lldpd_vnmac *vnmac;
+	int vn_ID;
+    int j;
+
+	log_warn("interfaces","we are in interface_helper\n");
+	lldpd_chassis_vnmac_cleanup(LOCAL_CHASSIS(cfg));
+
+	head =p1=p2= NULL;
+	p1 = p2 =(struct policyarray *)malloc(LEN1);
+
+	iter = json_object_iter(object);
+	i = 0;
+	while(iter)
+	{
+		if(i>0)
+		{
+//			free(p1);
+//			p1 = NULL;
+			p1 = (struct policyarray *)malloc(LEN1);
+		}
+		iter_keys = json_object_iter_key(iter);
+		iter_values = json_object_iter_value(iter);
+
+
+		strcpy(p1->keyword,iter_keys);
+
+//		printf("\titer_keys is :\t%s\n \titer_value is:\t%s\n",iter_keys,iter_values);
+//		strcpy(msg->keycount[i],get_array_json(iter_values));
+		get_array_json(iter_values,p1);
+//		get_array_json(iter_values,msg);
+//		if(i==0) head = p1;
+		 head = p1;
+//		if(i>0) p2->next = p1;
+//		p2 = p1;
+//		p1 = (struct policyarray *)calloc(1,LEN1);
+
+		 /*set the vn-mac information*/
+		 mac =(char *) calloc(1,p1->size*6*sizeof(char));
+		 for(j=0;j<p1->size;j++)
+		 {
+			 printf("\tthe mac is:%s\n",p1->keycount[j]);
+			if(j==0)
+			{
+
+				strcpy(pmac,p1->keycount[j]);
+			}
+			else
+			{
+			 strcat(pmac,":");
+			 strcat(pmac,p1->keycount[j]);
+			}
+		 }
+
+	    printf("\tthe mac is:%s\n",pmac);
+	    COPY_STR2MAC(mac,pmac,p1->size);
+
+	    if(p1->size>1)
+		 {
+			 printf("0x %02x \n",mac[11]);
+   //			 printf("the length of the mac is:%d \n",sizeof(mac));
+		 }
+	    printf("the length of the mac is:%d \n",sizeof(mac));
+		 for(j=0;j<p1->size*6;j++)
+			 printf("the length of the mac is:%02x \n",mac[j]);
+		 vn_ID = atoi(p1->keyword);
+		 vnmac= lldpd_alloc_vnmac(vn_ID, mac, p1->size);
+		 free(mac);
+
+		 if (vnmac == NULL) {
+			assert(errno == ENOMEM); /* anything else is a bug */
+			log_warn("interfaces", "out of memory error");
+			return;
+		}
+		log_debug("interfaces", "add vn-mac TLV %x", vnmac->v_mac[0]);
+		/*add VN-MAC Info TLV*/
+		TAILQ_INSERT_TAIL(&LOCAL_CHASSIS(cfg)->c_vnmac, vnmac, v_entries);
+
+
+		iter = json_object_iter_next(object,iter);
+//		printf("\tthe adress is:%o\t\n",p1);
+		i++;
+		dele_json_array(head);
+	}
+//	p2->next = NULL;
+//	json_decref(object);
+	return head;
+
+}
+struct policymsg * get_policy_json(struct lldpd *cfg)
+{
+	struct policymsg *head,*p1,*p2;
+	struct policyarray *temp=NULL;
+	char *jsonfile;
+	int i,size;
+	void *iter;
+	json_t * object;
+	const char *iter_keys;
+	json_t *iter_values;
+	json_error_t error;
+//	json_t* t_object;
+	char *result;
+    FILE *fd=NULL;
+	head = p1 = p2 = NULL;
+    jsonfile = cfg->jsonfile;
+	if((p1=p2=(struct policymsg *)malloc(LEN))==NULL)
+	{
+		printf("alloc memory falied\n");
+		return 0;
+	}
+	head = NULL;
+
+//    log_warn("interfaces","get into get_policy_json %s\n",jsonfile);
+    fd = fopen("/home/evan/PycharmProjects/backup/vnmac/vn-mac-json.txt","r");
+    if(fd == NULL)
+    {
+    	log_warn("interfaces","get into get_policy_json %s\n",strerror(errno));
+    }
+    log_warn("interfaces","get into get_policy_json %s\n",jsonfile);
+	object = json_object();
+	object = json_load_file(jsonfile,0,&error);
+	log_warn("interfaces","get into get_policy_json 111\n");
+//	policyinfo.size = json_object_size(object);
+	result = json_dumps(object,JSON_PRESERVE_ORDER);
+	log_warn("interfaces","get into get_policy_json 222\n");
+//	printf("result=%s\n",result);
+
+//	printf("get the type of the value\n");
+	my_json_type(object);
+	fprintf(stderr,"result_size=%d\n",strlen(result));
+
+
+//	iter = json_object_iter_at(object,"vnmac");
+//	if(iter)
+//	{
+//		printf("the key is:%s \n",json_object_iter_key(iter));
+//		my_json_type(json_object_iter_value(iter));
+//		printf("values[%d]= %s\n",1,json_string_value(json_object_iter_value(iter)));
+//		get_child_json(json_object_iter_value(iter));
+//	}
+
+	iter = json_object_iter(object);
+
+//	flag = my_json_type(json_object_iter_value(iter));
+
+	i = 0;
+//	head = p1;
+//	printf("the keyvalue is:\n",json_object_iter_key(iter));
+//	while(iter)
+	do
+	{
+
+//		if(i==0) head = p1;
+//		else p2->next = p1;
+//		p2=p1;
+		if(i>0)
+		{
+//			free(p1);
+			p1=NULL;
+			p1 = (struct policymsg *)malloc(LEN);
+
+		}
+		printf("get into the iter \n");
+
+
+		printf("the iter object type is :\n");
+		if (my_json_type(json_object_iter_value(iter))==JSON_OBJECT)
+		{
+			strcpy(p1->keyword,json_object_iter_key(iter));
+//			 get_child_json(json_object_iter_value(iter));
+			p1->parray = get_child_json(json_object_iter_value(iter),cfg);
+//			memcpy(p1->parray,temp,LEN1);
+//			print_array(p1->parray);
+
+			if(p1!=NULL)
+			{
+//				if(p1->parray!=NULL)
+//				{
+//					free(p1->parray);
+//					p1->parray = NULL;
+//				}
+				free(p1);
+				p1 = NULL;
+			}
+
+//			printf("the object have child:\n");
+			break;
+		}
+		else {
+			printf("\t\twww here\n");
+			p1->parray = NULL;
+			strcpy(p1->keyword,json_object_iter_key(iter));
+			printf("the keyword is:\n",p1->keyword);
+			iter_values = json_object_iter_value(iter);
+			strcpy(p1->keycount[i],json_string_value(iter_values));
+		}
+//		head = p1;
+//		else p2->next = p1;
+//		p2=p1;
+//		printf("\t\tgonto here\n");
+		iter = json_object_iter_next(object,iter);
+
+		i++;
+//		free(p1);
+
+//		if(p1!=NULL)
+//		{
+//
+//			p1 = NULL;
+//		}
+//		free(p1);
+//		p1 = NULL;
+//		p1 = (struct policymsg *)malloc(LEN);
+
+	}while(iter);
+//	p2->next = NULL;
+
+//	dele_json(head);
+
+
+//
+//	iter = json_object_iter_at(object,"1");
+//	if(iter)
+//	{
+//		iter_keys[i] = json_object_iter_key(iter);
+//		iter_values[i] = json_object_iter_value(iter);
+//		printf("values[%d]= %s\n",i,json_string_value(iter_values[i]));
+//	}
+
+//	json_decref(object);
+	return head;
+
+}
+
+
+int print(struct policymsg *head)
+{
+	struct policymsg *p;
+
+	printf("\nThere json information is:\n");
+	p = head;
+	if(head!=NULL)
+	{
+		do
+		{
+			printf("The array keyword is:%s\n",p->keyword);
+			if(p->parray!=NULL)
+					print_array(p->parray);
+			p= p->next;
+		}while(p!=NULL);
+	}
+}
+
+
+
 struct lldpd_hardware *
 lldpd_get_hardware(struct lldpd *cfg, char *name, int index, struct lldpd_ops *ops)
 {
@@ -220,22 +656,34 @@ lldpd_alloc_mgmt(int family, void *addrptr, size_t addrsize, u_int32_t iface)
 }
 
 struct lldpd_vnmac *
-lldpd_alloc_vnmac(struct lldpd* cfg)
+lldpd_alloc_vnmac(uint32_t vnID,char *macptr,size_t macsize)
 {
 	struct lldpd_vnmac *vnmac;
 
-	log_debug("alloc", "allocate a new vn-mac TLV \n");
+	log_debug("alloc", "allocate a new vn-mac TLV:%d\n",vnID);
 
+//	char *str= "/home/evan/PycharmProjects/backup/vnmac/vn-mac-json.txt";
+//	struct policymsg *head;
+//	head = get_policy_json(str);
+//	print(head);
 
 		vnmac = calloc(1, sizeof(struct lldpd_vnmac));
+		vnmac->v_mac=(char *) calloc(1,macsize*6*sizeof(char));
+
 		if (vnmac == NULL) {
 			errno = ENOMEM;
 			return NULL;
 		}
-		vnmac->v_ID = 100;
-		vnmac->v_mac = "00:50:56:a5:74:11";
-		COPY_STR2MAC(vnmac->v_lladdr,vnmac->v_mac);
-		log_warn("interfaces","vnmac->v_lladdr is:%02x \n",vnmac->v_lladdr[5]);
+		vnmac->v_ID = vnID;
+		assert(macsize <= LLDPD_VNMAC_MAXADDRSIZE);
+		vnmac->v_macsize = macsize;
+
+		log_debug("alloc", "allocate a new vn-mac macsize:%d\n",sizeof(macptr));
+		memcpy(vnmac->v_mac,macptr,sizeof(macptr));
+//		vnmac->v_mac = "00:50:56:a5:74:11";
+//		COPY_STR2MAC(vnmac->v_lladdr,vnmac->v_mac);
+
+//		log_warn("interfaces","vnmac->v_lladdr is:%02x \n",vnmac->v_lladdr[5]);
 		return vnmac;
 }
 
@@ -1122,6 +1570,7 @@ lldpd_update_localports(struct lldpd *cfg)
 {
 	struct lldpd_hardware *hardware;
 
+
 	log_debug("localchassis", "update information for local ports");
 
 	/* h_flags is set to 0 for each port. If the port is updated, h_flags
@@ -1131,6 +1580,13 @@ lldpd_update_localports(struct lldpd *cfg)
 	    hardware->h_flags = 0;
 
 	TRACE(LLDPD_INTERFACES_UPDATE());
+
+//	char *str= "/home/evan/PycharmProjects/backup/vnmac/vn-mac-json.txt";
+//		log_debug("localchassis","str = %s\n",str);
+	//	struct policymsg *head;
+//		 get_policy_json(str);
+
+//	interfaces_helper_vnmac(cfg);
 	interfaces_update(cfg);
 	lldpd_cleanup(cfg);
 	lldpd_reset_timer(cfg);
@@ -1139,6 +1595,8 @@ lldpd_update_localports(struct lldpd *cfg)
 void
 lldpd_loop(struct lldpd *cfg)
 {
+
+
 	/* Main loop.
 	   1. Update local ports information
 	   2. Update local chassis information
@@ -1327,6 +1785,7 @@ lldpd_started_by_systemd()
 int
 lldpd_main(int argc, char *argv[], char *envp[])
 {
+	char *str= "/home/evan/PycharmProjects/backup/vnmac/vn-mac-json.txt";
 	struct lldpd *cfg;
 	struct lldpd_chassis *lchassis;
 	int ch, debug = 0;
@@ -1361,6 +1820,15 @@ lldpd_main(int argc, char *argv[], char *envp[])
 	struct group *group;
 	uid_t uid;
 	gid_t gid;
+
+//	  get_policy_json(str);
+//	FILE *fd;
+//		fd = fopen(str,"r");
+////		if(fd == NULL)
+////		{
+//			fprintf(stderr,"get  lldpd_lmain%s\t %d\n",strerror(errno),fd);
+////		}
+
 
 	saved_argv = argv;
 
@@ -1519,6 +1987,7 @@ lldpd_main(int argc, char *argv[], char *envp[])
 		fatal("main", "no " PRIVSEP_GROUP " group for privilege separation");
 	gid = group->gr_gid;
 
+	fprintf(stderr,"\tthe uid is:%d\n\t the gid is:%d\n",uid,gid);
 	/* Create and setup socket */
 	int retry = 1;
 	log_debug("main", "creating control socket");
@@ -1594,14 +2063,18 @@ lldpd_main(int argc, char *argv[], char *envp[])
 		lsb_release = lldpd_get_lsb_release();
 	}
 
+
+//	interfaces_helper_vnmac(cfg);
+
 	log_debug("main", "initialize privilege separation");
 	priv_init(PRIVSEP_CHROOT, ctl, uid, gid);
+	fprintf(stderr,"\tthe PRIVSEP_CHROOT is:%s\n ",PRIVSEP_CHROOT);
 
 	/* Initialization of global configuration */
 	if ((cfg = (struct lldpd *)
 	    calloc(1, sizeof(struct lldpd))) == NULL)
 		fatal("main", NULL);
-
+    cfg->jsonfile = str;
 	cfg->g_ctlname = ctlname;
 	cfg->g_ctl = ctl;
 	cfg->g_config.c_mgmt_pattern = mgmtp;
@@ -1625,6 +2098,8 @@ lldpd_main(int argc, char *argv[], char *envp[])
 #endif /* USE_SNMP */
 	cfg->g_config.c_bond_slave_src_mac_type = \
 	    LLDP_BOND_SLAVE_SRC_MAC_TYPE_LOCALLY_ADMINISTERED;
+
+	interfaces_helper_vnmac(cfg);
 
 	/* Get ioctl socket */
 	log_debug("main", "get an ioctl socket");
@@ -1707,6 +2182,12 @@ lldpd_main(int argc, char *argv[], char *envp[])
 
 	/* Main loop */
 	log_debug("main", "start main loop");
+	   /*********************test json****************/
+//
+//	get_policy_json(str);
+//	log_debug("main", "start main cym");
+
+		/********************end json**************/
 	levent_loop(cfg);
 	lldpd_exit(cfg);
 

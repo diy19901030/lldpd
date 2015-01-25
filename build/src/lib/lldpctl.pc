@@ -1,6 +1,6 @@
 Name: lldpctl
 Description: Library to interface with lldpd, a 802.1AB daemon
-Version: 0.7.11
+Version: b28b8fe-dirty
 URL: http://vincentbernat.github.io/lldpd/
 Libs: -L${libdir} -llldpctl
 Cflags: -I${includedir}

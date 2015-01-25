@@ -794,7 +794,10 @@ interfaces_update(struct lldpd *cfg)
 	interfaces_helper_vlan(cfg, interfaces);
 #endif
 	interfaces_helper_mgmt(cfg, addresses);
-	interfaces_helper_vnmac(cfg);
+
+
+
+//	interfaces_helper_vnmac(cfg);
 	interfaces_helper_chassis(cfg, interfaces);
 
 	/* Mac/PHY */

@@ -23,6 +23,7 @@
 #include <errno.h>
 #include <assert.h>
 #include <arpa/inet.h>
+#include<jansson.h>
 
 /* Generic ethernet interface initialization */
 /**
@@ -363,17 +364,27 @@ interfaces_helper_vnmac(struct lldpd *cfg)
 {
 	struct lldpd_vnmac *vnmac;
 
+//	char *str= "/home/evan/PycharmProjects/backup/vnmac/vn-mac-json.txt";
+//	log_debug("interfaces","str = %s\n",str);
+
+//	struct policymsg *head;
+//	 get_policy_json(cfg);
+//	print(head);
+
+	log_warn("interfaces","we are in interface_helper\n");
 	lldpd_chassis_vnmac_cleanup(LOCAL_CHASSIS(cfg));
 
-	vnmac =  lldpd_alloc_vnmac(cfg);
-	if (vnmac == NULL) {
-		assert(errno == ENOMEM); /* anything else is a bug */
-		log_warn("interfaces", "out of memory error");
-		return;
-	}
-	log_debug("interfaces", "add vn-mac TLV %s", vnmac->v_mac);
-	/*add VN-MAC Info TLV*/
-	TAILQ_INSERT_TAIL(&LOCAL_CHASSIS(cfg)->c_vnmac, vnmac, v_entries);
+	 get_policy_json(cfg);
+
+//	vnmac =  lldpd_alloc_vnmac(cfg);
+//	if (vnmac == NULL) {
+//		assert(errno == ENOMEM); /* anything else is a bug */
+//		log_warn("interfaces", "out of memory error");
+//		return;
+//	}
+//	log_debug("interfaces", "add vn-mac TLV %x", vnmac->v_mac[0]);
+//	/*add VN-MAC Info TLV*/
+//	TAILQ_INSERT_TAIL(&LOCAL_CHASSIS(cfg)->c_vnmac, vnmac, v_entries);
 }
 /* Find a management address in all available interfaces, even those that were
    already handled. This is a special interface handler because it does not

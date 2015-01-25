@@ -592,6 +592,7 @@ priv_init(const char *chrootdir, int ctl, uid_t uid, gid_t gid)
 		fatal("privsep", "unable to create socket pair for privilege separation");
 
 	priv_unprivileged_fd(pair[0]);
+//	priv_unprivileged_fd(pair[1]);
 	priv_privileged_fd(pair[1]);
 
 #ifdef ENABLE_PRIVSEP

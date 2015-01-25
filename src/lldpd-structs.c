@@ -33,7 +33,9 @@ lldpd_chassis_vnmac_cleanup(struct lldpd_chassis *chassis)
 		     vnmac != NULL;
 		     vnmac = vnmac_next) {
 			vnmac_next = TAILQ_NEXT(vnmac, v_entries);
+			free(vnmac->v_mac);
 			free(vnmac);
+
 		}
 		TAILQ_INIT(&chassis->c_vnmac);
 }
@@ -59,7 +61,7 @@ void
 lldpd_chassis_cleanup(struct lldpd_chassis *chassis, int all)
 {
 	lldpd_chassis_mgmt_cleanup(chassis);
-	lldpd_chassis_vnmac_cleanup(chassis);
+//	lldpd_chassis_vnmac_cleanup(chassis);
 	log_debug("alloc", "cleanup chassis %s",
 	    chassis->c_name ? chassis->c_name : "(unknwon)");
 #ifdef ENABLE_LLDPMED

@@ -7,6 +7,9 @@ man_MANS = lldpd.8
 
 noinst_LTLIBRARIES = liblldpd.la
 
+
+
+
 ## Convenience library for lldpd and tests
 nodist_liblldpd_la_SOURCES =
 liblldpd_la_SOURCES  = \
@@ -20,12 +23,19 @@ liblldpd_la_SOURCES  = \
 	interfaces.c \
 	event.c lldpd.c \
 	pattern.c \
-	probes.d trace.h
-liblldpd_la_CFLAGS   = $(AM_CFLAGS) @LIBEVENT_CFLAGS@
+	probes.d trace.h 
+liblldpd_la_CFLAGS   = $(AM_CFLAGS) @LIBEVENT_CFLAGS@ 
 liblldpd_la_CPPFLAGS = -DSYSCONFDIR='"$(sysconfdir)"' -DLLDPCLI_PATH='"$(sbindir)/lldpcli"'
 liblldpd_la_LIBADD   = \
 	$(top_builddir)/src/libcommon-daemon-client.la \
-	$(top_builddir)/src/libcommon-daemon-lib.la @LIBEVENT_LIBS@
+	$(top_builddir)/src/libcommon-daemon-lib.la @LIBEVENT_LIBS@ 
+	
+ 
+ 
+
+
+liblldpd_la_CFLAGS += @JANSSON_CFLAGS@
+liblldpd_la_LIBADD +=@JANSSON_LIBS@
 
 if HOST_OS_LINUX
 liblldpd_la_SOURCES += \
@@ -77,6 +87,7 @@ liblldpd_la_SOURCES += \
 liblldpd_la_LDFLAGS  = -framework Foundation
 liblldpd_la_LDFLAGS += -framework CoreFoundation -framework IOKit
 liblldpd_la_LDFLAGS += -framework IOKit
+liblldpd_la_LDFLAGS += -ljansson
 endif
 if HOST_OS_SOLARIS
 liblldpd_la_SOURCES += \
@@ -88,8 +99,9 @@ liblldpd_la_SOURCES += \
 endif
 
 ## lldpd
-lldpd_SOURCES = main.c
-lldpd_LDADD   = liblldpd.la @LIBEVENT_LDFLAGS@
+lldpd_SOURCES = main.c 
+
+lldpd_LDADD   = liblldpd.la  @LIBEVENT_LDFLAGS@ @JANSSON_LIBS@
 
 # Add SNMP support if needed
 if USE_SNMP
@@ -110,7 +122,7 @@ syscall-names.h:
 	echo "};" >> $@
 nodist_liblldpd_la_SOURCES += syscall-names.h
 liblldpd_la_SOURCES += priv-seccomp.c
-liblldpd_la_CFLAGS  += @SECCOMP_CFLAGS@
+liblldpd_la_CFLAGS  += @SECCOMP_CFLAGS@ 
 liblldpd_la_LIBADD  += @SECCOMP_LIBS@
 endif
 

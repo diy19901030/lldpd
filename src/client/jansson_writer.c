@@ -67,6 +67,7 @@ struct json_element {
 };
 TAILQ_HEAD(json_writer_private, json_element);
 
+
 static void
 jansson_start(struct writer *w, const char *tag, const char *descr)
 {

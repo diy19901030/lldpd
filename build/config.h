@@ -212,6 +212,9 @@
    */
 #define LT_OBJDIR ".libs/"
 
+/* Define to 1 if your C compiler doesn't accept -c and -o together. */
+/* #undef NO_MINUS_C_MINUS_O */
+
 /* Name of package */
 #define PACKAGE "lldpd"
 
@@ -222,7 +225,7 @@
 #define PACKAGE_NAME "lldpd"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "lldpd 0.7.11"
+#define PACKAGE_STRING "lldpd b28b8fe-dirty"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "lldpd"
@@ -231,16 +234,16 @@
 #define PACKAGE_URL "http://vincentbernat.github.io/lldpd/"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "0.7.11"
+#define PACKAGE_VERSION "b28b8fe-dirty"
 
 /* Which directory to use to chroot lldpd */
 #define PRIVSEP_CHROOT "/usr/local/var/run/lldpd"
 
 /* Which group to use for privilege separation */
-#define PRIVSEP_GROUP "_lldpd"
+#define PRIVSEP_GROUP "evan"
 
 /* Which user to use for privilege separation */
-#define PRIVSEP_USER "_lldpd"
+#define PRIVSEP_USER "evan"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
@@ -252,10 +255,10 @@
 #define SYSUSERSDIR ""
 
 /* Define to indicate to enable JSON support through jansson */
-/* #undef USE_JANSSON */
+#define USE_JANSSON 1
 
 /* Define to indicate to enable JSON support */
-/* #undef USE_JSON */
+#define USE_JSON 1
 
 /* Define to indicate to enable JSON via json-c support */
 /* #undef USE_JSONC */
@@ -270,7 +273,7 @@
 /* #undef USE_XML */
 
 /* Version number of package */
-#define VERSION "0.7.11"
+#define VERSION "b28b8fe-dirty"
 
 /* Define to rpl_malloc if the replacement function should be used. */
 /* #undef malloc */
