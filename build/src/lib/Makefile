@@ -150,7 +150,7 @@ CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2 -fdiagnostics-show-option -pipe -Wall -W -Wextra -Wformat -Wformat-security -Wfatal-errors -Wcast-align -Winline -fstack-protector -fno-omit-frame-pointer -D_FORTIFY_SOURCE=2 -Wno-unused-parameter -Wno-missing-field-initializers -Wno-sign-compare -D_GNU_SOURCE
 CHECK_CFLAGS =  
 CHECK_LIBS = -lcheck_pic  
-CONFIGURE_ARGS =  '--with-privsep-user=evan' '--with-privsep-group=evan' '--with-json=jansson'
+CONFIGURE_ARGS =  '--with-privsep-user=root' '--with-privsep-group=root' '--with-json=jansson'
 CPP = gcc -E
 CPPFLAGS = 
 CXX = g++
@@ -243,8 +243,8 @@ PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
 PKG_CONFIG_PATH = 
 PRIVSEP_CHROOT = /usr/local/var/run/lldpd
-PRIVSEP_GROUP = evan
-PRIVSEP_USER = evan
+PRIVSEP_GROUP = root
+PRIVSEP_USER = root
 RANLIB = ranlib
 READLINE_LIBS = 
 SECCOMP_CFLAGS = 

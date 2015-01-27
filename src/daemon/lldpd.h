@@ -141,6 +141,9 @@ struct lldpd {
 
 	char			*g_lsb_release;
 	char            *jsonfile;
+	FILE            *fp;
+	json_error_t   error;
+	json_t          *object;
 
 #define LOCAL_CHASSIS(cfg) ((struct lldpd_chassis *)(TAILQ_FIRST(&cfg->g_chassis)))
 	TAILQ_HEAD(, lldpd_chassis) g_chassis;
@@ -293,6 +296,8 @@ int	 asroot_iface_description_os(const char *, const char *);
 int	 priv_iface_promisc(const char*);
 int	 asroot_iface_promisc_os(const char *);
 int	 priv_snmp_socket(struct sockaddr_un *);
+char *priv_json_retrive( char *);
+int  asroot_json_retrive_os( char *,json_t *);
 
 enum priv_cmd {
 	PRIV_PING,
@@ -305,6 +310,7 @@ enum priv_cmd {
 	PRIV_IFACE_DESCRIPTION,
 	PRIV_IFACE_PROMISC,
 	PRIV_SNMP_SOCKET,
+	PRIV_JSON_RETRIVE,
 };
 
 /* priv-seccomp.c */
@@ -324,6 +330,8 @@ void	 priv_privileged_fd(int);
 void	 priv_unprivileged_fd(int);
 int	 receive_fd(enum priv_context);
 void	 send_fd(enum priv_context, int);
+int	 receive_json_obj(enum priv_context);
+void	 send_json_obj(enum priv_context, json_t*);
 
 /* interfaces-*.c */
 
@@ -479,6 +487,7 @@ int pattern_match(char *, char *, int);
 #define MAXNUM 48
 #define LEN sizeof(struct policymsg)
 #define LEN1 sizeof(struct policyarray)
+#define LEN2 sizeof(json_t)
 //#define NULL ((void*)0)
 #define NULL 0
 struct policymsg

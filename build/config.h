@@ -240,10 +240,10 @@
 #define PRIVSEP_CHROOT "/usr/local/var/run/lldpd"
 
 /* Which group to use for privilege separation */
-#define PRIVSEP_GROUP "evan"
+#define PRIVSEP_GROUP "root"
 
 /* Which user to use for privilege separation */
-#define PRIVSEP_USER "evan"
+#define PRIVSEP_USER "root"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1

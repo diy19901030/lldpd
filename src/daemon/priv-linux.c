@@ -260,6 +260,43 @@ asroot_iface_description_os(const char *name, const char *description)
 }
 
 int
+asroot_json_retrive_os( char *jsonfile,json_t *object)
+{
+	char *file;
+//	json_t * object;
+	FILE *fp;
+	json_error_t error;
+	int rc;
+	log_warn("interfaces","get into json_retrive_os\n");
+	if (asprintf(&file, "%s", jsonfile) == -1) {
+		log_warn("privsep", "unable to allocate memory for setting jsonfile dir");
+		free(file);
+		return -1;
+	}
+	log_warn("interfaces","get into get_policy_json %s\n",file);
+	fp = fopen(jsonfile,"r");
+	if(fp == NULL)
+	{
+		log_warn("interfaces","get into get_policy_json121313 %s\n",strerror(errno));
+		close(fp);
+		return -1;
+	}
+	log_warn("interfaces","get into get_policy_jobject\n");
+//	object = json_object();
+	object = json_load_file(jsonfile,0,&error);
+	if (!object) {
+		log_debug("privsep", "cannot set the json object for %s",file);
+		return -1;
+	} else {
+		log_debug("privsep", "sucessful set the json object for %s",file);
+	}
+	close(fp);
+	free(file);
+	return 0;
+}
+
+
+int
 asroot_iface_promisc_os(const char *name)
 {
 	int s, rc;

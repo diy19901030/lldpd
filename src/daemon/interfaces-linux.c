@@ -797,7 +797,7 @@ interfaces_update(struct lldpd *cfg)
 
 
 
-//	interfaces_helper_vnmac(cfg);
+	interfaces_helper_vnmac(cfg);
 	interfaces_helper_chassis(cfg, interfaces);
 
 	/* Mac/PHY */

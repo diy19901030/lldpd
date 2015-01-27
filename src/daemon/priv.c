@@ -157,6 +157,48 @@ priv_iface_description(const char *name, const char *description)
 	return rc;
 }
 
+char *priv_json_retrive( char *jsonfile)
+{
+	int rc, len = strlen(jsonfile);
+	int len2 = sizeof(json_t);
+	int len3;
+	char *result;
+	int fp;
+	json_t *object;
+	json_error_t error;
+	enum priv_cmd cmd = PRIV_JSON_RETRIVE;
+	must_write(PRIV_UNPRIVILEGED, &cmd, sizeof(enum priv_cmd));
+	must_write(PRIV_UNPRIVILEGED, &len, sizeof(int));
+	must_write(PRIV_UNPRIVILEGED, jsonfile, len);
+//	must_write(PRIV_UNPRIVILEGED, &len2, sizeof(int));
+//	must_write(PRIV_UNPRIVILEGED, object, len2);
+	priv_wait();
+	must_read(PRIV_UNPRIVILEGED, &len3, sizeof(int));
+//	if ((object = (json_t *)calloc(1,len3)) == NULL)
+	if((result = (char *)calloc(1,len3+1))==NULL)
+			fatal("privsep", NULL);
+	must_read(PRIV_UNPRIVILEGED, result,len3+1);
+
+//	if (rc != 0) return -1;
+//	return receive_json_obj(PRIV_UNPRIVILEGED);
+	fprintf(stderr,"_object address=%s\n",result);
+//	file = fopen(jsonfile,"r+");
+//	fprintf(stderr,"_object address=%d\n",file);
+//	object1 = json_object();
+//	object1 = json_loadf(file,0,&error);
+//	object = json_object();
+//	tem = object
+//	result = json_dumps(object,JSON_PRESERVE_ORDER);
+
+	fprintf(stderr,"result_size=%d\n",strlen(result));
+//	printf("result=%s\n",result);
+	must_read(PRIV_UNPRIVILEGED, &rc, sizeof(int));
+	return result;
+
+
+}
+
+
 /* Proxy to set interface in promiscuous mode */
 int
 priv_iface_promisc(const char *ifname)
@@ -297,6 +339,7 @@ asroot_iface_description()
 	char name[IFNAMSIZ];
 	char *description;
 	int len, rc;
+
 	must_read(PRIV_PRIVILEGED, &name, sizeof(name));
 	name[sizeof(name) - 1] = '\0';
 	must_read(PRIV_PRIVILEGED, &len, sizeof(int));
@@ -310,6 +353,62 @@ asroot_iface_description()
 	must_write(PRIV_PRIVILEGED, &rc, sizeof(rc));
 	free(description);
 }
+
+static void
+asroot_json_retrive()
+{
+	char *result;
+	char *jsonfile;
+	json_t *object;
+	int len, rc=0;
+	int len2=sizeof(json_t);
+	json_error_t error;
+	FILE *fp;
+
+//	log_warn("interfaces", "cannot open json_void %s\n",jsonfile);
+//	len= strlen(jsonfile);
+//	log_warn("interfaces", "cannot open json_retrice\n");
+
+	must_read(PRIV_PRIVILEGED, &len, sizeof(int));
+	if ((jsonfile = (char*)malloc(len+1)) == NULL)
+		fatal("jsonfile", NULL);
+	must_read(PRIV_PRIVILEGED, jsonfile, len);
+	log_warn("interfaces", "cannot open json_1 %s\n",jsonfile);
+	jsonfile[len] = '\0';
+	log_warn("interfaces", "cannot open json_2 %s\n",jsonfile);
+
+//	must_read(PRIV_PRIVILEGED, &len2, sizeof(int));
+//	if ((object = json_object()) == NULL)
+//		fatal("jsonobject", NULL);
+//	   rc = asroot_json_retrive_os(jsonfile, object);
+//		must_write(PRIV_PRIVILEGED, &rc, sizeof(rc));
+//		if (rc == 0 && object !=NULL) send_json_obj(PRIV_PRIVILEGED, object);
+
+//	must_read(PRIV_PRIVILEGED, object, len2);
+
+	if ((fp = fopen(jsonfile, "r+")) == NULL) {
+			rc = errno;
+			free(jsonfile);
+			log_debug("privsep", "cannot open interface description for %s",
+			    jsonfile);
+		}
+		free(jsonfile);
+	object=json_object();
+	object = json_loadf(fp,0,&error);
+	result = json_dumps(object,JSON_PRESERVE_ORDER);
+
+	fprintf(stderr,"result_size=%d\n",strlen(result));
+//	printf("result=%s\n",result);
+	len2 = strlen(result);
+//	rc = asroot_json_retrive_os(jsonfile, object);
+	fprintf(stderr,"result_slen2=%d\n",len2);
+	must_write(PRIV_PRIVILEGED, &len2, sizeof(int));
+	must_write(PRIV_PRIVILEGED, result, len2+1);
+	must_write(PRIV_PRIVILEGED, &rc, sizeof(int));
+	fprintf(stderr,"asroot_object address=%d\n",object);
+
+}
+
 
 static void
 asroot_iface_promisc()
@@ -390,6 +489,7 @@ static struct dispatch_actions actions[] = {
 	{PRIV_IFACE_DESCRIPTION, asroot_iface_description},
 	{PRIV_IFACE_PROMISC, asroot_iface_promisc},
 	{PRIV_SNMP_SOCKET, asroot_snmp_socket},
+	{PRIV_JSON_RETRIVE,asroot_json_retrive},
 	{-1, NULL}
 };
 

@@ -152,6 +152,90 @@ receive_fd(enum priv_context ctx)
 	}
 }
 
+void
+send_json_obj(enum priv_context ctx, json_t *object)
+{
+	struct msghdr msg;
+	union {
+		struct cmsghdr hdr;
+		char buf[CMSG_SPACE(sizeof(int))];
+	} cmsgbuf;
+	struct cmsghdr *cmsg;
+	struct iovec vec;
+	int result = 0;
+	ssize_t n;
+
+	memset(&msg, 0, sizeof(msg));
+	memset(&cmsgbuf.buf, 0, sizeof(cmsgbuf.buf));
+
+	if (object!=NULL) {
+		msg.msg_control = (caddr_t)&cmsgbuf.buf;
+		msg.msg_controllen = sizeof(cmsgbuf.buf);
+		cmsg = CMSG_FIRSTHDR(&msg);
+		cmsg->cmsg_len = CMSG_LEN(sizeof(json_t));
+		cmsg->cmsg_level = SOL_SOCKET;
+		cmsg->cmsg_type = SCM_RIGHTS;
+		memcpy(CMSG_DATA(cmsg), object, sizeof(json_t));
+	} else {
+		result = errno;
+	}
+
+	vec.iov_base = &result;
+	vec.iov_len = sizeof(int);
+	msg.msg_iov = &vec;
+	msg.msg_iovlen = 1;
+
+	if ((n = sendmsg(priv_fd(ctx), &msg, 0)) == -1)
+		log_warn("privsep", "sendmsg(%d)", priv_fd(ctx));
+	if (n != sizeof(int))
+		log_warnx("privsep", "sendmsg: expected sent 1 got %ld",
+		    (long)n);
+}
+
+int
+receive_json_obj(enum priv_context ctx)
+{
+	struct msghdr msg;
+	union {
+		struct cmsghdr hdr;
+		char buf[CMSG_SPACE(sizeof(int))];
+	} cmsgbuf;
+	struct cmsghdr *cmsg;
+	struct iovec vec;
+	ssize_t n;
+	int result;
+	json_t *fd;
+
+	memset(&msg, 0, sizeof(msg));
+	vec.iov_base = &result;
+	vec.iov_len = sizeof(int);
+	msg.msg_iov = &vec;
+	msg.msg_iovlen = 1;
+	msg.msg_control = &cmsgbuf.buf;
+	msg.msg_controllen = sizeof(cmsgbuf.buf);
+
+	if ((n = recvmsg(priv_fd(ctx), &msg, 0)) == -1)
+		log_warn("privsep", "recvmsg");
+	if (n != sizeof(int))
+		log_warnx("privsep", "recvmsg: expected received 1 got %ld",
+		    (long)n);
+	if (result == 0) {
+		cmsg = CMSG_FIRSTHDR(&msg);
+		if (cmsg == NULL) {
+			log_warnx("privsep", "no message header");
+			return -1;
+		}
+		if (cmsg->cmsg_type != SCM_RIGHTS)
+			log_warnx("privsep", "expected type %d got %d",
+			    SCM_RIGHTS, cmsg->cmsg_type);
+		memcpy(fd, CMSG_DATA(cmsg), sizeof(json_t));
+		return fd;
+	} else {
+		errno = result;
+		return -1;
+	}
+}
+
 /* Stolen from sbin/pflogd/privsep.c from OpenBSD */
 /*
  * Copyright (c) 2003 Can Erkin Acar

@@ -508,7 +508,7 @@ lldp_decode(struct lldpd *cfg, char *frame, int s,
 	struct lldpd_pi *pi = NULL;
 #endif
 	struct lldpd_mgmt *mgmt;
-//	struct lldpd_vnmac *vnmac;
+	struct lldpd_vnmac *vnmac;
 	int af;
 	u_int8_t addr_str_length, addr_str_buffer[32];
 	u_int8_t addr_family, addr_length, *addr_ptr, iface_subtype;

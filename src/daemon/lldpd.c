@@ -437,19 +437,25 @@ struct policymsg * get_policy_json(struct lldpd *cfg)
 	head = NULL;
 
 //    log_warn("interfaces","get into get_policy_json %s\n",jsonfile);
-    fd = fopen("/home/evan/PycharmProjects/backup/vnmac/vn-mac-json.txt","r");
-    if(fd == NULL)
-    {
-    	log_warn("interfaces","get into get_policy_json %s\n",strerror(errno));
-    }
-    log_warn("interfaces","get into get_policy_json %s\n",jsonfile);
+//    fd = fopen("/home/evan/PycharmProjects/backup/vnmac/vn-mac-json.txt","r");
+//    if(fd == NULL)
+//    {
+//    	log_warn("interfaces","get into get_policy_json %s\n",strerror(errno));
+//    }
+	fd = cfg->fp;
+    log_warn("interfaces","get into get_policy_json %d\n",fd);
+    result=priv_json_retrive(jsonfile);
 	object = json_object();
-	object = json_load_file(jsonfile,0,&error);
+	object = json_loads(result,0,&error);
+
+
+//    object = json_loadf(fd,0,&error);
+//	 object = cfg->object;
 	log_warn("interfaces","get into get_policy_json 111\n");
 //	policyinfo.size = json_object_size(object);
 	result = json_dumps(object,JSON_PRESERVE_ORDER);
 	log_warn("interfaces","get into get_policy_json 222\n");
-//	printf("result=%s\n",result);
+	printf("result=%s\n",result);
 
 //	printf("get the type of the value\n");
 	my_json_type(object);
@@ -730,6 +736,7 @@ lldpd_display_neighbors(struct lldpd *cfg)
 			if (asprintf(&description, "%s",
 				neighbor) != -1) {
 				priv_iface_description(hardware->h_ifname, description);
+				log_warn("interfaces","(lldpd_display_neighbors)-1-description",description);
 				free(description);
 			}
 		} else {
@@ -737,6 +744,7 @@ lldpd_display_neighbors(struct lldpd *cfg)
 				neighbors, (neighbors > 1)?"s":"") != -1) {
 				priv_iface_description(hardware->h_ifname,
 				    description);
+				log_warn("interfaces","(lldpd_display_neighbors)-2-description",description);
 				free(description);
 			}
 		}
@@ -2066,15 +2074,18 @@ lldpd_main(int argc, char *argv[], char *envp[])
 
 //	interfaces_helper_vnmac(cfg);
 
-	log_debug("main", "initialize privilege separation");
-	priv_init(PRIVSEP_CHROOT, ctl, uid, gid);
-	fprintf(stderr,"\tthe PRIVSEP_CHROOT is:%s\n ",PRIVSEP_CHROOT);
+//	log_debug("main", "initialize privilege separation");
+//	priv_init(PRIVSEP_CHROOT, ctl, uid, gid);
+//	fprintf(stderr,"\tthe PRIVSEP_CHROOT is:%s\n ",PRIVSEP_CHROOT);
 
 	/* Initialization of global configuration */
 	if ((cfg = (struct lldpd *)
 	    calloc(1, sizeof(struct lldpd))) == NULL)
 		fatal("main", NULL);
     cfg->jsonfile = str;
+//    cfg->fp = fopen(cfg->jsonfile,"r+");
+//    cfg->object = json_object();
+//    cfg->object = json_loadf(cfg->fp,0,&cfg->error);
 	cfg->g_ctlname = ctlname;
 	cfg->g_ctl = ctl;
 	cfg->g_config.c_mgmt_pattern = mgmtp;
@@ -2099,7 +2110,9 @@ lldpd_main(int argc, char *argv[], char *envp[])
 	cfg->g_config.c_bond_slave_src_mac_type = \
 	    LLDP_BOND_SLAVE_SRC_MAC_TYPE_LOCALLY_ADMINISTERED;
 
-	interfaces_helper_vnmac(cfg);
+	log_debug("main", "initialize privilege separation");
+	priv_init(PRIVSEP_CHROOT, ctl, uid, gid);
+	fprintf(stderr,"\tthe PRIVSEP_CHROOT is:%s\n ",PRIVSEP_CHROOT);
 
 	/* Get ioctl socket */
 	log_debug("main", "get an ioctl socket");
