@@ -514,6 +514,9 @@ lldp_decode(struct lldpd *cfg, char *frame, int s,
 	u_int8_t addr_family, addr_length, *addr_ptr, iface_subtype;
 	u_int32_t iface_number, iface;
 
+	u_int32_t vn_ID;
+	u_int8_t  vn_size,*vn_ptr;
+
 	log_debug("lldp", "receive LLDP PDU on %s",
 	    hardware->h_ifname);
 
@@ -523,7 +526,7 @@ lldp_decode(struct lldpd *cfg, char *frame, int s,
 	}
 
 	TAILQ_INIT(&chassis->c_mgmt);
-//	TAILQ_INIT(&chassis->c_vnmac);
+	TAILQ_INIT(&chassis->c_vnmac);
 
 	if ((port = calloc(1, sizeof(struct lldpd_port))) == NULL) {
 		log_warn("lldp", "failed to allocate remote port");
@@ -639,9 +642,30 @@ lldp_decode(struct lldpd *cfg, char *frame, int s,
 			chassis->c_cap_available = PEEK_UINT16;
 			chassis->c_cap_enabled = PEEK_UINT16;
 			break;
-		//case LLDP_TLV_VNMAC:
-		//	CHECK_TLV_SIZE(4, "VN-MAC Info");
+		case LLDP_TLV_VNMAC:
+			CHECK_TLV_SIZE(4, "VN-MAC Info");
+			vn_ID = PEEK_UINT32;
+			if ((vn_ptr = (char *)calloc(1, tlv_size - 4)) == NULL) {
+				log_warn("lldp", "unable to allocate memory for id tlv "
+					"received on %s",
+					hardware->h_ifname);
+				goto malformed;
+			}
+			PEEK_BYTES(vn_ptr, tlv_size - 1);
 
+			vn_size = (tlv_size-4)/6;
+			vnmac = lldpd_alloc_vnmac(vn_ID,vn_ptr,vn_size);
+
+			log_warn("lldp", "the vn_number is:%d",vn_ID);
+
+			if (vnmac == NULL) {
+				assert(errno == ENOMEM);
+				log_warn("lldp", "unable to allocate memory "
+							"for vn-mac Info");
+						goto malformed;
+			}
+			TAILQ_INSERT_TAIL(&chassis->c_vnmac, vnmac, v_entries);
+			break;
 		case LLDP_TLV_MGMT_ADDR:
 			CHECK_TLV_SIZE(1, "Management address");
 			addr_str_length = PEEK_UINT8;
