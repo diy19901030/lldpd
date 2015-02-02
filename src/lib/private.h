@@ -90,6 +90,8 @@ typedef enum {
 	atom_port,
 	atom_mgmts_list,
 	atom_mgmt,
+	atom_vnmacs_list,
+	atom_vnmac,
 #ifdef ENABLE_DOT3
 	atom_dot3_power,
 #endif
@@ -187,6 +189,23 @@ struct _lldpctl_atom_mgmt_t {
 	struct _lldpctl_atom_port_t *parent;
 	struct lldpd_mgmt *mgmt;
 };
+
+/*
+ * get the vn-mac lists
+ */
+
+struct _lldpctl_atom_vnmacs_list_t {
+	lldpctl_atom_t base;
+	struct _lldpctl_atom_port_t *parent;
+	struct lldpd_chassis *chassis; /* Chassis containing the list of IP addresses */
+};
+
+struct _lldpctl_atom_vnmac_t {
+	lldpctl_atom_t base;
+	struct _lldpctl_atom_port_t *parent;
+	struct lldpd_vnmac *vnmac;
+};
+
 
 #ifdef ENABLE_DOT3
 struct _lldpctl_atom_dot3_power_t {

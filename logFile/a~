@@ -1,0 +1,39 @@
+add vn-mac TLV 6579024
+	dd vn-mac TLV 6599744
+31307460
+:31315420	
+31323360
+
+31131740
+
+the mac is:00:0c:29:bc:76:e2:00:50:56:a5:74:11
+0x 11 
+the length of the mac is:8 
+2015-01-29T21:24:19 [ DBG/interfaces] add vn-mac TLV 6594160
+	the adress is:31175240	
+json_is_array
+	array_value is:	00:0c:29:6f:d3:2a
+	array_value is:	00:50:56:a5:5a:8a
+	the mac is:00:0c:29:6f:d3:2a
+	the mac is:00:50:56:a5:5a:8a
+	the mac is:00:0c:29:6f:d3:2a:00:50:56:a5:5a:8a
+0x ffffff8a 
+the length of the mac is:8 
+2015-01-29T21:24:19 [ DBG/interfaces] add vn-mac TLV 6585776
+	the adress is:31175240	
+json_is_array
+	array_value is:	00:50:56:a5:61:ab
+	array_value is:	00:50:56:a5:56:66
+	the mac is:00:50:56:a5:61:ab
+	the mac is:00:50:56:a5:56:66
+	the mac is:00:50:56:a5:61:ab:00:50:56:a5:56:66
+:31145020
+31170000	]
+31200720
+31231360
+31236100
+31243420
+31270740
+31324660
+31324660
+31334360							

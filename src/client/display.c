@@ -223,7 +223,7 @@ display_med(struct writer *w, lldpctl_atom_t *port)
 static void
 display_chassis(struct writer* w, lldpctl_atom_t* neighbor, int details)
 {
-	lldpctl_atom_t *mgmts, *mgmt;
+	lldpctl_atom_t *mgmts, *mgmt,*vnmacs,*vnmac;
 
 	tag_start(w, "chassis", "Chassis");
 	tag_start(w, "id", "ChassisID");
@@ -249,7 +249,24 @@ display_chassis(struct writer* w, lldpctl_atom_t* neighbor, int details)
 		    lldpctl_atom_get_str(mgmt, lldpctl_k_mgmt_ip));
 	}
 	lldpctl_atom_dec_ref(mgmts);
+	/* vn-mac Information */
+	vnmacs = lldpctl_atom_get(neighbor, lldpctl_k_chassis_vnmac);
+	if(vnmacs==NULL)
+	{
+		fprintf(stderr,"vnamcs is empty.\n");
+	}
+	else
+	{
+		lldpctl_atom_foreach(vnmacs, vnmac) {
+//			fprintf(stderr,"unable to ask lldpd for immediate retransmission.\n");
 
+			tag_datatag(w, "vn-mac", "vnID",
+				lldpctl_atom_get_str(vnmac, lldpctl_k_chassis_vnID));
+			tag_datatag(w, "vn-mac", "vnMAC",
+					    lldpctl_atom_get_str(vnmac, lldpctl_k_chassis_vnMac));
+		}
+//		lldpctl_atom_dec_ref(vnmacs);
+	}
 	/* Capabilities */
 	display_cap(w, neighbor, LLDP_CAP_OTHER, "Other");
 	display_cap(w, neighbor, LLDP_CAP_REPEATER, "Repeater");

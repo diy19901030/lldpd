@@ -572,6 +572,7 @@ _lldpctl_atom_set_int_config(lldpctl_atom_t *atom, lldpctl_key_t key,
 static int
 _lldpctl_atom_new_interfaces_list(lldpctl_atom_t *atom, va_list ap)
 {
+	fprintf(stderr,"_lldpctl_atom_new_interfaces_list.\n");
 	struct _lldpctl_atom_interfaces_list_t *iflist =
 	    (struct _lldpctl_atom_interfaces_list_t *)atom;
 	iflist->ifs = va_arg(ap, struct lldpd_interface_list *);
@@ -650,6 +651,7 @@ _lldpctl_atom_get_str_interface(lldpctl_atom_t *atom, lldpctl_key_t key)
 static int
 _lldpctl_atom_new_any_list(lldpctl_atom_t *atom, va_list ap)
 {
+	fprintf(stderr,"_lldpctl_atom_new_portlist_list.\n");
 	struct _lldpctl_atom_any_list_t *plist =
 	    (struct _lldpctl_atom_any_list_t *)atom;
 	plist->parent = va_arg(ap, struct _lldpctl_atom_port_t *);
@@ -781,6 +783,9 @@ _lldpctl_atom_get_atom_port(lldpctl_atom_t *atom, lldpctl_key_t key)
 	case lldpctl_k_chassis_mgmt:
 		return _lldpctl_new_atom(atom->conn, atom_mgmts_list,
 		    p, port->p_chassis);
+	case lldpctl_k_chassis_vnmac:
+		return  _lldpctl_new_atom(atom->conn, atom_vnmacs_list,
+			    p, port->p_chassis);
 #ifdef ENABLE_DOT3
 	case lldpctl_k_port_dot3_power:
 		return _lldpctl_new_atom(atom->conn, atom_dot3_power,
@@ -807,6 +812,7 @@ _lldpctl_atom_get_atom_port(lldpctl_atom_t *atom, lldpctl_key_t key)
 	case lldpctl_k_port_med_power:
 		return _lldpctl_new_atom(atom->conn, atom_med_power, p);
 #endif
+
 	default:
 		SET_ERROR(atom->conn, LLDPCTL_ERR_NOT_EXIST);
 		return NULL;
@@ -1167,7 +1173,6 @@ _lldpctl_atom_value_mgmts_list(lldpctl_atom_t *atom, lldpctl_atom_iter_t *iter)
 	struct lldpd_mgmt *mgmt = (struct lldpd_mgmt *)iter;
 	return _lldpctl_new_atom(atom->conn, atom_mgmt, plist->parent, mgmt);
 }
-
 static int
 _lldpctl_atom_new_mgmt(lldpctl_atom_t *atom, va_list ap)
 {
@@ -1223,6 +1228,123 @@ _lldpctl_atom_get_str_mgmt(lldpctl_atom_t *atom, lldpctl_key_t key)
 	SET_ERROR(atom->conn, LLDPCTL_ERR_NOT_EXIST);
 	return NULL;
 }
+/*
+ * vn-mac information retrive
+ * added by chen yanming
+ */
+
+static int
+_lldpctl_atom_new_vnmacs_list(lldpctl_atom_t *atom, va_list ap)
+{
+	struct _lldpctl_atom_vnmacs_list_t *plist =
+	    (struct _lldpctl_atom_vnmacs_list_t *)atom;
+	plist->parent = va_arg(ap, struct _lldpctl_atom_port_t *);
+	plist->chassis = va_arg(ap, struct lldpd_chassis *);
+	lldpctl_atom_inc_ref((lldpctl_atom_t *)plist->parent);
+	return 1;
+}
+
+static void
+_lldpctl_atom_free_vnmacs_list(lldpctl_atom_t *atom)
+{
+	struct _lldpctl_atom_vnmacs_list_t *plist =
+	    (struct _lldpctl_atom_vnmacs_list_t *)atom;
+	lldpctl_atom_dec_ref((lldpctl_atom_t *)plist->parent);
+}
+
+static lldpctl_atom_iter_t*
+_lldpctl_atom_iter_vnmacs_list(lldpctl_atom_t *atom)
+{
+	struct _lldpctl_atom_vnmacs_list_t *plist =
+	    (struct _lldpctl_atom_vnmacs_list_t *)atom;
+	return (lldpctl_atom_iter_t*)TAILQ_FIRST(&plist->chassis->c_vnmac);
+}
+
+static lldpctl_atom_iter_t*
+_lldpctl_atom_next_vnmacs_list(lldpctl_atom_t *atom, lldpctl_atom_iter_t *iter)
+{
+	struct lldpd_vnmac *vnmac = (struct lldpd_vnmac *)iter;
+	return (lldpctl_atom_iter_t*)TAILQ_NEXT(vnmac, v_entries);
+}
+
+static lldpctl_atom_t*
+_lldpctl_atom_value_vnmacs_list(lldpctl_atom_t *atom, lldpctl_atom_iter_t *iter)
+{
+	struct _lldpctl_atom_vnmacs_list_t *plist =
+	    (struct _lldpctl_atom_vnmacs_list_t *)atom;
+	struct lldpd_vnmac *vnmac = (struct lldpd_vnmac *)iter;
+	return _lldpctl_new_atom(atom->conn, atom_vnmac, plist->parent, vnmac);
+}
+
+
+static int
+_lldpctl_atom_new_vnmac(lldpctl_atom_t *atom, va_list ap)
+{
+	struct _lldpctl_atom_vnmac_t *vnmac =
+	    (struct _lldpctl_atom_vnmac_t *)atom;
+	vnmac->parent = va_arg(ap, struct _lldpctl_atom_port_t *);
+	vnmac->vnmac  = va_arg(ap, struct lldpd_vnmac *);
+	lldpctl_atom_inc_ref((lldpctl_atom_t *)vnmac->parent);
+	return 1;
+}
+
+static void
+_lldpctl_atom_free_vnmac(lldpctl_atom_t *atom)
+{
+	struct _lldpctl_atom_vnmac_t *vnmac =
+	    (struct _lldpctl_atom_vnmac_t *)atom;
+	lldpctl_atom_dec_ref((lldpctl_atom_t *)vnmac->parent);
+}
+
+static const char*
+_lldpctl_atom_get_str_vnmac(lldpctl_atom_t *atom, lldpctl_key_t key)
+{
+	char *mac=NULL;
+	char str[1024];
+	size_t len; int af;
+	struct _lldpctl_atom_vnmac_t *m =
+	    (struct _lldpctl_atom_vnmac_t *)atom;
+
+	/* Local and remote port */
+	switch (key) {
+	case lldpctl_k_chassis_vnID:
+		sprintf(str,"%d",m->vnmac->v_ID);
+//		printf("\t\tthe vn ID is:%s \n",str);
+		return str;
+	case lldpctl_k_chassis_vnMac:
+//		mac =  _lldpctl_alloc_in_atom(atom, m->vnmac->v_ID*ETHER_ADDR_LEN);
+//		if (!mac) return NULL;
+//		if (memcpy(mac,m->vnmac->v_mac,m->vnmac->v_ID*ETHER_ADDR_LEN+1) == NULL)
+//			printf("\t  the vnmac:%d\n",m->vnmac->v_mac);
+//				break;
+//		mac = m->vnmac->v_mac;
+//		mac=(char *) calloc(1,m->vnmac->v_ID*6*sizeof(char));
+//		printf("\tthe vn ID is:%02x \n\t the size of the vnmac:%d",
+//					m->vnmac->v_mac[0],strlen(m->vnmac->v_mac));
+//		fprintf(stderr,"\t  the vnmac:%02x\n",
+//				m->vnmac->v_lladdr[1]);
+//		memcpy(mac,m->vnmac->v_mac,m->vnmac->v_ID*ETHER_ADDR_LEN);
+//		printf("\t the size of the vnmac:%d\n",
+//				m->vnmac->v_ID);
+		return _lldpctl_dump_in_atom(atom,
+					    (uint8_t*)m->vnmac->v_lladdr, m->vnmac->v_macsize*ETHER_ADDR_LEN,
+					    ':', 0);
+
+//		return _lldpctl_dump_in_atom(atom,
+//						    (uint8_t*)m->vnmac->v_mac, strlen(m->vnmac->v_mac),
+//						    ':', 0);
+	default:
+		SET_ERROR(atom->conn, LLDPCTL_ERR_NOT_EXIST);
+		return NULL;
+	}
+	SET_ERROR(atom->conn, LLDPCTL_ERR_NOT_EXIST);
+	return NULL;
+}
+/*
+ * end of the vn-mac information retrive
+ */
+
+
 
 #ifdef ENABLE_DOT3
 static int
@@ -2596,6 +2718,16 @@ struct atom_builder builders[] = {
 	  .init = _lldpctl_atom_new_mgmt,
 	  .free = _lldpctl_atom_free_mgmt,
 	  .get_str = _lldpctl_atom_get_str_mgmt },
+	{ atom_vnmacs_list, sizeof(struct _lldpctl_atom_vnmacs_list_t),
+	  .init = _lldpctl_atom_new_vnmacs_list,
+	  .free = _lldpctl_atom_free_vnmacs_list,
+	  .iter = _lldpctl_atom_iter_vnmacs_list,
+	  .next = _lldpctl_atom_next_vnmacs_list,
+	  .value = _lldpctl_atom_value_vnmacs_list },
+	{ atom_vnmac, sizeof(struct _lldpctl_atom_vnmac_t),
+	  .init = _lldpctl_atom_new_vnmac,
+	  .free = _lldpctl_atom_free_vnmac,
+	  .get_str = _lldpctl_atom_get_str_vnmac },
 #ifdef ENABLE_DOT3
 	{ atom_dot3_power, sizeof(struct _lldpctl_atom_dot3_power_t),
 	  .init = _lldpctl_atom_new_dot3_power,

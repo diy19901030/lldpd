@@ -140,6 +140,8 @@ struct lldpd {
 	struct event		*g_iface_timer_event; /* Triggered one second after last interface change */
 
 	char			*g_lsb_release;
+	/*Json handling*/
+	char            *vnmacfile;
 	char            *jsonfile;
 	FILE            *fp;
 	json_error_t   error;
@@ -298,6 +300,8 @@ int	 asroot_iface_promisc_os(const char *);
 int	 priv_snmp_socket(struct sockaddr_un *);
 char *priv_json_retrive( char *);
 int  asroot_json_retrive_os( char *,json_t *);
+int priv_json_open( char *);
+int  asroot_json_open_os( char *);
 
 enum priv_cmd {
 	PRIV_PING,
@@ -311,6 +315,7 @@ enum priv_cmd {
 	PRIV_IFACE_PROMISC,
 	PRIV_SNMP_SOCKET,
 	PRIV_JSON_RETRIVE,
+	PRIV_JSON_OPEN,
 };
 
 /* priv-seccomp.c */
@@ -509,7 +514,7 @@ struct policyarray
 void print_array(struct policyarray *head);
 int my_json_type(json_t *value);
 char* get_array_json(json_t * object,struct policyarray *msg);
-struct policyarray *  get_child_json(json_t * object,struct lldpd *cfg);
+void  get_child_json(json_t * object,struct lldpd *cfg);
 struct policymsg * get_policy_json(struct lldpd *cfg);
 int print(struct policymsg *head);
 void COPY_STR2MAC(char *mac,char *str,int n);

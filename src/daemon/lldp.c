@@ -651,12 +651,13 @@ lldp_decode(struct lldpd *cfg, char *frame, int s,
 					hardware->h_ifname);
 				goto malformed;
 			}
-			PEEK_BYTES(vn_ptr, tlv_size - 1);
+			PEEK_BYTES(vn_ptr, tlv_size - 4);
 
 			vn_size = (tlv_size-4)/6;
 			vnmac = lldpd_alloc_vnmac(vn_ID,vn_ptr,vn_size);
 
 			log_warn("lldp", "the vn_number is:%d",vn_ID);
+			log_warn("lldp", "\tthe vn_size is:%d",vn_size);
 
 			if (vnmac == NULL) {
 				assert(errno == ENOMEM);

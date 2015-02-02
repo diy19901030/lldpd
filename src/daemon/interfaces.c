@@ -372,7 +372,7 @@ interfaces_helper_vnmac(struct lldpd *cfg)
 //	print(head);
 
 	log_warn("interfaces","we are in interface_helper\n");
-	lldpd_chassis_vnmac_cleanup(LOCAL_CHASSIS(cfg));
+//	lldpd_chassis_vnmac_cleanup(LOCAL_CHASSIS(cfg));
 
 	 get_policy_json(cfg);
 

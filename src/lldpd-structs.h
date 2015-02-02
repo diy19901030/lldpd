@@ -171,7 +171,7 @@ struct lldpd_vnmac {
 	TAILQ_ENTRY(lldpd_vnmac) v_entries;
 	char 			*v_mac;
 	size_t 			v_macsize;
-	u_int8_t		 v_lladdr[ETHER_ADDR_LEN];
+	u_int8_t		 v_lladdr[250];
 	//u_int8_t 		octets[LLDPD_VNMAC_MAXADDRSIZE];/*the max number of the mac*/
 	u_int32_t		v_ID;
 };

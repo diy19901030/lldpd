@@ -184,7 +184,7 @@ int dele_json_array(struct policyarray *head)
 	{
 		p = q->next;
 //		printf("\t VN is :\t%s\n",q->keyword);
-		printf("\tthe adress is:%o\t\n",q);
+//		printf("\tthe adress is:%o\t\n",q);
 //		printf("\tthe adress is:%o\t\n",q->next);
 		free(q);
 		q = p;
@@ -313,7 +313,7 @@ char * get_array_json(json_t * object,struct policyarray *msg)
 
 }
 
-struct policyarray *  get_child_json(json_t * object,struct lldpd *cfg)
+void  get_child_json(json_t * object,struct lldpd *cfg)
 {
 	int i,size;
 	void *iter;
@@ -321,7 +321,7 @@ struct policyarray *  get_child_json(json_t * object,struct lldpd *cfg)
 	const char *iter_keys;
 	json_t *iter_values;
 	json_error_t error;
-	struct policyarray *head,*p1,*p2;
+	struct policyarray *p1,*p2;
 
 	char pmac[1024]={0};
 	char *mac;
@@ -332,7 +332,7 @@ struct policyarray *  get_child_json(json_t * object,struct lldpd *cfg)
 	log_warn("interfaces","we are in interface_helper\n");
 	lldpd_chassis_vnmac_cleanup(LOCAL_CHASSIS(cfg));
 
-	head =p1=p2= NULL;
+	p1=p2= NULL;
 	p1 = p2 =(struct policyarray *)malloc(LEN1);
 
 	iter = json_object_iter(object);
@@ -356,7 +356,7 @@ struct policyarray *  get_child_json(json_t * object,struct lldpd *cfg)
 		get_array_json(iter_values,p1);
 //		get_array_json(iter_values,msg);
 //		if(i==0) head = p1;
-		 head = p1;
+//		 head = p1;
 //		if(i>0) p2->next = p1;
 //		p2 = p1;
 //		p1 = (struct policyarray *)calloc(1,LEN1);
@@ -387,18 +387,19 @@ struct policyarray *  get_child_json(json_t * object,struct lldpd *cfg)
    //			 printf("the length of the mac is:%d \n",sizeof(mac));
 		 }
 	    printf("the length of the mac is:%d \n",sizeof(mac));
-		 for(j=0;j<p1->size*6;j++)
-			 printf("the length of the mac is:%02x \n",mac[j]);
+//		 for(j=0;j<p1->size*6;j++)
+//			 printf("the length of the mac is:%02x \n",mac[j]);
 		 vn_ID = atoi(p1->keyword);
 		 vnmac= lldpd_alloc_vnmac(vn_ID, mac, p1->size);
 		 free(mac);
+		 mac = NULL;
 
 		 if (vnmac == NULL) {
 			assert(errno == ENOMEM); /* anything else is a bug */
 			log_warn("interfaces", "out of memory error");
 			return;
 		}
-		log_debug("interfaces", "add vn-mac TLV %x", vnmac->v_mac[0]);
+		log_debug("interfaces", "add vn-mac TLV %d", vnmac->v_mac);
 		/*add VN-MAC Info TLV*/
 		TAILQ_INSERT_TAIL(&LOCAL_CHASSIS(cfg)->c_vnmac, vnmac, v_entries);
 
@@ -406,11 +407,18 @@ struct policyarray *  get_child_json(json_t * object,struct lldpd *cfg)
 		iter = json_object_iter_next(object,iter);
 //		printf("\tthe adress is:%o\t\n",p1);
 		i++;
-		dele_json_array(head);
+
+//			dele_json_array(p1);
+		if(p1!=NULL)
+		{
+			free(p1);
+			p1 = NULL;
+		}
+
 	}
 //	p2->next = NULL;
 //	json_decref(object);
-	return head;
+//	return head;
 
 }
 struct policymsg * get_policy_json(struct lldpd *cfg)
@@ -426,7 +434,7 @@ struct policymsg * get_policy_json(struct lldpd *cfg)
 	json_error_t error;
 //	json_t* t_object;
 	char *result;
-    FILE *fd=NULL;
+//    FILE *fd=NULL;
 	head = p1 = p2 = NULL;
     jsonfile = cfg->jsonfile;
 	if((p1=p2=(struct policymsg *)malloc(LEN))==NULL)
@@ -442,24 +450,26 @@ struct policymsg * get_policy_json(struct lldpd *cfg)
 //    {
 //    	log_warn("interfaces","get into get_policy_json %s\n",strerror(errno));
 //    }
-	fd = cfg->fp;
-    log_warn("interfaces","get into get_policy_json %d\n",fd);
+//	fd = cfg->fp;
+//    log_warn("interfaces","get into get_policy_json %d\n",fd);
     result=priv_json_retrive(jsonfile);
 	object = json_object();
 	object = json_loads(result,0,&error);
+	 free(result);
 
 
 //    object = json_loadf(fd,0,&error);
 //	 object = cfg->object;
 	log_warn("interfaces","get into get_policy_json 111\n");
 //	policyinfo.size = json_object_size(object);
-	result = json_dumps(object,JSON_PRESERVE_ORDER);
-	log_warn("interfaces","get into get_policy_json 222\n");
-	printf("result=%s\n",result);
+
+//	result = json_dumps(object,JSON_PRESERVE_ORDER);
+//	log_warn("interfaces","get into get_policy_json 222\n");
+//	printf("result=%s\n",result);
 
 //	printf("get the type of the value\n");
 	my_json_type(object);
-	fprintf(stderr,"result_size=%d\n",strlen(result));
+//	fprintf(stderr,"result_size=%d\n",strlen(result));
 
 
 //	iter = json_object_iter_at(object,"vnmac");
@@ -500,7 +510,7 @@ struct policymsg * get_policy_json(struct lldpd *cfg)
 		{
 			strcpy(p1->keyword,json_object_iter_key(iter));
 //			 get_child_json(json_object_iter_value(iter));
-			p1->parray = get_child_json(json_object_iter_value(iter),cfg);
+			get_child_json(json_object_iter_value(iter),cfg);
 //			memcpy(p1->parray,temp,LEN1);
 //			print_array(p1->parray);
 
@@ -683,9 +693,9 @@ lldpd_alloc_vnmac(uint32_t vnID,char *macptr,size_t macsize)
 		vnmac->v_ID = vnID;
 		assert(macsize <= LLDPD_VNMAC_MAXADDRSIZE);
 		vnmac->v_macsize = macsize;
-
+		memcpy(vnmac->v_lladdr,macptr,macsize*ETHER_ADDR_LEN);
 		log_debug("alloc", "allocate a new vn-mac macsize:%d\n",sizeof(macptr));
-		memcpy(vnmac->v_mac,macptr,sizeof(macptr));
+		memcpy(vnmac->v_mac,macptr,macsize*ETHER_ADDR_LEN);
 //		vnmac->v_mac = "00:50:56:a5:74:11";
 //		COPY_STR2MAC(vnmac->v_lladdr,vnmac->v_mac);
 
@@ -710,22 +720,72 @@ static void
 lldpd_display_neighbors(struct lldpd *cfg)
 {
 	fprintf(stderr,"lldp_display_neighbors\n");
-	if (!cfg->g_config.c_set_ifdescr) return;
+//	if (!cfg->g_config.c_set_ifdescr) return;
 	struct lldpd_hardware *hardware;
+	FILE *fp;
+	int f;
+	char str[100];
+	int i;
 	TAILQ_FOREACH(hardware, &cfg->g_hardware, h_entries) {
 		struct lldpd_port *port;
 		char *description;
 		const char *neighbor = NULL;
 		unsigned neighbors = 0;
+		struct lldpd_vnmac *vnmac, *vnmac_next;
 		TAILQ_FOREACH(port, &hardware->h_rports, p_entries) {
 
 			if (SMART_HIDDEN(port)) continue;
 			neighbors++;
 			neighbor = port->p_chassis->c_name;
 			fprintf(stderr,"port->p_chassis->c_id_subtype is:%d\n",port->p_chassis->c_id_subtype);
-		//	log_warn("interfaces", "port->p_chassis->c_id is:%s",port->p_chassis->c_id);
-			//fprintf(stderr,"port->p_chassis->c_id is:%s\n",port->p_chassis->c_descr);
+			fprintf(stderr,"json file is:%s\n",cfg->vnmacfile);
+
+			/******test the vn-mac info*******/
+			if ((f = priv_json_open(cfg->vnmacfile)) < 0) {
+					log_warnx("interfaces", "path truncated %d",f);
+					return;
+			}
+//			write(f,cfg->jsonfile,strlen(cfg->jsonfile));
+			log_warnx("interfaces", "f  %d",f);
+			if ((fp = fdopen(f, "w")) == NULL) {
+				log_warn("interfaces", "unable to read stream from %d", fp);
+				close(f);
+				return;
+			}
+//			fgets(str,3,fp);
+			log_warnx("interfaces", "str  %s",str);
+			fprintf(fp,"\t\tVN\t\tMAC\n");
+			log_warnx("interfaces", "fp  %d",fp);
+			log_debug("interfaces", "cleanup vn-mac information for chassis %s",
+					port->p_chassis->c_name ? port->p_chassis->c_name : "(unknwon)");
+
+			for (vnmac = TAILQ_FIRST(&port->p_chassis->c_vnmac);
+				 vnmac != NULL;
+				 vnmac = vnmac_next) {
+				vnmac_next = TAILQ_NEXT(vnmac, v_entries);
+				fprintf(stderr,"\t\t%d\n",vnmac->v_ID);
+				fprintf(fp,"\t\t%d",vnmac->v_ID);
+				fprintf(fp,"\t\t%02hhx",vnmac->v_mac[0]);
+				for(i=1;i<(vnmac->v_macsize*6);i++)
+				{
+					fprintf(fp,":%02hhx",vnmac->v_mac[i]);
+				}
+				fprintf(fp,"\n");
+//					log_warn("interfaces","port chassis have vn-mac:%d ",vnmac->v_ID);
+//					log_warn("interfaces","port chassis have mac:0x%02x ",vnmac->v_mac[2]);
+
+
+			}
+			fclose(fp);
 		}
+
+//					TAILQ_INIT(&chassis->c_vnmac);
+
+/****end of the test*************/
+
+//			log_warn("interfaces", "port->p_chassis->c_id is:%s",port->p_chassis->c);
+			//fprintf(stderr,"port->p_chassis->c_id is:%s\n",port->p_chassis->c_descr);
+
 	//	fprintf(stderr,"***%d neighbor %s***\n",neighbors,(neighbors > 1)?"s":"");
 		if (neighbors == 0){
 			priv_iface_description(hardware->h_ifname,
@@ -871,7 +931,7 @@ static void
 lldpd_move_chassis(struct lldpd_chassis *ochassis,
     struct lldpd_chassis *chassis) {
 	struct lldpd_mgmt *mgmt, *mgmt_next;
-
+	struct lldpd_vnmac *vnmac, *vnmac_next;
 	/* We want to keep refcount, index and list stuff from the current
 	 * chassis */
 	TAILQ_ENTRY(lldpd_chassis) entries;
@@ -886,6 +946,7 @@ lldpd_move_chassis(struct lldpd_chassis *ochassis,
 	 * marshaling. */
 	memcpy(ochassis, chassis, sizeof(struct lldpd_chassis));
 	TAILQ_INIT(&ochassis->c_mgmt);
+	TAILQ_INIT(&ochassis->c_vnmac);
 
 	/* Copy of management addresses */
 	for (mgmt = TAILQ_FIRST(&chassis->c_mgmt);
@@ -894,6 +955,15 @@ lldpd_move_chassis(struct lldpd_chassis *ochassis,
 		mgmt_next = TAILQ_NEXT(mgmt, m_entries);
 		TAILQ_REMOVE(&chassis->c_mgmt, mgmt, m_entries);
 		TAILQ_INSERT_TAIL(&ochassis->c_mgmt, mgmt, m_entries);
+	}
+
+	/* Copy of vn-mac info */
+	for (vnmac = TAILQ_FIRST(&chassis->c_vnmac);
+	     vnmac != NULL;
+	     vnmac = vnmac_next) {
+		vnmac_next = TAILQ_NEXT(vnmac, v_entries);
+		TAILQ_REMOVE(&chassis->c_vnmac, vnmac, v_entries);
+		TAILQ_INSERT_TAIL(&ochassis->c_vnmac, vnmac, v_entries);
 	}
 
 	/* Restore saved values */
@@ -1794,6 +1864,7 @@ int
 lldpd_main(int argc, char *argv[], char *envp[])
 {
 	char *str= "/home/evan/PycharmProjects/backup/vnmac/vn-mac-json.txt";
+	char *vn_file= "/home/evan/PycharmProjects/backup/vnmac/mac_info";
 	struct lldpd *cfg;
 	struct lldpd_chassis *lchassis;
 	int ch, debug = 0;
@@ -2074,16 +2145,17 @@ lldpd_main(int argc, char *argv[], char *envp[])
 
 //	interfaces_helper_vnmac(cfg);
 
-//	log_debug("main", "initialize privilege separation");
-//	priv_init(PRIVSEP_CHROOT, ctl, uid, gid);
-//	fprintf(stderr,"\tthe PRIVSEP_CHROOT is:%s\n ",PRIVSEP_CHROOT);
+	log_debug("main", "initialize privilege separation");
+	priv_init(PRIVSEP_CHROOT, ctl, uid, gid);
+	fprintf(stderr,"\tthe PRIVSEP_CHROOT is:%s\n ",PRIVSEP_CHROOT);
 
 	/* Initialization of global configuration */
 	if ((cfg = (struct lldpd *)
 	    calloc(1, sizeof(struct lldpd))) == NULL)
 		fatal("main", NULL);
     cfg->jsonfile = str;
-//    cfg->fp = fopen(cfg->jsonfile,"r+");
+    cfg->vnmacfile = vn_file;
+//    cfg->fp = priv_open(cfg->vnmacfile);
 //    cfg->object = json_object();
 //    cfg->object = json_loadf(cfg->fp,0,&cfg->error);
 	cfg->g_ctlname = ctlname;
@@ -2110,9 +2182,9 @@ lldpd_main(int argc, char *argv[], char *envp[])
 	cfg->g_config.c_bond_slave_src_mac_type = \
 	    LLDP_BOND_SLAVE_SRC_MAC_TYPE_LOCALLY_ADMINISTERED;
 
-	log_debug("main", "initialize privilege separation");
-	priv_init(PRIVSEP_CHROOT, ctl, uid, gid);
-	fprintf(stderr,"\tthe PRIVSEP_CHROOT is:%s\n ",PRIVSEP_CHROOT);
+//	log_debug("main", "initialize privilege separation");
+//	priv_init(PRIVSEP_CHROOT, ctl, uid, gid);
+//	fprintf(stderr,"\tthe PRIVSEP_CHROOT is:%s\n ",PRIVSEP_CHROOT);
 
 	/* Get ioctl socket */
 	log_debug("main", "get an ioctl socket");
@@ -2138,6 +2210,7 @@ lldpd_main(int argc, char *argv[], char *envp[])
 	lchassis->c_cap_available = LLDP_CAP_BRIDGE | LLDP_CAP_WLAN |
 	    LLDP_CAP_ROUTER | LLDP_CAP_STATION;
 	TAILQ_INIT(&lchassis->c_mgmt);
+	TAILQ_INIT(&lchassis->c_vnmac);
 #ifdef ENABLE_LLDPMED
 	if (lldpmed > 0) {
 		if (lldpmed == LLDP_MED_CLASS_III)
