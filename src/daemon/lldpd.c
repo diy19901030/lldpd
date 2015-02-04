@@ -726,6 +726,15 @@ lldpd_display_neighbors(struct lldpd *cfg)
 	int f;
 	char str[100];
 	int i;
+	json_t *array;
+	json_t *obj_root;
+	json_t *obj_cur;
+	char add[18];
+
+	int tem;
+	char vn[256];
+	char *result;
+
 	TAILQ_FOREACH(hardware, &cfg->g_hardware, h_entries) {
 		struct lldpd_port *port;
 		char *description;
@@ -741,7 +750,7 @@ lldpd_display_neighbors(struct lldpd *cfg)
 			fprintf(stderr,"json file is:%s\n",cfg->vnmacfile);
 
 			/******test the vn-mac info*******/
-			if ((f = priv_json_open(cfg->vnmacfile)) < 0) {
+/*			if ((f = priv_json_open(cfg->vnmacfile)) < 0) {
 					log_warnx("interfaces", "path truncated %d",f);
 					return;
 			}
@@ -777,16 +786,72 @@ lldpd_display_neighbors(struct lldpd *cfg)
 
 			}
 			fclose(fp);
-		}
+		}*/
+
 
 //					TAILQ_INIT(&chassis->c_vnmac);
+			/*************end of the test*****************************************/
 
-/****end of the test*************/
 
 //			log_warn("interfaces", "port->p_chassis->c_id is:%s",port->p_chassis->c);
 			//fprintf(stderr,"port->p_chassis->c_id is:%s\n",port->p_chassis->c_descr);
 
 	//	fprintf(stderr,"***%d neighbor %s***\n",neighbors,(neighbors > 1)?"s":"");
+
+		        /*******test the json file***********/
+			if ((f = priv_json_open(cfg->vnmacfile)) < 0) {
+					log_warnx("interfaces", "path truncated %d",f);
+					return;
+			}
+			log_warnx("interfaces", "f  %d",f);
+			if ((fp = fdopen(f, "w")) == NULL) {
+				log_warn("interfaces", "unable to read stream from %d", fp);
+				close(f);
+				return;
+			}
+			if((vnmac = TAILQ_FIRST(&port->p_chassis->c_vnmac))!=NULL)
+			{
+				obj_root = json_object();
+				obj_cur = json_object();
+				for (; vnmac != NULL; vnmac = vnmac_next) {
+					vnmac_next = TAILQ_NEXT(vnmac, v_entries);
+
+//							fprintf(stderr,"\t\t%d\n",vnmac->v_ID);
+					sprintf(vn,"%d",vnmac->v_ID);
+					fprintf(stderr,"\t\t%s\n",vn);
+					array = json_array();
+					for(i=0;i<vnmac->v_macsize;i++)
+					{
+
+						tem = i * 6;
+						fprintf(stderr,"%02hhx:%02hhx:%02hhx:%02hhx:%02hhx:%02hhx\n",vnmac->v_mac[tem], vnmac->v_mac[tem+1], vnmac->v_mac[tem+2],
+								vnmac->v_mac[tem+3], vnmac->v_mac[tem+4], vnmac->v_mac[tem+5]);
+						sprintf(add,"%02hhx:%02hhx:%02hhx:%02hhx:%02hhx:%02hhx",vnmac->v_mac[tem], vnmac->v_mac[tem+1], vnmac->v_mac[tem+2],
+								vnmac->v_mac[tem+3], vnmac->v_mac[tem+4], vnmac->v_mac[tem+5]);
+						printf("add= %s \n",add);
+						json_array_append_new(array,json_string(add));
+
+					}
+					json_object_set_new(obj_cur,vn,array);
+				}
+				printf("json_object \n");
+				json_object_set_new(obj_root,"vnmac",obj_cur);
+
+	//			result = json_dumps(obj_root,JSON_PRESERVE_ORDER);
+				result = json_dumpf(obj_root,fp,JSON_PRESERVE_ORDER|JSON_INDENT(4));
+					printf("result = %s \n",result);
+					free(result);
+					json_decref(obj_cur);
+				json_decref(obj_root);
+				fclose(fp);
+			}
+		}
+
+
+
+
+
+
 		if (neighbors == 0){
 			priv_iface_description(hardware->h_ifname,
 			    "");

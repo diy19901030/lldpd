@@ -257,14 +257,20 @@ display_chassis(struct writer* w, lldpctl_atom_t* neighbor, int details)
 	}
 	else
 	{
+		tag_start(w, "vn-mac", "vn-info");
 		lldpctl_atom_foreach(vnmacs, vnmac) {
 //			fprintf(stderr,"unable to ask lldpd for immediate retransmission.\n");
 
-			tag_datatag(w, "vn-mac", "vnID",
-				lldpctl_atom_get_str(vnmac, lldpctl_k_chassis_vnID));
-			tag_datatag(w, "vn-mac", "vnMAC",
+//			tag_datatag(w, "vn-mac", "vnID",
+//				lldpctl_atom_get_str(vnmac, lldpctl_k_chassis_vnID));
+			tag_datatag(w, lldpctl_atom_get_str(vnmac, lldpctl_k_chassis_vnID), "vnMAC",
 					    lldpctl_atom_get_str(vnmac, lldpctl_k_chassis_vnMac));
+
+//			tag_attr (w, "type", "",lldpctl_atom_get_str(vnmac, lldpctl_k_chassis_vnID));
+//			tag_data(w, lldpctl_atom_get_str(vnmac, lldpctl_k_chassis_vnMac));
+
 		}
+		tag_end(w);
 //		lldpctl_atom_dec_ref(vnmacs);
 	}
 	/* Capabilities */
