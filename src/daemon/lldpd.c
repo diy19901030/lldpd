@@ -844,6 +844,7 @@ lldpd_display_neighbors(struct lldpd *cfg)
 					json_decref(obj_cur);
 				json_decref(obj_root);
 				fclose(fp);
+				close(f);
 			}
 		}
 
