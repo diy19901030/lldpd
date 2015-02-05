@@ -839,10 +839,14 @@ lldpd_display_neighbors(struct lldpd *cfg)
 
 	//			result = json_dumps(obj_root,JSON_PRESERVE_ORDER);
 				result = json_dumpf(obj_root,fp,JSON_PRESERVE_ORDER|JSON_INDENT(4));
-					printf("result = %s \n",result);
-					free(result);
-					json_decref(obj_cur);
+				printf("result = %s \n",result);
+				free(result);
+				json_decref(obj_cur);
 				json_decref(obj_root);
+				fclose(fp);
+				close(f);
+			}
+			else{
 				fclose(fp);
 				close(f);
 			}
